@@ -4,7 +4,15 @@
   - [Déroulement d'une partie](#déroulement-dune-partie)
   - [Parties IR](#parties-ir)
     - [Application Android](#application-android)
+      - [Module de gestion de partie](#module-de-gestion-de-partie)
+      - [Maquette de l'application Android](#maquette-de-lapplication-android)
+      - [Recette](#recette)
+      - [Diagramme de cas d'utilisation Android](#diagramme-de-cas-dutilisation-android)
+      - [Base de données](#base-de-données)
     - [Application Qt](#application-qt)
+      - [Module de visualisation de partie](#module-de-visualisation-de-partie)
+      - [Maquette de l'application Qt](#maquette-de-lapplication-qt)
+      - [Recette](#recette)
   - [Itérations](#itérations)
     - [Itération 1](#itération-1)
     - [Itération 2](#itération-2)
@@ -45,12 +53,142 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 
 ### Application Android
 
+#### Module de gestion de partie
+
+Sur le terminal mobile Android, l'application permet de paramétrer et démarrer une partie.  
+Ainsi, les joueurs peuvent :
+
+- Saisir leur nom
+- Paramétrer la rencontre
+  - Saisir le nombre de manches gagnantes
+- Connecter le terminal mobile Android à une table
+- Lancer la rencontre
+- Gérer et visualiser le déroulement de la rencontre
+  - Changer automatiquement de joueur
+  - Afficher le nombre de points
+
+Le terminal mobile Android, stocke chaque partie dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de le visualisé ou le purgé. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écrans d'affichage.
+
+#### Maquette de l'application Android
+
+![](./images/androidAccueil.png)
+
+#### Recette
+
+<table>
+  <tr>
+    <td style="font-weight: bold;">Fonctionalités</td>
+    <td style="font-weight: bold;">A faire</td>
+    <td style="font-weight: bold;">En cours</td>
+    <td style="font-weight: bold;">Terminé</td>
+  </tr>
+  <tr>
+    <td>Créer un joueur</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Paraméter une rencontre</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Lancer une rencontre</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Gérer le déroulement d'une rencontre</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Enregistrer les données des manches</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+    <tr>
+    <td>Consulter l'historique des rencontres</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+    <tr>
+    <td>Purger l'historique</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+    </tr>
+    <tr>
+    <td>Dialoguer avec les modules</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+</table>
+
+#### Diagramme de cas d'utilisation Android
+
+![](./images/casUtilisationAndroid.png)
+
+#### Base de données
+
+![](./images/bdd.jpg)
 
 ---
 
 ### Application Qt
 
+#### Module de visualisation de partie
 
+#### Maquette de l'application Qt
+
+#### Recette
+
+<table>
+  <tr>
+    <td style="font-weight: bold;">Fonctionalités</td>
+    <td style="font-weight: bold;">A faire</td>
+    <td style="font-weight: bold;">En cours</td>
+    <td style="font-weight: bold;">Terminé</td>
+  </tr>
+  <tr>
+    <td>Afficher un écran d'accueil</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Visualiser l’empochage d’une bille</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Visualiser les données de la manche en temps réel</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Visualiser les données de la rencontre</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Dialoguer avec le terminal mobile</td>
+    <td style="text-align: center;">x</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+</table>
 
 ---
 
@@ -61,9 +199,17 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 
 > Du 29 Janvier 2025 au 28 Mars 2025
 
+- [x] Créer les maquettes des interfaces
+- [ ] Initialiser le dépot
+- [ ] Paramétrer une partie
+- [ ] Afficher les données de la partie en cours
+
 ### Itération 2
 
 > Du 29 Mars 2025 au 23 Mai 2025
+
+- [ ] Liaison entre la table de billard et le terminal mobile Android
+- [ ] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
 ### Itération 3
 
@@ -91,6 +237,8 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 
 - MILLOT Pierre : [**[pierre(dot)millot(dot)pro(at)gmail(dot)com](mailto:pierre.millot.pro@gmail.com)**]
 - NAVARRO Mattéo : [**[matteo(dot)navarro(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**]
+- VIVANCOS Evan : [**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**]
 
 ---
+
 &copy; 2024-2025 BTS LaSalle Avignon
