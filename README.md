@@ -135,17 +135,19 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 #### Diagramme de cas d'utilisation Android
 
-![](./images/casUtilisationAndroid.png)
+
 
 #### Base de données
 
-![](./images/bdd.jpg)
+
 
 ---
 
 ### Application Qt
 
 #### Module de visualisation de partie
+
+Ce module correspond à la partie “affichage” du système. Il a pour objectifs de réaliser la récupération d’informations envoyées par le terminal mobile et l’affichage de la rencontre actuelle. Il communique en Bluetooth uniquement avec le terminal mobile Android.
 
 #### Maquette de l'application Qt
 
@@ -200,7 +202,7 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 > Du 29 Janvier 2025 au 28 Mars 2025
 
 - [x] Créer les maquettes des interfaces
-- [ ] Initialiser le dépot
+- [x] Initialiser le dépot
 - [ ] Paramétrer une partie
 - [ ] Afficher les données de la partie en cours
 
@@ -237,7 +239,7 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 - MILLOT Pierre : [**[pierre(dot)millot(dot)pro(at)gmail(dot)com](mailto:pierre.millot.pro@gmail.com)**]
 - NAVARRO Mattéo : [**[matteo(dot)navarro(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**]
-- VIVANCOS Evan : [**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**]
+- VIVANCOS Evan : [**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:evan.vivancos.pro@gmail.com)**]
 
 ---
 
