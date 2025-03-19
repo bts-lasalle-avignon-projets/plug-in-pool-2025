@@ -71,7 +71,7 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 #### Maquette de l'application Android
 
-![](./images/androidAccueil.png)
+![](./images/androidMatch.png)
 
 #### Recette
 
@@ -135,11 +135,11 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 #### Diagramme de cas d'utilisation Android
 
-
+![](./images/casUtilisationAndroid.png)
 
 #### Base de données
 
-
+![](./images/bdd.jpg)
 
 ---
 
