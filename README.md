@@ -147,9 +147,9 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 ![](./images/AccueilEcran.png)
 
-![](./images/RencontreEcran.png.png)
+![](./images/RencontreEcran.png)
 
-![](./images/FinEcran.png.png)
+![](./images/FinEcran.png)
 
 #### Module de visualisation de partie
 
