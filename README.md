@@ -145,11 +145,25 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 ### Application Qt
 
+![](./images/AccueilEcran.png)
+
+![](./images/RencontreEcran.png.png)
+
+![](./images/FinEcran.png.png)
+
 #### Module de visualisation de partie
 
 Ce module correspond à la partie “affichage” du système. Il a pour objectifs de réaliser la récupération d’informations envoyées par le terminal mobile et l’affichage de la rencontre actuelle. Il communique en Bluetooth uniquement avec le terminal mobile Android.
 
+Sur l'écran, les joueurs pourront visualiser en continu:
+- Le nom des joueurs (si existant), la durée écoulée de la partie.
+- Les billes empochées et restantes.
+- Le nombre de manches gagnées par chaque joueur.
+- Des statistiques.
+
 #### Maquette de l'application Qt
+
+
 
 #### Recette
 
