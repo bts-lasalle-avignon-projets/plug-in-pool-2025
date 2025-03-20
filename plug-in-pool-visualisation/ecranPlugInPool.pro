@@ -27,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     communicationbluetooth.h \
+    couleurbille.h \
     ecranpluginpool.h \
     empoche.h \
     joueur.h \

@@ -1,10 +1,11 @@
 #ifndef EMPOCHE_H
 #define EMPOCHE_H
 
+#include "couleurbille.h"
 
 class Empoche
 {
-public:
+  public:
     Empoche();
 };
 
