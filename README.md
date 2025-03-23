@@ -1,3 +1,20 @@
+<table>
+    <tr>
+        <th colspan="3">Plug-in-pool</th>
+    </tr>
+    <tr>
+        <td>
+        <a href="https://fr.wikipedia.org/wiki/Android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"/></a>
+        </td>
+        <td>
+        <a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white" alt="Qt"/></a>
+        </td>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a>
+        </td>
+    </tr>
+</table>
+
 # plug-in-pool-2025
 - [Projet : Plug In Pool](#plug-in-pool-2025)
   - [Présentation](#présentation)
