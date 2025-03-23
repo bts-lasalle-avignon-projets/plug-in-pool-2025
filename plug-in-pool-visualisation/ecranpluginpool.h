@@ -2,6 +2,7 @@
 #define ECRANPLUGINPOOL_H
 
 #include <QWidget>
+#include "pluginpool.h"
 
 class EcranPlugInPool : public QWidget
 {

@@ -3,6 +3,24 @@
 
 #include <QString>
 #include <QDateTime>
+#include <QList>
+#include "joueur.h"
+#include "manche.h"
+
+#define NB_BILLES_JOUEUR 7
+#define NB_BOULES_ROUGES 7
+#define NB_BOULES_JAUNES 7
+
+#define CONDITION_VICTOIRE_BILLES     7
+#define CONDITION_VICTOIRE_BILLE_NOIR 1
+
+/*TODO ( adapté à la trame )
+#define FAUTE_BILLE_BLANCHE ?
+#define FAUTE_BILLE_NOIRE ?
+#define FAUTE_BILLE_MAUVAISE_COULEUR ?
+*/
+
+#define NB_POCHES 6
 
 class Match
 {
@@ -13,14 +31,17 @@ class Match
         EnCours = 1,
         Fini    = 2
     };
-    QString*   nom;
-    int        nbManchesGagnantes;
-    QDateTime* horodatage;
-    EtatMatch  etat;
-    int        gagnant;
+
+    QString       nom;
+    int           nbManchesGagnantes;
+    QDateTime     horodatage;
+    EtatMatch     etat;
+    int           gagnant;
+    QList<Joueur> joueurs;
+    QList<Manche> manches;
 
   public:
-    Match();
+    Match(const QString& nom, int nbManchesGagnantes);
 };
 
 #endif // MATCH_H

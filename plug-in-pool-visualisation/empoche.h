@@ -5,8 +5,12 @@
 
 class Empoche
 {
+  private:
+    CouleurBille couleur;
+    int          poche;
+
   public:
-    Empoche();
+    Empoche(CouleurBille couleur, int poche);
 };
 
 #endif // EMPOCHE_H
