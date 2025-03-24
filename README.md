@@ -1,6 +1,6 @@
 <table>
     <tr>
-        <th colspan="3">Plug-in-pool</th>
+        <th colspan="3">Plug-In-Pool</th>
     </tr>
     <tr>
         <td>
@@ -15,11 +15,12 @@
     </tr>
 </table>
 
-# plug-in-pool-2025
-- [Projet : Plug In Pool](#plug-in-pool-2025)
+# Projet 2025 : Plug-In-Pool
+
+- [Projet 2025 : Plug-In-Pool](#projet-2025--plug-in-pool)
   - [Présentation](#présentation)
   - [Déroulement d'une partie](#déroulement-dune-partie)
-  - [Parties IR](#parties-ir)
+  - [Modules IR](#modules-ir)
     - [Application Android](#application-android)
       - [Module de gestion de partie](#module-de-gestion-de-partie)
       - [Maquette de l'application Android](#maquette-de-lapplication-android)
@@ -29,7 +30,7 @@
     - [Application Qt](#application-qt)
       - [Module de visualisation de partie](#module-de-visualisation-de-partie)
       - [Maquette de l'application Qt](#maquette-de-lapplication-qt)
-      - [Recette](#recette)
+      - [Recette](#recette-1)
   - [Itérations](#itérations)
     - [Itération 1](#itération-1)
     - [Itération 2](#itération-2)
@@ -45,15 +46,18 @@
 ## Présentation
 
 Le système **Plug in Pool** est un système numérique permettant de jouer une partie
-de blackball (parfois appelé billard anglais, billard pool ou 8 pool).
-Les rencontres (matchs) sont réalisées en n parties (ou manches) gagnantes.
+de _blackball_ (parfois appelé billard anglais, billard pool ou 8 pool).
 
-Le blackball est un jeu de billard qui se déroule sur une table rectangulaire à 6 poches avec 14 billes de couleur (7 rouges et 7 jaunes), une bille noire portant le numéro 8 et une bille d'impact blanche. Les joueurs jouent uniquement les billes de leur groupe : les jaunes ou les rouges. Si un joueur empoche une de ses billes, il est autorisé à rejouer. La partie est gagnée par le joueur (ou l’équipe) qui, après avoir empoché les 7 billes de sa couleur, empoche la bille noire numéro 8.
-([voir déroulement d'une partie](#déroulement-dune-partie))
+Les rencontres (matchs) sont réalisées en $n$ parties (ou manches) gagnantes.
+
+Le _blackball_ est un jeu de billard qui se déroule sur une table rectangulaire à 6 poches avec 14 billes de couleur (7 rouges et 7 jaunes), une bille noire portant le numéro 8 et une bille d'impact blanche. Les joueurs jouent uniquement les billes de leur groupe : les jaunes ou les rouges. Si un joueur empoche une de ses billes, il est autorisé à rejouer. La partie est gagnée par le joueur (ou l’équipe) qui, après avoir empoché les 7 billes de sa couleur, empoche la bille noire numéro 8.
+
+> voir [le déroulement d'une partie](#déroulement-dune-partie)
 
 ![](./images/tableDeBillard.png)
 
 Chaque table de billard est équipée de capteurs permettant de détecter dans quelle poche une bille a été empochée ainsi que sa couleur.
+
 Ensuite, afin que ces données recueillies par les capteurs soient transmises à un appareil Android pour la gestion de la partie, un module Bluetooth sera utilisé pour assurer la transmission des informations entre la table et la tablette, dans les deux sens.
 
 ![](./images/structureDuSysteme.png)
@@ -63,20 +67,18 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 ## Déroulement d'une partie
 
 
-
----
-## Parties IR
-
+## Modules IR
 
 ### Application Android
 
 #### Module de gestion de partie
 
-Sur le terminal mobile Android, l'application permet de paramétrer et démarrer une partie.  
+Sur le terminal mobile Android, l'application permet de paramétrer et démarrer une partie.
+
 Ainsi, les joueurs peuvent :
 
 - Saisir leur nom
-- Paramétrer la rencontre
+- Paramétrer la rencontre entre deux joueurs
   - Saisir le nombre de manches gagnantes
 - Connecter le terminal mobile Android à une table
 - Lancer la rencontre
@@ -84,7 +86,7 @@ Ainsi, les joueurs peuvent :
   - Changer automatiquement de joueur
   - Afficher le nombre de points
 
-Le terminal mobile Android, stocke chaque partie dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de le visualisé ou le purgé. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écrans d'affichage.
+Le terminal mobile Android, stocke chaque partie dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de la visualiser ou la purger. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écran d'affichage.
 
 #### Maquette de l'application Android
 
@@ -160,19 +162,18 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
 
 ![](./images/bdd.jpg)
 
----
-
 ### Application Qt
 
 #### Module de visualisation de partie
 
 Ce module correspond à la partie “affichage” du système. Il a pour objectifs de réaliser la récupération d’informations envoyées par le terminal mobile et l’affichage de la rencontre actuelle. Il communique en Bluetooth uniquement avec le terminal mobile Android.
 
-Sur l'écran, les joueurs pourront visualiser en continu:
-- Le nom des joueurs (si existant), la durée écoulée de la partie.
-- Les billes empochées et restantes.
-- Le nombre de manches gagnées par chaque joueur.
-- Des statistiques.
+Sur l'écran, les joueurs pourront visualiser en continu :
+
+- Le nom des joueurs (si existant), la durée écoulée de la partie
+- Les billes empochées et restantes
+- Le nombre de manches gagnées par chaque joueur
+- Des statistiques
 
 #### Maquette de l'application Qt
 
@@ -223,10 +224,7 @@ Sur l'écran, les joueurs pourront visualiser en continu:
   </tr>
 </table>
 
----
-
 ## Itérations
-
 
 ### Itération 1
 
@@ -252,19 +250,11 @@ Sur l'écran, les joueurs pourront visualiser en continu:
 
 > Du 31 Mars 2025 au 15 Juin 2025
 
----
-
 ## Changelog
-
----
 
 ## TODO
 
----
-
 ## Défauts constatés non corrigés
-
----
 
 ## Équipe de développement
 
@@ -273,5 +263,4 @@ Sur l'écran, les joueurs pourront visualiser en continu:
 - VIVANCOS Evan : [**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:evan.vivancos.pro@gmail.com)**]
 
 ---
-
 &copy; 2024-2025 BTS LaSalle Avignon
