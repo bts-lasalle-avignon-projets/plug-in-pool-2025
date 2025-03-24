@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "plug-in-pool"
-include(":app")
+rootProject.name = "plug-in-pool-mobile"
+include ':app'
