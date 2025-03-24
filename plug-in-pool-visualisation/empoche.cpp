@@ -1,6 +1,6 @@
 #include "empoche.h"
 
-Empoche::Empoche()
+Empoche::Empoche(CouleurBille couleur, int poche) :
+    couleur(CouleurBille::Aucune), poche(AUCUNE_POCHE)
 {
-
 }

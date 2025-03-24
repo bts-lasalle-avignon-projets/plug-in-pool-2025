@@ -18,7 +18,7 @@ class Joueur
     int            points;
     int            id;
     CouleurBille   couleur;
-    int            nbBillesRestantes = 7;
+    int            nbBillesRestantes;
     QList<Empoche> empochees;
 
   public:

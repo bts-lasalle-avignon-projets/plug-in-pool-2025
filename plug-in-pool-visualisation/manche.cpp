@@ -1,6 +1,5 @@
 #include "manche.h"
 
-Manche::Manche()
+Manche::Manche(int numeroTable) : numeroTable(numeroTable)
 {
-
 }

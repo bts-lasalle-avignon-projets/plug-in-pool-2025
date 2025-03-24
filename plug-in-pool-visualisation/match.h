@@ -7,6 +7,8 @@
 #include "joueur.h"
 #include "manche.h"
 
+#define AUCUN_GAGNANT -1
+
 #define NB_BILLES_JOUEUR 7
 #define NB_BOULES_ROUGES 7
 #define NB_BOULES_JAUNES 7

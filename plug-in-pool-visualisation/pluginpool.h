@@ -1,12 +1,19 @@
 #ifndef PLUGINPOOL_H
 #define PLUGINPOOL_H
 
-#include "match.h"
+#include <QObject>
 
-class PlugInPool
+class CommunicationBluetooth;
+
+class PlugInPool : public QObject
 {
+    Q_OBJECT
+  private:
+    CommunicationBluetooth* communicationBluetooth;
+
   public:
-    PlugInPool();
+    PlugInPool(QObject* parent = nullptr);
+    virtual ~PlugInPool();
 };
 
 #endif // PLUGINPOOL_H

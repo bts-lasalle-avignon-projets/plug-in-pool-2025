@@ -6,11 +6,11 @@
 class CommunicationBluetooth : public QObject
 {
     Q_OBJECT
-public:
-    explicit CommunicationBluetooth(QObject *parent = nullptr);
+  public:
+    explicit CommunicationBluetooth(QObject* parent = nullptr);
+    virtual ~CommunicationBluetooth();
 
-signals:
-
+  signals:
 };
 
 #endif // COMMUNICATIONBLUETOOTH_H
