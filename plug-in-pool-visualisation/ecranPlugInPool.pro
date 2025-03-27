@@ -9,6 +9,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     communicationbluetooth.cpp \
+    ecranaccueil.cpp \
+    ecranfin.cpp \
+    ecranmatch.cpp \
     empoche.cpp \
     joueur.cpp \
     main.cpp \
@@ -20,6 +23,9 @@ SOURCES += \
 HEADERS += \
     communicationbluetooth.h \
     couleurbille.h \
+    ecranaccueil.h \
+    ecranfin.h \
+    ecranmatch.h \
     ecranpluginpool.h \
     empoche.h \
     joueur.h \

@@ -25,6 +25,21 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
                    QString(VERSION_APPLICATION));
 
+    ecransInterface = new QStackedWidget(this);
+    ecranAccueil    = new EcranAccueil(this);
+    ecranMatch      = new EcranMatch(this);
+    ecranFin        = new EcranFin(this);
+
+    ecransInterface->addWidget(ecranAccueil);
+    ecransInterface->addWidget(ecranMatch);
+    ecransInterface->addWidget(ecranFin);
+
+    interfacePlugInPool = new QVBoxLayout(this);
+
+    interfacePlugInPool->addWidget(ecransInterface);
+
+    setLayout(interfacePlugInPool);
+
 #ifdef RASPBERRY_PI
     showFullScreen();
 #endif

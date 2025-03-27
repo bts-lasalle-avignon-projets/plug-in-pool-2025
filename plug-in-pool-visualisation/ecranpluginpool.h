@@ -9,7 +9,12 @@
 #ifndef ECRANPLUGINPOOL_H
 #define ECRANPLUGINPOOL_H
 
+#include <QStackedWidget>
+#include <QVBoxLayout>
 #include <QtWidgets>
+#include <ecranaccueil.h>
+#include <ecranmatch.h>
+#include <ecranfin.h>
 
 /**
  * @def NOM_APPLICATION
@@ -34,7 +39,13 @@ class EcranPlugInPool : public QWidget
 {
     Q_OBJECT
   private:
-    PlugInPool* plugInPool; //!< association vers PlugInPool
+    PlugInPool*     plugInPool; //!< association vers PlugInPool
+    QStackedWidget* ecransInterface;
+    EcranAccueil*   ecranAccueil;
+    EcranMatch*     ecranMatch;
+    EcranFin*       ecranFin;
+
+    QVBoxLayout* interfacePlugInPool;
 
   public:
     EcranPlugInPool(QWidget* parent = nullptr);
