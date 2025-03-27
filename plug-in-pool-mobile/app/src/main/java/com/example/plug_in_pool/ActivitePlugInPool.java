@@ -6,11 +6,14 @@
 
 package com.example.plug_in_pool;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * @class EcranPrincipal
@@ -21,11 +24,38 @@ public class ActivitePlugInPool extends AppCompatActivity
     /**
      * Constantes
      */
+    Button boutonConfigurationRencontre;
+    Button boutonHistorique;
     private static final String TAG = "_ActivitePlugInPool"; //!< TAG pour les logs (cf. Logcat)
 
     /**
      * Ressources GUI
      */
+
+    void allerConfigurerActivite()
+    {
+        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
+                startActivity(changerDeVue);
+            }
+        });
+    }
+    void allerHistoriqueActivite()
+    {
+        boutonHistorique.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteHistorique.class);
+                startActivity(changerDeVue);
+            }
+        });
+    }
 
     /**
      * @brief Méthode appelée à la création de l'activité
@@ -38,6 +68,11 @@ public class ActivitePlugInPool extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Log.d(TAG, "onCreate()");
+
+        boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
+        boutonHistorique = findViewById(R.id.historique);
+        allerConfigurerActivite();
+        allerHistoriqueActivite();
     }
 
     /**
@@ -55,8 +90,7 @@ public class ActivitePlugInPool extends AppCompatActivity
      * @brief Méthode appelée après onStart() ou après onPause()
      */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
     }

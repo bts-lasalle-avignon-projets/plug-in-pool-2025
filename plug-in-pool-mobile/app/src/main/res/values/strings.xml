@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">plug-in-pool</string>
+    <string name="logo_campus">Logo Campus La Salle Avignon</string>
+    <string name="image_projet">Photo du projet</string>
+    <string name="nom_du_projet">Plug In Pool</string>
+    <string name="bouton_vers_historique">Historique des matchs</string>
+    <string name="bouton_vers_configuration">Configurer un match</string>
 </resources>
