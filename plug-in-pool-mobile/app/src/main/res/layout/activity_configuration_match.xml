@@ -7,16 +7,368 @@
     android:layout_height="match_parent"
     tools:context=".ActiviteConfigurationMatch">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/entete"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="configuration match"
-        android:textSize="18sp"
-        android:gravity="center"
+        android:background="#A8D08D"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/nomDuProjet"
+            android:textSize="35sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/nomDuProjet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="270dp"
+            android:layout_height="149dp"
+            android:contentDescription="@string/logoCampus"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/logo_campus_lasalle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/texteNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entete"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/nomJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteSelectionJoueur1"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteSelectionJoueur1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nomJoueur2"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/nomJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteSelectionJoueur2"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteSelectionJoueur2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nomJoueur1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/choixJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/texteNom"
+        android:layout_marginTop="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/choixJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choisirUnJoueurEnregistrer1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/choixJoueur2"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/choixJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choisirUnJoueurEnregistrer2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/choixJoueur1"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/texteJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/choixJoueur"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/texteJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteCrerJoueur1"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteSelectionJoueur1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/texteJoueur2"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/texteJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteCreerJoueur2"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteSelectionJoueur2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/texteJoueur1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ajouterNomJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/texteJoueur"
+        android:layout_marginTop="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/saisieNomJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saisirNom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/saisieNomJoueur2"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/saisieNomJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saisirNom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/saisieNomJoueur1"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ajouterPrenomJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ajouterNomJoueur"
+        android:layout_marginTop="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/saisiePrenomJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saisirPrenom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/saisiePrenomJoueur2"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/saisiePrenomJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saisirPrenom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/saisiePrenomJoueur1"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ajouterJoueur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ajouterPrenomJoueur"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/creerJoueur1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minWidth="300dp"
+            android:maxWidth="320dp"
+            android:backgroundTint="@color/vert"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/boutonCreerJoueur1"
+            android:textColor="@color/noir"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/creerJoueur2"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/creerJoueur2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minWidth="300dp"
+            android:maxWidth="320dp"
+            android:backgroundTint="@color/vert"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/boutonCreerJoueur2"
+            android:textColor="@color/noir"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/creerJoueur1"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/liaisonBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ajouterJoueur"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/nomBluetoothEcran"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteChoixBluetoothEcran"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteChoixBluetoothEcran"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nomBluetoothTable"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/nomBluetoothTable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/texteChoixBluetoothTable"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/texteChoixBluetoothTable"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nomBluetoothEcran"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/choixBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/liaisonBluetooth"
+        android:layout_marginTop="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/choixBluetoothEcran"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choisirLiaisonBluetooth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/choixBluetoothTable"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/choixBluetoothTable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choisirLiaisonBluetooth"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/choixBluetoothEcran"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lancerMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/choixBluetooth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp">
+
+        <Button
+            android:id="@+id/boutonLancerMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="300dp"
+            android:maxWidth="320dp"
+            android:backgroundTint="@color/rouge"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/boutonLancerMatch"
+            android:textColor="@color/noir"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
