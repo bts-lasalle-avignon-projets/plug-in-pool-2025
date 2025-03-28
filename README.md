@@ -232,6 +232,7 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 - [x] Créer les maquettes des interfaces
 - [x] Initialiser le dépot
+- [ ] Créer les vues Android
 - [ ] Paramétrer une partie
 - [ ] Afficher les données de la partie en cours
 
@@ -239,16 +240,20 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 > Du 29 Mars 2025 au 23 Mai 2025
 
+- [ ] Lancer un match
+- [ ] Stocker les données de la partie dans la base de données
 - [ ] Liaison entre la table de billard et le terminal mobile Android
 - [ ] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
 ### Itération 3
 
-> Du 24 Mars 2025 au 30 Mai 2025
+> Du 24 Mai 2025 au 30 Mai 2025
+
+- [ ] Jouer plusieurs matchs
 
 ### Itération 4
 
-> Du 31 Mars 2025 au 15 Juin 2025
+> Du 31 Mai 2025 au 15 Juin 2025
 
 ## Changelog
 
