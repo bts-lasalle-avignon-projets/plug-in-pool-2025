@@ -50,3 +50,18 @@ EcranPlugInPool::~EcranPlugInPool()
     delete plugInPool;
     qDebug() << Q_FUNC_INFO << this;
 }
+
+void EcranPlugInPool::afficherEcranAccueil()
+{
+    ecransInterface->setCurrentWidget(ecranAccueil);
+}
+
+void EcranPlugInPool::afficherEcranMatch()
+{
+    ecransInterface->setCurrentWidget(ecranMatch);
+}
+
+void EcranPlugInPool::afficherEcranFin()
+{
+    ecransInterface->setCurrentWidget(ecranFin);
+}

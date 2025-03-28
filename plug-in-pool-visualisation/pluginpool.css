@@ -1,0 +1,9 @@
+/* style.css */
+
+/* Définir le fond d'écran pour la fenêtre */
+QWidget {
+    background-image: url(:/ecranAccueilQT.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

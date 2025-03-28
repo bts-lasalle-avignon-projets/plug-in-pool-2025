@@ -50,6 +50,10 @@ class EcranPlugInPool : public QWidget
   public:
     EcranPlugInPool(QWidget* parent = nullptr);
     ~EcranPlugInPool();
+
+    void afficherEcranAccueil();
+    void afficherEcranMatch();
+    void afficherEcranFin();
 };
 
 #endif // ECRANPLUGINPOOL_H
