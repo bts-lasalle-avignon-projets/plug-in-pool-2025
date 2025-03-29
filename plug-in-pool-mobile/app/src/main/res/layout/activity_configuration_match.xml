@@ -99,7 +99,7 @@
             android:id="@+id/choixJoueur1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/choisirUnJoueurEnregistrer1"
+            android:hint="@string/choisirUnJoueurEnregistrer1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +111,7 @@
             android:id="@+id/choixJoueur2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/choisirUnJoueurEnregistrer2"
+            android:hint="@string/choisirUnJoueurEnregistrer2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -169,11 +169,11 @@
         app:layout_constraintTop_toBottomOf="@id/texteJoueur"
         android:layout_marginTop="10dp">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/saisieNomJoueur1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/saisirNom"
+            android:hint="@string/saisirNom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -181,11 +181,12 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"/>
 
-        <AutoCompleteTextView
+
+        <EditText
             android:id="@+id/saisieNomJoueur2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/saisirNom"
+            android:hint="@string/saisirNom"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -202,11 +203,11 @@
         app:layout_constraintTop_toBottomOf="@id/ajouterNomJoueur"
         android:layout_marginTop="10dp">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/saisiePrenomJoueur1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/saisirPrenom"
+            android:hint="@string/saisirPrenom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -214,11 +215,11 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"/>
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/saisiePrenomJoueur2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/saisirPrenom"
+            android:hint="@string/saisirPrenom"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -324,7 +325,7 @@
             android:id="@+id/choixBluetoothEcran"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/choisirLiaisonBluetooth"
+            android:hint="@string/choisirLiaisonBluetooth"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -336,7 +337,7 @@
             android:id="@+id/choixBluetoothTable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/choisirLiaisonBluetooth"
+            android:hint="@string/choisirLiaisonBluetooth"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
