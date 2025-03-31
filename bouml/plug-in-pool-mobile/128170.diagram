@@ -1,0 +1,41 @@
+format 224
+
+classcanvas 128042 class_ref 128682 // ActivitePlugInPool
+  classdiagramsettings member_max_width 0 end
+  xyz 350 239 2000
+end
+classcanvas 128170 class_ref 128298 // AppCompatActivity
+  classdiagramsettings member_max_width 0 end
+  xyz 482 14 2006
+end
+classcanvas 128554 class_ref 129450 // Match
+  classdiagramsettings member_max_width 0 end
+  xyz 442 608 2000
+end
+classcanvas 128682 class_ref 129322 // Manche
+  classdiagramsettings member_max_width 0 end
+  xyz 941 587 2000
+end
+classcanvas 128810 class_ref 129194 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 291 843 2000
+end
+classcanvas 128938 class_ref 129706 // Table
+  classdiagramsettings member_max_width 0 end
+  xyz 166 639 2000
+end
+classcanvas 129066 class_ref 129066 // Empoche
+  classdiagramsettings member_max_width 0 end
+  xyz 14 903 3005
+end
+relationcanvas 128298 relation_ref 128554 // <generalisation>
+  from ref 128042 z 2007 to ref 128170
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129194 relation_ref 128938 // <unidirectional association>
+  from ref 128810 z 3006 stereotype "<<List>>" xyz 175 931.5 3006 to ref 129066
+  role_a_pos 140 907 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

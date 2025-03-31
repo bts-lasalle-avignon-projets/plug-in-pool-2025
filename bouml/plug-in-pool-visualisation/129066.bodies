@@ -1,0 +1,4 @@
+class Joueur
+!!!128810.cpp!!!	Joueur(in nom : QString, in prenom : QString, in id : int, in couleur : CouleurBille)
+    qDebug() << Q_FUNC_INFO << this << "nom" << nom << "prenom" << prenom
+             << "id" << id << "couleur" << couleur;

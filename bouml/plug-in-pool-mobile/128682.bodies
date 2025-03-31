@@ -1,0 +1,22 @@
+class ActivitePlugInPool
+!!!128554.java!!!	onCreate(inout savedInstanceState : Bundle) : void
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        Log.d(TAG, "onCreate()");
+!!!128682.java!!!	onStart() : void
+        super.onStart();
+        Log.d(TAG, "onStart()");
+!!!128810.java!!!	onResume() : void
+        super.onResume();
+        Log.d(TAG, "onResume()");
+!!!128938.java!!!	onPause() : void
+        super.onPause();
+        Log.d(TAG, "onPause()");
+!!!129066.java!!!	onStop() : void
+        super.onStop();
+        Log.d(TAG, "onStop()");
+!!!129194.java!!!	onDestroy() : void
+        super.onDestroy();
+        Log.d(TAG, "onDestroy()");
