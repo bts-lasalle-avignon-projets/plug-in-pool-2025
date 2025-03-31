@@ -1,0 +1,3 @@
+class EtatMatch
+!!!129578.java!!!	EtatMatch(in etatMatch : int)
+            this.etatMatch = etatMatch;
