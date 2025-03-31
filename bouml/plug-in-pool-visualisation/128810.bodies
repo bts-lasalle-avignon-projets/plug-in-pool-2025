@@ -1,0 +1,5 @@
+class PlugInPool
+!!!129194.cpp!!!	PlugInPool(inout parent : QObject = nullptr)
+    qDebug() << Q_FUNC_INFO << this << "parent" << parent;
+!!!129322.cpp!!!	~PlugInPool()
+    qDebug() << Q_FUNC_INFO << this;

@@ -1,0 +1,13 @@
+class EcranPlugInPool
+!!!128426.cpp!!!	EcranPlugInPool(inout parent : QWidget = nullptr)
+    qDebug() << Q_FUNC_INFO << this;
+
+    setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
+                   QString(VERSION_APPLICATION));
+
+#ifdef RASPBERRY_PI
+    showFullScreen();
+#endif
+!!!128554.cpp!!!	~EcranPlugInPool()
+    delete plugInPool;
+    qDebug() << Q_FUNC_INFO << this;
