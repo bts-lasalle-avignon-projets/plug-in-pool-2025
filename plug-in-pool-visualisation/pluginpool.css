@@ -1,9 +1,18 @@
 /* style.css */
 
 /* Définir le fond d'écran pour la fenêtre */
-QWidget {
-    background-image: url(:/ecranAccueilQT.png);
+QStackedWidget {
+    /*background-color: #0000ff;*/
+}
+
+QStackedWidget > QWidget#ecranAccueil {
+    background-color: #FF0000;
+    /*background-image: url(":/ecranAccueilQT.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed;*/
+}
+
+QLabel#connexionBluetooth {
+    color: #00ff00;
 }

@@ -1,9 +1,7 @@
 #ifndef ECRANACCUEIL_H
 #define ECRANACCUEIL_H
 
-#include <QWidget>
-#include <QLabel>
-#include <QVBoxLayout>
+#include <QtWidgets>
 
 #define CREATEUR_APPLICATION "NAVARRO Matteo"
 

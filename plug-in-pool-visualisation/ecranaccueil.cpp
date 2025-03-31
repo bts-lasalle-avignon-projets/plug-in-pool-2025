@@ -1,22 +1,21 @@
 #include "ecranaccueil.h"
 #include <QFile>
 #include <QTextStream>
+#include <QDebug>
 
 EcranAccueil::EcranAccueil(QWidget* parent) : QWidget(parent)
 {
-    QFile file(":/pluginpool.css");
-    if(file.open(QFile::ReadOnly | QFile::Text))
-    {
-        QTextStream in(&file);
-        QString     style = in.readAll();
-        this->setStyleSheet(style); // Appliquer le CSS
-    }
+    qDebug() << Q_FUNC_INFO << this;
+
+    setAutoFillBackground(true);
 
     imageFondEcranAccueil = new QLabel(this);
     afficherCreateurs     = new QLabel(CREATEUR_APPLICATION, this);
     afficherVersion       = new QLabel("v1.0", this);
     connexionBluetooth    = new QLabel("connexion bluetooth", this);
     configurationPartie   = new QLabel("configuration partie", this);
+
+    connexionBluetooth->setObjectName("connexionBluetooth");
 
     ecranAccueil              = new QVBoxLayout(this);
     espaceCreateursVersion    = new QHBoxLayout();
@@ -40,6 +39,4 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QWidget(parent)
     ecranAccueil->addLayout(espaceConnexionBluetooth);
     ecranAccueil->addLayout(espaceConfigurationPartie);
     ecranAccueil->addStretch();
-
-    setLayout(ecranAccueil);
 }

@@ -6,7 +6,6 @@
 
         <file alias = "ecranAccueilQT.png">images/ecranAccueilQT.png</file> <!-- Chemin relatif à partir du fichier .qrc -->
         <file alias = "pluginpool.css">pluginpool.css</file>
-
     </qresource>
 
 </RCC>

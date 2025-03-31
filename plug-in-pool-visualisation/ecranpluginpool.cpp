@@ -22,6 +22,14 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 {
     qDebug() << Q_FUNC_INFO << this;
 
+    QFile file(":/pluginpool.css");
+    if(file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file);
+        QString     style = in.readAll();
+        this->setStyleSheet(style);
+    }
+
     setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
                    QString(VERSION_APPLICATION));
 
@@ -29,6 +37,8 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     ecranAccueil    = new EcranAccueil(this);
     ecranMatch      = new EcranMatch(this);
     ecranFin        = new EcranFin(this);
+
+    ecranAccueil->setObjectName("ecranAccueil");
 
     ecransInterface->addWidget(ecranAccueil);
     ecransInterface->addWidget(ecranMatch);
@@ -43,6 +53,8 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 #ifdef RASPBERRY_PI
     showFullScreen();
 #endif
+
+    afficherEcranAccueil();
 }
 
 EcranPlugInPool::~EcranPlugInPool()
