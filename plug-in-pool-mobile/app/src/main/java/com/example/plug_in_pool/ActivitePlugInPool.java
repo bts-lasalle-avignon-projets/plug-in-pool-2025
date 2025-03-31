@@ -24,8 +24,8 @@ public class ActivitePlugInPool extends AppCompatActivity
     /**
      * Constantes
      */
-    Button boutonConfigurationRencontre;
-    Button boutonHistorique;
+    Button                      boutonConfigurationRencontre;
+    Button                      boutonHistorique;
     private static final String TAG = "_ActivitePlugInPool"; //!< TAG pour les logs (cf. Logcat)
 
     /**
@@ -34,20 +34,19 @@ public class ActivitePlugInPool extends AppCompatActivity
 
     void allerConfigurerActivite()
     {
-        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener()
-        {
+        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
+                Intent changerDeVue =
+                  new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
                 startActivity(changerDeVue);
             }
         });
     }
     void allerHistoriqueActivite()
     {
-        boutonHistorique.setOnClickListener(new View.OnClickListener()
-        {
+        boutonHistorique.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -70,7 +69,7 @@ public class ActivitePlugInPool extends AppCompatActivity
         Log.d(TAG, "onCreate()");
 
         boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
-        boutonHistorique = findViewById(R.id.historique);
+        boutonHistorique             = findViewById(R.id.historique);
         allerConfigurerActivite();
         allerHistoriqueActivite();
     }
@@ -90,7 +89,8 @@ public class ActivitePlugInPool extends AppCompatActivity
      * @brief Méthode appelée après onStart() ou après onPause()
      */
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         Log.d(TAG, "onResume()");
     }

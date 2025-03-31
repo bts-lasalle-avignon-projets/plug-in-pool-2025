@@ -15,9 +15,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     /**
      * Constantes
      */
-    Button boutonLancerUnMatch;
-    Button creerJoueur1;
-    Button creerJoueur2;
+    Button   boutonLancerUnMatch;
+    Button   creerJoueur1;
+    Button   creerJoueur2;
     EditText saisieNomJoueur1;
     EditText saisiePrenomJoueur1;
     EditText saisieNomJoueur2;
@@ -38,11 +38,11 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     void initialiserVues()
     {
         boutonLancerUnMatch = findViewById(R.id.boutonLancerMatch);
-        creerJoueur1 = findViewById(R.id.creerJoueur1);
-        creerJoueur2 = findViewById(R.id.creerJoueur2);
-        saisieNomJoueur1 = findViewById(R.id.saisieNomJoueur1);
+        creerJoueur1        = findViewById(R.id.creerJoueur1);
+        creerJoueur2        = findViewById(R.id.creerJoueur2);
+        saisieNomJoueur1    = findViewById(R.id.saisieNomJoueur1);
         saisiePrenomJoueur1 = findViewById(R.id.saisiePrenomJoueur1);
-        saisieNomJoueur2 = findViewById(R.id.saisieNomJoueur2);
+        saisieNomJoueur2    = findViewById(R.id.saisieNomJoueur2);
         saisiePrenomJoueur2 = findViewById(R.id.saisiePrenomJoueur2);
     }
     void configurerMatch()
@@ -51,41 +51,49 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     }
     void creerDesJoueurs()
     {
-        creerJoueur1.setOnClickListener(new View.OnClickListener()
-        {
+        creerJoueur1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                String nomJoueur1 = saisieNomJoueur1.getText().toString().trim();
+                String nomJoueur1    = saisieNomJoueur1.getText().toString().trim();
                 String prenomJoueur1 = saisiePrenomJoueur1.getText().toString().trim();
-                Joueur joueur1 = new Joueur(nomJoueur1, prenomJoueur1);
+                Joueur joueur1       = new Joueur(nomJoueur1, prenomJoueur1);
                 joueur1.getJoueur();
                 joueur1.afficherJoueur();
-                Toast.makeText(ActiviteConfigurationMatch.this,"Votre nom : " + nomJoueur1 + "\n" + "Votre prénom : " + prenomJoueur1, Toast.LENGTH_SHORT).show();
+                Toast
+                  .makeText(ActiviteConfigurationMatch.this,
+                            "Votre nom : " + nomJoueur1 + "\n"
+                              + "Votre prénom : " + prenomJoueur1,
+                            Toast.LENGTH_SHORT)
+                  .show();
             }
         });
-        creerJoueur2.setOnClickListener(new View.OnClickListener()
-        {
+        creerJoueur2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                String nomJoueur2 = saisieNomJoueur2.getText().toString().trim();
+                String nomJoueur2    = saisieNomJoueur2.getText().toString().trim();
                 String prenomJoueur2 = saisiePrenomJoueur2.getText().toString().trim();
-                Joueur joueur2 = new Joueur(nomJoueur2, prenomJoueur2);
+                Joueur joueur2       = new Joueur(nomJoueur2, prenomJoueur2);
                 joueur2.getJoueur();
                 joueur2.afficherJoueur();
-                Toast.makeText(ActiviteConfigurationMatch.this,"Votre nom : " + nomJoueur2 + "\n" + "Votre prénom : " + prenomJoueur2, Toast.LENGTH_SHORT).show();
+                Toast
+                  .makeText(ActiviteConfigurationMatch.this,
+                            "Votre nom : " + nomJoueur2 + "\n"
+                              + "Votre prénom : " + prenomJoueur2,
+                            Toast.LENGTH_SHORT)
+                  .show();
             }
         });
     }
     void jouerMatchActivite()
     {
-        boutonLancerUnMatch.setOnClickListener(new View.OnClickListener()
-        {
+        boutonLancerUnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                Intent changerDeVue = new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
+                Intent changerDeVue =
+                  new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
                 startActivity(changerDeVue);
             }
         });

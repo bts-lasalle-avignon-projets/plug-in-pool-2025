@@ -8,10 +8,10 @@
     tools:context=".ActiviteGestionMatch">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/joueur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="gestion match"
+        android:text="nom"
         android:textSize="18sp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
