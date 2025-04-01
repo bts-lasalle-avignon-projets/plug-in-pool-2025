@@ -11,4 +11,10 @@ PlugInPool::PlugInPool(QObject* parent) :
 PlugInPool::~PlugInPool()
 {
     qDebug() << Q_FUNC_INFO << this;
+    delete communicationBluetooth;
+}
+
+CommunicationBluetooth* PlugInPool::getCommunicationBluetooth() const
+{
+    return communicationBluetooth;
 }

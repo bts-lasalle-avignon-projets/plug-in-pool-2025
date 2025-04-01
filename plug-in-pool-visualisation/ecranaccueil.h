@@ -22,6 +22,9 @@ class EcranAccueil : public QObject
     QWidget* getEcran() const;
 
   signals:
+
+  public slots:
+    void mettreAJourEtatBluetooth(QString etat);
 };
 
 #endif // ECRANACCUEIL_H

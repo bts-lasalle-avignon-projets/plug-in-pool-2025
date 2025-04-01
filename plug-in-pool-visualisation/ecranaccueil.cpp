@@ -54,3 +54,8 @@ QWidget* EcranAccueil::getEcran() const
 {
     return ecran;
 }
+
+void EcranAccueil::mettreAJourEtatBluetooth(QString etat)
+{
+    connexionBluetooth->setText(etat);
+}

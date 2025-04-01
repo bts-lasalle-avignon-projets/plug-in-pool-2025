@@ -2,8 +2,8 @@
 #define PLUGINPOOL_H
 
 #include <QObject>
+#include "communicationbluetooth.h"
 
-class CommunicationBluetooth;
 class Match;
 
 class PlugInPool : public QObject
@@ -16,6 +16,8 @@ class PlugInPool : public QObject
   public:
     PlugInPool(QObject* parent = nullptr);
     virtual ~PlugInPool();
+
+    CommunicationBluetooth* getCommunicationBluetooth() const;
 };
 
 #endif // PLUGINPOOL_H
