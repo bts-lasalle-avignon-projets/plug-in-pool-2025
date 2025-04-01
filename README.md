@@ -105,14 +105,14 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
   </tr>
   <tr>
     <td>Créer un joueur</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Paraméter une rencontre</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
@@ -232,15 +232,15 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 - [x] Créer les maquettes des interfaces
 - [x] Initialiser le dépot
-- [ ] Créer les vues Android
-- [ ] Paramétrer une partie
-- [ ] Afficher les données de la partie en cours
+- [x] Créer les vues Android
 
 ### Itération 2
 
 > Du 29 Mars 2025 au 23 Mai 2025
 
+- [ ] Paramétrer une partie
 - [ ] Lancer un match
+- [ ] Afficher les données de la partie en cours
 - [ ] Stocker les données de la partie dans la base de données
 - [ ] Liaison entre la table de billard et le terminal mobile Android
 - [ ] Liaison entre le terminal mobile Android et l'ecran d'affichage
