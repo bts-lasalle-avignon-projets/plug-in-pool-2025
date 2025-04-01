@@ -18,6 +18,7 @@ class EcranAccueil : public QObject
 
   public:
     explicit EcranAccueil(QWidget* parent = nullptr);
+    virtual ~EcranAccueil();
     QWidget* getEcran() const;
 
   signals:

@@ -46,9 +46,11 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     interfacePlugInPool->addWidget(ecransInterface);
 
 #ifdef RASPBERRY_PI
+    qDebug() << Q_FUNC_INFO << "RASPBERRY_PI";
     showFullScreen();
 #else
-    setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
+    // setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
+    showMaximized();
 #endif
 
     afficherEcranAccueil();

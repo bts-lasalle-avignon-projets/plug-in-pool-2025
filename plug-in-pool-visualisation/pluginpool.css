@@ -56,6 +56,7 @@ QLabel#connexionBluetooth {
     text-align: center;
     font-family: 'REM';
     color: #d4a373;
+    border: 3px solid red;
 }
 
 QLabel#configurationPartie {

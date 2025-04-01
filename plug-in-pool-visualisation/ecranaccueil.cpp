@@ -7,7 +7,6 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    // imageFondEcranAccueil = new QLabel(this);
     affichageCreateurs  = new QLabel(CREATEUR_APPLICATION, ecran);
     affichageVersion    = new QLabel("v1.0", ecran);
     connexionBluetooth  = new QLabel("Attente connexion Bluetooth", ecran);
@@ -39,11 +38,16 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
      * @todo Est-ce vraiment la bonne technique ?
      */
     ecranAccueil->addLayout(espaceCreateursVersion);
-    ecranAccueil->addSpacing(690);
+    ecranAccueil->addSpacing(700);
     ecranAccueil->addLayout(espaceConnexionBluetooth);
     ecranAccueil->addSpacing(80);
     ecranAccueil->addLayout(espaceConfigurationPartie);
     ecranAccueil->addStretch();
+}
+
+EcranAccueil::~EcranAccueil()
+{
+    qDebug() << Q_FUNC_INFO << this;
 }
 
 QWidget* EcranAccueil::getEcran() const
