@@ -5,23 +5,20 @@
 
 #define CREATEUR_APPLICATION "NAVARRO Matteo"
 
-class EcranAccueil : public QWidget
+class EcranAccueil : public QObject
 {
     Q_OBJECT
   private:
-    QLabel* imageFondEcranAccueil;
-    QLabel* afficherCreateurs;
-    QLabel* afficherVersion;
-    QLabel* connexionBluetooth;
-    QLabel* configurationPartie;
-
-    QVBoxLayout* ecranAccueil;
-    QHBoxLayout* espaceCreateursVersion;
-    QHBoxLayout* espaceConnexionBluetooth;
-    QHBoxLayout* espaceConfigurationPartie;
+    QWidget* ecran;
+    QLabel*  imageFondEcranAccueil;
+    QLabel*  affichageCreateurs;
+    QLabel*  affichageVersion;
+    QLabel*  connexionBluetooth;
+    QLabel*  configurationPartie;
 
   public:
     explicit EcranAccueil(QWidget* parent = nullptr);
+    QWidget* getEcran() const;
 
   signals:
 };

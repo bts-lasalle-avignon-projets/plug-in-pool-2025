@@ -1,11 +1,8 @@
-<!DOCTYPE RCC>
-
 <RCC>
-
     <qresource prefix="/">
-
-        <file alias = "ecranAccueilQT.png">images/ecranAccueilQT.png</file> <!-- Chemin relatif à partir du fichier .qrc -->
-        <file alias = "pluginpool.css">pluginpool.css</file>
+        <file alias="ecranAccueilQT.png">images/ecranAccueilQT.png</file>
+        <file alias="ecranMatchQT.png">images/ecranMatchQT.png</file>
+        <file alias="ecranFinQT.png">images/ecranFinQT.png</file>
+        <file alias="pluginpool.css">pluginpool.css</file>
     </qresource>
-
 </RCC>

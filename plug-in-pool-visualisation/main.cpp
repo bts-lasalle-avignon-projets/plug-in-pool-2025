@@ -20,6 +20,14 @@ int main(int argc, char* argv[])
     QApplication    a(argc, argv);
     EcranPlugInPool ecranPlugInPool;
 
+    QFile file(":/pluginpool.css");
+    if(file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file);
+        QString     style = in.readAll();
+        a.setStyleSheet(style);
+    }
+
     ecranPlugInPool.show();
 
     return a.exec();

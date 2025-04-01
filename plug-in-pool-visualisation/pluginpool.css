@@ -1,18 +1,90 @@
 /* style.css */
 
-/* Définir le fond d'écran pour la fenêtre */
-QStackedWidget {
-    /*background-color: #0000ff;*/
+/* Fenêtre principale */
+QWidget {
+    background-color: #616161; /* Gris foncé */
+    margin: 5px;
+    padding: 0px;
 }
 
-QStackedWidget > QWidget#ecranAccueil {
-    background-color: #FF0000;
-    /*background-image: url(":/ecranAccueilQT.png");
+/* Écrans */
+/*QStackedWidget#ecransInterface {
+    background-image: url(":/ecranAccueilQT.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;*/
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+}*/
+
+/* Écran Accueil */
+QStackedWidget > QWidget#ecranAccueil {
+    background-image: url(":/ecranAccueilQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageCreateurs {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    color: #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageVersion {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    color: #a8d08d;
+    margin: 0px;
+    padding: 0px;
 }
 
 QLabel#connexionBluetooth {
-    color: #00ff00;
+    font-size: 40px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    color: #d4a373;
+}
+
+QLabel#configurationPartie {
+    font-size: 40px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    color: #d4a373;
+}
+
+/* Écran Match */
+QWidget#ecranMatch {
+    background-image: url(":/ecranMatchQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Écran Fin */
+QWidget#ecranFin {
+    background-image: url(":/ecranFinQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
 }

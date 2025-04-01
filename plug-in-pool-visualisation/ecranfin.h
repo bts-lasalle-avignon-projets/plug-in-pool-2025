@@ -3,11 +3,15 @@
 
 #include <QWidget>
 
-class EcranFin : public QWidget
+class EcranFin : public QObject
 {
     Q_OBJECT
+  private:
+    QWidget* ecran;
+
   public:
     explicit EcranFin(QWidget* parent = nullptr);
+    QWidget* getEcran() const;
 
   signals:
 };

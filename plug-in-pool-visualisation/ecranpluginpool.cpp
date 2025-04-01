@@ -22,39 +22,38 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    QFile file(":/pluginpool.css");
-    if(file.open(QFile::ReadOnly | QFile::Text))
-    {
-        QTextStream in(&file);
-        QString     style = in.readAll();
-        this->setStyleSheet(style);
-    }
-
     setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
                    QString(VERSION_APPLICATION));
 
-    ecransInterface = new QStackedWidget(this);
-    ecranAccueil    = new EcranAccueil(this);
-    ecranMatch      = new EcranMatch(this);
-    ecranFin        = new EcranFin(this);
+    ecransInterface             = new QStackedWidget(this);
+    QWidget* widgetEcranAccueil = new QWidget();
+    ecranAccueil                = new EcranAccueil(widgetEcranAccueil);
+    QWidget* widgetEcranMatch   = new QWidget();
+    ecranMatch                  = new EcranMatch(widgetEcranMatch);
+    QWidget* widgetEcranFin     = new QWidget();
+    ecranFin                    = new EcranFin(widgetEcranFin);
 
-    ecranAccueil->setObjectName("ecranAccueil");
+    ecransInterface->setObjectName("ecransInterface");
+    widgetEcranAccueil->setObjectName("ecranAccueil");
+    widgetEcranMatch->setObjectName("ecranMatch");
+    widgetEcranFin->setObjectName("ecranFin");
 
-    ecransInterface->addWidget(ecranAccueil);
-    ecransInterface->addWidget(ecranMatch);
-    ecransInterface->addWidget(ecranFin);
+    ecransInterface->addWidget(widgetEcranAccueil);
+    ecransInterface->addWidget(widgetEcranMatch);
+    ecransInterface->addWidget(widgetEcranFin);
 
     interfacePlugInPool = new QVBoxLayout(this);
-
     interfacePlugInPool->addWidget(ecransInterface);
-
-    setLayout(interfacePlugInPool);
 
 #ifdef RASPBERRY_PI
     showFullScreen();
+#else
+    setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
 #endif
 
     afficherEcranAccueil();
+    // afficherEcranMatch();
+    // afficherEcranFin();
 }
 
 EcranPlugInPool::~EcranPlugInPool()
@@ -65,15 +64,15 @@ EcranPlugInPool::~EcranPlugInPool()
 
 void EcranPlugInPool::afficherEcranAccueil()
 {
-    ecransInterface->setCurrentWidget(ecranAccueil);
+    ecransInterface->setCurrentWidget(ecranAccueil->getEcran());
 }
 
 void EcranPlugInPool::afficherEcranMatch()
 {
-    ecransInterface->setCurrentWidget(ecranMatch);
+    ecransInterface->setCurrentWidget(ecranMatch->getEcran());
 }
 
 void EcranPlugInPool::afficherEcranFin()
 {
-    ecransInterface->setCurrentWidget(ecranFin);
+    ecransInterface->setCurrentWidget(ecranFin->getEcran());
 }

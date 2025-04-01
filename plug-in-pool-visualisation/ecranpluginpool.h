@@ -28,6 +28,20 @@
  */
 #define VERSION_APPLICATION "1.0"
 
+#ifndef RASPBERRY_PI
+/**
+ * @def LARGEUR_ECRAN
+ * @brief La largeur de l'écran par défaut
+ */
+#define LARGEUR_ECRAN 1920
+
+/**
+ * @def HAUTEUR_ECRAN
+ * @brief La hauteur de l'écran par défaut
+ */
+#define HAUTEUR_ECRAN 1080
+#endif
+
 class PlugInPool;
 
 /**

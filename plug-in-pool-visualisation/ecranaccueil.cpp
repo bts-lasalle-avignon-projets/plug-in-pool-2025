@@ -3,28 +3,29 @@
 #include <QTextStream>
 #include <QDebug>
 
-EcranAccueil::EcranAccueil(QWidget* parent) : QWidget(parent)
+EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    setAutoFillBackground(true);
+    // imageFondEcranAccueil = new QLabel(this);
+    affichageCreateurs  = new QLabel(CREATEUR_APPLICATION, ecran);
+    affichageVersion    = new QLabel("v1.0", ecran);
+    connexionBluetooth  = new QLabel("Attente connexion Bluetooth", ecran);
+    configurationPartie = new QLabel("Configuration de la partie", ecran);
 
-    imageFondEcranAccueil = new QLabel(this);
-    afficherCreateurs     = new QLabel(CREATEUR_APPLICATION, this);
-    afficherVersion       = new QLabel("v1.0", this);
-    connexionBluetooth    = new QLabel("connexion bluetooth", this);
-    configurationPartie   = new QLabel("configuration partie", this);
-
+    affichageCreateurs->setObjectName("affichageCreateurs");
+    affichageVersion->setObjectName("affichageVersion");
     connexionBluetooth->setObjectName("connexionBluetooth");
+    configurationPartie->setObjectName("configurationPartie");
 
-    ecranAccueil              = new QVBoxLayout(this);
-    espaceCreateursVersion    = new QHBoxLayout();
-    espaceConnexionBluetooth  = new QHBoxLayout();
-    espaceConfigurationPartie = new QHBoxLayout();
+    QVBoxLayout* ecranAccueil              = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceCreateursVersion    = new QHBoxLayout();
+    QHBoxLayout* espaceConnexionBluetooth  = new QHBoxLayout();
+    QHBoxLayout* espaceConfigurationPartie = new QHBoxLayout();
 
-    espaceCreateursVersion->addWidget(afficherCreateurs);
+    espaceCreateursVersion->addWidget(affichageCreateurs);
     espaceCreateursVersion->addStretch();
-    espaceCreateursVersion->addWidget(afficherVersion);
+    espaceCreateursVersion->addWidget(affichageVersion);
 
     espaceConnexionBluetooth->addStretch();
     espaceConnexionBluetooth->addWidget(connexionBluetooth);
@@ -34,9 +35,18 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QWidget(parent)
     espaceConfigurationPartie->addWidget(configurationPartie);
     espaceConfigurationPartie->addStretch();
 
+    /**
+     * @todo Est-ce vraiment la bonne technique ?
+     */
     ecranAccueil->addLayout(espaceCreateursVersion);
-    ecranAccueil->addStretch();
+    ecranAccueil->addSpacing(690);
     ecranAccueil->addLayout(espaceConnexionBluetooth);
+    ecranAccueil->addSpacing(80);
     ecranAccueil->addLayout(espaceConfigurationPartie);
     ecranAccueil->addStretch();
+}
+
+QWidget* EcranAccueil::getEcran() const
+{
+    return ecran;
 }
