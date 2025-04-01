@@ -8,10 +8,23 @@
     tools:context=".ActiviteGestionMatch">
 
     <TextView
-        android:id="@+id/joueur"
+        android:id="@+id/afficherJoueur1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nom"
+        android:gravity="center"
+        android:text="Joueur 1 ici"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468" />
+
+    <TextView
+        android:id="@+id/afficherJoueur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Joueur 2 ici"
         android:textSize="18sp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"

@@ -1,5 +1,6 @@
 package com.example.plug_in_pool;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,7 +13,8 @@ public class ActiviteGestionMatch extends AppCompatActivity
     /**
      * Constantes
      */
-    TextView afficherjoueur;
+    private TextView textViewJoueur1;
+    private TextView textViewJoueur2;
     private static final String TAG = "_ActiviteGestionMatch"; //!< TAG pour les logs
 
     @Override
@@ -22,24 +24,23 @@ public class ActiviteGestionMatch extends AppCompatActivity
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gestion_match);
         initialiserVues();
+        recupererJoueurs();
     }
     void initialiserVues()
     {
-        afficherjoueur        = findViewById(R.id.joueur);
+        textViewJoueur1 = findViewById(R.id.afficherJoueur1);
+        textViewJoueur2 = findViewById(R.id.afficherJoueur2);
     }
-    void afficherJoueurs()
+    void recupererJoueurs()
     {
-        afficherjoueur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                for (int i = 0; i < BlackBall.NB_JOUEURS; i++)
-                {
-                    //TODO afficher les joueurs
-                    //String nomJoueur = Joueur.id[i].afficherJoueur();
-                    //afficherjoueur.setText(nomJoueur);
-                }
-            }
-        });
+        Intent intent = getIntent();
+        Joueur joueur1 = (Joueur) intent.getSerializableExtra("joueur1");
+        Joueur joueur2 = (Joueur) intent.getSerializableExtra("joueur2");
+
+        if (joueur1 != null && joueur2 != null)
+        {
+            textViewJoueur1.setText("Joueur 1: " + joueur1.getNom() + " " + joueur1.getPrenom());
+            textViewJoueur2.setText("Joueur 2: " + joueur2.getNom() + " " + joueur2.getPrenom());
+        }
     }
 }

@@ -1,12 +1,13 @@
 package com.example.plug_in_pool;
 
+import java.io.Serializable;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Joueur
+public class Joueur implements Serializable
 {
     /**
      * Constantes
@@ -40,9 +41,13 @@ public class Joueur
         this.id     = 0;
     }
 
-    public String getJoueur()
+    public String getNom()
     {
-        return nom + prenom;
+        return nom;
+    }
+    public String getPrenom()
+    {
+        return prenom;
     }
 
     public void afficherJoueur()
