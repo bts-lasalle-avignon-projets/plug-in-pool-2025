@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.UUID;
 
 public class ActiviteConfigurationMatch extends AppCompatActivity
@@ -24,18 +25,18 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
      * Constantes
      */
     private static final String TAG = "_ActiviteConfigurationMatch"; //!< TAG pour les logs
-    private static final String MAC_ADDRESS = "00:E0:4C:63:18:56"; // Module Bluetooth écran
-    private static final int REQUEST_BLUETOOTH_PERMISSIONS = 1;
+    private static final String ADRESSE_MAC = "00:E0:4C:63:18:56"; // Module Bluetooth écran
+    private static final int DEMANDE_PERMISSIONS_BLUETOOTH = 1;
 
-    private Button boutonLancerUnMatch;
+    private Button boutonLancerMatch;
     private EditText saisieNomJoueur1;
     private EditText saisiePrenomJoueur1;
     private EditText saisieNomJoueur2;
     private EditText saisiePrenomJoueur2;
 
-    private BluetoothSocket bluetoothSocket = null;
-    private BluetoothDevice bluetoothDevice;
-    private BluetoothAdapter bluetoothAdapter;
+    private BluetoothSocket socketBluetooth = null;
+    private BluetoothDevice peripheriqueBluetooth;
+    private BluetoothAdapter adaptateurBluetooth;
 
     Joueur joueur1;
     Joueur joueur2;
@@ -50,13 +51,18 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         initialiserVues();
         demanderPermissionsBluetooth();
         configurerBluetooth();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         connecterPeripherique();
-        jouerMatchActivite();
+        jouerMatch();
     }
 
     private void initialiserVues()
     {
-        boutonLancerUnMatch = findViewById(R.id.boutonLancerMatch);
+        boutonLancerMatch = findViewById(R.id.boutonLancerMatch);
         saisieNomJoueur1 = findViewById(R.id.saisieNomJoueur1);
         saisiePrenomJoueur1 = findViewById(R.id.saisiePrenomJoueur1);
         saisieNomJoueur2 = findViewById(R.id.saisieNomJoueur2);
@@ -70,34 +76,33 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED)
             {
-
                 ActivityCompat.requestPermissions(this, new String[]{
                         android.Manifest.permission.BLUETOOTH_CONNECT,
                         android.Manifest.permission.BLUETOOTH_SCAN
-                }, REQUEST_BLUETOOTH_PERMISSIONS);
+                }, DEMANDE_PERMISSIONS_BLUETOOTH);
             }
         }
     }
 
     private void configurerBluetooth()
     {
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
 
-        if (bluetoothAdapter == null)
+        if (adaptateurBluetooth == null)
         {
             Log.e("Bluetooth", "Bluetooth non supporté sur cet appareil");
             return;
         }
-        if (!bluetoothAdapter.isEnabled())
+        if (!adaptateurBluetooth.isEnabled())
         {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, 1);
+            Intent activerBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(activerBluetooth, 1);
         }
     }
 
     private void connecterPeripherique()
     {
-        if (bluetoothAdapter == null)
+        if (adaptateurBluetooth == null)
         {
             Log.e("Bluetooth", "Bluetooth non configuré !");
             return;
@@ -109,22 +114,22 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
             return;
         }
 
-        bluetoothDevice = bluetoothAdapter.getRemoteDevice(MAC_ADDRESS);
+        peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC);
 
         try
         {
-            bluetoothSocket = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
-            bluetoothSocket.connect();
-            Log.d("Bluetooth", "Connexion réussie avec " + MAC_ADDRESS);
+            socketBluetooth = peripheriqueBluetooth.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+            socketBluetooth.connect();
+            Log.d("Bluetooth", "Connexion réussie avec " + ADRESSE_MAC);
         }
         catch (IOException e)
         {
             Log.e("Bluetooth", "Échec de connexion : " + e.getMessage());
             try
             {
-                if (bluetoothSocket != null)
+                if (socketBluetooth != null)
                 {
-                    bluetoothSocket.close();
+                    socketBluetooth.close();
                 }
             }
             catch (IOException ex)
@@ -133,7 +138,20 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
             }
         }
     }
-
+    private void envoyerDonnees(String message)
+    {
+        if (socketBluetooth != null) {
+            try
+            {
+                OutputStream fluxSortie = socketBluetooth.getOutputStream();
+                fluxSortie.write(message.getBytes());
+                Log.d("Bluetooth", "Données envoyées : " + message);
+            } catch (IOException e)
+            {
+                Log.e("Bluetooth", "Erreur lors de l'envoi", e);
+            }
+        }
+    }
     private void creerJoueurs()
     {
         String nomJoueur1    = saisieNomJoueur1.getText().toString();
@@ -143,20 +161,22 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         String nomJoueur2    = saisieNomJoueur2.getText().toString();
         String prenomJoueur2 = saisiePrenomJoueur2.getText().toString();
         joueur2 = new Joueur(nomJoueur2, prenomJoueur2);
+
+        envoyerDonnees("Joueurs créés");
     }
 
-    private void jouerMatchActivite()
+    private void jouerMatch()
     {
-        boutonLancerUnMatch.setOnClickListener(new View.OnClickListener()
+        boutonLancerMatch.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 creerJoueurs();
-                Intent changerDeVue = new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
-                changerDeVue.putExtra("joueur1", joueur1);
-                changerDeVue.putExtra("joueur2", joueur2);
-                startActivity(changerDeVue);
+                Intent changerVue = new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
+                changerVue.putExtra("joueur1", joueur1);
+                changerVue.putExtra("joueur2", joueur2);
+                startActivity(changerVue);
             }
         });
     }
