@@ -58,5 +58,6 @@ QWidget* EcranAccueil::getEcran() const
 QLabel* EcranAccueil::getConnexionBluetoothLabel() const
 
 {
+    qDebug() << "Adresse QLabel (EcranAccueil): " << connexionBluetooth;
     return connexionBluetooth;
 }

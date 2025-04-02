@@ -21,7 +21,22 @@ PlugInPool::~PlugInPool()
 }
 
 void PlugInPool::onClientConnecte()
-
 {
-    ecranAccueil->getConnexionBluetoothLabel()->setText("Connecté");
+    if(!ecranAccueil)
+    {
+        qWarning() << "Erreur: ecranAccueil est NULL !";
+        return;
+    }
+    qDebug() << "Signal clientConnecte() reçu! Mise à jour de l'affichage...";
+    if(ecranAccueil && ecranAccueil->getConnexionBluetoothLabel())
+    {
+        ecranAccueil->getConnexionBluetoothLabel()->setText("Connecté");
+        qDebug() << "Texte QLabel changé en 'Connecté'";
+        qDebug() << "Adresse QLabel (PlugInPool): "
+                 << ecranAccueil->getConnexionBluetoothLabel();
+    }
+    else
+    {
+        qDebug() << "Erreur: ecranAccueil ou connexionBluetoothLabel est NULL";
+    }
 }

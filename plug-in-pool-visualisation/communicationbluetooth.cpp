@@ -38,12 +38,13 @@ CommunicationBluetooth::~CommunicationBluetooth()
 }
 
 void CommunicationBluetooth::nouveauClient()
-
 {
+    qDebug() << "Tentative de connexion d'un nouveau client...";
     socket = serveur->nextPendingConnection();
 
     if(socket)
     {
+        qDebug() << "Client connecté avec succès!";
         connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
         emit clientConnecte();
     }
