@@ -22,9 +22,6 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    CommunicationBluetooth* communicationBluetooth =
-      plugInPool->getCommunicationBluetooth();
-
     setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
                    QString(VERSION_APPLICATION));
 
@@ -47,18 +44,6 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 
     interfacePlugInPool = new QVBoxLayout(this);
     interfacePlugInPool->addWidget(ecransInterface);
-
-    if(communicationBluetooth)
-    {
-        connect(communicationBluetooth,
-                &CommunicationBluetooth::appareilConnecte,
-                ecranAccueil,
-                &EcranAccueil::mettreAJourEtatBluetooth);
-    }
-    else
-    {
-        qDebug() << "Erreur: communicationBluetooth est nullptr";
-    }
 
 #ifdef RASPBERRY_PI
     qDebug() << Q_FUNC_INFO << "RASPBERRY_PI";

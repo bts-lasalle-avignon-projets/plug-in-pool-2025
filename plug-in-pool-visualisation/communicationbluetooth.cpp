@@ -3,50 +3,48 @@
 #include <QBluetoothUuid>
 
 CommunicationBluetooth::CommunicationBluetooth(QObject* parent) :
-    QObject(parent),
-    serveurBluetooth(
-      new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this)),
-    socketBluetooth(nullptr)
+    QObject(parent), serveur(nullptr), socket(nullptr)
 {
-    qDebug() << Q_FUNC_INFO << this << "parent" << parent;
-    connect(serveurBluetooth,
-            &QBluetoothServer::newConnection,
-            this,
-            &CommunicationBluetooth::nouvelleConnexion);
+    qDebug() << Q_FUNC_INFO;
+    if(!peripheriqueLocal.isValid())
 
-    QBluetoothUuid serviceUuid = QBluetoothUuid(QBluetoothUuid::SerialPort);
-    serveurBluetooth->listen(serviceUuid);
+    {
+        qWarning() << "Bluetooth désactivé !";
 
-    qDebug() << "Serveur Bluetooth en attente de connexion...";
+        return;
+    }
+
+    peripheriqueLocal.powerOn();
+
+    serveur = new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this);
+
+    connect(serveur, SIGNAL(newConnection()), this, SLOT(nouveauClient()));
+
+    QBluetoothUuid uuid(QBluetoothUuid::Rfcomm);
+
+    serveur->listen(uuid, "MyBluetoothService");
 }
 
 CommunicationBluetooth::~CommunicationBluetooth()
 {
     qDebug() << Q_FUNC_INFO << this;
-    delete serveurBluetooth;
-}
-
-void CommunicationBluetooth::nouvelleConnexion()
-{
-    if(socketBluetooth)
+    if(socket)
     {
-        socketBluetooth->deleteLater();
+        socket->close();
+        delete socket;
     }
 
-    socketBluetooth = serveurBluetooth->nextPendingConnection();
-    if(socketBluetooth)
-    {
-        connect(socketBluetooth,
-                &QBluetoothSocket::disconnected,
-                this,
-                &CommunicationBluetooth::deconnexionClient);
-        qDebug() << "Appareil connecté :" << socketBluetooth->peerName();
-        emit appareilConnecte(socketBluetooth->peerName());
-    }
+    delete serveur;
 }
 
-void CommunicationBluetooth::deconnexionClient()
+void CommunicationBluetooth::nouveauClient()
+
 {
-    qDebug() << "Appareil déconnecté";
-    emit appareilConnecte("Attente connexion Bluetooth");
+    socket = serveur->nextPendingConnection();
+
+    if(socket)
+    {
+        connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
+        emit clientConnecte();
+    }
 }

@@ -3,9 +3,15 @@
 #include <QDebug>
 
 PlugInPool::PlugInPool(QObject* parent) :
-    QObject(parent), communicationBluetooth(new CommunicationBluetooth(this))
+    QObject(parent), communicationBluetooth(new CommunicationBluetooth(this)),
+    ecranAccueil(new EcranAccueil())
 {
     qDebug() << Q_FUNC_INFO << this << "parent" << parent;
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::clientConnecte,
+            this,
+            &PlugInPool::onClientConnecte);
 }
 
 PlugInPool::~PlugInPool()
@@ -14,7 +20,8 @@ PlugInPool::~PlugInPool()
     delete communicationBluetooth;
 }
 
-CommunicationBluetooth* PlugInPool::getCommunicationBluetooth() const
+void PlugInPool::onClientConnecte()
+
 {
-    return communicationBluetooth;
+    ecranAccueil->getConnexionBluetoothLabel()->setText("Connecté");
 }

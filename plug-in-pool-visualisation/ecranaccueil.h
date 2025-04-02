@@ -21,10 +21,11 @@ class EcranAccueil : public QObject
     virtual ~EcranAccueil();
     QWidget* getEcran() const;
 
+    QLabel* getConnexionBluetoothLabel() const;
+
   signals:
 
   public slots:
-    void mettreAJourEtatBluetooth(QString etat);
 };
 
 #endif // ECRANACCUEIL_H

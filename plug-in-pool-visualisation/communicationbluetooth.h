@@ -2,28 +2,29 @@
 #define COMMUNICATIONBLUETOOTH_H
 
 #include <QObject>
-#include <QBluetoothServer>
+#include <QBluetoothLocalDevice>
+#include <QBluetoothAddress>
 #include <QBluetoothSocket>
-#include <QBluetoothServiceInfo>
+#include <QBluetoothServer>
 
 class CommunicationBluetooth : public QObject
 {
     Q_OBJECT
 
   private:
-    QBluetoothServer* serveurBluetooth;
-    QBluetoothSocket* socketBluetooth;
+    QBluetoothLocalDevice peripheriqueLocal;
+    QBluetoothServer*     serveur;
+    QBluetoothSocket*     socket;
 
   public:
     explicit CommunicationBluetooth(QObject* parent = nullptr);
     virtual ~CommunicationBluetooth();
 
   signals:
-    void appareilConnecte(QString nomAppareil);
+    void clientConnecte();
 
   private slots:
-    void nouvelleConnexion();
-    void deconnexionClient();
+    void nouveauClient();
 };
 
 #endif // COMMUNICATIONBLUETOOTH_H
