@@ -19,24 +19,15 @@ import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.io.OutputStream;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-=======
-import java.util.UUID;
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
 
 public class ActiviteConfigurationMatch extends AppCompatActivity
 {
     /**
      * Constantes
      */
-<<<<<<< HEAD
-=======
-    private static final String TAG = "_ActiviteConfigurationMatch"; //!< TAG pour les logs
-    private static final String ADRESSE_MAC = "00:E0:4C:63:18:56"; // Module Bluetooth écran
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
     private static final int DEMANDE_PERMISSIONS_BLUETOOTH = 1;
 
     private Button boutonLancerMatch;
@@ -69,13 +60,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-<<<<<<< HEAD
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
             listerPeripheriquesBluetooth();
         }
-=======
-        connecterPeripherique();
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
         jouerMatch();
     }
 
@@ -135,57 +122,19 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
             return;
         }
 
-<<<<<<< HEAD
         Set<BluetoothDevice> appareilsAppaires = adaptateurBluetooth.getBondedDevices();
         List<String> nomsAppareils = new ArrayList<>();
-=======
-        peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC);
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
 
         for (BluetoothDevice appareil : appareilsAppaires)
         {
-<<<<<<< HEAD
             nomsAppareils.add(appareil.getName() + " (" + appareil.getAddress() + ")");
-=======
-            socketBluetooth = peripheriqueBluetooth.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
-            socketBluetooth.connect();
-            Log.d("Bluetooth", "Connexion réussie avec " + ADRESSE_MAC);
-        }
-        catch (IOException e)
-        {
-            Log.e("Bluetooth", "Échec de connexion : " + e.getMessage());
-            try
-            {
-                if (socketBluetooth != null)
-                {
-                    socketBluetooth.close();
-                }
-            }
-            catch (IOException ex)
-            {
-                Log.e("Bluetooth", "Erreur lors de la fermeture du socket : " + ex.getMessage());
-            }
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
         }
 
         ArrayAdapter<String> adaptateur = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomsAppareils);
         choixBluetoothEcran.setAdapter(adaptateur);
         choixBluetoothTable.setAdapter(adaptateur);
     }
-    private void envoyerDonnees(String message)
-    {
-        if (socketBluetooth != null) {
-            try
-            {
-                OutputStream fluxSortie = socketBluetooth.getOutputStream();
-                fluxSortie.write(message.getBytes());
-                Log.d("Bluetooth", "Données envoyées : " + message);
-            } catch (IOException e)
-            {
-                Log.e("Bluetooth", "Erreur lors de l'envoi", e);
-            }
-        }
-    }
+
     private void creerJoueurs()
     {
         String nomJoueur1    = saisieNomJoueur1.getText().toString();
@@ -199,7 +148,6 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         envoyerDonnees("Joueurs créés");
     }
 
-<<<<<<< HEAD
     private void envoyerDonnees(String message)
     {
         if (socketBluetooth != null)
@@ -218,10 +166,6 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
 
     private void jouerMatch()
     {
-=======
-    private void jouerMatch()
-    {
->>>>>>> df4c786b22eb5b1d470594d7c8124ae9a4d00789
         boutonLancerMatch.setOnClickListener(new View.OnClickListener()
         {
             @Override
