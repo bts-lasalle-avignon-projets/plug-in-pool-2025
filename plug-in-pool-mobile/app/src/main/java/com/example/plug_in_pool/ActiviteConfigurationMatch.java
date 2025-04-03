@@ -1,5 +1,7 @@
 package com.example.plug_in_pool;
 
+import static com.example.plug_in_pool.BlackBall.CONFIGURATION_FINI;
+
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -22,6 +24,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public class ActiviteConfigurationMatch extends AppCompatActivity
 {
@@ -29,7 +32,11 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
      * Constantes
      */
     private static final int DEMANDE_PERMISSIONS_BLUETOOTH = 1;
+    private static final UUID UUID_BLUETOOTH = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
+    /**
+     * Éléments de l'interface
+     */
     private Button boutonLancerMatch;
     private EditText saisieNomJoueur1;
     private EditText saisiePrenomJoueur1;
@@ -38,6 +45,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
 
+    /**
+     * Bluetooth
+     */
     private BluetoothSocket socketBluetooth = null;
     private BluetoothDevice peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
@@ -58,7 +68,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
             listerPeripheriquesBluetooth();
@@ -133,6 +144,57 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         ArrayAdapter<String> adaptateur = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomsAppareils);
         choixBluetoothEcran.setAdapter(adaptateur);
         choixBluetoothTable.setAdapter(adaptateur);
+
+        choixBluetoothEcran.setOnItemClickListener((parent, view, position, id) -> {
+            String selection = (String) parent.getItemAtPosition(position);
+            String adresseMac = extraireAdresseMac(selection);
+            connecterBluetooth(adresseMac);
+        });
+
+        choixBluetoothTable.setOnItemClickListener((parent, view, position, id) -> {
+            String selection = (String) parent.getItemAtPosition(position);
+            String adresseMac = extraireAdresseMac(selection);
+            connecterBluetooth(adresseMac);
+        });
+    }
+
+    private void connecterBluetooth(String adresseMac)
+    {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
+        {
+            Log.e("Bluetooth", "Permissions Bluetooth refusées !");
+            return;
+        }
+
+        peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
+        Log.d("Bluetooth", "Tentative de connexion à l'adresse MAC : " + adresseMac);
+
+        try {
+            Log.d("Bluetooth", "Création du socket Bluetooth...");
+            socketBluetooth = peripheriqueBluetooth.createInsecureRfcommSocketToServiceRecord(UUID_BLUETOOTH);
+
+            Log.d("Bluetooth", "Socket créée, démarrage de la connexion...");
+            socketBluetooth.connect();
+            Log.d("Bluetooth", "Connexion Bluetooth réussie à " + adresseMac);
+        } catch (IOException e) {
+            Log.e("Bluetooth", "Échec de connexion (méthode normale) : " + e.getMessage());
+
+            try {
+                Log.d("Bluetooth", "Tentative de connexion alternative...");
+                socketBluetooth = (BluetoothSocket) peripheriqueBluetooth.getClass()
+                        .getMethod("createRfcommSocket", new Class[]{int.class})
+                        .invoke(peripheriqueBluetooth, 1);
+                socketBluetooth.connect();
+                Log.d("Bluetooth", "Connexion alternative réussie !");
+            } catch (Exception ex) {
+                Log.e("Bluetooth", "Échec de la connexion alternative : " + ex.getMessage());
+            }
+        }
+    }
+
+    private String extraireAdresseMac(String texte)
+    {
+        return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
 
     private void creerJoueurs()
@@ -145,17 +207,17 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         String prenomJoueur2 = saisiePrenomJoueur2.getText().toString();
         joueur2 = new Joueur(nomJoueur2, prenomJoueur2);
 
-        envoyerDonnees("Joueurs créés");
+        envoyerDonnees(CONFIGURATION_FINI);
     }
 
-    private void envoyerDonnees(String message)
+    private void envoyerDonnees(int message)
     {
         if (socketBluetooth != null)
         {
             try
             {
                 OutputStream fluxSortie = socketBluetooth.getOutputStream();
-                fluxSortie.write(message.getBytes());
+                fluxSortie.write(message);
                 Log.d("Bluetooth", "Données envoyées : " + message);
             } catch (IOException e)
             {
@@ -178,23 +240,5 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
                 startActivity(changerVue);
             }
         });
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
-    {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == DEMANDE_PERMISSIONS_BLUETOOTH)
-        {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
-                Log.d("Bluetooth", "Permission Bluetooth accordée");
-                listerPeripheriquesBluetooth();
-            }
-            else
-            {
-                Log.e("Bluetooth", "Permission Bluetooth refusée");
-            }
-        }
     }
 }
