@@ -76,3 +76,8 @@ void EcranPlugInPool::afficherEcranFin()
 {
     ecransInterface->setCurrentWidget(ecranFin->getEcran());
 }
+
+EcranAccueil* EcranPlugInPool::getEcranAccueil() const
+{
+    return ecranAccueil;
+}

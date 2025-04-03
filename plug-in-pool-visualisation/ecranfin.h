@@ -11,6 +11,7 @@ class EcranFin : public QObject
 
   public:
     explicit EcranFin(QWidget* parent = nullptr);
+    virtual ~EcranFin();
     QWidget* getEcran() const;
 
   signals:

@@ -4,6 +4,9 @@
 #include <QObject>
 #include "communicationbluetooth.h"
 #include "ecranpluginpool.h"
+#include "QTimer"
+
+#define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
 
 class Match;
 
@@ -13,6 +16,7 @@ class PlugInPool : public QObject
   private:
     CommunicationBluetooth* communicationBluetooth;
     Match*                  match;
+    EcranPlugInPool*        ecranPlugInPool;
     EcranAccueil*           ecranAccueil;
 
   public:
@@ -20,7 +24,9 @@ class PlugInPool : public QObject
     virtual ~PlugInPool();
 
   private slots:
-    void onClientConnecte();
+    void bluetoothConnecte();
+    void changerEcranMatch();
+    void configurationRecu();
 };
 
 #endif // PLUGINPOOL_H

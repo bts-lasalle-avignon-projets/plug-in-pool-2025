@@ -1,16 +1,19 @@
 #ifndef ECRANMATCH_H
 #define ECRANMATCH_H
 
-#include <QWidget>
+#include <QtWidgets>
 
 class EcranMatch : public QObject
 {
     Q_OBJECT
   private:
     QWidget* ecran;
+    QLabel*  affichageJoueurUn;
+    QLabel*  affichageJoueurDeux;
 
   public:
     explicit EcranMatch(QWidget* parent = nullptr);
+    virtual ~EcranMatch();
     QWidget* getEcran() const;
 
   signals:

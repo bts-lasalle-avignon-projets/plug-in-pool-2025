@@ -48,4 +48,48 @@ void CommunicationBluetooth::nouveauClient()
         connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
         emit clientConnecte();
     }
+
+    connect(socket, SIGNAL(readyRead()), this, SLOT(lireTrame()));
+}
+
+void CommunicationBluetooth::lireTrame()
+{
+    if(!socket)
+        return;
+
+    QByteArray lectureTrame = socket->readAll();
+    QString    trame        = QString::fromUtf8(lectureTrame).trimmed();
+
+    qDebug() << "Trame reçue :" << trame;
+
+    if(trame.startsWith(ENTETE_TRAME) && trame.endsWith(DELIMITEUR_FIN_TRAME))
+    {
+        QStringList contenuTrame =
+          trame.mid(1, trame.length() - 2).split(SEPARATEUR_TRAME);
+
+        if(contenuTrame.size() > 0)
+        {
+            QString type = contenuTrame[POSITION_TYPE_TRAME];
+            qDebug() << "Type de trame :" << type;
+
+            switch(type.at(0).toLatin1())
+            {
+                case TRAME_RENCONTRE:
+                    emit trameRencontreRecue();
+                    break;
+
+                case TRAME_MANCHE:
+                    break;
+
+                case TRAME_CHANGEMENT_JOUEUR:
+                    break;
+
+                case TRAME_EMPOCHAGE:
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
 }

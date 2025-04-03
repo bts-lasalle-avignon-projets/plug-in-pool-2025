@@ -7,6 +7,17 @@
 #include <QBluetoothSocket>
 #include <QBluetoothServer>
 
+#define ENTETE_TRAME         "$"
+#define SEPARATEUR_TRAME     "/"
+#define DELIMITEUR_FIN_TRAME "!"
+
+#define TRAME_RENCONTRE         'R'
+#define TRAME_MANCHE            'M'
+#define TRAME_CHANGEMENT_JOUEUR 'C'
+#define TRAME_EMPOCHAGE         'E'
+
+#define POSITION_TYPE_TRAME 0
+
 class CommunicationBluetooth : public QObject
 {
     Q_OBJECT
@@ -22,9 +33,11 @@ class CommunicationBluetooth : public QObject
 
   signals:
     void clientConnecte();
+    void trameRencontreRecue();
 
   private slots:
     void nouveauClient();
+    void lireTrame();
 };
 
 #endif // COMMUNICATIONBLUETOOTH_H

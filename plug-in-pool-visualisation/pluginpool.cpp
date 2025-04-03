@@ -4,14 +4,20 @@
 
 PlugInPool::PlugInPool(QObject* parent) :
     QObject(parent), communicationBluetooth(new CommunicationBluetooth(this)),
-    ecranAccueil(new EcranAccueil())
+    ecranPlugInPool(qobject_cast<EcranPlugInPool*>(parent))
+
 {
     qDebug() << Q_FUNC_INFO << this << "parent" << parent;
 
     connect(communicationBluetooth,
             &CommunicationBluetooth::clientConnecte,
             this,
-            &PlugInPool::onClientConnecte);
+            &PlugInPool::bluetoothConnecte);
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::trameRencontreRecue,
+            this,
+            &PlugInPool::configurationRecu);
 }
 
 PlugInPool::~PlugInPool()
@@ -20,23 +26,48 @@ PlugInPool::~PlugInPool()
     delete communicationBluetooth;
 }
 
-void PlugInPool::onClientConnecte()
+void PlugInPool::bluetoothConnecte()
 {
-    if(!ecranAccueil)
-    {
-        qWarning() << "Erreur: ecranAccueil est NULL !";
-        return;
-    }
-    qDebug() << "Signal clientConnecte() reçu! Mise à jour de l'affichage...";
+    EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
     if(ecranAccueil && ecranAccueil->getConnexionBluetoothLabel())
     {
-        ecranAccueil->getConnexionBluetoothLabel()->setText("Connecté");
-        qDebug() << "Texte QLabel changé en 'Connecté'";
-        qDebug() << "Adresse QLabel (PlugInPool): "
-                 << ecranAccueil->getConnexionBluetoothLabel();
+        ecranAccueil->getConnexionBluetoothLabel()->setText(
+          "Bluetooth Connecté");
+        ecranAccueil->getConnexionBluetoothLabel()->setProperty("class",
+                                                                "connecte");
+        ecranAccueil->getConnexionBluetoothLabel()->style()->unpolish(
+          ecranAccueil->getConnexionBluetoothLabel());
+        ecranAccueil->getConnexionBluetoothLabel()->style()->polish(
+          ecranAccueil->getConnexionBluetoothLabel());
+        ecranAccueil->getConnexionBluetoothLabel()->update();
     }
-    else
+}
+
+void PlugInPool::configurationRecu()
+{
+    EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
+    if(ecranAccueil && ecranAccueil->getConfigurationPartieLabel())
     {
-        qDebug() << "Erreur: ecranAccueil ou connexionBluetoothLabel est NULL";
+        ecranAccueil->getConfigurationPartieLabel()->setText(
+          "Configuration Terminée");
+        ecranAccueil->getConfigurationPartieLabel()->setProperty("class",
+                                                                 "configure");
+        ecranAccueil->getConfigurationPartieLabel()->style()->unpolish(
+          ecranAccueil->getConfigurationPartieLabel());
+        ecranAccueil->getConfigurationPartieLabel()->style()->polish(
+          ecranAccueil->getConfigurationPartieLabel());
+        ecranAccueil->getConfigurationPartieLabel()->update();
+        QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
+                           this,
+                           &PlugInPool::changerEcranMatch);
+    }
+}
+
+void PlugInPool::changerEcranMatch()
+{
+    if(ecranPlugInPool)
+    {
+        qDebug() << "Passage à l'écran de match !";
+        ecranPlugInPool->afficherEcranMatch();
     }
 }

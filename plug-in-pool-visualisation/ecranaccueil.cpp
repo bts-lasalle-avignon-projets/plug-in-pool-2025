@@ -61,3 +61,10 @@ QLabel* EcranAccueil::getConnexionBluetoothLabel() const
     qDebug() << "Adresse QLabel (EcranAccueil): " << connexionBluetooth;
     return connexionBluetooth;
 }
+
+QLabel* EcranAccueil::getConfigurationPartieLabel() const
+
+{
+    qDebug() << "Adresse QLabel (EcranAccueil): " << configurationPartie;
+    return configurationPartie;
+}

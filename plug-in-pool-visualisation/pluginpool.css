@@ -33,7 +33,6 @@ QLabel#affichageCreateurs {
     border: none;
     text-align: center;
     font-family: 'REM';
-    color: #a8d08d;
     margin: 0px;
     padding: 0px;
 }
@@ -44,7 +43,6 @@ QLabel#affichageVersion {
     border: none;
     text-align: center;
     font-family: 'REM';
-    color: #a8d08d;
     margin: 0px;
     padding: 0px;
 }
@@ -56,8 +54,12 @@ QLabel#connexionBluetooth {
     text-align: center;
     font-family: 'REM';
     color: #d4a373;
-    border: 3px solid red;
 }
+
+QLabel#connexionBluetooth.connecte {
+    color: #3A7D44;
+}
+
 
 QLabel#configurationPartie {
     font-size: 40px;
@@ -68,6 +70,10 @@ QLabel#configurationPartie {
     color: #d4a373;
 }
 
+QLabel#configurationPartie.configure {
+    color: #3A7D44;
+}
+
 /* Écran Match */
 QWidget#ecranMatch {
     background-image: url(":/ecranMatchQT.png");
@@ -75,6 +81,26 @@ QWidget#ecranMatch {
     background-position: center;
     background-attachment: fixed;
     border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageJoueurUn {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageJoueurDeux {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
     margin: 0px;
     padding: 0px;
 }

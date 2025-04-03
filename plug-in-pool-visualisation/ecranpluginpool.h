@@ -68,6 +68,8 @@ class EcranPlugInPool : public QWidget
     void afficherEcranAccueil();
     void afficherEcranMatch();
     void afficherEcranFin();
+
+    EcranAccueil* getEcranAccueil() const;
 };
 
 #endif // ECRANPLUGINPOOL_H

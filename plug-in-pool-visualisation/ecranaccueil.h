@@ -10,7 +10,6 @@ class EcranAccueil : public QObject
     Q_OBJECT
   private:
     QWidget* ecran;
-    QLabel*  imageFondEcranAccueil;
     QLabel*  affichageCreateurs;
     QLabel*  affichageVersion;
     QLabel*  connexionBluetooth;
@@ -22,6 +21,7 @@ class EcranAccueil : public QObject
     QWidget* getEcran() const;
 
     QLabel* getConnexionBluetoothLabel() const;
+    QLabel* getConfigurationPartieLabel() const;
 
   signals:
 
