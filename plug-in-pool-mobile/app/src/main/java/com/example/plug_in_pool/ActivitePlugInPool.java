@@ -24,37 +24,13 @@ public class ActivitePlugInPool extends AppCompatActivity
     /**
      * Constantes
      */
-    Button                      boutonConfigurationRencontre;
-    Button                      boutonHistorique;
     private static final String TAG = "_ActivitePlugInPool"; //!< TAG pour les logs (cf. Logcat)
 
     /**
      * Ressources GUI
      */
-
-    void allerConfigurerActivite()
-    {
-        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent changerDeVue =
-                  new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
-                startActivity(changerDeVue);
-            }
-        });
-    }
-    void allerHistoriqueActivite()
-    {
-        boutonHistorique.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteHistorique.class);
-                startActivity(changerDeVue);
-            }
-        });
-    }
+    Button boutonConfigurationRencontre;
+    Button boutonHistorique;
 
     /**
      * @brief Méthode appelée à la création de l'activité
@@ -68,10 +44,7 @@ public class ActivitePlugInPool extends AppCompatActivity
 
         Log.d(TAG, "onCreate()");
 
-        boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
-        boutonHistorique             = findViewById(R.id.historique);
-        allerConfigurerActivite();
-        allerHistoriqueActivite();
+        initialiserVue();
     }
 
     /**
@@ -125,5 +98,38 @@ public class ActivitePlugInPool extends AppCompatActivity
     {
         super.onDestroy();
         Log.d(TAG, "onDestroy()");
+    }
+
+    private void initialiserVue()
+    {
+        boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
+        boutonHistorique             = findViewById(R.id.historique);
+        allerConfigurerActivite();
+        allerHistoriqueActivite();
+    }
+
+    private void allerConfigurerActivite()
+    {
+        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue =
+                  new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
+                startActivity(changerDeVue);
+            }
+        });
+    }
+
+    private void allerHistoriqueActivite()
+    {
+        boutonHistorique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteHistorique.class);
+                startActivity(changerDeVue);
+            }
+        });
     }
 }

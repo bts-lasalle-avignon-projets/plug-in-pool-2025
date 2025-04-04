@@ -31,6 +31,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     /**
      * Constantes
      */
+    private static final String TAG = "_ActiviteConfigurationMatch"; //!< TAG pour les logs (cf. Logcat)
     private static final int DEMANDE_PERMISSIONS_BLUETOOTH = 1;
     private static final UUID UUID_BLUETOOTH = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -52,6 +53,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private BluetoothDevice peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
 
+    /**
+     * @todo Mettre en oeuvre un Vector ou une List
+     */
     Joueur joueur1;
     Joueur joueur2;
 
@@ -62,7 +66,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_configuration_match);
 
-        initialiserVues();
+        Log.d(TAG, "onCreate()");
+
+        initialiserVue();
         demanderPermissionsBluetooth();
         configurerBluetooth();
     }
@@ -77,7 +83,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         jouerMatch();
     }
 
-    private void initialiserVues()
+    private void initialiserVue()
     {
         boutonLancerMatch = findViewById(R.id.boutonLancerMatch);
         saisieNomJoueur1 = findViewById(R.id.saisieNomJoueur1);
@@ -109,7 +115,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
 
         if (adaptateurBluetooth == null)
         {
-            Log.e("Bluetooth", "Bluetooth non supporté sur cet appareil");
+            Log.e(TAG, "Bluetooth non supporté sur cet appareil");
             return;
         }
         if (!adaptateurBluetooth.isEnabled())
@@ -123,13 +129,13 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     {
         if (adaptateurBluetooth == null)
         {
-            Log.e("Bluetooth", "Bluetooth non disponible !");
+            Log.e(TAG, "Bluetooth non disponible !");
             return;
         }
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
         {
-            Log.e("Bluetooth", "Permissions Bluetooth refusées !");
+            Log.e(TAG, "Permissions Bluetooth refusées !");
             return;
         }
 
@@ -162,22 +168,22 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
         {
-            Log.e("Bluetooth", "Permissions Bluetooth refusées !");
+            Log.e(TAG, "Permissions Bluetooth refusées !");
             return;
         }
 
         peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
-        Log.d("Bluetooth", "Tentative de connexion à l'adresse MAC : " + adresseMac);
+        Log.d(TAG, "Tentative de connexion à l'adresse MAC : " + adresseMac);
 
         try {
-            Log.d("Bluetooth", "Création du socket Bluetooth...");
+            Log.d(TAG, "Création du socket Bluetooth...");
             socketBluetooth = peripheriqueBluetooth.createInsecureRfcommSocketToServiceRecord(UUID_BLUETOOTH);
 
-            Log.d("Bluetooth", "Socket créée, démarrage de la connexion...");
+            Log.d(TAG, "Socket créée, démarrage de la connexion...");
             socketBluetooth.connect();
-            Log.d("Bluetooth", "Connexion Bluetooth réussie à " + adresseMac);
+            Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
         } catch (IOException e) {
-            Log.e("Bluetooth", "Échec de connexion (méthode normale) : " + e.getMessage());
+            Log.e(TAG, "Échec de connexion (méthode normale) : " + e.getMessage());
 
             try {
                 Log.d("Bluetooth", "Tentative de connexion alternative...");
@@ -185,9 +191,9 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
                         .getMethod("createRfcommSocket", new Class[]{int.class})
                         .invoke(peripheriqueBluetooth, 1);
                 socketBluetooth.connect();
-                Log.d("Bluetooth", "Connexion alternative réussie !");
+                Log.d(TAG, "Connexion alternative réussie !");
             } catch (Exception ex) {
-                Log.e("Bluetooth", "Échec de la connexion alternative : " + ex.getMessage());
+                Log.e(TAG, "Échec de la connexion alternative : " + ex.getMessage());
             }
         }
     }

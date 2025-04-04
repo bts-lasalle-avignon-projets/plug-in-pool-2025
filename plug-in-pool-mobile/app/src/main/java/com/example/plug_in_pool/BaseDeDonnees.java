@@ -3,9 +3,11 @@ package com.example.plug_in_pool;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class BaseDeDonnees extends SQLiteOpenHelper
 {
+    private static final String TAG = "_BaseDeDonnees"; //!< TAG pour les logs (cf. Logcat)
     private static final int    VERSION_BDD = 1;
     private static final String NOM_BDD     = "plugin_pool.db";
 
@@ -51,6 +53,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase baseDeDonnees)
     {
+        Log.d(TAG, "onCreate()");
         baseDeDonnees.execSQL(CREER_TABLE_JOUEURS);
         baseDeDonnees.execSQL(CREER_TABLE_MATCHS);
         baseDeDonnees.execSQL(CREER_TABLE_MANCHES);
@@ -59,6 +62,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase baseDeDonnees, int oldVersion, int newVersion)
     {
+        Log.d(TAG, "onUpgrade()");
         baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_MANCHES);
         baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_MATCHS);
         baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_JOUEURS);
