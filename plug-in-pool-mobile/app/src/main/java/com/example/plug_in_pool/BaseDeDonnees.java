@@ -67,7 +67,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
                                                   + " (13,'VANDENBROUCKE','Théo'),\n"
                                                   + " (14,'VAUDAINE','Dylan');\n";
 
-    public BaseDeDonnees(Context context)
+    private BaseDeDonnees(Context context)
     {
         super(context, NOM_BDD, null, VERSION_BDD);
         Log.d(TAG, "BaseDeDonnees()");
