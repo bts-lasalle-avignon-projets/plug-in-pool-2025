@@ -33,7 +33,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
       + "idMatch INTEGER PRIMARY KEY AUTOINCREMENT, "
       + "idJoueur1 INTEGER NOT NULL, "
       + "idJoueur2 INTEGER NOT NULL, "
-      + "nbManchesGagnantes INTEGER DEFAULT 0, "
+      + "nbManchesGagnantes INTEGER DEFAULT 1, "
       + "fini INTEGER DEFAULT 0, "
       + "horodatage DATETIME NOT NULL, "
       + "FOREIGN KEY (idJoueur1) REFERENCES joueurs(idJoueur) ON DELETE CASCADE, "
@@ -42,13 +42,14 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     private static final String CREER_TABLE_MANCHES =
       "CREATE TABLE IF NOT EXISTS " + TABLE_MANCHES + " ("
       + "idManche INTEGER PRIMARY KEY AUTOINCREMENT, "
-      + "idMatch INTEGER DEFAULT 0, "
+      + "idMatch INTEGER, "
       + "idGagnant INTEGER, "
       + "idPerdant INTEGER, "
       + "numeroTable INTEGER, "
       + "horodatage DATETIME UNIQUE NOT NULL, "
       + "FOREIGN KEY (idGagnant) REFERENCES joueurs(idJoueur) ON DELETE CASCADE, "
-      + "FOREIGN KEY (idPerdant) REFERENCES joueurs(idJoueur) ON DELETE CASCADE);";
+      + "FOREIGN KEY (idPerdant) REFERENCES joueurs(idJoueur) ON DELETE CASCADE,"
+      + "FOREIGN KEY (idMatch)   REFERENCES matchs(idMatch) ON DELETE CASCADE);";
 
     private static final String AJOUTER_JOUEURS = "INSERT INTO " + TABLE_JOUEURS +
                                                   "(idJoueur, nom, prenom) VALUES "
