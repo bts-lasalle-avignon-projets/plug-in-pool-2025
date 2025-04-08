@@ -148,8 +148,8 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
     </tr>
     <tr>
     <td>Dialoguer avec les modules</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
 </table>
@@ -276,7 +276,10 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 > Du 29 Mars 2025 au 23 Mai 2025
 
 - [ ] Paramétrer une partie
-- [ ] Lancer un match
+- [ ] Lancer un partie
+- [x] Choisir un ou des joueurs existants pour lancer une partie
+- [x] Créer un ou des nouveaux joueurs
+- [ ] Enregister dans la base de données les nouveaux joueurs
 - [ ] Afficher les données de la partie en cours
 - [ ] Stocker les données de la partie dans la base de données
 - [ ] Liaison entre la table de billard et le terminal mobile Android

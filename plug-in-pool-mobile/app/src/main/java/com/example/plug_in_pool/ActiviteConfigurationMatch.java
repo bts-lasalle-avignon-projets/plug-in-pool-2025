@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Vector;
 
 public class ActiviteConfigurationMatch extends AppCompatActivity
 {
@@ -45,6 +46,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private EditText             saisiePrenomJoueur1;
     private EditText             saisieNomJoueur2;
     private EditText             saisiePrenomJoueur2;
+    private AutoCompleteTextView choixJoueur1;
+    private AutoCompleteTextView choixJoueur2;
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
 
@@ -55,9 +58,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private BluetoothDevice  peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
 
-    /**
-     * @todo Mettre en oeuvre un Vector ou une List
-     */
+    Vector<Joueur> joueurs = new Vector<Joueur>();
+
     Joueur                joueur1;
     Joueur                joueur2;
     private BaseDeDonnees baseDonnees; //!< Classe d'accès avec la base de données
@@ -74,6 +76,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         Log.d(TAG, "onCreate()");
 
         initialiserVue();
+        ajouterJoueurs();
         demanderPermissionsBluetooth();
         configurerBluetooth();
     }
@@ -94,6 +97,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private void initialiserVue()
     {
         boutonLancerMatch   = findViewById(R.id.boutonLancerMatch);
+        choixJoueur1        = findViewById(R.id.choixJoueur1);
+        choixJoueur2        = findViewById(R.id.choixJoueur2);
         saisieNomJoueur1    = findViewById(R.id.saisieNomJoueur1);
         saisiePrenomJoueur1 = findViewById(R.id.saisiePrenomJoueur1);
         saisieNomJoueur2    = findViewById(R.id.saisieNomJoueur2);
@@ -231,19 +236,91 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
 
-    private void creerJoueurs()
+    private void ajouterJoueurs()
     {
-        String nomJoueur1    = saisieNomJoueur1.getText().toString();
-        String prenomJoueur1 = saisiePrenomJoueur1.getText().toString();
-        joueur1              = new Joueur(nomJoueur1, prenomJoueur1);
-
-        String nomJoueur2    = saisieNomJoueur2.getText().toString();
-        String prenomJoueur2 = saisiePrenomJoueur2.getText().toString();
-        joueur2              = new Joueur(nomJoueur2, prenomJoueur2);
-
-        envoyerDonnees(CONFIGURATION_FINI);
+        nomJoueurs = baseDonnees.getNomsJoueurs();
+        ArrayAdapter<String> listeJoueurs =
+                new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomJoueurs);
+        choixJoueur1.setAdapter(listeJoueurs);
+        choixJoueur2.setAdapter(listeJoueurs);
+    }
+    private boolean ajouterJoueur1()
+    {
+        boolean etat = false;
+        String joueur1Selection = choixJoueur1.getText().toString().trim();
+        String[] joueur1Separer = joueur1Selection.split(" ");
+        if (joueur1Separer.length == 2)
+        {
+            String prenom1 = joueur1Separer[0]; //!< Prénom du joueur 1
+            String nom1 = joueur1Separer[1]; //!< Nom du joueur 1
+            joueur1 = new Joueur(nom1, prenom1);
+            joueurs.add(joueur1);
+            Log.d(TAG, "Joueur 1 créé : " + joueur1.getPrenom() + " " + joueur1.getNom());
+            etat = true;
+            envoyerDonnees(CONFIGURATION_FINI);
+        }
+        else
+        {
+            etat = false;
+        }
+        return etat;
+    }
+    private boolean ajouterJoueur2()
+    {
+        boolean etat = false;
+        String joueur2Selection = choixJoueur2.getText().toString().trim();
+        String[] joueur2Separer = joueur2Selection.split(" ");
+        if (joueur2Separer.length == 2)
+        {
+            String prenom2 = joueur2Separer[0]; //!< Prénom du joueur 2
+            String nom2 = joueur2Separer[1]; //!< Nom du joueur 2
+            joueur2 = new Joueur(nom2, prenom2);
+            joueurs.add(joueur2);
+            Log.d(TAG, "Joueur 2 créé : " + joueur2.getPrenom() + " " + joueur2.getNom());
+            etat = true;
+            envoyerDonnees(CONFIGURATION_FINI);
+        }
+        else
+        {
+            etat = false;
+        }
+        return etat;
     }
 
+    private boolean creerJoueur1()
+    {
+        String nomJoueur1    = saisieNomJoueur1.getText().toString().trim();
+        String prenomJoueur1 = saisiePrenomJoueur1.getText().toString().trim();
+
+        if ((nomJoueur1.length() != 0) && (prenomJoueur1.length() != 0))
+        {
+            joueur1 = new Joueur(nomJoueur1, prenomJoueur1);
+            joueurs.add(joueur1);
+            envoyerDonnees(CONFIGURATION_FINI);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private boolean creerJoueur2()
+    {
+        String nomJoueur2    = saisieNomJoueur2.getText().toString().trim();
+        String prenomJoueur2 = saisiePrenomJoueur2.getText().toString().trim();
+
+        if ((nomJoueur2.length() != 0) && (prenomJoueur2.length() != 0))
+        {
+            joueur2 = new Joueur(nomJoueur2, prenomJoueur2);
+            joueurs.add(joueur2);
+            envoyerDonnees(CONFIGURATION_FINI);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void envoyerDonnees(int message)
     {
         if(socketBluetooth != null)
@@ -260,14 +337,48 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
             }
         }
     }
+    private void creationDesJoueurs()
+    {
+        String combinaison = creerCombinaison();
+        logCombinaison(combinaison);
+    }
 
+    private String creerCombinaison()
+    {
+        return (ajouterJoueur1() ? "1" : "0") +
+                (ajouterJoueur2() ? "1" : "0") +
+                (creerJoueur1()   ? "1" : "0") +
+                (creerJoueur2()   ? "1" : "0");
+    }
+
+    private void logCombinaison(String combinaison)
+    {
+        switch (combinaison)
+        {
+            case "1100":
+                Log.d(TAG, "Ajout de 2 joueurs");
+                break;
+            case "0011":
+                Log.d(TAG, "Création de 2 joueurs");
+                break;
+            case "1001":
+                Log.d(TAG, "Ajout joueur 1 + Création joueur 2");
+                break;
+            case "0110":
+                Log.d(TAG, "Création joueur 1 + Ajout joueur 2");
+                break;
+            default:
+                Log.d(TAG, "Combinaison inconnue : " + combinaison);
+                break;
+        }
+    }
     private void jouerMatch()
     {
         boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                creerJoueurs();
+                creationDesJoueurs();
                 Intent changerVue =
                   new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
                 changerVue.putExtra("joueur1", joueur1);
