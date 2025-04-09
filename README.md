@@ -19,16 +19,16 @@
 
 - [Projet 2025 : Plug-In-Pool](#projet-2025--plug-in-pool)
   - [Présentation](#présentation)
-  - [Déroulement d'une partie](#déroulement-dune-partie)
+  - [Déroulement d'un Match](#déroulement-dun-match)
   - [Modules IR](#modules-ir)
     - [Application Android](#application-android)
-      - [Module de gestion de partie](#module-de-gestion-de-partie)
+      - [Module de gestion de matchs](#module-de-gestion-de-matchs)
       - [Maquette de l'application Android](#maquette-de-lapplication-android)
       - [Recette](#recette)
       - [Diagramme de cas d'utilisation Android](#diagramme-de-cas-dutilisation-android)
       - [Base de données](#base-de-données)
     - [Application Qt](#application-qt)
-      - [Module de visualisation de partie](#module-de-visualisation-de-partie)
+      - [Module de visualisation de matchs](#module-de-visualisation-de-matchs)
       - [Maquette de l'application Qt](#maquette-de-lapplication-qt)
       - [Recette](#recette-1)
   - [Itérations](#itérations)
@@ -45,10 +45,9 @@
 
 ## Présentation
 
-Le système **Plug in Pool** est un système numérique permettant de jouer une partie
-de _blackball_ (parfois appelé billard anglais, billard pool ou 8 pool).
+Le système **Plug in Pool** est un système numérique permettant de jouer un match de _blackball_ (parfois appelé billard anglais, billard pool ou 8 pool).
 
-Les rencontres (matchs) sont réalisées en $n$ parties (ou manches) gagnantes.
+Les matchs sont réalisées en $n$ parties gagnantes.
 
 Le _blackball_ est un jeu de billard qui se déroule sur une table rectangulaire à 6 poches avec 14 billes de couleur (7 rouges et 7 jaunes), une bille noire portant le numéro 8 et une bille d'impact blanche. Les joueurs jouent uniquement les billes de leur groupe : les jaunes ou les rouges. Si un joueur empoche une de ses billes, il est autorisé à rejouer. La partie est gagnée par le joueur (ou l’équipe) qui, après avoir empoché les 7 billes de sa couleur, empoche la bille noire numéro 8.
 
@@ -64,29 +63,29 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 
 ---
 
-## Déroulement d'une partie
+## Déroulement d'un Match
 
 
 ## Modules IR
 
 ### Application Android
 
-#### Module de gestion de partie
+#### Module de gestion de matchs
 
-Sur le terminal mobile Android, l'application permet de paramétrer et démarrer une partie.
+Sur le terminal mobile Android, l'application permet de paramétrer un match et démarrer une ou plusieurs partie(s).
 
 Ainsi, les joueurs peuvent :
 
 - Saisir leur nom
-- Paramétrer la rencontre entre deux joueurs
-  - Saisir le nombre de manches gagnantes
+- Paramétrer le match entre deux joueurs
+  - Saisir le nombre de parties gagnantes
 - Connecter le terminal mobile Android à une table
-- Lancer la rencontre
-- Gérer et visualiser le déroulement de la rencontre
+- Lancer le match
+- Gérer et visualiser le déroulement de la partie
   - Changer automatiquement de joueur
   - Afficher le nombre de points
 
-Le terminal mobile Android, stocke chaque partie dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de la visualiser ou la purger. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écran d'affichage.
+Le terminal mobile Android, stocke chaque match dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de la visualiser ou la purger. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écran d'affichage.
 
 #### Maquette de l'application Android
 
@@ -110,31 +109,31 @@ Le terminal mobile Android, stocke chaque partie dans une base de données SQLit
     <td style="text-align: center;">x</td>
   </tr>
   <tr>
-    <td>Paraméter une rencontre</td>
+    <td>Paraméter un match</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
   </tr>
   <tr>
-    <td>Lancer une rencontre</td>
+    <td>Lancer un match</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
-    <td>Gérer le déroulement d'une rencontre</td>
+    <td>Gérer le déroulement d'un match</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
-    <td>Enregistrer les données des manches</td>
+    <td>Enregistrer les données des parties</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
     <tr>
-    <td>Consulter l'historique des rencontres</td>
+    <td>Consulter l'historique des matchs</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
@@ -201,13 +200,13 @@ CREATE TABLE IF NOT EXISTS "manches" (
 
 ### Application Qt
 
-#### Module de visualisation de partie
+#### Module de visualisation de matchs
 
 Ce module correspond à la partie “affichage” du système. Il a pour objectifs de réaliser la récupération d’informations envoyées par le terminal mobile et l’affichage de la rencontre actuelle. Il communique en Bluetooth uniquement avec le terminal mobile Android.
 
 Sur l'écran, les joueurs pourront visualiser en continu :
 
-- Le nom des joueurs (si existant), la durée écoulée de la partie
+- Le nom des joueurs (si existant), la durée écoulée du match
 - Les billes empochées et restantes
 - Le nombre de manches gagnées par chaque joueur
 - Des statistiques
@@ -242,13 +241,13 @@ Sur l'écran, les joueurs pourront visualiser en continu :
     <td style="text-align: center;"></td>
   </tr>
   <tr>
-    <td>Visualiser les données de la manche en temps réel</td>
+    <td>Visualiser les données de la partie en temps réel</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
-    <td>Visualiser les données de la rencontre</td>
+    <td>Visualiser les données du match</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
@@ -275,11 +274,13 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 > Du 29 Mars 2025 au 23 Mai 2025
 
-- [x] Paramétrer une partie
-- [ ] Lancer un partie
-- [x] Choisir un ou des joueurs existants pour lancer une partie
+- [x] Paramétrer un match
+- [ ] Lancer une ou plusieurs partie(s)
+- [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
+- [ ] Jouer une partie
+- [ ] Jouer plusieurs parties
 - [ ] Afficher les données de la partie en cours
 - [ ] Stocker les données de la partie dans la base de données
 - [ ] Liaison entre la table de billard et le terminal mobile Android
@@ -288,8 +289,6 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 ### Itération 3
 
 > Du 24 Mai 2025 au 30 Mai 2025
-
-- [ ] Jouer plusieurs matchs
 
 ### Itération 4
 
