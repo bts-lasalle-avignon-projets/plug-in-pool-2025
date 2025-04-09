@@ -39,10 +39,6 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
      * Éléments de l'interface
      */
     private Button               boutonLancerMatch;
-    private EditText             saisieNomJoueur1;
-    private EditText             saisiePrenomJoueur1;
-    private EditText             saisieNomJoueur2;
-    private EditText             saisiePrenomJoueur2;
     private AutoCompleteTextView choixNomJoueur1;
     private AutoCompleteTextView choixNomJoueur2;
     private AutoCompleteTextView choixBluetoothEcran;
