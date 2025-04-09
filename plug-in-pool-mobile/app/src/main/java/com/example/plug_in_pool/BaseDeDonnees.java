@@ -3,6 +3,7 @@ package com.example.plug_in_pool;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.Cursor;
 import android.util.Log;
 import java.util.ArrayList;
@@ -136,5 +137,19 @@ public class BaseDeDonnees extends SQLiteOpenHelper
         Log.d(TAG, "getJoueurs() " + joueurs);
 
         return joueurs;
+    }
+
+    public void ajouterJoueur(String nom, String prenom)
+    {
+        try
+        {
+            Log.d(TAG, "ajouterJoueur(" + nom + ", " + prenom + ")");
+            sqlite.execSQL("INSERT INTO joueurs (nom, prenom) VALUES ('" + nom + "', '" + prenom +
+                           "')");
+        }
+        catch(SQLiteConstraintException e)
+        {
+            Log.d(TAG, "ajouterJoueur() joueur déjà présent dans la base de données !");
+        }
     }
 }

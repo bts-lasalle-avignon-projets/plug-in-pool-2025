@@ -1,7 +1,5 @@
 package com.example.plug_in_pool;
 
-import static com.example.plug_in_pool.BlackBall.CONFIGURATION_FINI;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -20,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -46,8 +43,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private EditText             saisiePrenomJoueur1;
     private EditText             saisieNomJoueur2;
     private EditText             saisiePrenomJoueur2;
-    private AutoCompleteTextView choixJoueur1;
-    private AutoCompleteTextView choixJoueur2;
+    private AutoCompleteTextView choixNomJoueur1;
+    private AutoCompleteTextView choixNomJoueur2;
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
 
@@ -58,11 +55,10 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private BluetoothDevice  peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
 
-    Vector<Joueur> joueurs = new Vector<Joueur>();
-
-    Joueur                joueur1;
-    Joueur                joueur2;
     private BaseDeDonnees baseDonnees; //!< Classe d'accès avec la base de données
+    Vector<Joueur>        joueurs = new Vector<Joueur>();
+    // Joueur                joueur1;
+    // Joueur                joueur2;
     private ArrayList<String>
       nomJoueurs; //!< Tableau contenant les noms et prénoms des joueurs dans la base de données
 
@@ -76,7 +72,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         Log.d(TAG, "onCreate()");
 
         initialiserVue();
-        ajouterJoueurs();
+
         demanderPermissionsBluetooth();
         configurerBluetooth();
     }
@@ -85,29 +81,31 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
+        Log.d(TAG, "onResume()");
+
         if(ActivityCompat.checkSelfPermission(this,
                                               android.Manifest.permission.BLUETOOTH_CONNECT) ==
            PackageManager.PERMISSION_GRANTED)
         {
             listerPeripheriquesBluetooth();
         }
-        jouerMatch();
+
+        joueurs.clear();
     }
 
     private void initialiserVue()
     {
+        Log.d(TAG, "initialiserVue()");
         boutonLancerMatch   = findViewById(R.id.boutonLancerMatch);
-        choixJoueur1        = findViewById(R.id.choixJoueur1);
-        choixJoueur2        = findViewById(R.id.choixJoueur2);
-        saisieNomJoueur1    = findViewById(R.id.saisieNomJoueur1);
-        saisiePrenomJoueur1 = findViewById(R.id.saisiePrenomJoueur1);
-        saisieNomJoueur2    = findViewById(R.id.saisieNomJoueur2);
-        saisiePrenomJoueur2 = findViewById(R.id.saisiePrenomJoueur2);
+        choixNomJoueur1     = findViewById(R.id.choixNomJoueur1);
+        choixNomJoueur2     = findViewById(R.id.choixNomJoueur2);
         choixBluetoothEcran = findViewById(R.id.choixBluetoothEcran);
         choixBluetoothTable = findViewById(R.id.choixBluetoothTable);
 
         baseDonnees = BaseDeDonnees.getInstance(this);
-        nomJoueurs  = baseDonnees.getNomsJoueurs();
+
+        initialiserListeJoueurs();
+        jouerMatch();
     }
 
     private void demanderPermissionsBluetooth()
@@ -236,155 +234,102 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
 
-    private void ajouterJoueurs()
+    private void initialiserListeJoueurs()
     {
+        Log.d(TAG, "ajouterJoueurs()");
         nomJoueurs = baseDonnees.getNomsJoueurs();
         ArrayAdapter<String> listeJoueurs =
-                new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomJoueurs);
-        choixJoueur1.setAdapter(listeJoueurs);
-        choixJoueur2.setAdapter(listeJoueurs);
+          new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomJoueurs);
+        choixNomJoueur1.setAdapter(listeJoueurs);
+        choixNomJoueur2.setAdapter(listeJoueurs);
     }
+
     private boolean ajouterJoueur1()
     {
-        boolean etat = false;
-        String joueur1Selection = choixJoueur1.getText().toString().trim();
-        String[] joueur1Separer = joueur1Selection.split(" ");
-        if (joueur1Separer.length == 2)
+        String nomJoueur       = choixNomJoueur1.getText().toString().trim();
+        String[] donneesJoueur = nomJoueur.split(" ");
+        if(donneesJoueur.length == 2)
         {
-            String prenom1 = joueur1Separer[0]; //!< Prénom du joueur 1
-            String nom1 = joueur1Separer[1]; //!< Nom du joueur 1
-            joueur1 = new Joueur(nom1, prenom1);
-            joueurs.add(joueur1);
-            Log.d(TAG, "Joueur 1 créé : " + joueur1.getPrenom() + " " + joueur1.getNom());
-            etat = true;
-            envoyerDonnees(CONFIGURATION_FINI);
+            String prenom = donneesJoueur[0];
+            String nom    = donneesJoueur[1];
+            Joueur joueur = new Joueur(nom, prenom);
+            joueurs.add(joueur);
+            Log.d(TAG, "ajouterJoueur1() " + joueur.getPrenom() + " " + joueur.getNom());
+            baseDonnees.ajouterJoueur(nom, prenom);
+            return true;
         }
-        else
-        {
-            etat = false;
-        }
-        return etat;
+
+        return false;
     }
+
     private boolean ajouterJoueur2()
     {
-        boolean etat = false;
-        String joueur2Selection = choixJoueur2.getText().toString().trim();
-        String[] joueur2Separer = joueur2Selection.split(" ");
-        if (joueur2Separer.length == 2)
+        String nomJoueur       = choixNomJoueur2.getText().toString().trim();
+        String[] donneesJoueur = nomJoueur.split(" ");
+        if(donneesJoueur.length == 2)
         {
-            String prenom2 = joueur2Separer[0]; //!< Prénom du joueur 2
-            String nom2 = joueur2Separer[1]; //!< Nom du joueur 2
-            joueur2 = new Joueur(nom2, prenom2);
-            joueurs.add(joueur2);
-            Log.d(TAG, "Joueur 2 créé : " + joueur2.getPrenom() + " " + joueur2.getNom());
-            etat = true;
-            envoyerDonnees(CONFIGURATION_FINI);
-        }
-        else
-        {
-            etat = false;
-        }
-        return etat;
-    }
-
-    private boolean creerJoueur1()
-    {
-        String nomJoueur1    = saisieNomJoueur1.getText().toString().trim();
-        String prenomJoueur1 = saisiePrenomJoueur1.getText().toString().trim();
-
-        if ((nomJoueur1.length() != 0) && (prenomJoueur1.length() != 0))
-        {
-            joueur1 = new Joueur(nomJoueur1, prenomJoueur1);
-            joueurs.add(joueur1);
-            envoyerDonnees(CONFIGURATION_FINI);
+            String prenom = donneesJoueur[0];
+            String nom    = donneesJoueur[1];
+            Joueur joueur = new Joueur(nom, prenom);
+            joueurs.add(joueur);
+            Log.d(TAG, "ajouterJoueur2() " + joueur.getPrenom() + " " + joueur.getNom());
+            baseDonnees.ajouterJoueur(nom, prenom);
             return true;
         }
-        else
-        {
-            return false;
-        }
-    }
-    private boolean creerJoueur2()
-    {
-        String nomJoueur2    = saisieNomJoueur2.getText().toString().trim();
-        String prenomJoueur2 = saisiePrenomJoueur2.getText().toString().trim();
 
-        if ((nomJoueur2.length() != 0) && (prenomJoueur2.length() != 0))
-        {
-            joueur2 = new Joueur(nomJoueur2, prenomJoueur2);
-            joueurs.add(joueur2);
-            envoyerDonnees(CONFIGURATION_FINI);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    private void envoyerDonnees(int message)
-    {
-        if(socketBluetooth != null)
-        {
-            try
-            {
-                OutputStream fluxSortie = socketBluetooth.getOutputStream();
-                fluxSortie.write(message);
-                Log.d("Bluetooth", "Données envoyées : " + message);
-            }
-            catch(IOException e)
-            {
-                Log.e("Bluetooth", "Erreur lors de l'envoi", e);
-            }
-        }
-    }
-    private void creationDesJoueurs()
-    {
-        String combinaison = creerCombinaison();
-        logCombinaison(combinaison);
+        return false;
     }
 
-    private String creerCombinaison()
-    {
-        return (ajouterJoueur1() ? "1" : "0") +
-                (ajouterJoueur2() ? "1" : "0") +
-                (creerJoueur1()   ? "1" : "0") +
-                (creerJoueur2()   ? "1" : "0");
-    }
-
-    private void logCombinaison(String combinaison)
-    {
-        switch (combinaison)
-        {
-            case "1100":
-                Log.d(TAG, "Ajout de 2 joueurs");
-                break;
-            case "0011":
-                Log.d(TAG, "Création de 2 joueurs");
-                break;
-            case "1001":
-                Log.d(TAG, "Ajout joueur 1 + Création joueur 2");
-                break;
-            case "0110":
-                Log.d(TAG, "Création joueur 1 + Ajout joueur 2");
-                break;
-            default:
-                Log.d(TAG, "Combinaison inconnue : " + combinaison);
-                break;
-        }
-    }
     private void jouerMatch()
     {
         boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                creationDesJoueurs();
-                Intent changerVue =
-                  new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
-                changerVue.putExtra("joueur1", joueur1);
-                changerVue.putExtra("joueur2", joueur2);
-                startActivity(changerVue);
+                if(estMatchConfigure())
+                {
+                    Log.d(TAG,
+                          "jouerMatch() " + choixNomJoueur1.getText().toString() + " vs " +
+                            choixNomJoueur2.getText().toString());
+                    Log.d(TAG, "jouerMatch() écran : " + choixBluetoothEcran.getText().toString());
+                    Log.d(TAG, "jouerMatch() table : " + choixBluetoothTable.getText().toString());
+
+                    ajouterJoueur1();
+                    ajouterJoueur2();
+                    Log.d(TAG, "jouerMatch() nbJoueurs : " + joueurs.size());
+                    Intent changerVue =
+                      new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
+                    changerVue.putExtra("joueur1", joueurs.elementAt(0));
+                    changerVue.putExtra("joueur2", joueurs.elementAt(1));
+                    startActivity(changerVue);
+                }
+                else
+                {
+                    Log.d(TAG, "jouerMatch() configuration incomplète ou invalide !");
+                }
             }
         });
+    }
+
+    private Boolean estMatchConfigure()
+    {
+        Log.d(TAG, "estMatchConfigure()");
+
+        // il faut un nom de joueur 1
+        if(choixNomJoueur1.getText().toString().isEmpty())
+            return false;
+
+        // il faut un nom de joueur 2
+        if(choixNomJoueur2.getText().toString().isEmpty())
+            return false;
+
+        // il faut que le nom de joueur 1 soit différent du nom de joueur 2
+        if(choixNomJoueur1.getText().toString().equals(choixNomJoueur2.getText().toString()))
+            return false;
+
+        Log.d(TAG,
+              "estMatchConfigure() joueur1 = " + choixNomJoueur1.getText().toString() +
+                " - joueur2 = " + choixNomJoueur2.getText().toString());
+        return true;
     }
 }
