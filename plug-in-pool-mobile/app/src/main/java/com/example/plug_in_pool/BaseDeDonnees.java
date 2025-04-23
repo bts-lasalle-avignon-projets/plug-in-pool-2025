@@ -34,7 +34,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
       + "idMatch INTEGER PRIMARY KEY AUTOINCREMENT, "
       + "idJoueur1 INTEGER NOT NULL, "
       + "idJoueur2 INTEGER NOT NULL, "
-      + "nbManchesGagnantes INTEGER DEFAULT 1, "
+      + "nbPartiesGagnantes INTEGER DEFAULT 1, "
       + "fini INTEGER DEFAULT 0, "
       + "horodatage DATETIME NOT NULL, "
       + "FOREIGN KEY (idJoueur1) REFERENCES joueurs(idJoueur) ON DELETE CASCADE, "

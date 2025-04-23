@@ -24,7 +24,7 @@
             android:name=".ActiviteHistorique"
             android:exported="false" />
         <activity
-            android:name=".ActiviteGestionMatch"
+            android:name=".ActiviteGestionPartie"
             android:exported="false" />
         <activity
             android:name=".ActiviteConfigurationMatch"

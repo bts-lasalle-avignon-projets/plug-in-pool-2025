@@ -294,7 +294,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
                     ajouterJoueur2();
                     Log.d(TAG, "jouerMatch() nbJoueurs : " + joueurs.size());
                     Intent changerVue =
-                      new Intent(ActiviteConfigurationMatch.this, ActiviteGestionMatch.class);
+                      new Intent(ActiviteConfigurationMatch.this, ActiviteGestionPartie.class);
                     changerVue.putExtra("joueur1", joueurs.elementAt(0));
                     changerVue.putExtra("joueur2", joueurs.elementAt(1));
                     startActivity(changerVue);

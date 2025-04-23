@@ -2,27 +2,26 @@ package com.example.plug_in_pool;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActiviteGestionMatch extends AppCompatActivity
+public class ActiviteGestionPartie extends AppCompatActivity
 {
     /**
      * Constantes
      */
     private TextView textViewJoueur1;
     private TextView textViewJoueur2;
-    private static final String TAG = "_ActiviteGestionMatch"; //!< TAG pour les logs
+    private static final String TAG = "_ActiviteGestionPartie"; //!< TAG pour les logs
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_gestion_match);
+        setContentView(R.layout.activity_gestion_partie);
         initialiserVues();
         recupererJoueurs();
     }
