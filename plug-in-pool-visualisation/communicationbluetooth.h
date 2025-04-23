@@ -17,6 +17,8 @@
 #define TRAME_EMPOCHAGE         'E'
 
 #define POSITION_TYPE_TRAME 0
+#define POSITION_JOUEUR_1   2
+#define POSITION_JOUEUR_2   3
 
 class CommunicationBluetooth : public QObject
 {
@@ -33,7 +35,7 @@ class CommunicationBluetooth : public QObject
 
   signals:
     void clientConnecte();
-    void trameRencontreRecue();
+    void trameRencontreRecue(QString joueur1, QString joueur2);
 
   private slots:
     void nouveauClient();

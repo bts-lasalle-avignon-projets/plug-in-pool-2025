@@ -44,6 +44,8 @@ class Match
 
   public:
     Match(const QString& nom, int nbManchesGagnantes);
+
+    void enregistrerJoueurs(QList<Joueur> joueurs);
 };
 
 #endif // MATCH_H

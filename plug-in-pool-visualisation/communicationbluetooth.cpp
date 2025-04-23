@@ -75,20 +75,28 @@ void CommunicationBluetooth::lireTrame()
             switch(type.at(0).toLatin1())
             {
                 case TRAME_RENCONTRE:
-                    emit trameRencontreRecue();
+                {
+                    QString joueur1 = contenuTrame[POSITION_JOUEUR_1];
+                    QString joueur2 = contenuTrame[POSITION_JOUEUR_2];
+                    emit    trameRencontreRecue(joueur1, joueur2);
                     break;
-
+                }
                 case TRAME_MANCHE:
+                {
                     break;
-
+                }
                 case TRAME_CHANGEMENT_JOUEUR:
+                {
                     break;
-
+                }
                 case TRAME_EMPOCHAGE:
+                {
                     break;
-
+                }
                 default:
+                {
                     break;
+                }
             }
         }
     }

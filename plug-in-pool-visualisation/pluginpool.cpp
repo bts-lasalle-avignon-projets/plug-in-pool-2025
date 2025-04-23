@@ -43,23 +43,38 @@ void PlugInPool::bluetoothConnecte()
     }
 }
 
-void PlugInPool::configurationRecu()
+void PlugInPool::configurationRecu(QString joueur1, QString joueur2)
 {
+    qDebug() << "Joueurs reçus :" << joueur1 << "et" << joueur2;
+
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
-    if(ecranAccueil && ecranAccueil->getConfigurationPartieLabel())
+    EcranMatch*   ecranMatch   = ecranPlugInPool->getEcranMatch();
+    QLabel*       configurationPartieStyle =
+      ecranAccueil->getConfigurationPartieLabel();
+
+    if(ecranAccueil && configurationPartieStyle)
     {
-        ecranAccueil->getConfigurationPartieLabel()->setText(
-          "Configuration Terminée");
-        ecranAccueil->getConfigurationPartieLabel()->setProperty("class",
-                                                                 "configure");
-        ecranAccueil->getConfigurationPartieLabel()->style()->unpolish(
-          ecranAccueil->getConfigurationPartieLabel());
-        ecranAccueil->getConfigurationPartieLabel()->style()->polish(
-          ecranAccueil->getConfigurationPartieLabel());
-        ecranAccueil->getConfigurationPartieLabel()->update();
+        ecranMatch->getJoueurUnLabel()->setText(joueur1);
+        ecranMatch->getJoueurDeuxLabel()->setText(joueur2);
+
+        configurationPartieStyle->setText("Configuration Terminée");
+
+        mettreAJourStyleConfigurationPartie(configurationPartieStyle);
+
         QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
                            this,
                            &PlugInPool::changerEcranMatch);
+    }
+}
+
+void PlugInPool::mettreAJourStyleConfigurationPartie(QLabel* configurationStyle)
+{
+    if(configurationStyle)
+    {
+        configurationStyle->setProperty("class", "configure");
+        configurationStyle->style()->unpolish(configurationStyle);
+        configurationStyle->style()->polish(configurationStyle);
+        configurationStyle->update();
     }
 }
 
@@ -67,7 +82,9 @@ void PlugInPool::changerEcranMatch()
 {
     if(ecranPlugInPool)
     {
+        EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
         qDebug() << "Passage à l'écran de match !";
         ecranPlugInPool->afficherEcranMatch();
+        ecranMatch->demarrerChronometre();
     }
 }

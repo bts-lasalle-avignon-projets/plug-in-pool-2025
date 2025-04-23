@@ -81,3 +81,8 @@ EcranAccueil* EcranPlugInPool::getEcranAccueil() const
 {
     return ecranAccueil;
 }
+
+EcranMatch* EcranPlugInPool::getEcranMatch() const
+{
+    return ecranMatch;
+}

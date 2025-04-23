@@ -105,6 +105,16 @@ QLabel#affichageJoueurDeux {
     padding: 0px;
 }
 
+QLabel#labelChronometre {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
 /* Écran Fin */
 QWidget#ecranFin {
     background-image: url(":/ecranFinQT.png");

@@ -10,11 +10,18 @@ class EcranMatch : public QObject
     QWidget* ecran;
     QLabel*  affichageJoueurUn;
     QLabel*  affichageJoueurDeux;
+    QTimer*  chronometre;
+    QLabel*  labelChronometre;
+    int      secondesEcoulees;
 
   public:
     explicit EcranMatch(QWidget* parent = nullptr);
     virtual ~EcranMatch();
     QWidget* getEcran() const;
+
+    QLabel* getJoueurUnLabel() const;
+    QLabel* getJoueurDeuxLabel() const;
+    void    demarrerChronometre();
 
   signals:
 };

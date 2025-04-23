@@ -18,6 +18,7 @@ class PlugInPool : public QObject
     Match*                  match;
     EcranPlugInPool*        ecranPlugInPool;
     EcranAccueil*           ecranAccueil;
+    EcranMatch*             ecranMatch;
 
   public:
     PlugInPool(QObject* parent = nullptr);
@@ -26,7 +27,8 @@ class PlugInPool : public QObject
   private slots:
     void bluetoothConnecte();
     void changerEcranMatch();
-    void configurationRecu();
+    void configurationRecu(QString joueur1, QString joueur2);
+    void mettreAJourStyleConfigurationPartie(QLabel* configurationStyle);
 };
 
 #endif // PLUGINPOOL_H
