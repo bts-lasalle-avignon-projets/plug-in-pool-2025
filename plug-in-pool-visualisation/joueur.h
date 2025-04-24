@@ -22,10 +22,14 @@ class Joueur
     QList<Empoche> empochees;
 
   public:
-    Joueur(const QString& nom,
-           const QString& prenom,
-           int            id,
-           CouleurBille   couleur);
+    Joueur(const QString& nom, const QString& prenom, int id);
+
+    QString      getNom() const;
+    QString      getPrenom() const;
+    int          getId() const;
+    int          getPoints() const;
+    CouleurBille getCouleur() const;
+    int          getNbBillesRestantes() const;
 };
 
 #endif // JOUEUR_H

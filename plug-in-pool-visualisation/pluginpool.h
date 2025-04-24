@@ -5,6 +5,7 @@
 #include "communicationbluetooth.h"
 #include "ecranpluginpool.h"
 #include "QTimer"
+#include "match.h"
 
 #define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
 
@@ -27,7 +28,7 @@ class PlugInPool : public QObject
   private slots:
     void bluetoothConnecte();
     void changerEcranMatch();
-    void configurationRecu(QString joueur1, QString joueur2);
+    void configurationRecu(int numeroTable, QString joueur1, QString joueur2);
     void mettreAJourStyleConfigurationPartie(QLabel* configurationStyle);
 };
 

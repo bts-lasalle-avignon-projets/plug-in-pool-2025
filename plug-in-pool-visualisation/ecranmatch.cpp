@@ -4,27 +4,46 @@
 EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
-    affichageJoueurUn   = new QLabel("Joueur 1", ecran);
-    affichageJoueurDeux = new QLabel("Joueur 2", ecran);
-    chronometre         = new QTimer(ecran);
-    labelChronometre    = new QLabel("00:00", ecran);
+    affichageJoueurUn         = new QLabel("Joueur 1", ecran);
+    affichageJoueurDeux       = new QLabel("Joueur 2", ecran);
+    chronometre               = new QTimer(ecran);
+    compteAReboursManche      = new QTimer(ecran);
+    labelChronometre          = new QLabel("00:00", ecran);
+    labelCompteAReboursManche = new QLabel("01:30", ecran);
+    affichageNumeroTable      = new QLabel("Table n°", ecran);
+    affichageNomJeu           = new QLabel("PlugInPool", ecran);
 
     affichageJoueurUn->setObjectName("affichageJoueurUn");
     affichageJoueurDeux->setObjectName("affichageJoueurDeux");
     chronometre->setObjectName("chronometre");
     labelChronometre->setObjectName("labelChronometre");
+    compteAReboursManche->setObjectName("compteAReboursManche");
+    labelCompteAReboursManche->setObjectName("labelCompteAReboursManche");
+    affichageNumeroTable->setObjectName("affichageNumeroTable");
+    affichageNomJeu->setObjectName("affichageNomJeu");
 
-    QVBoxLayout* ecranMatch                    = new QVBoxLayout(ecran);
-    QHBoxLayout* espaceJoueursEtCompteARebours = new QHBoxLayout();
+    QVBoxLayout* ecranMatch                     = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceJoueursEtCompteARebours  = new QHBoxLayout();
+    QHBoxLayout* espaceTableBillard             = new QHBoxLayout();
+    QHBoxLayout* espaceNumeroTableEtChronometre = new QHBoxLayout();
 
     espaceJoueursEtCompteARebours->addWidget(affichageJoueurUn);
     espaceJoueursEtCompteARebours->addStretch();
-    espaceJoueursEtCompteARebours->addWidget(labelChronometre);
+    espaceJoueursEtCompteARebours->addWidget(labelCompteAReboursManche);
     espaceJoueursEtCompteARebours->addStretch();
     espaceJoueursEtCompteARebours->addWidget(affichageJoueurDeux);
 
+    espaceNumeroTableEtChronometre->addWidget(affichageNumeroTable);
+    espaceNumeroTableEtChronometre->addStretch();
+    espaceNumeroTableEtChronometre->addWidget(labelChronometre);
+    espaceNumeroTableEtChronometre->addStretch();
+    espaceNumeroTableEtChronometre->addWidget(affichageNomJeu);
+
     ecranMatch->addLayout(espaceJoueursEtCompteARebours);
     ecranMatch->addStretch();
+    ecranMatch->addLayout(espaceTableBillard);
+    ecranMatch->addStretch();
+    ecranMatch->addLayout(espaceNumeroTableEtChronometre);
 }
 
 EcranMatch::~EcranMatch()
@@ -47,6 +66,11 @@ QLabel* EcranMatch::getJoueurDeuxLabel() const
 {
     qDebug() << "Adresse QLabel (affichageJoueurDeux): " << affichageJoueurDeux;
     return affichageJoueurDeux;
+}
+
+QLabel* EcranMatch::getNumeroTableLabel() const
+{
+    return affichageNumeroTable;
 }
 
 void EcranMatch::demarrerChronometre()

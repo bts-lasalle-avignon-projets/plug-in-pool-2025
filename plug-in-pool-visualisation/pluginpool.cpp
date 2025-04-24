@@ -9,6 +9,8 @@ PlugInPool::PlugInPool(QObject* parent) :
 {
     qDebug() << Q_FUNC_INFO << this << "parent" << parent;
 
+    match = new Match("Match test");
+
     connect(communicationBluetooth,
             &CommunicationBluetooth::clientConnecte,
             this,
@@ -43,9 +45,13 @@ void PlugInPool::bluetoothConnecte()
     }
 }
 
-void PlugInPool::configurationRecu(QString joueur1, QString joueur2)
+void PlugInPool::configurationRecu(int     numeroTable,
+                                   QString joueur1,
+                                   QString joueur2)
 {
     qDebug() << "Joueurs reçus :" << joueur1 << "et" << joueur2;
+
+    match->enregistrerJoueurs(joueur1, joueur2);
 
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
     EcranMatch*   ecranMatch   = ecranPlugInPool->getEcranMatch();
@@ -56,6 +62,8 @@ void PlugInPool::configurationRecu(QString joueur1, QString joueur2)
     {
         ecranMatch->getJoueurUnLabel()->setText(joueur1);
         ecranMatch->getJoueurDeuxLabel()->setText(joueur2);
+        ecranMatch->getNumeroTableLabel()->setText(
+          "Table n°" + QString::number(numeroTable));
 
         configurationPartieStyle->setText("Configuration Terminée");
 

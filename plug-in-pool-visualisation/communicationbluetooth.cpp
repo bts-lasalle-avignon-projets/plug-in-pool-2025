@@ -76,9 +76,11 @@ void CommunicationBluetooth::lireTrame()
             {
                 case TRAME_RENCONTRE:
                 {
+                    int numeroTable =
+                      contenuTrame[POSITION_NUMERO_TABLE].toInt();
                     QString joueur1 = contenuTrame[POSITION_JOUEUR_1];
                     QString joueur2 = contenuTrame[POSITION_JOUEUR_2];
-                    emit    trameRencontreRecue(joueur1, joueur2);
+                    emit    trameRencontreRecue(numeroTable, joueur1, joueur2);
                     break;
                 }
                 case TRAME_MANCHE:
