@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS "matchs" (
     "nom"                   VARCHAR(64),
     "idJoueur1"             INTEGER NOT NULL,
     "idJoueur2"             INTEGER NOT NULL,
-    "nbManchesGagnantes"    INTEGER DEFAULT 1,
+    "nbPartiesGagnantes"    INTEGER DEFAULT 1,
     "fini"                  INTEGER DEFAULT 0,
     "horodatage"            DATETIME NOT NULL,
     PRIMARY KEY("idMatch" AUTOINCREMENT),
