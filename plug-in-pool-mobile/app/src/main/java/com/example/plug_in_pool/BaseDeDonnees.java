@@ -5,8 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.Cursor;
+import android.icu.text.SimpleDateFormat;
 import android.util.Log;
+
+import androidx.annotation.LongDef;
+
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class BaseDeDonnees extends SQLiteOpenHelper
 {
@@ -151,5 +157,50 @@ public class BaseDeDonnees extends SQLiteOpenHelper
         {
             Log.d(TAG, "ajouterJoueur() joueur déjà présent dans la base de données !");
         }
+    }
+
+    public void creerMatch(int idJoueur1, int idJoueur2, int nbPartiesGagnantes)
+    {
+        String horodatage = obtenirHorodatageActuel();
+        try
+        {
+            Log.d(TAG, "ajouterMatch(" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", " + horodatage + ")");
+            sqlite.execSQL("INSERT INTO matchs (idJoueur1, idJoueur2, nbPartiesGagnantes, fini, horodatage) " +
+                    "VALUES (" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", 0, '" + horodatage + "')");
+        }
+        catch (SQLiteConstraintException e)
+        {
+            Log.d(TAG, "ajouterMatch() : erreur de contrainte, peut-être une clé étrangère invalide !");
+        }
+    }
+    public String obtenirHorodatageActuel()
+    {
+        SimpleDateFormat horodatage = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return horodatage.format(new Date());
+    }
+    public int getIdJoueur(String nom, String prenom)
+    {
+        int idJoueur = -1;
+
+        try
+        {
+            Cursor curseur = sqlite.rawQuery(
+                    "SELECT idJoueur FROM joueurs WHERE nom = ? AND prenom = ?",
+                    new String[]{nom, prenom}
+            );
+
+            if (curseur.moveToFirst())
+            {
+                idJoueur = curseur.getInt(0);
+            }
+
+            curseur.close();
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG, "getIdJoueur() : erreur - " + e.getMessage());
+        }
+
+        return idJoueur;
     }
 }

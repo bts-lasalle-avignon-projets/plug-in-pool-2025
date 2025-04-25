@@ -13,4 +13,5 @@
     <string name="texteChoixBluetoothTable">Choisir une table</string>
     <string name="choisirLiaisonBluetooth">Saisir le flux Bluetooth et choisir dans la liste</string>
     <string name="boutonLancerMatch">Lancer un match</string>
+    <string name="nbParties">Choisir le nombre de parties</string>
 </resources>

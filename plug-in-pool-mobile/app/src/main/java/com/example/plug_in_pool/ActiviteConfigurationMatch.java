@@ -276,6 +276,61 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         return false;
     }
 
+    private int getValeurSaisie()
+    {
+        EditText nbParties = findViewById(R.id.choixNbParties);
+        String choixUtilisateur = nbParties.getText().toString().trim();
+
+        if (choixUtilisateur.isEmpty())
+        {
+            return 1;
+        }
+
+        try {
+            return Integer.parseInt(choixUtilisateur);
+        } catch (NumberFormatException e)
+        {
+            Log.d("getValeurSaisie", "Entrée non valide : " + choixUtilisateur);
+            return 1;
+        }
+    }
+    private void ajoutsBaseDeDonnees()
+    {
+        if (!ajouterLesDeuxJoueurs())
+        {
+            Log.d(TAG, "Erreur : Les deux joueurs doivent être correctement saisis (prénom nom).");
+            return;
+        }
+
+        creerEtLoggerLeMatch();
+    }
+
+    private boolean ajouterLesDeuxJoueurs()
+    {
+        return ajouterJoueur1() && ajouterJoueur2();
+    }
+
+    private void creerEtLoggerLeMatch()
+    {
+        int nbParties = getValeurSaisie();
+
+        Joueur joueur1 = joueurs.get(0);
+        Joueur joueur2 = joueurs.get(1);
+
+        int id1 = baseDonnees.getIdJoueur(joueur1.getNom(), joueur1.getPrenom());
+        int id2 = baseDonnees.getIdJoueur(joueur2.getNom(), joueur2.getPrenom());
+
+        if (id1 != -1 && id2 != -1)
+        {
+            baseDonnees.creerMatch(id1, id2, nbParties);
+            Log.d(TAG, "id1 : " + id1 + ", id2 : " + id2 + ", Nombre de parties : " + nbParties);
+        }
+        else
+        {
+            Log.d(TAG, "Un des joueurs est introuvable dans la base !");
+        }
+    }
+
     private void jouerMatch()
     {
         boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
@@ -289,14 +344,14 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
                             choixNomJoueur2.getText().toString());
                     Log.d(TAG, "jouerMatch() écran : " + choixBluetoothEcran.getText().toString());
                     Log.d(TAG, "jouerMatch() table : " + choixBluetoothTable.getText().toString());
-
-                    ajouterJoueur1();
-                    ajouterJoueur2();
+                    ajoutsBaseDeDonnees();
+                    int nbParties = getValeurSaisie();
                     Log.d(TAG, "jouerMatch() nbJoueurs : " + joueurs.size());
                     Intent changerVue =
                       new Intent(ActiviteConfigurationMatch.this, ActiviteGestionPartie.class);
                     changerVue.putExtra("joueur1", joueurs.elementAt(0));
                     changerVue.putExtra("joueur2", joueurs.elementAt(1));
+                    changerVue.putExtra("nbParties", nbParties);
                     startActivity(changerVue);
                 }
                 else

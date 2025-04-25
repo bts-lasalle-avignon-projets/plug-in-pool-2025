@@ -54,4 +54,9 @@ public class Joueur implements Serializable
     {
         Log.d("Joueur", "Nom : " + nom + " | Prénom : " + prenom);
     }
+
+    @Override
+    public String toString() {
+        return nom + prenom;
+    }
 }
