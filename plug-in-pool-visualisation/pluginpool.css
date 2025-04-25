@@ -145,6 +145,58 @@ QLabel#affichageNomJeu {
     padding: 0px;
 }
 
+QLabel#bouleRouge {
+    background-image: url(:/bouleRougeQT.png);
+    background-color: red;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#bouleJaune {
+    background-image: url(:/bouleJauneQT.png);
+    background-color: red;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#bouleBlanche {
+    background-image: url(:/bouleBlancheQT.png);
+    background-color: red;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#bouleNoir {
+    background-image: url(:/bouleNoirQT.png);
+    background-color: red;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* Écran Fin */
 QWidget#ecranFin {
     background-image: url(":/ecranFinQT.png");
