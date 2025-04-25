@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">plug-in-pool</string>
+    <string name="logoCampus">Logo Campus La Salle Avignon</string>
+    <string name="imageProjet">Photo du projet</string>
+    <string name="nomDuProjet">Plug In Pool</string>
+    <string name="boutonVersHistorique">Historique des matchs</string>
+    <string name="boutonVersConfiguration">Configurer un match</string>
+    <string name="texteSelectionJoueur1">Joueur n°1</string>
+    <string name="texteSelectionJoueur2">Joueur n°2</string>
+    <string name="choisirUnJoueurEnregistrer1">Saisir le nom du joueur et/ou choisir dans la liste</string>
+    <string name="choisirUnJoueurEnregistrer2">Saisir le nom du joueur et/ou choisir dans la liste</string>
+    <string name="nbParties">Choisir le nombre de parties</string>
+    <string name="texteChoixBluetoothEcran">Choisir un écran</string>
+    <string name="texteChoixBluetoothTable">Choisir une table</string>
+    <string name="choisirLiaisonBluetooth">Saisir le flux Bluetooth et choisir dans la liste</string>
+    <string name="boutonLancerMatch">Lancer un match</string>
+    <string name="boutonLancerPartie">Lancer une partie</string>
 </resources>

@@ -6,11 +6,14 @@
 
 package com.example.plug_in_pool;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * @class EcranPrincipal
@@ -26,6 +29,8 @@ public class ActivitePlugInPool extends AppCompatActivity
     /**
      * Ressources GUI
      */
+    Button boutonConfigurationRencontre;
+    Button boutonHistorique;
 
     /**
      * @brief Méthode appelée à la création de l'activité
@@ -38,6 +43,8 @@ public class ActivitePlugInPool extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Log.d(TAG, "onCreate()");
+
+        initialiserVue();
     }
 
     /**
@@ -91,5 +98,38 @@ public class ActivitePlugInPool extends AppCompatActivity
     {
         super.onDestroy();
         Log.d(TAG, "onDestroy()");
+    }
+
+    private void initialiserVue()
+    {
+        boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
+        boutonHistorique             = findViewById(R.id.historique);
+        allerConfigurerActivite();
+        allerHistoriqueActivite();
+    }
+
+    private void allerConfigurerActivite()
+    {
+        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue =
+                  new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
+                startActivity(changerDeVue);
+            }
+        });
+    }
+
+    private void allerHistoriqueActivite()
+    {
+        boutonHistorique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteHistorique.class);
+                startActivity(changerDeVue);
+            }
+        });
     }
 }
