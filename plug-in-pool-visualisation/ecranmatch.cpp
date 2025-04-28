@@ -4,6 +4,7 @@
 EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
+
     affichageJoueurUn         = new QLabel("Joueur 1", ecran);
     affichageJoueurDeux       = new QLabel("Joueur 2", ecran);
     chronometre               = new QTimer(ecran);
@@ -25,12 +26,13 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     QVBoxLayout* ecranMatch                     = new QVBoxLayout(ecran);
     QHBoxLayout* espaceJoueursEtCompteARebours  = new QHBoxLayout();
     QHBoxLayout* espaceBoules                   = new QHBoxLayout();
-    QHBoxLayout* espaceTableBillard             = new QHBoxLayout();
+    espaceTableBillard                          = new QGridLayout();
     QHBoxLayout* espaceNumeroTableEtChronometre = new QHBoxLayout();
-    espaceBoulesRouges                          = new QHBoxLayout();
-    espaceBoulesJaunes                          = new QHBoxLayout();
-    espaceBouleBlanche                          = new QHBoxLayout();
-    espaceBouleNoir                             = new QHBoxLayout();
+
+    espaceBoulesRouges = new QHBoxLayout();
+    espaceBoulesJaunes = new QHBoxLayout();
+    espaceBouleBlanche = new QHBoxLayout();
+    espaceBouleNoir    = new QHBoxLayout();
 
     espaceJoueursEtCompteARebours->addWidget(affichageJoueurUn);
     espaceJoueursEtCompteARebours->addStretch();
@@ -63,6 +65,7 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     ecranMatch->addLayout(espaceNumeroTableEtChronometre);
 
     genererBoules();
+    initialiserPochesTable();
 }
 
 EcranMatch::~EcranMatch()
@@ -144,4 +147,58 @@ void EcranMatch::genererBoules()
     bouleNoir->setObjectName("bouleNoir");
     bouleNoir->show();
     espaceBouleNoir->addWidget(bouleNoir);
+}
+
+void EcranMatch::initialiserPochesTable()
+{
+    espaceTableBillard->setRowStretch(0, 1);
+    espaceTableBillard->setRowStretch(1, 0);
+    espaceTableBillard->setRowStretch(2, 1);
+
+    for(int i = 0; i < 7; ++i)
+    {
+        if(i == 3)
+        {
+            espaceTableBillard->setColumnStretch(i, 0);
+        }
+        else
+        {
+            espaceTableBillard->setColumnStretch(i, 1);
+        }
+    }
+
+    for(int i = 0; i < NB_POCHES; ++i)
+    {
+        bouleRougeImagePoche[i]      = new QLabel(ecran);
+        bouleJauneImagePoche[i]      = new QLabel(ecran);
+        compteurBoulesRougesPoche[i] = new QLabel("0", ecran);
+        compteurBoulesJaunesPoche[i] = new QLabel("0", ecran);
+
+        bouleRougeImagePoche[i]->setObjectName(
+          QString("bouleRougeImagePoche%1").arg(i));
+        compteurBoulesRougesPoche[i]->setObjectName(
+          QString("compteurBoulesRougesPoche%1").arg(i));
+        bouleJauneImagePoche[i]->setObjectName(
+          QString("bouleJauneImagePoche%1").arg(i));
+        compteurBoulesJaunesPoche[i]->setObjectName(
+          QString("compteurBoulesJaunesPoche%1").arg(i));
+
+        bouleRougeImagePoche[i]->show();
+        compteurBoulesRougesPoche[i]->show();
+        bouleJauneImagePoche[i]->show();
+        compteurBoulesJaunesPoche[i]->show();
+
+        espaceTableBillard->addWidget(bouleRougeImagePoche[i],
+                                      lignesPoches[i],
+                                      colonnesPoches[i]);
+        espaceTableBillard->addWidget(compteurBoulesRougesPoche[i],
+                                      lignesPoches[i],
+                                      colonnesPoches[i] + 1);
+        espaceTableBillard->addWidget(bouleJauneImagePoche[i],
+                                      lignesPoches[i],
+                                      colonnesPoches[i] + 1);
+        espaceTableBillard->addWidget(compteurBoulesJaunesPoche[i],
+                                      lignesPoches[i],
+                                      colonnesPoches[i] + 1);
+    }
 }

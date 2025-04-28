@@ -3,6 +3,11 @@
 
 #include <QtWidgets>
 
+#define NB_POCHES 6
+
+const int lignesPoches[NB_POCHES]   = { 0, 0, 0, 2, 2, 2 };
+const int colonnesPoches[NB_POCHES] = { 4, 2, 0, 5, 3, 1 };
+
 class EcranMatch : public QObject
 {
     Q_OBJECT
@@ -25,6 +30,13 @@ class EcranMatch : public QObject
     QHBoxLayout* espaceBouleBlanche;
     QHBoxLayout* espaceBouleNoir;
 
+    QGridLayout* espaceTableBillard;
+
+    QLabel* bouleRougeImagePoche[NB_POCHES];
+    QLabel* bouleJauneImagePoche[NB_POCHES];
+    QLabel* compteurBoulesRougesPoche[NB_POCHES];
+    QLabel* compteurBoulesJaunesPoche[NB_POCHES];
+
   public:
     explicit EcranMatch(QWidget* parent = nullptr);
     virtual ~EcranMatch();
@@ -35,6 +47,7 @@ class EcranMatch : public QObject
     QLabel* getNumeroTableLabel() const;
     void    demarrerChronometre();
     void    genererBoules();
+    void    initialiserPochesTable();
 
   signals:
 };
