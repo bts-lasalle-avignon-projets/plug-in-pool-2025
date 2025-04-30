@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#A8D08D"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitePartie">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/entete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/nomDuProjet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="@string/nomDuProjet"
+            android:textSize="35sp"
+            android:textColor="@color/noir"
+            android:contentDescription="@string/nomDuProjet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/logoCampusLaSalle"
+            android:layout_width="270dp"
+            android:layout_height="149dp"
+            android:contentDescription="@string/logoCampus"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/logo_campus_lasalle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/joueurEnCours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/entete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textePourNomJoueur"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="C’est au tour du joueur :"
+            android:textSize="30sp"
+            android:textColor="@color/noir"
+            android:contentDescription="affichage du joueur en cours"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nomDuJoueur"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/nomDuJoueur"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textSize="33sp"
+            android:textColor="@color/noir"
+            android:contentDescription="affichage du joueur en cours"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textePourNomJoueur"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            tools:ignore="HardcodedText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tableBillard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/joueurEnCours"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contenuTable"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/colonneGauche"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageTableBillard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2">
+
+                <ImageView
+                    android:id="@+id/billeJaune1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 2"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 3"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 4"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 5"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 6"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeJaune7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille jaune numéro 7"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_jaune"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeBlanche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille blanche"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_blanche"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/imageTableBillard"
+                android:layout_width="0dp"
+                android:layout_height="600dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/colonneDroite"
+                app:layout_constraintStart_toEndOf="@id/colonneGauche"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/table_billard"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:id="@+id/colonneDroite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageTableBillard"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2">
+
+                <ImageView
+                    android:id="@+id/billeRouge1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 1"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 2"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 3"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 4"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 5"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 6"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeRouge7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille rouge numéro 7"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_rouge"
+                    tools:ignore="HardcodedText,ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/billeNoire"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="bille noire"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/bille_noire"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pied"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blanc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textePourNbPointsJoueur1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start|center_vertical"
+                    android:text="Joueur 1 :"
+                    android:textColor="@color/noir"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/nbPointsDuJoueur1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="end|center_vertical"
+                    android:text=""
+                    android:textColor="@color/noir"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textePourNbPointsJoueur2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start|center_vertical"
+                    android:text="Joueur 2 :"
+                    android:textColor="@color/noir"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/nbPointsDuJoueur2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="end|center_vertical"
+                    android:text=""
+                    android:textColor="@color/noir"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/boutonLancerMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/rouge"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="320dp"
+                android:minWidth="300dp"
+                android:text="@string/boutonFinDePartie"
+                android:textColor="@color/noir"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
