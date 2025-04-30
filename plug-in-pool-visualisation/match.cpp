@@ -8,15 +8,15 @@ Match::Match(const QString& nom) :
 {
 }
 
-void Match::enregistrerJoueurs(const QString& nomJoueur1,
-                               const QString& nomJoueur2)
+void Match::enregistrerJoueurs(const QString& prenomJoueur1,
+                               const QString& prenomJoueur2)
 {
     joueurs.clear();
 
     for(int i = 0; i < NB_JOUEURS; ++i)
     {
-        QString nom    = (i == 0) ? nomJoueur1 : nomJoueur2;
-        QString prenom = "";
+        QString prenom = (i == 0) ? prenomJoueur1 : prenomJoueur2;
+        QString nom    = "";
         Joueur  joueur(nom, prenom, i);
         joueurs.append(joueur);
     }

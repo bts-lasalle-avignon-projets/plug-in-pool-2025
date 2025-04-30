@@ -22,7 +22,7 @@ CommunicationBluetooth::CommunicationBluetooth(QObject* parent) :
 
     QBluetoothUuid uuid(QBluetoothUuid::Rfcomm);
 
-    serveur->listen(uuid, "MyBluetoothService");
+    serveur->listen(uuid, "BluetoothPlugInPool^");
 }
 
 CommunicationBluetooth::~CommunicationBluetooth()
@@ -39,12 +39,12 @@ CommunicationBluetooth::~CommunicationBluetooth()
 
 void CommunicationBluetooth::nouveauClient()
 {
-    qDebug() << "Tentative de connexion d'un nouveau client...";
+    qDebug() << "Tentative de connexion";
     socket = serveur->nextPendingConnection();
 
     if(socket)
     {
-        qDebug() << "Client connecté avec succès!";
+        qDebug() << "Client connecté";
         connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
         emit clientConnecte();
     }
@@ -78,9 +78,13 @@ void CommunicationBluetooth::lireTrame()
                 {
                     int numeroTable =
                       contenuTrame[POSITION_NUMERO_TABLE].toInt();
-                    QString joueur1 = contenuTrame[POSITION_JOUEUR_1];
-                    QString joueur2 = contenuTrame[POSITION_JOUEUR_2];
-                    emit    trameRencontreRecue(numeroTable, joueur1, joueur2);
+                    QString prenomJoueur1 =
+                      contenuTrame[POSITION_PRENOM_JOUEUR_1];
+                    QString prenomJoueur2 =
+                      contenuTrame[POSITION_PRENOM_JOUEUR_2];
+                    emit trameRencontreRecue(numeroTable,
+                                             prenomJoueur1,
+                                             prenomJoueur2);
                     break;
                 }
                 case TRAME_MANCHE:

@@ -28,7 +28,9 @@ class PlugInPool : public QObject
   private slots:
     void bluetoothConnecte();
     void changerEcranMatch();
-    void configurationRecu(int numeroTable, QString joueur1, QString joueur2);
+    void configurationRecu(int     numeroTable,
+                           QString prenomJoueur1,
+                           QString prenomJoueur2);
     void mettreAJourStyleConfigurationPartie(QLabel* configurationStyle);
 };
 

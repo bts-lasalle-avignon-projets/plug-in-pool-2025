@@ -194,8 +194,8 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   </tr>
   <tr>
     <td>Afficher un écran d'accueil</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
@@ -218,8 +218,8 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   </tr>
   <tr>
     <td>Dialoguer avec le terminal mobile</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
 </table>

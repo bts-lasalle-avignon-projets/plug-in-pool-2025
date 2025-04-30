@@ -197,6 +197,11 @@ QLabel#bouleNoir {
     background-size: contain;
 }
 
+QWidget#poche {
+    background-color: none;
+    background-position: center;
+}
+
 .bouleJaunePoche {
     background-image: url(:/bouleJauneQT.png);
     background-color: yellow;
@@ -312,6 +317,7 @@ QLabel#bouleJauneImagePoche1{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+
 }
 
 QLabel#bouleJauneImagePoche2{

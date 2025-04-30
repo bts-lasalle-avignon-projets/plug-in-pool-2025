@@ -45,8 +45,8 @@ class Match
   public:
     Match(const QString& nom);
 
-    void enregistrerJoueurs(const QString& nomJoueur1,
-                            const QString& nomJoueur2);
+    void enregistrerJoueurs(const QString& prenomJoueur1,
+                            const QString& prenomJoueur2);
 };
 
 #endif // MATCH_H

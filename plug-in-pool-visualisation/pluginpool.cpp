@@ -31,48 +31,37 @@ PlugInPool::~PlugInPool()
 void PlugInPool::bluetoothConnecte()
 {
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
-    if(ecranAccueil && ecranAccueil->getConnexionBluetoothLabel())
-    {
-        ecranAccueil->getConnexionBluetoothLabel()->setText(
-          "Bluetooth Connecté");
-        ecranAccueil->getConnexionBluetoothLabel()->setProperty("class",
-                                                                "connecte");
-        ecranAccueil->getConnexionBluetoothLabel()->style()->unpolish(
-          ecranAccueil->getConnexionBluetoothLabel());
-        ecranAccueil->getConnexionBluetoothLabel()->style()->polish(
-          ecranAccueil->getConnexionBluetoothLabel());
-        ecranAccueil->getConnexionBluetoothLabel()->update();
-    }
+    ecranAccueil->getConnexionBluetoothLabel()->setText("Bluetooth Connecté");
+    ecranAccueil->getConnexionBluetoothLabel()->setProperty("class",
+                                                            "connecte");
+    ecranAccueil->getConnexionBluetoothLabel()->style()->polish(
+      ecranAccueil->getConnexionBluetoothLabel());
 }
 
 void PlugInPool::configurationRecu(int     numeroTable,
-                                   QString joueur1,
-                                   QString joueur2)
+                                   QString prenomJoueur1,
+                                   QString prenomJoueur2)
 {
-    qDebug() << "Joueurs reçus :" << joueur1 << "et" << joueur2;
+    qDebug() << "Joueurs reçus :" << prenomJoueur1 << "et" << prenomJoueur2;
 
-    match->enregistrerJoueurs(joueur1, joueur2);
+    match->enregistrerJoueurs(prenomJoueur1, prenomJoueur2);
 
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
     EcranMatch*   ecranMatch   = ecranPlugInPool->getEcranMatch();
     QLabel*       configurationPartieStyle =
       ecranAccueil->getConfigurationPartieLabel();
 
-    if(ecranAccueil && configurationPartieStyle)
-    {
-        ecranMatch->getJoueurUnLabel()->setText(joueur1);
-        ecranMatch->getJoueurDeuxLabel()->setText(joueur2);
-        ecranMatch->getNumeroTableLabel()->setText(
-          "Table n°" + QString::number(numeroTable));
+    ecranMatch->getJoueurUnLabel()->setText(prenomJoueur1);
+    ecranMatch->getJoueurDeuxLabel()->setText(prenomJoueur2);
+    ecranMatch->getNumeroTableLabel()->setText("Table n°" +
+                                               QString::number(numeroTable));
+    configurationPartieStyle->setText("Configuration Terminée");
 
-        configurationPartieStyle->setText("Configuration Terminée");
+    mettreAJourStyleConfigurationPartie(configurationPartieStyle);
 
-        mettreAJourStyleConfigurationPartie(configurationPartieStyle);
-
-        QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
-                           this,
-                           &PlugInPool::changerEcranMatch);
-    }
+    QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
+                       this,
+                       &PlugInPool::changerEcranMatch);
 }
 
 void PlugInPool::mettreAJourStyleConfigurationPartie(QLabel* configurationStyle)
@@ -80,19 +69,14 @@ void PlugInPool::mettreAJourStyleConfigurationPartie(QLabel* configurationStyle)
     if(configurationStyle)
     {
         configurationStyle->setProperty("class", "configure");
-        configurationStyle->style()->unpolish(configurationStyle);
         configurationStyle->style()->polish(configurationStyle);
-        configurationStyle->update();
     }
 }
 
 void PlugInPool::changerEcranMatch()
 {
-    if(ecranPlugInPool)
-    {
-        EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
-        qDebug() << "Passage à l'écran de match !";
-        ecranPlugInPool->afficherEcranMatch();
-        ecranMatch->demarrerChronometre();
-    }
+    EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
+    qDebug() << "Passage à l'écran de match !";
+    ecranPlugInPool->afficherEcranMatch();
+    ecranMatch->demarrerChronometre();
 }

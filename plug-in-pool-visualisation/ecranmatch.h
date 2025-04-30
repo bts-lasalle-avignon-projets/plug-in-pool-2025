@@ -3,10 +3,19 @@
 
 #include <QtWidgets>
 
-#define NB_POCHES 6
+#define NB_POCHES            6
+#define TEMPS_INCREMENTATION 1000 // ms
 
-const int lignesPoches[NB_POCHES]   = { 0, 0, 0, 2, 2, 2 };
-const int colonnesPoches[NB_POCHES] = { 4, 2, 0, 5, 3, 1 };
+#define NB_BOULES_ROUGES 7
+#define NB_BOULES_JAUNES 7
+
+#define MINUTE          60 // s
+#define LARGEUR_MINUTE  2
+#define LARGEUR_SECONDE 2
+#define BASE_DECIMALE   10
+
+const int lignesPoches[NB_POCHES]   = { 0, 2, 0, 2, 0, 2 };
+const int colonnesPoches[NB_POCHES] = { 2, 2, 1, 1, 0, 0 };
 
 class EcranMatch : public QObject
 {
