@@ -65,16 +65,19 @@ EcranPlugInPool::~EcranPlugInPool()
 
 void EcranPlugInPool::afficherEcranAccueil()
 {
+    qDebug() << Q_FUNC_INFO;
     ecransInterface->setCurrentWidget(ecranAccueil->getEcran());
 }
 
 void EcranPlugInPool::afficherEcranMatch()
 {
+    qDebug() << Q_FUNC_INFO;
     ecransInterface->setCurrentWidget(ecranMatch->getEcran());
 }
 
 void EcranPlugInPool::afficherEcranFin()
 {
+    qDebug() << Q_FUNC_INFO;
     ecransInterface->setCurrentWidget(ecranFin->getEcran());
 }
 

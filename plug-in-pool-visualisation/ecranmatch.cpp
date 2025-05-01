@@ -78,39 +78,36 @@ QWidget* EcranMatch::getEcran() const
     return ecran;
 }
 
-QLabel* EcranMatch::getJoueurUnLabel() const
+void EcranMatch::afficherInformationsMatch(int     numeroTable,
+                                           QString joueur1,
+                                           QString joueur2,
+                                           int     nbManches)
 {
-    qDebug() << "Adresse QLabel affichageJoueurUn: " << affichageJoueurUn;
-    return affichageJoueurUn;
-}
-
-QLabel* EcranMatch::getJoueurDeuxLabel() const
-{
-    qDebug() << "Adresse QLabel affichageJoueurDeux: " << affichageJoueurDeux;
-    return affichageJoueurDeux;
-}
-
-QLabel* EcranMatch::getNumeroTableLabel() const
-{
-    return affichageNumeroTable;
+    affichageJoueurUn->setText(joueur1);
+    affichageJoueurDeux->setText(joueur2);
+    affichageNumeroTable->setText("Table n°" + QString::number(numeroTable));
 }
 
 void EcranMatch::demarrerChronometre()
 {
     secondesEcoulees = 0;
 
-    connect(chronometre, &QTimer::timeout, this, [=]() {
-        secondesEcoulees++;
+    connect(chronometre,
+            &QTimer::timeout,
+            this,
+            [=]()
+            {
+                secondesEcoulees++;
 
-        int minutes  = secondesEcoulees / MINUTE;
-        int secondes = secondesEcoulees % MINUTE;
+                int minutes  = secondesEcoulees / MINUTE;
+                int secondes = secondesEcoulees % MINUTE;
 
-        QString temps =
-          QString("%1:%2")
-            .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
-            .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
-        labelChronometre->setText(temps);
-    });
+                QString temps =
+                  QString("%1:%2")
+                    .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+                    .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+                labelChronometre->setText(temps);
+            });
 
     chronometre->start(TEMPS_INCREMENTATION);
 }

@@ -51,12 +51,13 @@ class EcranMatch : public QObject
     virtual ~EcranMatch();
     QWidget* getEcran() const;
 
-    QLabel* getJoueurUnLabel() const;
-    QLabel* getJoueurDeuxLabel() const;
-    QLabel* getNumeroTableLabel() const;
-    void    demarrerChronometre();
-    void    genererBoules();
-    void    initialiserPochesTable();
+    void afficherInformationsMatch(int     numeroTable,
+                                   QString joueur1,
+                                   QString joueur2,
+                                   int     nbManches);
+    void demarrerChronometre();
+    void genererBoules();
+    void initialiserPochesTable();
 
   signals:
 };

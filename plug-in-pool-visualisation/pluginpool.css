@@ -60,6 +60,9 @@ QLabel#connexionBluetooth.connecte {
     color: #3A7D44;
 }
 
+QLabel#connexionBluetooth.deconnecte {
+    color: #d4a373;
+}
 
 QLabel#configurationPartie {
     font-size: 40px;

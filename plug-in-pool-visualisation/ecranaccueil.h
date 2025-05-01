@@ -18,10 +18,10 @@ class EcranAccueil : public QObject
   public:
     explicit EcranAccueil(QWidget* parent = nullptr);
     virtual ~EcranAccueil();
-    QWidget* getEcran() const;
 
-    QLabel* getConnexionBluetoothLabel() const;
-    QLabel* getConfigurationPartieLabel() const;
+    QWidget* getEcran() const;
+    void     afficherEtatConnexion(QString message, bool etat);
+    void     afficherEtatConfiguration(QString message);
 
   signals:
 

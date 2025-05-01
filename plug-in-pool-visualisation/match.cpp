@@ -2,10 +2,21 @@
 #include <QDebug>
 
 Match::Match(const QString& nom) :
-    nom(nom), nbManchesGagnantes(nbManchesGagnantes),
+    nom(nom), nbManchesGagnantes(NB_MANCHES),
     horodatage(QDateTime::currentDateTime()), etat(EtatMatch::Cree),
-    gagnant(AUCUN_GAGNANT)
+    gagnant(AUCUN_GAGNANT), numeroTable(0)
 {
+    qDebug() << Q_FUNC_INFO << this << "nom" << nom;
+}
+
+void Match::setNbManchesGagnantes(int nbManchesGagnantes)
+{
+    this->nbManchesGagnantes = nbManchesGagnantes;
+}
+
+void Match::setNumeroTable(int numeroTable)
+{
+    this->numeroTable = numeroTable;
 }
 
 void Match::enregistrerJoueurs(const QString& prenomJoueur1,
@@ -19,10 +30,5 @@ void Match::enregistrerJoueurs(const QString& prenomJoueur1,
         QString nom    = "";
         Joueur  joueur(nom, prenom, i);
         joueurs.append(joueur);
-    }
-
-    for(const Joueur& joueur: joueurs)
-    {
-        qDebug() << "Joueur:" << joueur.getNom() << "| ID:" << joueur.getId();
     }
 }

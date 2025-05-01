@@ -55,16 +55,19 @@ QWidget* EcranAccueil::getEcran() const
     return ecran;
 }
 
-QLabel* EcranAccueil::getConnexionBluetoothLabel() const
-
+void EcranAccueil::afficherEtatConnexion(QString message, bool etat)
 {
-    qDebug() << "Adresse QLabel (EcranAccueil): " << connexionBluetooth;
-    return connexionBluetooth;
+    connexionBluetooth->setText(message);
+    if(etat)
+        connexionBluetooth->setProperty("class", "connecte");
+    else
+        connexionBluetooth->setProperty("class", "deconnecte");
+    connexionBluetooth->style()->polish(connexionBluetooth);
 }
 
-QLabel* EcranAccueil::getConfigurationPartieLabel() const
-
+void EcranAccueil::afficherEtatConfiguration(QString message)
 {
-    qDebug() << "Adresse QLabel (EcranAccueil): " << configurationPartie;
-    return configurationPartie;
+    configurationPartie->setText(message);
+    configurationPartie->setProperty("class", "configure");
+    configurationPartie->style()->polish(configurationPartie);
 }

@@ -30,6 +30,7 @@ class Joueur
     int          getPoints() const;
     CouleurBille getCouleur() const;
     int          getNbBillesRestantes() const;
+    void         setCouleur(CouleurBille couleur);
 };
 
 #endif // JOUEUR_H

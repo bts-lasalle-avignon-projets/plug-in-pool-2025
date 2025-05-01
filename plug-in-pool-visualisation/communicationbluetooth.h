@@ -14,6 +14,7 @@
 #define POSITION_TYPE_TRAME 0
 
 #define TRAME_RENCONTRE          'R'
+#define POSITION_TYPE_TRAME      0
 #define POSITION_NUMERO_TABLE    1
 #define POSITION_PRENOM_JOUEUR_1 2
 #define POSITION_PRENOM_JOUEUR_2 3
@@ -36,13 +37,15 @@ class CommunicationBluetooth : public QObject
     virtual ~CommunicationBluetooth();
 
   signals:
-    void clientConnecte();
+    void connexionClient(bool etat);
     void trameRencontreRecue(int     numeroTable,
                              QString prenomJoueur1,
-                             QString prenomJoueur2);
+                             QString prenomJoueur2,
+                             int     nbManches);
 
   private slots:
-    void nouveauClient();
+    void connecterClient();
+    void deconnecterClient();
     void lireTrame();
 };
 
