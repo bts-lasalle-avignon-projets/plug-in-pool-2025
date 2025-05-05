@@ -7,6 +7,8 @@
 #include "joueur.h"
 #include "manche.h"
 
+#define NB_MANCHES 3
+
 #define AUCUN_GAGNANT -1
 
 #define NB_BILLES_JOUEUR 7
@@ -39,11 +41,17 @@ class Match
     QDateTime     horodatage;
     EtatMatch     etat;
     int           gagnant;
+    int           numeroTable;
     QList<Joueur> joueurs;
     QList<Manche> manches;
 
   public:
-    Match(const QString& nom, int nbManchesGagnantes);
+    Match(const QString& nom);
+
+    void setNbManchesGagnantes(int nbManchesGagnantes);
+    void setNumeroTable(int numeroTable);
+    void enregistrerJoueurs(const QString& prenomJoueur1,
+                            const QString& prenomJoueur2);
 };
 
 #endif // MATCH_H

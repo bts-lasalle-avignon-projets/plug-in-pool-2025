@@ -9,6 +9,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     communicationbluetooth.cpp \
+    ecranaccueil.cpp \
+    ecranfin.cpp \
+    ecranmatch.cpp \
     empoche.cpp \
     joueur.cpp \
     main.cpp \
@@ -20,6 +23,9 @@ SOURCES += \
 HEADERS += \
     communicationbluetooth.h \
     couleurbille.h \
+    ecranaccueil.h \
+    ecranfin.h \
+    ecranmatch.h \
     ecranpluginpool.h \
     empoche.h \
     joueur.h \
@@ -31,3 +37,6 @@ HEADERS += \
 #CONFIG(release, debug|release):DEFINES+=QT_NO_DEBUG_OUTPUT RASPBERRY_PI
 # Les defines pour la version debug
 CONFIG(debug, debug|release):DEFINES+=DEBUG
+
+RESOURCES += \
+    ressource.qrc
