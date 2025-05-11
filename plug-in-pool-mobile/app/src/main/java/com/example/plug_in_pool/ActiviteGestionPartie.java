@@ -197,6 +197,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
             Log.d(TAG, "Socket créée, démarrage de la connexion...");
             socketBluetooth.connect();
             Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
+            envoyerAdresseMac(adresseMac);
         }
         catch(IOException e)
         {
@@ -221,5 +222,12 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private String extraireAdresseMac(String texte)
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
+    }
+
+    private void envoyerAdresseMac(String adresseMac)
+    {
+        Intent changerVue = new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
+        changerVue.putExtra("adresseMac", adresseMac);
+        startActivity(changerVue);
     }
 }
