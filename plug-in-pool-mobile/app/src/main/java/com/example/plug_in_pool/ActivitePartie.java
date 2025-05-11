@@ -3,6 +3,7 @@ package com.example.plug_in_pool;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,15 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ActivitePartie extends AppCompatActivity
 {
 
+    private static final String ADRESSE_MAC_PC_B20 = "00:1A:7D:DA:71:15";
+    private String adresseMacTable;
     private static final String TAG = "_ActivitePartie";
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
-
     private CommunicationBluetooth communicationBluetooth;
 
     @Override
@@ -32,9 +31,15 @@ public class ActivitePartie extends AppCompatActivity
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_activite_partie);
 
+        recupererDonneesDeConfigurations();
         verifierEtDemarrerBluetooth();
     }
 
+    void recupererDonneesDeConfigurations()
+    {
+        Intent intent    = getIntent();
+        adresseMacTable = intent.getStringExtra("adresseMac");
+    }
     private void verifierEtDemarrerBluetooth()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
@@ -61,34 +66,35 @@ public class ActivitePartie extends AppCompatActivity
             return;
         }
 
-        String adresseMac = "00:1A:7D:DA:71:15"; //cv-pc-b20-05
+        String adresseMac = ADRESSE_MAC_PC_B20; //Pour les tests
+        //String adresseMac = adresseMacTable;
         BluetoothDevice peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
 
         communicationBluetooth = new CommunicationBluetooth(peripheriqueBluetooth);
         communicationBluetooth.start();
 
-        new Handler().postDelayed(this::envoyerTrames, 2000);
+        //new Handler().postDelayed(this::envoyerTrame, 2000);
     }
 
-    public void envoyerTrames()
+    public void envoyerTrame(String trame)
     {
         if (communicationBluetooth != null)
         {
-            List<String> trames = new ArrayList<>();
-            trames.add("Test\n");
-            trames.add("Test 2\n");
-            trames.add("Test 3\n");
-
-            for (String trame : trames)
-            {
-                Log.d(TAG, "Envoi de la trame : " + trame);
-                communicationBluetooth.envoyerTrameAsync(trame);
-            }
+            Log.d(TAG, "Envoi de la trame : " + trame);
+            communicationBluetooth.envoyerTrameAsync(trame);
         }
         else
         {
-            Log.e(TAG, "Bluetooth non encore connecté pour envoyer les trames");
+            Log.e(TAG, "Bluetooth non encore connecté pour envoyer la trame");
         }
+    }
+
+    public String trameDemarrerMatch(int etat, int nbParties, String prenomJoueur1, String prenomJoueur2)
+    {
+        String trame = CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.SEPARATEUR + nbParties
+                + CommunicationBluetooth.SEPARATEUR + prenomJoueur1 + CommunicationBluetooth.SEPARATEUR
+                + prenomJoueur2 + CommunicationBluetooth.DELIMITATEUR_FIN;
+        return trame;
     }
 
     @Override
