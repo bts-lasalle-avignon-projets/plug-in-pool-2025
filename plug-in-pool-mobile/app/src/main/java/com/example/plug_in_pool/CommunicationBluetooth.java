@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
@@ -25,8 +26,10 @@ public class CommunicationBluetooth extends Thread
     private final BluetoothDevice peripherique;
     private BluetoothSocket socket;
     private OutputStream outputStream;
+    private InputStream inputStream;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ReceptionListener receptionListener;
 
     public CommunicationBluetooth(BluetoothDevice peripherique)
     {
@@ -41,7 +44,11 @@ public class CommunicationBluetooth extends Thread
             socket = peripherique.createRfcommSocketToServiceRecord(SERIAL_UUID);
             socket.connect();
             outputStream = socket.getOutputStream();
+            inputStream = socket.getInputStream();
+
             Log.d(TAG, "Connexion Bluetooth réussie");
+
+            new Thread(this::ecouterReception).start();
         }
         catch (IOException e)
         {
@@ -72,11 +79,54 @@ public class CommunicationBluetooth extends Thread
         });
     }
 
+    private void ecouterReception()
+    {
+        byte[] buffer = new byte[1024];
+        int bytes;
+
+        while (socket != null && socket.isConnected())
+        {
+            try
+            {
+                bytes = inputStream.read(buffer);
+                String messageRecu = new String(buffer, 0, bytes);
+
+                Log.d(TAG, "Message reçu : " + messageRecu);
+
+                if (receptionListener != null)
+                {
+                    receptionListener.onMessageRecu(messageRecu);
+                }
+            }
+            catch (IOException e)
+            {
+                Log.e(TAG, "Erreur de réception", e);
+                break;
+            }
+        }
+    }
+
+    public boolean estConnecte()
+    {
+        return socket != null && socket.isConnected();
+    }
+
+    public interface ReceptionListener
+    {
+        void onMessageRecu(String message);
+    }
+
+    public void setReceptionListener(ReceptionListener listener)
+    {
+        this.receptionListener = listener;
+    }
+
     public void close()
     {
         executor.shutdownNow();
         try
         {
+            if (inputStream != null) inputStream.close();
             if (outputStream != null) outputStream.close();
             if (socket != null && socket.isConnected()) socket.close();
         }
