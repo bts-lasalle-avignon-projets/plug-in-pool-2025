@@ -99,7 +99,7 @@ public class ActivitePartie extends AppCompatActivity
         new Handler().postDelayed(() -> {
             if (communicationBluetooth != null && communicationBluetooth.estConnecte())
             {
-                String trame = trameDemarrerMatch("D", 3, "Alice", "Bob");
+                String trame = trameEtatPourTable("A");
                 envoyerTrame(trame);
                 Toast.makeText(this, "Trame envoyée : " + trame, Toast.LENGTH_SHORT).show();
             }
@@ -153,27 +153,36 @@ public class ActivitePartie extends AppCompatActivity
         }
     }
 
+    public String trameEtatPourTable(String etat)
+    {
+        return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;
+    }
     public String trameDemarrerMatch(String type, int nbParties, String prenomJoueur1, String prenomJoueur2)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + nbParties
                 + CommunicationBluetooth.SEPARATEUR + prenomJoueur1 + CommunicationBluetooth.SEPARATEUR
                 + prenomJoueur2 + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
-
-    public String trameCasse(String type, int idJoueur, String couleurBille, Boolean casFaute, int idPoche)
+    public String trameCasse(String type, int idJoueur, String couleurBille, String idPoche)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idJoueur
                 + CommunicationBluetooth.SEPARATEUR + couleurBille + CommunicationBluetooth.SEPARATEUR
-                + casFaute + CommunicationBluetooth.SEPARATEUR + idPoche +
-                CommunicationBluetooth.DELIMITATEUR_FIN;
+                + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
-
-    public String trameManche(String type, int idJoueur, String couleurBille, Boolean resultatActionJoueur, int idPoche)
+    public String trameEmpochage(String type, String couleurBille, String idPoche)
+    {
+        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + couleurBille
+                + CommunicationBluetooth.SEPARATEUR + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
+    }
+    public String trameFaute(String type, int idJoueur, String faute)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idJoueur
-                + CommunicationBluetooth.SEPARATEUR + couleurBille + CommunicationBluetooth.SEPARATEUR
-                + resultatActionJoueur + CommunicationBluetooth.SEPARATEUR + idPoche +
-                CommunicationBluetooth.DELIMITATEUR_FIN;
+                + CommunicationBluetooth.SEPARATEUR + faute + CommunicationBluetooth.DELIMITATEUR_FIN;
+    }
+    public String trameFinDePartie(String type, int numero, int idJoueur)
+    {
+        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + numero
+                + CommunicationBluetooth.SEPARATEUR + idJoueur + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
 
     @Override
