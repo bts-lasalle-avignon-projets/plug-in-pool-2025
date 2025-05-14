@@ -2,7 +2,7 @@
 
 ## Présentation du protocole implanté dans le simulateur ESP'ACE
 
-Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **0.3**.
+Ce document présente rapidement le fonctionnement du simulateur ainsi que le protocole implémenté. Le protocole complet est disponible dans Google Drive. Actuellement, la version du protocole est la **1.0**.
 
 Le système PLUG-IN-POOL est composé de trois modules :
 
@@ -34,7 +34,15 @@ Valeurs par défaut :
 #define NB_BILLES_JAUNE 7
 ```
 
-Un tir prend entre 1 et 4 secondes. Le joueur a 1 chance sur 2 d'empocher une bille sinon il loupe ou il fait une faute (empochage d'une mauvaise bille). Une trame est envoyée à la tablette seulement s'il a empoché une bille.
+Un tir prend entre 0.5 et 4 secondes.
+
+On peut définir la précision d'empochage :
+
+```cpp
+#define PRECISION_TIR  80   //!< Précision d'empochage (en %)
+```
+
+Ici, le joueur simulé a 80 % de chance d'empocher une bille sinon il loupe. Une trame est envoyée à la tablette seulement s'il a empoché une bille.
 
 ## Protocole Table - Mobile
 
@@ -50,70 +58,52 @@ Le protocole distingue deux types de trame :
 - trame de service émise par la tablette
 - trame de données (empochage) émise par la table
 
-### Trame M (Manche) : Mobile → Table
+### Trame A (Activation de la détection) : Mobile → Table
 
-Format : `$M/nn/Jx/Ei/j!`
+Format : `$A!`
 
-Les champs :
+> Le simulateur "refait" le plein de billes JAUNE et ROUGE. Les billes BLANCHE et NOIRE sont toujours sur la table.
 
-- `nn` : le numéro de table (`01`, `02`, ...)
-- `x` : le numéro de joueur `1` ou `2` (`0` pour joueur non défini)
-- `i` : l'état de la manche
+### Trame D (Désactivation de la détection) : Mobile → Table
 
-| État de la manche | Valeur |
-| :---------------: | :----: |
-|  Début de manche  |   1    |
-|   Fin de manche   |   0    |
+Format : `$D!`
 
-- `j` : changement de tour
-
-|     Jeu      | Valeur |
-| :----------: | :----: |
-|    Casse     |   C    |
-|    Faute     |   F    |
-| Point validé |   V    |
-|  Non défini  |   N    |
+> Désactive les boutons SW1 et SW2 (qui simule la détection d'empochage)
 
 ### Trame E (Empochage) : Table → Mobile
 
-Format : `$E/nn/Jx/Pi/Bj!`
+Format : `$E/couleurBille/idPoche!`
 
-Les champs :
-
-- `nn` : le numéro de table (`01`, `02`, ...)
-- `x` : le numéro de joueur `1` ou `2`
-- `i` : le numéro de poche
-
-|        Poche         | Valeur |
-| :------------------: | :----: |
-|   Poche Nord-Ouest   |   P1   |
-|    Poche Nord-Est    |   P2   |
-| Poche Équateur-Ouest |   P3   |
-|  Poche Équateur-Est  |   P4   |
-|   Poche Sud-Ouest    |   P5   |
-|    Poche Sud-Est     |   P6   |
-
-![](./images/table.png)
-
-- `j` : la couleur de bille
+- `couleurBille` : la couleur de bille
 
 |    Couleur    | Valeur |
 | :-----------: | :----: |
-|  Bille Rouge  |   BR   |
-|  Bille Jaune  |   BJ   |
-| Bille Blanche |   BB   |
-|  Bille Noire  |   BN   |
+|  Bille Rouge  |   0    |
+|  Bille Jaune  |   1    |
+| Bille Blanche |   2    |
+|  Bille Noire  |   3    |
+
+- `idPoche` : l'identifiant de la poche
+
+|        Poche         | Valeur |
+| :------------------: | :----: |
+|   Poche Nord-Ouest   |   1    |
+|    Poche Nord-Est    |   2    |
+| Poche Équateur-Ouest |   3    |
+|  Poche Équateur-Est  |   4    |
+|   Poche Sud-Ouest    |   5    |
+|    Poche Sud-Est     |   6    |
+
+![](./images/table.png)
 
 ### Fonctionnement
 
-Pour l'instant, le simulateur démarre à la réception d'une trame : `$M/02/J0/E1/N!` (pour la table n°2).
+Pour l'instant, le simulateur démarre la détection de bille à la réception d'une trame : `$A!`
 
-Quand le simulateur affiche :
+Utilisation :
 
-- "loupé"   : il faut appuyer sur le bouton TOUR (SW2).
-- "faute !" : il faut appuyer sur le bouton FAUTE (SW1).
-
-La partie peut être arrêtée avec une trame ``$M/02/J0/E0/N!`` (pour la table n°2).
+- Le bouton SW1 permet de simuler un tir
+- le bouton SW2 permet de simuler une séquence victorieuse de tir (toutes les billes restantes d'une couleur suivi d'un empochage de la bille NOIRE).
 
 ## Écran OLED
 
@@ -121,12 +111,10 @@ Le nom du périphérique bluetooth et son adresse MAC sont affichés sur les deu
 
 Les lignes suivantes affichent successivement :
 
-- le score du joueur en train de tirer
-- le tir du joueur qui a les billes rouges
-- le tir du joueur qui a les billes jaunes
-- la trame reçue et l'état de la partie
-
-*Remarque :* `>` indique le joueur en train de tirer.
+- l'état de la détection
+- le résultat d'un tir
+- le nombre de billes rouges restantes
+- le nombre de billes jaunes restantes
 
 ## platform.ini
 

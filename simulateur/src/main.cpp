@@ -10,10 +10,14 @@
 #include "esp_bt_main.h"
 #include "esp_bt_device.h"
 
-#define NUMERO_TABLE 2 //!< Numéro de la table
-
 #define DEBUG
-// #define DEBUG_VERIFICATION
+
+// Configuration du simulateur
+#define NUMERO_TABLE   2    //!< Numéro de la table
+#define PRECISION_TIR  80   //!< Précision d'empochage (en %)
+#define TEMPS_TIR_MIN  500  //!< Temps d'attente entre deux tirs (en ms)
+#define TEMPS_TIR_MAX  3000 //!< Temps d'attente entre deux tirs (en ms)
+#define TEMPS_VICTOIRE 2000 //!< Temps d'attente entre deux tirs (en ms)
 
 // Brochages
 #define GPIO_LED_ROUGE   5    //!< En attente
@@ -26,40 +30,28 @@
 #define BROCHE_I2C_SCL   22   //!< Broche SCL
 
 // Protocole (cf. Google Drive)
-#define EN_TETE_TRAME       "$"
-#define DELIMITEUR_CHAMP    "/"
-#define DELIMITEURS_FIN     "!\n"
-#define DELIMITEUR_DATAS    '/'
-#define DELIMITEUR_FIN      '\n'
-#define INDEX_TYPE_TRAME    1
-#define NUMERO_CHAMP_TYPE   0
-#define NUMERO_CHAMP_TABLE  1
-#define NUMERO_CHAMP_JOUEUR 2
-#define NUMERO_CHAMP_MANCHE 3
-#define NUMERO_CHAMP_ETAT   4
+#define EN_TETE_TRAME    "$"
+#define DELIMITEUR_CHAMP "/"
+#define DELIMITEURS_FIN  "!\n"
+#define DELIMITEUR_DATAS '/'
+#define DELIMITEUR_FIN   '\n'
+#define INDEX_TYPE_TRAME 1
 
-// Mobile-pool -> Table - Format : $M/nn/Jx/Ei/j! - Exemple : $M/02/J1/E1/C!
-#define LONGUEUR_TRAME        14
-#define TRAME_MANCHE          'M'
-#define CHAMP_JOUEUR          'J'
-#define CHAMP_ETAT            'E'
-#define CHAMP_START           '1' // Commencer une manche (réinitialisation)
-#define CHAMP_STOP            '0' // Arrêter une manche (facultatif)
-#define CHAMP_ETAT_CASSE      'C'
-#define CHAMP_ETAT_FAUTE      'F'
-#define CHAMP_ETAT_VALIDE     'V'
-#define CHAMP_ETAT_NON_DEFINI 'N'
+// Mobile-pool -> Table - Format : ${type}! - Exemple : $A! ou $D!
+#define LONGUEUR_TRAME      3
+#define TRAME_ACTIVATION    'A'
+#define TRAME_DESACTIVATION 'D'
+
 // Mobile-pool <- Table - Format : $E/nn/Jx/Pi/Bj!
 #define TRAME_EMPOCHE 'E'
-#define CHAMP_POCHE   'P'
-#define CHAMP_BILLE   'B'
+//#define CHAMP_POCHE   'P'
+//#define CHAMP_BILLE   'B'
 
 #define ERREUR_TRAME_INCONNUE      0
 #define ERREUR_TRAME_NON_SUPPORTEE 1
 #define ERREUR_TRAME_ETAT          2
 
 // Blackpool
-#define NB_POCHES         6
 #define NB_BILLES         7
 #define NB_BILLES_ROUGE   7
 #define NB_BILLES_JAUNE   7
@@ -77,13 +69,13 @@ BluetoothSerial ESPBluetooth;
 #endif
 
 /**
- * @enum EtatPartie
- * @brief Les differents états d'une partie
+ * @enum EtatDetection
+ * @brief Les differents états de détection de la table
  */
-enum EtatPartie
+enum EtatDetection
 {
-    Arretee = 0,
-    EnCours
+    Desactive = 0,
+    Active
 };
 
 /**
@@ -106,18 +98,19 @@ enum CouleurBille
  */
 enum Poche
 {
-    A = 1,
-    B,
-    C,
-    D,
-    E,
-    F /* = 6 */
+    AucunePoche = 0,
+    PocheNordOuest,
+    PocheNordEst,
+    PocheEquateurOuest,
+    PocheEquateurEst,
+    PocheSudOuest,
+    PocheSudEst,
+    NbPoches
 };
 
 // Variables globales
-EtatPartie   etatPartie   = Arretee; //!< l'état de la partie
-int          numeroJoueur = 0;       //!< le numéro du joueur
-CouleurBille couleurBilleEmpochee =
+EtatDetection etatDetection = Desactive; //!< l'état de la partie
+CouleurBille  couleurBilleEmpochee =
   CouleurBille::AUCUNE; //!< la couleur de la bille empochée
 int nbBilles[CouleurBille::NbCouleurs] = {
     NB_BILLES_ROUGE,
@@ -134,6 +127,7 @@ const String codeCouleur[CouleurBille::NbCouleurs] = {
 bool      refresh    = false; //!< demande rafraichissement de l'écran OLED
 bool      antiRebond = false; //!< anti-rebond
 bool      tirEncours = false; //!< une sequence de tirs est en cours
+bool      victoire   = false; //!< une sequence de tirs est en cours
 Afficheur afficheur(ADRESSE_I2C_OLED,
                     BROCHE_I2C_SDA,
                     BROCHE_I2C_SCL); //!< afficheur OLED SSD1306
@@ -147,135 +141,10 @@ const String codeCouleurProtocole[CouleurBille::NbCouleurs] = {
     "J",
     "B",
     "N"
-}; //!< code de couleur de la bille empochée (protocole)
-const String codePoche[NB_POCHES] = {
+}; //!< code de couleur de la bille empochée (protocole mais obsolète)
+const String codePoche[Poche::NbPoches] = {
     "A", "B", "C", "D", "E", "F"
 }; //!< code des poches (protocole)
-const String codeEtat[] = { "casse",
-                            "valide",
-                            "faute" }; //!< code des messages d'état du tour
-
-String extraireChamp(String& trame, unsigned int numeroChamp)
-{
-    String       champ;
-    unsigned int compteurCaractere  = 0;
-    unsigned int compteurDelimiteur = 0;
-    char         fin                = '\n';
-
-    if(delimiteurFin.length() > 0)
-        fin = delimiteurFin[0];
-
-    for(unsigned int i = 0; i < trame.length(); i++)
-    {
-        if(trame[i] == separateur[0] || trame[i] == fin)
-        {
-            compteurDelimiteur++;
-        }
-        else if(compteurDelimiteur == numeroChamp)
-        {
-            champ += trame[i];
-            compteurCaractere++;
-        }
-    }
-
-    return champ;
-}
-
-/**
- * @brief Envoie une trame d'empochage via le Bluetooth
- *
- */
-void envoyerTrameEmpoche(Poche numeroPoche, CouleurBille couleurBille)
-{
-    char trameEnvoi[64];
-
-    // Format : $E/nn/Jn/PPi/Bj!
-    sprintf((char*)trameEnvoi,
-            "%sE/%02d/J%d/P%d/B%s!",
-            entete.c_str(),
-            numeroTable,
-            numeroJoueur,
-            int(numeroPoche),
-            codeCouleurProtocole[int(couleurBille)].c_str());
-    ESPBluetooth.write((uint8_t*)trameEnvoi, strlen((char*)trameEnvoi));
-    couleurBilleEmpochee = couleurBille;
-#ifdef DEBUG
-    String trame = String(trameEnvoi);
-    // trame.remove(trame.indexOf("\r"), 1);
-    Serial.print("> ");
-    Serial.println(trame);
-#endif
-}
-
-/**
- * @brief Lit une trame via le Bluetooth
- *
- * @fn lireTrame(String &trame)
- * @param trame la trame reçue
- * @return bool true si une trame a été lue, sinon false
- */
-bool lireTrame(String& trame)
-{
-    if(ESPBluetooth.available())
-    {
-        trame.clear();
-        trame = ESPBluetooth.readStringUntil(DELIMITEUR_FIN);
-#ifdef DEBUG
-        Serial.print("< ");
-        Serial.println(trame);
-        // Serial.print("longueur : ");
-        // Serial.println(trame.length());
-#endif
-        trame.concat(DELIMITEUR_FIN); // remet le DELIMITEUR_FIN
-        return true;
-    }
-
-    return false;
-}
-
-/**
- * @brief Vérifie si la trame reçue est valide et retorune le type de la trame
- *
- * @fn verifierTrame(uint8_t &trame)
- * @param trame
- * @return bool
- */
-bool verifierTrame(String& trame)
-{
-    // longueur de la trame ?
-    if(trame.length() != LONGUEUR_TRAME + 1) // avec le \n
-    {
-#ifdef DEBUG
-        Serial.println("Erreur : longueur invalide !");
-#endif
-        return false;
-    }
-    // en-tête de la trame ?
-    if(!trame.startsWith(EN_TETE_TRAME))
-    {
-#ifdef DEBUG
-        Serial.println("Erreur : entete absente ou invalide !");
-#endif
-        return false;
-    }
-    // séparateur de champ ?
-    if(trame.indexOf(DELIMITEUR_CHAMP) == -1)
-    {
-#ifdef DEBUG
-        Serial.println("Erreur : delimiteur de champ absent !");
-#endif
-        return false;
-    }
-    // séparateur de fin ?
-    if(!trame.endsWith(DELIMITEURS_FIN))
-    {
-#ifdef DEBUG
-        Serial.println("Erreur : delimiteur de fin absent ou invalide !");
-#endif
-        return false;
-    }
-    return true;
-}
 
 /**
  * @brief Calcule le nombre de billes restantes
@@ -353,7 +222,7 @@ void afficherTir(int numeroPoche, CouleurBille couleurBille)
     char strMessageDisplay[24];
 
     // empochage ?
-    if(numeroPoche >= 1 && numeroPoche <= NB_POCHES)
+    if(numeroPoche >= 1 && numeroPoche <= Poche::NbPoches)
     {
         sprintf(strMessageDisplay,
                 "Tir poche %d : %s",
@@ -388,22 +257,212 @@ CouleurBille simulerCouleurBille()
     return couleurBille;
 }
 
+String extraireChamp(String& trame, unsigned int numeroChamp)
+{
+    String       champ;
+    unsigned int compteurCaractere  = 0;
+    unsigned int compteurDelimiteur = 0;
+    char         fin                = '\n';
+
+    if(delimiteurFin.length() > 0)
+        fin = delimiteurFin[0];
+
+    for(unsigned int i = 0; i < trame.length(); i++)
+    {
+        if(trame[i] == separateur[0] || trame[i] == fin)
+        {
+            compteurDelimiteur++;
+        }
+        else if(compteurDelimiteur == numeroChamp)
+        {
+            champ += trame[i];
+            compteurCaractere++;
+        }
+    }
+
+    return champ;
+}
+
+/**
+ * @brief Envoie une trame d'empochage via le Bluetooth
+ *
+ */
+void envoyerTrameEmpoche(Poche numeroPoche, CouleurBille couleurBille)
+{
+    char trameEnvoi[64];
+
+    // Format : $couleurBille/idPoche!
+    sprintf((char*)trameEnvoi,
+            "%sE/%d/%d!",
+            entete.c_str(),
+            int(couleurBille),
+            int(numeroPoche));
+    ESPBluetooth.write((uint8_t*)trameEnvoi, strlen((char*)trameEnvoi));
+    couleurBilleEmpochee = couleurBille;
+#ifdef DEBUG
+    String trame = String(trameEnvoi);
+    // trame.remove(trame.indexOf("\r"), 1);
+    Serial.print("> ");
+    Serial.println(trame);
+#endif
+}
+
+/**
+ * @brief Lit une trame via le Bluetooth
+ *
+ * @fn lireTrame(String &trame)
+ * @param trame la trame reçue
+ * @return bool true si une trame a été lue, sinon false
+ */
+bool lireTrame(String& trame)
+{
+    if(ESPBluetooth.available())
+    {
+        trame.clear();
+        trame = ESPBluetooth.readStringUntil(DELIMITEUR_FIN);
+#ifdef DEBUG
+        Serial.print("< ");
+        Serial.println(trame);
+        // Serial.print("longueur : ");
+        // Serial.println(trame.length());
+#endif
+        trame.concat(DELIMITEUR_FIN); // remet le DELIMITEUR_FIN
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * @brief Vérifie si la trame reçue est valide et retorune le type de la trame
+ *
+ * @fn verifierTrame(uint8_t &trame)
+ * @param trame
+ * @return bool
+ */
+bool verifierTrame(String& trame)
+{
+    // longueur de la trame ?
+    if(trame.length() != LONGUEUR_TRAME + 1) // avec le \n
+    {
+#ifdef DEBUG
+        Serial.println("Erreur : longueur invalide !");
+#endif
+        return false;
+    }
+    // en-tête de la trame ?
+    if(!trame.startsWith(EN_TETE_TRAME))
+    {
+#ifdef DEBUG
+        Serial.println("Erreur : entete absente ou invalide !");
+#endif
+        return false;
+    }
+    // séparateur de champ ? obsolète pour la table
+    /*if(trame.indexOf(DELIMITEUR_CHAMP) == -1)
+    {
+#ifdef DEBUG
+        Serial.println("Erreur : delimiteur de champ absent !");
+#endif
+        return false;
+    }*/
+    // séparateur de fin ?
+    if(!trame.endsWith(DELIMITEURS_FIN))
+    {
+#ifdef DEBUG
+        Serial.println("Erreur : delimiteur de fin absent ou invalide !");
+#endif
+        return false;
+    }
+    return true;
+}
+
+void simulerSequenceVictoire()
+{
+#ifdef DEBUG
+    Serial.println(" -> simule une séquence victorieuse ");
+#endif
+
+    int poche;
+    // Plus de billes de couleur ROUGE ou JAUNE
+    if(nbBilles[CouleurBille::ROUGE] < 1 && nbBilles[CouleurBille::JAUNE] < 1)
+    {
+        // On empoche une bille noire
+        poche = random(0, long(Poche::NbPoches)) + 1;
+#ifdef DEBUG
+        Serial.print(" -> empochage poche ");
+        Serial.print(poche);
+        Serial.print(" couleur ");
+        Serial.println(codeCouleur[CouleurBille::NOIRE]);
+#endif
+        envoyerTrameEmpoche(Poche(poche), CouleurBille::NOIRE);
+        afficherTir(poche, CouleurBille::NOIRE);
+        calculerScore();
+        afficherScore(); // Ligne 3 et 4
+        afficheur.afficher();
+        return;
+    }
+
+    // Il reste des billes de couleur ROUGE ou JAUNE
+    // On choisit une couleur
+    CouleurBille couleurBille =
+      (CouleurBille)random((long)CouleurBille::ROUGE,
+                           (long)(CouleurBille::JAUNE) + 1);
+    while(nbBilles[couleurBille] < 1)
+    {
+        couleurBille = (CouleurBille)random((long)CouleurBille::ROUGE,
+                                            (long)(CouleurBille::JAUNE) + 1);
+    }
+
+    // On empoche les billes restantes de cette couleur
+    while(nbBilles[couleurBille] > 0)
+    {
+        poche = random(0, long(Poche::NbPoches)) + 1;
+#ifdef DEBUG
+        Serial.print(" -> empochage poche ");
+        Serial.print(poche);
+        Serial.print(" couleur ");
+        Serial.println(codeCouleur[int(couleurBille)]);
+#endif
+        envoyerTrameEmpoche(Poche(poche), couleurBille);
+        afficherTir(poche, couleurBille);
+        calculerScore();
+        afficherScore(); // Ligne 3 et 4
+        afficheur.afficher();
+        delay(TEMPS_VICTOIRE);
+    }
+    // Et on empoche une bille noire
+    poche = random(0, long(Poche::NbPoches)) + 1;
+#ifdef DEBUG
+    Serial.print(" -> empochage poche ");
+    Serial.print(poche);
+    Serial.print(" couleur ");
+    Serial.println(codeCouleur[CouleurBille::NOIRE]);
+#endif
+    envoyerTrameEmpoche(Poche(poche), CouleurBille::NOIRE);
+    afficherTir(poche, CouleurBille::NOIRE);
+    calculerScore();
+    afficherScore(); // Ligne 3 et 4
+    afficheur.afficher();
+}
+
 /**
  * @brief Simule un tir et la détection d'empochage
  *
  */
 bool simulerTir()
 {
-    if(etatPartie != EnCours)
+    if(etatDetection != Active)
         return false;
 #ifdef DEBUG
     Serial.print("simulerTir()");
 #endif
     int poche =
-      random(0, long(NB_POCHES * 2)) + 1; // 1 chance sur 2 : entre 1 et 12
+      random(0, long(double(Poche::NbPoches) * (100. / PRECISION_TIR))) +
+      1; // dépend de sa précision !
     CouleurBille couleurBille = simulerCouleurBille();
     // empochage ?
-    if(poche >= 1 && poche <= NB_POCHES)
+    if(poche >= 1 && poche <= Poche::NbPoches)
     {
 #ifdef DEBUG
         Serial.print(" -> empochage poche ");
@@ -413,6 +472,9 @@ bool simulerTir()
 #endif
         envoyerTrameEmpoche(Poche(poche), couleurBille);
         afficherTir(poche, couleurBille);
+        calculerScore();
+        afficherScore(); // Ligne 3 et 4
+        afficheur.afficher();
         return true;
     }
     else // loupé : non détectable
@@ -435,7 +497,7 @@ void tirer()
     {
         afficheur.setMessageLigne(Afficheur::Ligne2, String(""));
         afficheur.afficher();
-        delay(random(1000, 4000)); // temps pour joueur
+        delay(random(TEMPS_TIR_MIN, TEMPS_TIR_MAX)); // temps pour joueur
         simulerTir();
         tirEncours = false;
     }
@@ -443,15 +505,27 @@ void tirer()
 
 /**
  * @brief Déclencher un tir interruption sur le bouton SW1
- * (tour suivant)
  * @fn declencherTir()
  */
 void IRAM_ATTR declencherTir()
 {
-    if(etatPartie != EnCours || antiRebond)
+    if(etatDetection != Active || antiRebond)
         return;
 
     tirEncours = true;
+    antiRebond = true;
+}
+
+/**
+ * @brief Déclencher une séquence victorieuse par interruption sur le bouton SW2
+ * @fn declencherVictoire()
+ */
+void IRAM_ATTR declencherVictoire()
+{
+    if(etatDetection != Active || antiRebond)
+        return;
+
+    victoire   = true;
     antiRebond = true;
 }
 
@@ -467,12 +541,22 @@ void setup()
     while(!Serial)
         ;
 
+#ifdef DEBUG
+    Serial.println("[main] PlugInPool 2025");
+    Serial.println("[main] Table         : " + String(NUMERO_TABLE));
+    Serial.println("[main] Precision tir : " + String(PRECISION_TIR) + " %");
+#endif
+
     pinMode(GPIO_LED_ROUGE, OUTPUT);
     pinMode(GPIO_LED_ORANGE, OUTPUT);
     pinMode(GPIO_LED_VERTE, OUTPUT);
 
     pinMode(GPIO_SW1, INPUT_PULLUP);
+    pinMode(GPIO_SW2, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(GPIO_SW1), declencherTir, FALLING);
+    attachInterrupt(digitalPinToInterrupt(GPIO_SW2),
+                    declencherVictoire,
+                    FALLING);
 
     digitalWrite(GPIO_LED_ROUGE, HIGH);
     digitalWrite(GPIO_LED_ORANGE, LOW);
@@ -513,7 +597,7 @@ void setup()
             adresseESP32[4],
             adresseESP32[5]);
     stitre = String("=== ") + String(str) + String(" ===");
-    titre  = String("Bluetooth : ") + nomBluetooth + String("     2023");
+    titre  = String("Bluetooth : ") + nomBluetooth + String("     2025");
 #endif
 #endif
 
@@ -529,7 +613,7 @@ void setup()
 
     // initialise le générateur pseudo-aléatoire
     // Serial.println(randomSeed(analogRead(34)));
-    Serial.println(esp_random());
+    esp_random();
 }
 
 /**
@@ -555,9 +639,15 @@ void loop()
         antiRebond = false;
     }
 
-    if(etatPartie == EnCours && tirEncours)
+    if(etatDetection == Active && tirEncours)
     {
         tirer();
+    }
+
+    if(etatDetection == Active && victoire)
+    {
+        simulerSequenceVictoire();
+        victoire = false;
     }
 
     if(lireTrame(trame))
@@ -566,103 +656,61 @@ void loop()
         {
             refresh = true;
 
-            if(trame.charAt(INDEX_TYPE_TRAME) == TRAME_MANCHE)
+            if(trame.charAt(INDEX_TYPE_TRAME) == TRAME_ACTIVATION)
             {
-                // Mobile-pool -> Table : M/nn/Jx/Ei/j!
-                String numeroTableBillard =
-                  extraireChamp(trame, NUMERO_CHAMP_TABLE);
-                String champNumeroJoueur =
-                  extraireChamp(trame, NUMERO_CHAMP_JOUEUR);
-                String etatManche = extraireChamp(trame, NUMERO_CHAMP_MANCHE);
-                String etatTour   = extraireChamp(trame, NUMERO_CHAMP_ETAT);
-#ifdef DEBUG
-                Serial.println("Trame : " + trame);
-                Serial.println("numeroTableBillard : " + numeroTableBillard);
-                Serial.println("numeroJoueur : " + champNumeroJoueur);
-                Serial.println("etatManche : " + etatManche);
-                Serial.println("etatTour : " + etatTour);
-#endif
-                if(etatManche.charAt(0) == CHAMP_ETAT)
+                // Mobile-pool -> Table : $A!
+                if(etatDetection == Desactive)
                 {
-                    int etat = etatManche.charAt(1) - '0';
-                    if(etat == 1)
-                    {
-                        numeroJoueur = champNumeroJoueur.charAt(1) - '0';
-                        if(etatPartie == Arretee)
-                        {
-                            nbBilles[CouleurBille::ROUGE] = NB_BILLES_ROUGE;
-                            nbBilles[CouleurBille::JAUNE] = NB_BILLES_JAUNE;
+                    nbBilles[CouleurBille::ROUGE] = NB_BILLES_ROUGE;
+                    nbBilles[CouleurBille::JAUNE] = NB_BILLES_JAUNE;
 
-                            // Les leds de la carte
-                            digitalWrite(GPIO_LED_ROUGE, LOW);
-                            digitalWrite(GPIO_LED_ORANGE, LOW);
-                            digitalWrite(GPIO_LED_VERTE, HIGH);
-                            // L'afficheur OLED
-                            reinitialiserAffichage();
-                            afficheur.setMessageLigne(
-                              Afficheur::Ligne1,
-                              String("Partie demarree"));
-                            afficheur.setMessageLigne(
-                              Afficheur::Ligne2,
-                              champNumeroJoueur + String(" - ") + etatTour);
-                            afficherScore(); // Ligne 3 et 4
-                            afficheur.afficher();
-                            // active la détection de l'empochage
-                            etatPartie = EnCours;
+                    // Les leds de la carte
+                    digitalWrite(GPIO_LED_ROUGE, LOW);
+                    digitalWrite(GPIO_LED_ORANGE, LOW);
+                    digitalWrite(GPIO_LED_VERTE, HIGH);
+                    // L'afficheur OLED
+                    reinitialiserAffichage();
+                    afficheur.setMessageLigne(Afficheur::Ligne1,
+                                              String("Detection activee"));
+                    afficheur.setMessageLigne(Afficheur::Ligne2, String(""));
+                    afficherScore(); // Ligne 3 et 4
+                    afficheur.afficher();
+                    // active la détection de l'empochage
+                    etatDetection = Active;
 #ifdef DEBUG
-                            Serial.println("--> Nouvelle partie");
+                    Serial.println("--> Détection activée");
 #endif
-                        }
-                        else
-                        {
-                            // L'afficheur OLED
-                            afficheur.setMessageLigne(
-                              Afficheur::Ligne1,
-                              String("Partie en cours"));
-                            afficheur.setMessageLigne(
-                              Afficheur::Ligne2,
-                              champNumeroJoueur + String(" - ") + etatTour);
-                            // tir valide ?
-                            if(etatTour == String(CHAMP_ETAT_VALIDE))
-                            {
-                                calculerScore();
-                            }
-                            afficherScore(); // Ligne 3 et 4
-                            afficheur.afficher();
-#ifdef DEBUG
-                            Serial.println("--> Partie en cours");
-#endif
-                        }
-                    }
-                    else if(etat == 0)
-                    {
-                        if(etatPartie == EnCours)
-                        {
-                            // désactive la détection de l'empochage
-                            etatPartie   = Arretee;
-                            tirEncours   = false;
-                            numeroJoueur = 0;
-                            // Les leds de la carte
-                            digitalWrite(GPIO_LED_ROUGE, HIGH);
-                            digitalWrite(GPIO_LED_ORANGE, LOW);
-                            digitalWrite(GPIO_LED_VERTE, LOW);
-                            // L'afficheur OLED
-                            reinitialiserAffichage();
-                            afficheur.setMessageLigne(Afficheur::Ligne1,
-                                                      String("Partie finie"));
-                            afficheur.afficher();
-#ifdef DEBUG
-                            Serial.println("--> Partie finie");
-#endif
-                        }
-                    }
-                    else
-                    {
-#ifdef DEBUG
-                        Serial.println("Etat de la manche non défini");
-#endif
-                    }
                 }
+            }
+            else if(trame.charAt(INDEX_TYPE_TRAME) == TRAME_DESACTIVATION)
+            {
+                if(etatDetection == Active)
+                {
+                    // Mobile-pool -> Table : $D!
+                    // désactive la détection de l'empochage
+                    etatDetection        = Desactive;
+                    tirEncours           = false;
+                    victoire             = false;
+                    couleurBilleEmpochee = CouleurBille::AUCUNE;
+                    // Les leds de la carte
+                    digitalWrite(GPIO_LED_ROUGE, HIGH);
+                    digitalWrite(GPIO_LED_ORANGE, LOW);
+                    digitalWrite(GPIO_LED_VERTE, LOW);
+                    // L'afficheur OLED
+                    reinitialiserAffichage();
+                    afficheur.setMessageLigne(Afficheur::Ligne1,
+                                              String("Detection desactivee"));
+                    afficheur.afficher();
+#ifdef DEBUG
+                    Serial.println("--> Détection desactivée");
+#endif
+                }
+            }
+            else
+            {
+#ifdef DEBUG
+                Serial.println("Trame inconnue !");
+#endif
             }
         }
         else
