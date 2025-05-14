@@ -23,6 +23,11 @@ PlugInPool::PlugInPool(QObject* parent) :
             &CommunicationBluetooth::trameRencontreRecue,
             this,
             &PlugInPool::configurerMatch);
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::trameCasseRecue,
+            this,
+            &PlugInPool::empochageCasse);
 }
 
 PlugInPool::~PlugInPool()
@@ -47,29 +52,72 @@ void PlugInPool::gererConnexion(bool etat)
     }
 }
 
-void PlugInPool::configurerMatch(int     numeroTable,
+void PlugInPool::configurerMatch(int     nbManches,
                                  QString prenomJoueur1,
-                                 QString prenomJoueur2,
-                                 int     nbManches)
+                                 QString prenomJoueur2)
 {
-    qDebug() << Q_FUNC_INFO << "numeroTable" << numeroTable << "prenomJoueur1"
-             << prenomJoueur1 << "prenomJoueur2" << prenomJoueur2 << "nbManches"
-             << nbManches;
+    qDebug() << Q_FUNC_INFO << "prenomJoueur1" << prenomJoueur1
+             << "prenomJoueur2" << prenomJoueur2 << "nbManches" << nbManches;
 
     EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
-    match->setNumeroTable(numeroTable);
     match->enregistrerJoueurs(prenomJoueur1, prenomJoueur2);
     match->setNbManchesGagnantes(nbManches);
-    ecranMatch->afficherInformationsMatch(numeroTable,
+    ecranMatch->afficherInformationsMatch(nbManches,
                                           prenomJoueur1,
-                                          prenomJoueur2,
-                                          nbManches);
+                                          prenomJoueur2);
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
     ecranAccueil->afficherEtatConfiguration("Configuration terminée");
 
     QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
                        this,
                        &PlugInPool::changerEcranMatch);
+}
+
+void PlugInPool::empochageCasse(int idPartie,
+                                int idJoueur,
+                                int couleurBille,
+                                int idPoche)
+{
+    qDebug() << Q_FUNC_INFO << "idPartie" << idPartie << "idJoueur" << idJoueur
+             << "couleurBille" << couleurBille << "idPoche" << idPoche;
+    CouleurBille couleurBoule = static_cast<CouleurBille>(couleurBille);
+    EcranMatch*  ecranMatch   = ecranPlugInPool->getEcranMatch();
+    switch(couleurBoule)
+    {
+        case ROUGE:
+        {
+            ecranMatch->affichageMessage->setText(
+              "Le joueur " + QString::number(idJoueur + 1) +
+              " a les boules Rouges");
+            ecranMatch->retirerBoule(couleurBoule);
+            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            break;
+        }
+        case JAUNE:
+        {
+            ecranMatch->affichageMessage->setText(
+              "Le joueur " + QString::number(idJoueur + 1) +
+              " a les boules Jaunes");
+            ecranMatch->retirerBoule(couleurBoule);
+            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            break;
+        }
+        case BLANCHE:
+        {
+            ecranMatch->affichageMessage->setText("Faute : Joueur suivant");
+            break;
+        }
+        case NOIR:
+        {
+            ecranMatch->affichageMessage->setText("Faute : Partie Terminé");
+            break;
+        }
+        case AUCUNE:
+        {
+            ecranMatch->affichageMessage("Faute : Joueur suivant");
+            break;
+        }
+    }
 }
 
 void PlugInPool::changerEcranMatch()

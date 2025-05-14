@@ -41,17 +41,18 @@ class Match
     QDateTime     horodatage;
     EtatMatch     etat;
     int           gagnant;
-    int           numeroTable;
     QList<Joueur> joueurs;
     QList<Manche> manches;
+    int           joueurActif;
 
   public:
     Match(const QString& nom);
 
     void setNbManchesGagnantes(int nbManchesGagnantes);
-    void setNumeroTable(int numeroTable);
     void enregistrerJoueurs(const QString& prenomJoueur1,
                             const QString& prenomJoueur2);
+    void changerJoueur();
+    int  getJoueurActif() const;
 };
 
 #endif // MATCH_H

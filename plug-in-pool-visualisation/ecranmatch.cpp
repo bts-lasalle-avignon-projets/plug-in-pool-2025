@@ -13,6 +13,7 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     labelCompteAReboursManche = new QLabel("01:30", ecran);
     affichageNumeroTable      = new QLabel("Table n°", ecran);
     affichageNomJeu           = new QLabel("PlugInPool", ecran);
+    affichageMessage          = new QLabel("Message", ecran);
 
     affichageJoueurUn->setObjectName("affichageJoueurUn");
     affichageJoueurDeux->setObjectName("affichageJoueurDeux");
@@ -22,6 +23,7 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     labelCompteAReboursManche->setObjectName("labelCompteAReboursManche");
     affichageNumeroTable->setObjectName("affichageNumeroTable");
     affichageNomJeu->setObjectName("affichageNomJeu");
+    affichageMessage->setObjectName("affichageMessage");
 
     QVBoxLayout* ecranMatch                     = new QVBoxLayout(ecran);
     QHBoxLayout* espaceJoueursEtCompteARebours  = new QHBoxLayout();
@@ -49,6 +51,8 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     espaceBoules->addSpacing(20);
     espaceBoules->addLayout(espaceBoulesJaunes);
     espaceBoules->addStretch();
+
+    espaceTableBillard->addWidget(affichageMessage, 1, 0, 1, 3);
 
     espaceNumeroTableEtChronometre->addWidget(affichageNumeroTable);
     espaceNumeroTableEtChronometre->addStretch();
@@ -78,36 +82,30 @@ QWidget* EcranMatch::getEcran() const
     return ecran;
 }
 
-void EcranMatch::afficherInformationsMatch(int     numeroTable,
+void EcranMatch::afficherInformationsMatch(int     nbManches,
                                            QString joueur1,
-                                           QString joueur2,
-                                           int     nbManches)
+                                           QString joueur2)
 {
     affichageJoueurUn->setText(joueur1);
     affichageJoueurDeux->setText(joueur2);
-    affichageNumeroTable->setText("Table n°" + QString::number(numeroTable));
 }
 
 void EcranMatch::demarrerChronometre()
 {
     secondesEcoulees = 0;
 
-    connect(chronometre,
-            &QTimer::timeout,
-            this,
-            [=]()
-            {
-                secondesEcoulees++;
+    connect(chronometre, &QTimer::timeout, this, [=]() {
+        secondesEcoulees++;
 
-                int minutes  = secondesEcoulees / MINUTE;
-                int secondes = secondesEcoulees % MINUTE;
+        int minutes  = secondesEcoulees / MINUTE;
+        int secondes = secondesEcoulees % MINUTE;
 
-                QString temps =
-                  QString("%1:%2")
-                    .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
-                    .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
-                labelChronometre->setText(temps);
-            });
+        QString temps =
+          QString("%1:%2")
+            .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+            .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+        labelChronometre->setText(temps);
+    });
 
     chronometre->start(TEMPS_INCREMENTATION);
 }
@@ -157,6 +155,11 @@ void EcranMatch::initialiserPochesTable()
         compteurBoulesJaunesPoche[i]->setObjectName(
           QString("compteurBoulesJaunesPoche%1").arg(i));
 
+        /*bouleRougeImagePoche[i]->setAlignment(Qt::AlignCenter);
+        compteurBoulesRougesPoche[i]->setAlignment(Qt::AlignCenter);
+        bouleJauneImagePoche[i]->setAlignment(Qt::AlignCenter);
+        compteurBoulesJaunesPoche[i]->setAlignment(Qt::AlignCenter);*/
+
         QWidget* poche = new QWidget(ecran);
         poche->setObjectName("poche");
         QVBoxLayout* contenuPoche = new QVBoxLayout(poche);
@@ -169,5 +172,56 @@ void EcranMatch::initialiserPochesTable()
         espaceTableBillard->addWidget(poche,
                                       lignesPoches[i],
                                       colonnesPoches[i]);
+    }
+}
+
+void EcranMatch::retirerBoule(CouleurBille couleur)
+{
+    switch(couleur)
+    {
+        case ROUGE:
+            if(!boulesRouges.isEmpty())
+            {
+                QLabel* boule = boulesRouges.takeFirst();
+                delete boule;
+            }
+            break;
+
+        case JAUNE:
+            if(!boulesJaunes.isEmpty())
+            {
+                QLabel* boule = boulesJaunes.takeLast();
+                delete boule;
+            }
+            break;
+        default:
+            qWarning() << Q_FUNC_INFO << "Couleur inconnue :" << couleur;
+            break;
+    }
+}
+
+void EcranMatch::incrementerCompteurPoche(CouleurBille couleur, int idPoche)
+{
+    if(idPoche < 0 || idPoche >= NB_POCHES)
+        return;
+
+    QLabel* compteur = nullptr;
+
+    switch(couleur)
+    {
+        case ROUGE:
+            compteur = compteurBoulesRougesPoche[idPoche];
+            break;
+        case JAUNE:
+            compteur = compteurBoulesJaunesPoche[idPoche];
+            break;
+        default:
+            return;
+    }
+
+    if(compteur)
+    {
+        int valeur = compteur->text().toInt();
+        compteur->setText(QString::number(valeur + 1));
     }
 }

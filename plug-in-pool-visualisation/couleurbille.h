@@ -5,11 +5,11 @@
 
 enum CouleurBille
 {
-    Aucune  = -1,
-    Rouge   = 0,
-    Jaune   = 1,
-    Blanche = 2,
-    Noir    = 3,
+    AUCUNE  = -1,
+    ROUGE   = 0,
+    JAUNE   = 1,
+    BLANCHE = 2,
+    NOIR    = 3,
     NbCouleurs
 };
 

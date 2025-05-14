@@ -24,10 +24,13 @@ class PlugInPool : public QObject
 
   private slots:
     void gererConnexion(bool etat);
-    void configurerMatch(int     numeroTable,
+    void configurerMatch(int     nbManches,
                          QString prenomJoueur1,
-                         QString prenomJoueur2,
-                         int     nbManches);
+                         QString prenomJoueur2);
+    void empochageCasse(int idPartie,
+                        int idJoueur,
+                        int couleurBille,
+                        int idPoche);
     void changerEcranMatch();
 };
 

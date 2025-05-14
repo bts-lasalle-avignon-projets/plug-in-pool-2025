@@ -53,8 +53,8 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     showFullScreen();
 #endif
 
-    afficherEcranAccueil();
-    // afficherEcranMatch();
+    // afficherEcranAccueil();
+    afficherEcranMatch();
 }
 
 EcranPlugInPool::~EcranPlugInPool()
