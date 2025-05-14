@@ -116,8 +116,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   </tr>
   <tr>
     <td>Lancer un match</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
@@ -148,8 +148,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
     <tr>
     <td>Dialoguer avec les modules</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
 </table>
 
