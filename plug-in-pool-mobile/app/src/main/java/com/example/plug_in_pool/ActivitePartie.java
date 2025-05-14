@@ -3,12 +3,14 @@ package com.example.plug_in_pool;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -32,13 +34,27 @@ public class ActivitePartie extends AppCompatActivity
     private BluetoothDevice deviceEmission;
     private BluetoothDevice deviceReception;
 
+    /**
+     * Éléments de l'interface
+     */
+    Joueur joueur1;
+    Joueur joueur2;
+    String nbParties;
+
+    private TextView texteJoueur1;
+    private TextView texteJoueur2;
+    private TextView nbPointsJoueur1;
+    private TextView nbPointsJoueur2;
+    private TextView joueurActuel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_activite_partie);
-
+        initialiserVues();
+        recupererDonneesDeConfigurations();
         verifierEtDemarrerBluetooth();
 
         Button boutonEnvoyer = findViewById(R.id.boutonFinMatch);
@@ -47,7 +63,34 @@ public class ActivitePartie extends AppCompatActivity
             envoyerTrame(trame);
         });
     }
+    void initialiserVues()
+    {
+        texteJoueur1     = findViewById(R.id.textePourNbPointsJoueur1);
+        texteJoueur2     = findViewById(R.id.textePourNbPointsJoueur2);
+        nbPointsJoueur1  = findViewById(R.id.nbPointsDuJoueur1);
+        nbPointsJoueur2  = findViewById(R.id.nbPointsDuJoueur2);
+        joueurActuel     = findViewById(R.id.nomDuJoueur);
+        lancerLeMatch();
+    }
+    void recupererDonneesDeConfigurations()
+    {
+        Intent intent = getIntent();
+        joueur1   = (Joueur)intent.getSerializableExtra("joueur1");
+        Log.d(TAG, "recupererDonneesDeConfigurations: " + joueur1);
+        joueur2   = (Joueur)intent.getSerializableExtra("joueur2");
+        Log.d(TAG, "recupererDonneesDeConfigurations: " + joueur2);
+        nbParties = intent.getSerializableExtra("nbParties").toString();
 
+        if(joueur1 != null && joueur2 != null)
+        {
+            texteJoueur1.setText(joueur1.getNom() + " " + joueur1.getPrenom());
+            texteJoueur2.setText(joueur2.getNom() + " " + joueur2.getPrenom());
+        }
+    }
+    private void lancerLeMatch()
+    {
+        
+    }
     private void verifierEtDemarrerBluetooth()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)

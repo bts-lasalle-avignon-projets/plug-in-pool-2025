@@ -42,6 +42,10 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
 
+    Joueur joueur1;
+    Joueur joueur2;
+    String nbParties;
+
     /**
      * Ressources GUI
      */
@@ -94,9 +98,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
     void recupererDonneesDeConfigurations()
     {
         Intent intent    = getIntent();
-        Joueur joueur1   = (Joueur)intent.getSerializableExtra("joueur1");
-        Joueur joueur2   = (Joueur)intent.getSerializableExtra("joueur2");
-        String nbParties = intent.getSerializableExtra("nbParties").toString();
+        joueur1   = (Joueur)intent.getSerializableExtra("joueur1");
+        joueur2   = (Joueur)intent.getSerializableExtra("joueur2");
+        nbParties = intent.getSerializableExtra("nbParties").toString();
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -247,6 +251,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
             {
                 Intent changerDeVue =
                         new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
+                changerDeVue.putExtra("joueur1", joueur1);
+                changerDeVue.putExtra("joueur2", joueur2);
+                changerDeVue.putExtra("nbParties", nbParties);
                 startActivity(changerDeVue);
             }
         });
