@@ -116,8 +116,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   </tr>
   <tr>
     <td>Lancer un match</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
@@ -148,8 +148,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
     <tr>
     <td>Dialoguer avec les modules</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
 </table>
 
@@ -275,20 +275,20 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 > Du 29 Mars 2025 au 23 Mai 2025
 
 - [x] Paramétrer un match
-- [ ] Lancer une ou plusieurs partie(s)
+- [x] Lancer une ou plusieurs partie(s)
 - [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
-- [ ] Jouer une partie
-- [ ] Jouer plusieurs parties
+- [ ] Jouer une partie ou plusieurs parties
 - [ ] Afficher les données de la partie en cours
-- [ ] Stocker les données de la partie dans la base de données
-- [ ] Liaison entre la table de billard et le terminal mobile Android
-- [ ] Liaison entre le terminal mobile Android et l'ecran d'affichage
+- [x] Liaison entre la table de billard et le terminal mobile Android
+- [x] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
 ### Itération 3
 
 > Du 24 Mai 2025 au 30 Mai 2025
+
+- [ ] Stocker les données de la partie dans la base de données
 
 ### Itération 4
 

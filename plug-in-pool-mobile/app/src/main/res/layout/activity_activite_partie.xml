@@ -387,7 +387,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/boutonLancerMatch"
+                android:id="@+id/boutonFinMatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

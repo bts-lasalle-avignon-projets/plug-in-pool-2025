@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -39,6 +41,11 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private TextView             texteNbParties;
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
+
+    /**
+     * Ressources GUI
+     */
+    Button boutonLancerPartie;
 
     /**
      * Bluetooth
@@ -80,6 +87,8 @@ public class ActiviteGestionPartie extends AppCompatActivity
         texteNbParties      = findViewById(R.id.texteNbParties);
         choixBluetoothEcran = findViewById(R.id.choixBluetoothEcran);
         choixBluetoothTable = findViewById(R.id.choixBluetoothTable);
+        boutonLancerPartie = findViewById(R.id.boutonLancerPartie);
+        lancerUnePartie();
     }
 
     void recupererDonneesDeConfigurations()
@@ -197,6 +206,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
             Log.d(TAG, "Socket créée, démarrage de la connexion...");
             socketBluetooth.connect();
             Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
+            envoyerAdresseMac(adresseMac);
         }
         catch(IOException e)
         {
@@ -221,5 +231,24 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private String extraireAdresseMac(String texte)
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
+    }
+
+    private void envoyerAdresseMac(String adresseMac)
+    {
+        Intent changerVue = new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
+        changerVue.putExtra("adresseMac", adresseMac);
+        startActivity(changerVue);
+    }
+    private void lancerUnePartie()
+    {
+        boutonLancerPartie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue =
+                        new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
+                startActivity(changerDeVue);
+            }
+        });
     }
 }
