@@ -3,7 +3,6 @@ package com.example.plug_in_pool;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,13 +19,18 @@ import androidx.core.app.ActivityCompat;
 public class ActivitePartie extends AppCompatActivity
 {
 
-    private static final String ADRESSE_MAC_PC_B20 = "00:1A:7D:DA:71:15";
-    private static final String ADRESSE_MAC_ESP = "D4:8C:49:69:64:8E";
-    private static final String ADRESSE_MAC_SIMULATEUR = "3C:71:BF:6A:F5:D2";
-    private String adresseMacTable;
     private static final String TAG = "_ActivitePartie";
+
+    private static final String ADRESSE_MAC_PC_B20 = "00:1A:7D:DA:71:15";
+    private static final String ADRESSE_MAC_ECRAN = "00:E0:4C:6D:20:45";
+
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
-    private CommunicationBluetooth communicationBluetooth;
+
+    private CommunicationBluetooth communicationBluetoothEmission;
+    private CommunicationBluetooth communicationBluetoothReception;
+
+    private BluetoothDevice deviceEmission;
+    private BluetoothDevice deviceReception;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,22 +39,13 @@ public class ActivitePartie extends AppCompatActivity
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_activite_partie);
 
-        recupererDonneesDeConfigurations();
         verifierEtDemarrerBluetooth();
 
-        /* Test envoie de trame */
         Button boutonEnvoyer = findViewById(R.id.boutonFinMatch);
         boutonEnvoyer.setOnClickListener(v -> {
             String trame = trameDemarrerMatch("D", 3, "Alice", "Pierre");
             envoyerTrame(trame);
         });
-    }
-
-    void recupererDonneesDeConfigurations()
-    {
-        Intent intent = getIntent();
-        adresseMacTable = intent.getStringExtra("adresseMac");
-        Log.d(TAG, "Adresse MAC récupérer: " + adresseMacTable);
     }
 
     private void verifierEtDemarrerBluetooth()
@@ -78,13 +73,13 @@ public class ActivitePartie extends AppCompatActivity
             return;
         }
 
-        String adresseMac = ADRESSE_MAC_PC_B20; // Pour les tests
-        BluetoothDevice peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
+        deviceEmission = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC_ECRAN);
+        communicationBluetoothEmission = new CommunicationBluetooth(deviceEmission);
+        communicationBluetoothEmission.start();
 
-        communicationBluetooth = new CommunicationBluetooth(peripheriqueBluetooth);
-        communicationBluetooth.start();
-
-        communicationBluetooth.setReceptionListener(message -> {
+        deviceReception = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC_PC_B20);
+        communicationBluetoothReception = new CommunicationBluetooth(deviceReception);
+        communicationBluetoothReception.setReceptionListener(message -> {
             runOnUiThread(() -> {
                 if (estTrameValide(message))
                 {
@@ -96,9 +91,10 @@ public class ActivitePartie extends AppCompatActivity
                 }
             });
         });
+        communicationBluetoothReception.start();
 
         new Handler().postDelayed(() -> {
-            if (communicationBluetooth != null && communicationBluetooth.estConnecte())
+            if (communicationBluetoothEmission != null && communicationBluetoothEmission.estConnecte())
             {
                 String trame = trameEtatPourTable("A");
                 envoyerTrame(trame);
@@ -106,21 +102,21 @@ public class ActivitePartie extends AppCompatActivity
             }
             else
             {
-                Toast.makeText(this, "Bluetooth non connecté, envoi annulé", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Bluetooth (écran) non connecté, envoi annulé", Toast.LENGTH_LONG).show();
             }
         }, 2000);
     }
 
     public void envoyerTrame(String trame)
     {
-        if (communicationBluetooth != null && communicationBluetooth.estConnecte())
+        if (communicationBluetoothEmission != null && communicationBluetoothEmission.estConnecte())
         {
             Log.d(TAG, "Envoi de la trame : " + trame);
-            communicationBluetooth.envoyerTrameAsync(trame);
+            communicationBluetoothEmission.envoyerTrameAsync(trame);
         }
         else
         {
-            Log.e(TAG, "Bluetooth non connecté pour envoyer la trame");
+            Log.e(TAG, "Bluetooth (écran) non connecté pour envoyer la trame");
         }
     }
 
@@ -130,9 +126,10 @@ public class ActivitePartie extends AppCompatActivity
         {
             return false;
         }
-        trame = trame.trim();
 
-        if (!trame.startsWith(CommunicationBluetooth.ENTETE) || !trame.endsWith(CommunicationBluetooth.DELIMITATEUR_FIN))
+        trame = trame.trim();
+        if (!trame.startsWith(CommunicationBluetooth.ENTETE) ||
+                !trame.endsWith(CommunicationBluetooth.DELIMITATEUR_FIN))
         {
             return false;
         }
@@ -186,65 +183,60 @@ public class ActivitePartie extends AppCompatActivity
     {
         return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
-    public String trameDemarrerMatch(String type, int nbParties, String prenomJoueur1,
-                                     String prenomJoueur2)
+
+    public String trameDemarrerMatch(String type, int nbParties, String prenomJoueur1, String prenomJoueur2)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + nbParties
-                + CommunicationBluetooth.SEPARATEUR + prenomJoueur1 +
-                CommunicationBluetooth.SEPARATEUR + prenomJoueur2 +
-                CommunicationBluetooth.DELIMITATEUR_FIN;
+                + CommunicationBluetooth.SEPARATEUR + prenomJoueur1 + CommunicationBluetooth.SEPARATEUR + prenomJoueur2
+                + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
+
     public String trameCasse(String type, int idPartie, int idJoueur, int couleurBille, int idPoche)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idPartie
-                + CommunicationBluetooth.SEPARATEUR + idJoueur + CommunicationBluetooth.SEPARATEUR
-                + couleurBille + CommunicationBluetooth.SEPARATEUR + idPoche
-                + CommunicationBluetooth.DELIMITATEUR_FIN;
+                + CommunicationBluetooth.SEPARATEUR + idJoueur + CommunicationBluetooth.SEPARATEUR + couleurBille
+                + CommunicationBluetooth.SEPARATEUR + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
+
     public String trameEmpochage(String type, int couleurBille, int idPoche)
     {
-        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR
-                + couleurBille + CommunicationBluetooth.SEPARATEUR + idPoche
-                + CommunicationBluetooth.DELIMITATEUR_FIN;
+        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + couleurBille
+                + CommunicationBluetooth.SEPARATEUR + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
+
     public String trameFaute(String type, int idJoueur, String faute)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idJoueur
-                + CommunicationBluetooth.SEPARATEUR + faute
-                + CommunicationBluetooth.DELIMITATEUR_FIN;
+                + CommunicationBluetooth.SEPARATEUR + faute + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
+
     public String trameFinDePartie(String type, int idPartie, int idJoueur)
     {
         return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idPartie
-                + CommunicationBluetooth.SEPARATEUR + idJoueur
-                + CommunicationBluetooth.DELIMITATEUR_FIN;
+                + CommunicationBluetooth.SEPARATEUR + idJoueur + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
+
     public String trameFinDeMatch(String type, int nbPartiesJoueur1, int nbPartiesJoueur2)
     {
-        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR
-                + nbPartiesJoueur1 + CommunicationBluetooth.SEPARATEUR + nbPartiesJoueur2
-                + CommunicationBluetooth.DELIMITATEUR_FIN;
+        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + nbPartiesJoueur1
+                + CommunicationBluetooth.SEPARATEUR + nbPartiesJoueur2 + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        if (communicationBluetooth != null)
-        {
-            communicationBluetooth.close();
-        }
+        if (communicationBluetoothEmission != null) communicationBluetoothEmission.close();
+        if (communicationBluetoothReception != null) communicationBluetoothReception.close();
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults)
     {
         if (requestCode == REQUEST_BLUETOOTH_PERMISSION)
         {
-            if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
                 initialiserBluetooth();
             }

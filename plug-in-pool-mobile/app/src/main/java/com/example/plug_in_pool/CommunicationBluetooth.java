@@ -14,10 +14,10 @@ import java.util.concurrent.Executors;
 public class CommunicationBluetooth extends Thread
 {
     /*
-    * Format Trame
-    */
-    protected static final String ENTETE           = "$";
-    protected static final String SEPARATEUR       = "/";
+     * Format Trame
+     */
+    protected static final String ENTETE = "$";
+    protected static final String SEPARATEUR = "/";
     protected static final String DELIMITATEUR_FIN = "!";
 
     private static final String TAG = "_CommunicationBluetooth";
@@ -93,9 +93,16 @@ public class CommunicationBluetooth extends Thread
 
                 Log.d(TAG, "Message reçu : " + messageRecu);
 
-                if (receptionListener != null)
+                if (estTrameValide(messageRecu))
                 {
-                    receptionListener.onMessageRecu(messageRecu);
+                    if (receptionListener != null)
+                    {
+                        receptionListener.onMessageRecu(messageRecu);
+                    }
+                }
+                else
+                {
+                    Log.e(TAG, "Trame invalide reçue");
                 }
             }
             catch (IOException e)
@@ -109,6 +116,39 @@ public class CommunicationBluetooth extends Thread
     public boolean estConnecte()
     {
         return socket != null && socket.isConnected();
+    }
+
+    public boolean estTrameValide(String trame)
+    {
+        if (trame == null)
+        {
+            return false;
+        }
+        trame = trame.trim();
+
+        if (!trame.startsWith(ENTETE) || !trame.endsWith(DELIMITATEUR_FIN))
+        {
+            return false;
+        }
+
+        String contenu = trame.substring(1, trame.length() - 1);
+        String[] morceaux = contenu.split(SEPARATEUR);
+
+        if (morceaux.length != 2)
+        {
+            return false;
+        }
+
+        try
+        {
+            Integer.parseInt(morceaux[0]);
+            Integer.parseInt(morceaux[1]);
+            return true;
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
+        }
     }
 
     public interface ReceptionListener
