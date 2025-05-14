@@ -1,6 +1,8 @@
 package com.example.plug_in_pool;
 
-public enum CouleurBille {
+public enum CouleurBille
+{
+    AUCUNE(-1),
     ROUGE(0),
     JAUNE(1),
     BLANCHE(2),
