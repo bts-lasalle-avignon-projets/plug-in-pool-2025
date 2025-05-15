@@ -19,6 +19,7 @@ public class CommunicationBluetooth extends Thread
     protected static final String ENTETE = "$";
     protected static final String SEPARATEUR = "/";
     protected static final String DELIMITATEUR_FIN = "!";
+    protected static final String DEMARER_MATCH = "D";
 
     private static final String TAG = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");

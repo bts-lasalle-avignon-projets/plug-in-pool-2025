@@ -49,6 +49,8 @@ public class Joueur implements Serializable
     {
         return prenom;
     }
+    public int ajouterPoint(){return points++;}
+    public int getId(){return id;}
 
     public void afficherJoueur()
     {

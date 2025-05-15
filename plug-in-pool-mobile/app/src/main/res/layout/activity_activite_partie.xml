@@ -387,6 +387,20 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/boutonDemarerMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/rouge"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="320dp"
+                android:minWidth="300dp"
+                android:text="@string/boutonDemarerDePartie"
+                android:textColor="@color/noir"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <Button
                 android:id="@+id/boutonFinMatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
