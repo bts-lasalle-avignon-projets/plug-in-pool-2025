@@ -61,6 +61,7 @@ class EcranMatch : public QObject
     void initialiserPochesTable();
     void retirerBoule(CouleurBille couleur);
     void incrementerCompteurPoche(CouleurBille couleur, int idPoche);
+    void afficherMessageAction(QString message);
 
   signals:
 };

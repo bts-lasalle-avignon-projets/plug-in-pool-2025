@@ -86,35 +86,35 @@ void PlugInPool::empochageCasse(int idPartie,
     {
         case ROUGE:
         {
-            ecranMatch->affichageMessage->setText(
-              "Le joueur " + QString::number(idJoueur + 1) +
-              " a les boules Rouges");
+            ecranMatch->afficherMessageAction("Le joueur " +
+                                              QString::number(idJoueur + 1) +
+                                              " a les boules Rouges");
             ecranMatch->retirerBoule(couleurBoule);
             ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case JAUNE:
         {
-            ecranMatch->affichageMessage->setText(
-              "Le joueur " + QString::number(idJoueur + 1) +
-              " a les boules Jaunes");
+            ecranMatch->afficherMessageAction("Le joueur " +
+                                              QString::number(idJoueur + 1) +
+                                              " a les boules Jaunes");
             ecranMatch->retirerBoule(couleurBoule);
             ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case BLANCHE:
         {
-            ecranMatch->affichageMessage->setText("Faute : Joueur suivant");
+            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
         case NOIR:
         {
-            ecranMatch->affichageMessage->setText("Faute : Partie Terminé");
+            ecranMatch->afficherMessageAction("Faute : Partie Terminé");
             break;
         }
         case AUCUNE:
         {
-            ecranMatch->affichageMessage("Faute : Joueur suivant");
+            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
     }

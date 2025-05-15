@@ -225,3 +225,8 @@ void EcranMatch::incrementerCompteurPoche(CouleurBille couleur, int idPoche)
         compteur->setText(QString::number(valeur + 1));
     }
 }
+
+void EcranMatch::afficherMessageAction(QString message)
+{
+    affichageMessage->setText(message);
+}
