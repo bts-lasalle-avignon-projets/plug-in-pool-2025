@@ -27,10 +27,11 @@ public class Joueur implements Serializable
         Log.d(TAG,
               "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
                 " - id = " + id);
-        this.nom    = nom;
-        this.prenom = prenom;
-        this.points = points;
-        this.id     = id;
+        this.nom     = nom;
+        this.prenom  = prenom;
+        this.points  = points;
+        this.id      = id;
+        this.couleur = null;
     }
 
     public Joueur(String nom, String prenom)
@@ -51,6 +52,12 @@ public class Joueur implements Serializable
     }
     public int ajouterPoint(){return points++;}
     public int getId(){return id;}
+    public void attribuerCouleur(CouleurBille couleur)
+    {
+        this.couleur = couleur;
+        Log.d(TAG, "Couleur attribuée au joueur " + nom + " : " + couleur);
+    }
+
 
     public void afficherJoueur()
     {

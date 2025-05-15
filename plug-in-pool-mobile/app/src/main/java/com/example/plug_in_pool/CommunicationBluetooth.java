@@ -1,5 +1,6 @@
 package com.example.plug_in_pool;
 
+import android.adservices.measurement.WebSourceRegistrationRequest;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
@@ -16,10 +17,11 @@ public class CommunicationBluetooth extends Thread
     /*
      * Format Trame
      */
-    protected static final String ENTETE = "$";
-    protected static final String SEPARATEUR = "/";
+    protected static final String ENTETE           = "$";
+    protected static final String SEPARATEUR       = "/";
     protected static final String DELIMITATEUR_FIN = "!";
-    protected static final String DEMARER_MATCH = "D";
+    protected static final String DEMARER_MATCH    = "D";
+    protected static final String CASSE            = "C";
 
     private static final String TAG = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");

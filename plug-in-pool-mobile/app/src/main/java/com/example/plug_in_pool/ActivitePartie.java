@@ -37,6 +37,8 @@ public class ActivitePartie extends AppCompatActivity
 
     private BluetoothDevice deviceEmission;
     private BluetoothDevice deviceReception;
+    private BlackBall blackBall;
+    private Empoche empoche;
 
     /**
      * Éléments de l'interface
@@ -44,6 +46,7 @@ public class ActivitePartie extends AppCompatActivity
     Joueur joueur1;
     Joueur joueur2;
     String nbParties;
+    int decompteParties = -(Integer.parseInt(nbParties));
 
     int idGagnant;
     List<Joueur> joueurs = new ArrayList<>();
@@ -145,25 +148,69 @@ public class ActivitePartie extends AppCompatActivity
     }
     private boolean casse()
     {
-        for (Joueur joueur : joueurs)
-        {
-            joueur.afficherJoueur();
+        boolean casseTerminee = false;
 
-            int id = joueur.getId();
-            if (id == 0)
+        while (!casseTerminee)
+        {
+            for (Joueur joueur : joueurs)
             {
-                Log.d(TAG, "Attente empochage joueur 1");
+                joueur.afficherJoueur();
+
+                Log.d(TAG, "Attente empochage joueur " + (joueur.getId() + 1));
                 demarrerReceptionBluetooth();
-            }
-            else if (id == 1)
-            {
-                Log.d(TAG, "Attente empochage joueur 2");
-                demarrerReceptionBluetooth();
-            }
-            else
-            {
+
+                int couleurBilleTrame = trameCouleurRecue;
+                CouleurBille couleurBille = CouleurBille.fromInt(couleurBilleTrame);
+
+                switch (couleurBille)
+                {
+                    case JAUNE:
+                        joueur.attribuerCouleur(CouleurBille.JAUNE);
+                        String envoyerVersEcran1 =
+                                trameCasse(CommunicationBluetooth.CASSE ,
+                                        Math.abs(decompteParties + 1), joueur.getId(), trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerVersEcran1);
+                        casseTerminee = true;
+                        break;
+                    case ROUGE:
+                        joueur.attribuerCouleur(CouleurBille.ROUGE);
+                        String envoyerVersEcran2 =
+                                trameCasse(CommunicationBluetooth.CASSE ,
+                                        Math.abs(decompteParties + 1), joueur.getId(), trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerVersEcran2);
+                        casseTerminee = true;
+                        break;
+
+                    case BLANCHE:
+                        casseTerminee = false;
+                        String envoyerVersEcran3 =
+                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "2");
+                        envoyerTrame(envoyerVersEcran3);
+                        break;
+                    case NOIRE:
+                        casseTerminee = false;
+                        String envoyerVersEcran4 =
+                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "3");
+                        envoyerTrame(envoyerVersEcran4);
+                        break;
+                    case AUCUNE:
+                        casseTerminee = false;
+                        String envoyerVersEcran5 =
+                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "-1");
+                        envoyerTrame(envoyerVersEcran5);
+                        break;
+
+                    default:
+                        Log.d(TAG, "Bille non reconnue : " + couleurBilleTrame);
+                        break;
+                }
+                if (casseTerminee)
+                {
+                    break;
+                }
             }
         }
+
         return true;
     }
     private void manche()
@@ -365,7 +412,6 @@ public class ActivitePartie extends AppCompatActivity
             Log.e(TAG, "Erreur de format inattendue dans une trame pourtant validée");
         }
     }
-
     public String trameEtatPourTable(String etat)
     {
         return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;

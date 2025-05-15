@@ -10,4 +10,5 @@ public class BlackBall
     public static final int NB_POCHES = 6;              //!< Nombre de poches de la table
     public static final int NB_JOUEURS = 2;
     public static final int CONFIGURATION_FINI = 1;
+
 }
