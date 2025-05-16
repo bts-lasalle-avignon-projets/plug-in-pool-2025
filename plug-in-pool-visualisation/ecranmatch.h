@@ -33,6 +33,7 @@ class EcranMatch : public QObject
     QLabel*          affichageNomJeu;
     QLabel*          affichageMessage;
     int              secondesEcoulees;
+    int              secondesRestantes;
     QVector<QLabel*> boulesRouges;
     QVector<QLabel*> boulesJaunes;
 
@@ -62,6 +63,7 @@ class EcranMatch : public QObject
     void retirerBoule(CouleurBille couleur);
     void incrementerCompteurPoche(CouleurBille couleur, int idPoche);
     void afficherMessageAction(QString message);
+    void demarrerCompteAReboursManche(int dureeEnSecondes);
 
   signals:
 };

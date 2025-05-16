@@ -15,14 +15,9 @@ void Match::setNbManchesGagnantes(int nbManchesGagnantes)
     this->nbManchesGagnantes = nbManchesGagnantes;
 }
 
-void Match::changerJoueur()
+QString Match::getPrenomJoueur(int idJoueur) const
 {
-    joueurActif = (joueurActif == 0) ? 1 : 0;
-}
-
-int Match::getJoueurActif() const
-{
-    return joueurActif;
+    return joueurs[idJoueur].getPrenom();
 }
 
 void Match::enregistrerJoueurs(const QString& prenomJoueur1,

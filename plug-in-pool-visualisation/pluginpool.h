@@ -5,6 +5,7 @@
 #include <QTimer>
 
 #define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
+#define TEMPS_COMPTE_A_REBOURS          90
 
 class CommunicationBluetooth;
 class Match;
@@ -31,6 +32,7 @@ class PlugInPool : public QObject
                         int idJoueur,
                         int couleurBille,
                         int idPoche);
+    void empochage(int idJoueur, int couleurBille, int idPoche);
     void changerEcranMatch();
 };
 

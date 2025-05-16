@@ -48,11 +48,10 @@ class Match
   public:
     Match(const QString& nom);
 
-    void setNbManchesGagnantes(int nbManchesGagnantes);
-    void enregistrerJoueurs(const QString& prenomJoueur1,
-                            const QString& prenomJoueur2);
-    void changerJoueur();
-    int  getJoueurActif() const;
+    void    setNbManchesGagnantes(int nbManchesGagnantes);
+    void    enregistrerJoueurs(const QString& prenomJoueur1,
+                               const QString& prenomJoueur2);
+    QString getPrenomJoueur(int idJoueur) const;
 };
 
 #endif // MATCH_H

@@ -112,8 +112,8 @@ void CommunicationBluetooth::lireTrame()
                     int idPartie = contenuTrame[POSITION_ID_PARTIE].toInt();
                     int idJoueur = contenuTrame[POSITION_ID_JOUEUR].toInt();
                     int couleurBille =
-                      contenuTrame[POSITION_COULEUR_BILLE].toInt();
-                    int idPoche = contenuTrame[POSITION_ID_POCHE].toInt();
+                      contenuTrame[POSITION_COULEUR_BILLE_CASSE].toInt();
+                    int idPoche = contenuTrame[POSITION_ID_POCHE_CASSE].toInt();
                     qDebug() << Q_FUNC_INFO << "idPartie" << idPartie
                              << "idJoueur" << idJoueur << "couleurBille"
                              << couleurBille << "idPoche" << idPoche;
@@ -121,13 +121,19 @@ void CommunicationBluetooth::lireTrame()
                                          idJoueur,
                                          couleurBille,
                                          idPoche);
-                }
-                case TRAME_MANCHE:
-                {
                     break;
                 }
                 case TRAME_EMPOCHAGE:
                 {
+                    int idJoueur =
+                      contenuTrame[POSITION_ID_JOUEUR_MANCHE].toInt();
+                    int couleurBille =
+                      contenuTrame[POSITION_COULEUR_BILLE_MANCHE].toInt();
+                    int idPoche =
+                      contenuTrame[POSITION_ID_POCHE_MANCHE].toInt();
+                    qDebug() << Q_FUNC_INFO << "couleurBille" << couleurBille
+                             << "idJoueur" << idJoueur << "idPoche" << idPoche;
+                    emit trameEmpochageRecue(idJoueur, couleurBille, idPoche);
                     break;
                 }
                 default:

@@ -18,14 +18,16 @@
 #define POSITION_PRENOM_JOUEUR_1 2
 #define POSITION_PRENOM_JOUEUR_2 3
 
-#define TRAME_CASSE            'C'
-#define POSITION_ID_PARTIE     1
-#define POSITION_ID_JOUEUR     2
-#define POSITION_COULEUR_BILLE 3
-#define POSITION_ID_POCHE      4
+#define TRAME_CASSE                  'C'
+#define POSITION_ID_PARTIE           1
+#define POSITION_ID_JOUEUR           2
+#define POSITION_COULEUR_BILLE_CASSE 3
+#define POSITION_ID_POCHE_CASSE      4
 
-#define TRAME_MANCHE    'M'
-#define TRAME_EMPOCHAGE 'E'
+#define TRAME_EMPOCHAGE               'E'
+#define POSITION_ID_JOUEUR_MANCHE     1
+#define POSITION_COULEUR_BILLE_MANCHE 2
+#define POSITION_ID_POCHE_MANCHE      3
 
 class CommunicationBluetooth : public QObject
 {
@@ -49,6 +51,7 @@ class CommunicationBluetooth : public QObject
                          int  idJoueur,
                          char couleurBille,
                          int  idPoche);
+    void trameEmpochageRecue(int idJoueur, int couleurBille, int idPoche);
 
   private slots:
     void connecterClient();

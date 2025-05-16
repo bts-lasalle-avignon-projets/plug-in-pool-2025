@@ -11,7 +11,7 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     compteAReboursManche      = new QTimer(ecran);
     labelChronometre          = new QLabel("00:00", ecran);
     labelCompteAReboursManche = new QLabel("01:30", ecran);
-    affichageNumeroTable      = new QLabel("Table n°", ecran);
+    affichageNumeroTable      = new QLabel("Table n° 1", ecran);
     affichageNomJeu           = new QLabel("PlugInPool", ecran);
     affichageMessage          = new QLabel("Message", ecran);
 
@@ -108,6 +108,39 @@ void EcranMatch::demarrerChronometre()
     });
 
     chronometre->start(TEMPS_INCREMENTATION);
+}
+
+void EcranMatch::demarrerCompteAReboursManche(int dureeEnSecondes)
+{
+    compteAReboursManche->stop();
+    compteAReboursManche->disconnect();
+    secondesRestantes = dureeEnSecondes;
+
+    labelCompteAReboursManche->setText("00:00");
+
+    connect(compteAReboursManche, &QTimer::timeout, this, [=]() {
+        if(secondesRestantes <= 0)
+        {
+            compteAReboursManche->stop();
+            labelCompteAReboursManche->setText("00:00");
+            afficherMessageAction("Temps écoulé ! Au tour du joueur suivant");
+        }
+        else
+        {
+            int minutes  = secondesRestantes / MINUTE;
+            int secondes = secondesRestantes % MINUTE;
+
+            QString temps =
+              QString("%1:%2")
+                .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+                .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+
+            labelCompteAReboursManche->setText(temps);
+            secondesRestantes--;
+        }
+    });
+
+    compteAReboursManche->start(TEMPS_INCREMENTATION);
 }
 
 void EcranMatch::genererBoules()
