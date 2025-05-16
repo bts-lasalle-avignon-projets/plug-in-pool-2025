@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ActivitePartie extends AppCompatActivity
     private static final String TAG = "_ActivitePartie";
 
     private static final String ADRESSE_MAC_PC_B20 = "00:1A:7D:DA:71:15";
-    private static final String ADRESSE_MAC_ECRAN = "00:E0:4C:6D:20:45";
+    private static final String ADRESSE_MAC_ECRAN = "3C:71:BF:6A:F5:D2"; //00:E0:4C:6D:20:45
 
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
 
@@ -37,8 +38,6 @@ public class ActivitePartie extends AppCompatActivity
 
     private BluetoothDevice deviceEmission;
     private BluetoothDevice deviceReception;
-    private BlackBall blackBall;
-    private Empoche empoche;
 
     /**
      * Éléments de l'interface
@@ -46,11 +45,11 @@ public class ActivitePartie extends AppCompatActivity
     Joueur joueur1;
     Joueur joueur2;
     String nbParties;
-    int decompteParties = -(Integer.parseInt(nbParties));
+    CouleurBille couleurBille;
 
     int idGagnant;
     List<Joueur> joueurs = new ArrayList<>();
-    int trameCouleurRecue;
+    int trameCouleurRecue = -2;
     int tramePocheRecue;
     boolean partieFinie = false;
 
@@ -59,6 +58,8 @@ public class ActivitePartie extends AppCompatActivity
     private TextView nbPointsJoueur1;
     private TextView nbPointsJoueur2;
     private TextView joueurActuel;
+    private ImageView[] billesJaunes = new ImageView[7];
+    private ImageView[] billesRouges = new ImageView[7];
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -77,6 +78,16 @@ public class ActivitePartie extends AppCompatActivity
         nbPointsJoueur1  = findViewById(R.id.nbPointsDuJoueur1);
         nbPointsJoueur2  = findViewById(R.id.nbPointsDuJoueur2);
         joueurActuel     = findViewById(R.id.nomDuJoueur);
+        for (int i = 0; i < 7; i++)
+        {
+            int resID = getResources().getIdentifier("billeJaune" + (i + 1), "id", getPackageName());
+            billesJaunes[i] = findViewById(resID);
+        }
+        for (int j = 0; j < 7; j++)
+        {
+            int resID = getResources().getIdentifier("billeRouge" + (j + 1), "id", getPackageName());
+            billesRouges[j] = findViewById(resID);
+        }
         preparerLeMatch();
     }
     void recupererDonneesDeConfigurations()
@@ -112,109 +123,11 @@ public class ActivitePartie extends AppCompatActivity
                 trameDemarrerMatch(CommunicationBluetooth.DEMARER_MATCH ,
                         Integer.parseInt(nbParties), joueur1.getPrenom(), joueur2.getPrenom());
         envoyerTrame(envoyerConfigurationVersEcran);
-
-    }
-    private void nbPartie()
-    {
-        for (int i = 0; Integer.parseInt(nbParties) > i; i++)
-        {
-            lancerPartie();
-
-        }
-    }
-    private void nbPartiesGagner()
-    {
-        if (idGagnant == 0)
-        {
-            joueur1.ajouterPoint();
-        }
-        else if (idGagnant == 1)
-        {
-            joueur2.ajouterPoint();
-        }
-        else
-        {
-        }
-    }
-    private void lancerPartie()
-    {
-        boolean casseFinie = false;
-        while (casseFinie =! true)
-        {
-            casseFinie = casse();
-        }
-        manche();
-        finPartie();
-    }
-    private boolean casse()
-    {
-        boolean casseTerminee = false;
-
-        while (!casseTerminee)
-        {
-            for (Joueur joueur : joueurs)
-            {
-                joueur.afficherJoueur();
-
-                Log.d(TAG, "Attente empochage joueur " + (joueur.getId() + 1));
-                demarrerReceptionBluetooth();
-
-                int couleurBilleTrame = trameCouleurRecue;
-                CouleurBille couleurBille = CouleurBille.fromInt(couleurBilleTrame);
-
-                switch (couleurBille)
-                {
-                    case JAUNE:
-                        joueur.attribuerCouleur(CouleurBille.JAUNE);
-                        String envoyerVersEcran1 =
-                                trameCasse(CommunicationBluetooth.CASSE ,
-                                        Math.abs(decompteParties + 1), joueur.getId(), trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerVersEcran1);
-                        casseTerminee = true;
-                        break;
-                    case ROUGE:
-                        joueur.attribuerCouleur(CouleurBille.ROUGE);
-                        String envoyerVersEcran2 =
-                                trameCasse(CommunicationBluetooth.CASSE ,
-                                        Math.abs(decompteParties + 1), joueur.getId(), trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerVersEcran2);
-                        casseTerminee = true;
-                        break;
-
-                    case BLANCHE:
-                        casseTerminee = false;
-                        String envoyerVersEcran3 =
-                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "2");
-                        envoyerTrame(envoyerVersEcran3);
-                        break;
-                    case NOIRE:
-                        casseTerminee = false;
-                        String envoyerVersEcran4 =
-                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "3");
-                        envoyerTrame(envoyerVersEcran4);
-                        break;
-                    case AUCUNE:
-                        casseTerminee = false;
-                        String envoyerVersEcran5 =
-                                trameFaute(CommunicationBluetooth.CASSE , joueur.getId(), "-1");
-                        envoyerTrame(envoyerVersEcran5);
-                        break;
-
-                    default:
-                        Log.d(TAG, "Bille non reconnue : " + couleurBilleTrame);
-                        break;
-                }
-                if (casseTerminee)
-                {
-                    break;
-                }
-            }
-        }
-
-        return true;
     }
     private void manche()
     {
+        int indexBilleRouge = 1;
+        int indexBilleJaune = 1;
         for (Joueur joueur : joueurs)
         {
             joueur.afficherJoueur();
@@ -223,21 +136,59 @@ public class ActivitePartie extends AppCompatActivity
             if (id == 0)
             {
                 Log.d(TAG, "Attente empochage joueur 1");
-                demarrerReceptionBluetooth();
+                switch (trameCouleurRecue)
+                {
+                    case 0:
+                        joueur.ajouterCouleur(trameCouleurRecue);
+                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
+                        indexBilleRouge++;
+                        String envoyerRougeVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerRougeVersEcran);
+                        break;
+                    case 1:
+                        joueur.ajouterCouleur(trameCouleurRecue);
+                        billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
+                        String envoyerJauneVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerJauneVersEcran);
+                        indexBilleRouge++;
+                        break;
+                    default:
+                        String envoyerFauteVersEcran = trameFaute( "F",id, "");
+                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
+                        indexBilleRouge++;
+                        envoyerTrame(envoyerFauteVersEcran);
+                        break;
+                }
             }
             else if (id == 1)
             {
                 Log.d(TAG, "Attente empochage joueur 2");
-                demarrerReceptionBluetooth();
+                switch (trameCouleurRecue)
+                {
+                    case 0:
+                        joueur.ajouterCouleur(trameCouleurRecue);
+                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
+                        indexBilleRouge++;
+                        String envoyerRougeVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerRougeVersEcran);
+                        break;
+                    case 1:
+                        joueur.ajouterCouleur(trameCouleurRecue);
+                        billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
+                        String envoyerJauneVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        envoyerTrame(envoyerJauneVersEcran);
+                        indexBilleRouge++;
+                        break;
+                    default:
+                        String envoyerFauteVersEcran = trameFaute( "F", id, "");
+                        envoyerTrame(envoyerFauteVersEcran);
+                        break;
+                }
             }
             else
             {
             }
         }
-    }
-    private void finPartie()
-    {
-        nbPartiesGagner();
     }
     private void verifierEtDemarrerBluetooth()
     {
@@ -292,50 +243,6 @@ public class ActivitePartie extends AppCompatActivity
             else
             {
                 Toast.makeText(this, "Bluetooth (écran) non connecté, envoi annulé", Toast.LENGTH_LONG).show();
-            }
-        }, 2000);
-    }
-    private void demarrerReceptionBluetooth()
-    {
-        BluetoothAdapter adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
-        if (adaptateurBluetooth == null || !adaptateurBluetooth.isEnabled())
-        {
-            Log.e(TAG, "Bluetooth non disponible ou désactivé");
-            return;
-        }
-
-        BluetoothDevice appareilReception = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC_PC_B20);
-        CommunicationBluetooth receptionBluetooth = new CommunicationBluetooth(appareilReception);
-
-        receptionBluetooth.setReceptionListener(message -> {
-            runOnUiThread(() -> {
-                if (estTrameValide(message))
-                {
-                    decomposerTrameEmpochage(message);
-                }
-                else
-                {
-                    Toast.makeText(ActivitePartie.this,
-                            "Trame invalide reçue",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-        });
-
-        receptionBluetooth.start();
-
-        new Handler().postDelayed(() -> {
-            if (receptionBluetooth.estConnecte())
-            {
-                Toast.makeText(this,
-                        "Réception Bluetooth connectée",
-                        Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                Toast.makeText(this,
-                        "Réception Bluetooth non connectée",
-                        Toast.LENGTH_LONG).show();
             }
         }, 2000);
     }
@@ -406,12 +313,14 @@ public class ActivitePartie extends AppCompatActivity
             Log.d(TAG, "Couleur : " + trameCouleurRecue + ", Poche : " + tramePocheRecue);
             Toast.makeText(this, "Trame reçue : Couleur " + trameCouleurRecue +
                     " | Poche " + tramePocheRecue, Toast.LENGTH_LONG).show();
+            manche();
         }
         catch (NumberFormatException e)
         {
             Log.e(TAG, "Erreur de format inattendue dans une trame pourtant validée");
         }
     }
+
     public String trameEtatPourTable(String etat)
     {
         return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;

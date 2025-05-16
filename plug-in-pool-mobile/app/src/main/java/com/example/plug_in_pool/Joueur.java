@@ -25,13 +25,12 @@ public class Joueur implements Serializable
     public Joueur(String nom, String prenom, int points, int id)
     {
         Log.d(TAG,
-              "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
-                " - id = " + id);
-        this.nom     = nom;
-        this.prenom  = prenom;
-        this.points  = points;
-        this.id      = id;
-        this.couleur = null;
+                "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
+                        " - id = " + id);
+        this.nom    = nom;
+        this.prenom = prenom;
+        this.points = points;
+        this.id     = id;
     }
 
     public Joueur(String nom, String prenom)
@@ -51,13 +50,11 @@ public class Joueur implements Serializable
         return prenom;
     }
     public int ajouterPoint(){return points++;}
-    public int getId(){return id;}
-    public void attribuerCouleur(CouleurBille couleur)
+    public int ajouterCouleur(int couleur)
     {
-        this.couleur = couleur;
-        Log.d(TAG, "Couleur attribuée au joueur " + nom + " : " + couleur);
+        return couleur;
     }
-
+    public int getId(){return id;}
 
     public void afficherJoueur()
     {
