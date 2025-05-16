@@ -29,7 +29,7 @@ public class ActivitePartie extends AppCompatActivity
     private static final String TAG = "_ActivitePartie";
 
     private static final String ADRESSE_MAC_PC_B20 = "00:1A:7D:DA:71:15";
-    private static final String ADRESSE_MAC_ECRAN = "3C:71:BF:6A:F5:D2"; //00:E0:4C:6D:20:45
+    private static final String ADRESSE_MAC_ECRAN = "00:E0:4C:6D:20:45"; //3C:71:BF:6A:F5:D2
 
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
 
@@ -142,13 +142,13 @@ public class ActivitePartie extends AppCompatActivity
                         joueur.ajouterCouleur(trameCouleurRecue);
                         billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
                         indexBilleRouge++;
-                        String envoyerRougeVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        String envoyerRougeVersEcran = trameEmpochage( "E", id ,trameCouleurRecue, tramePocheRecue);
                         envoyerTrame(envoyerRougeVersEcran);
                         break;
                     case 1:
                         joueur.ajouterCouleur(trameCouleurRecue);
                         billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                        String envoyerJauneVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        String envoyerJauneVersEcran = trameEmpochage( "E", id ,trameCouleurRecue, tramePocheRecue);
                         envoyerTrame(envoyerJauneVersEcran);
                         indexBilleRouge++;
                         break;
@@ -169,13 +169,13 @@ public class ActivitePartie extends AppCompatActivity
                         joueur.ajouterCouleur(trameCouleurRecue);
                         billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
                         indexBilleRouge++;
-                        String envoyerRougeVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        String envoyerRougeVersEcran = trameEmpochage( "E", id ,trameCouleurRecue, tramePocheRecue);
                         envoyerTrame(envoyerRougeVersEcran);
                         break;
                     case 1:
                         joueur.ajouterCouleur(trameCouleurRecue);
                         billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                        String envoyerJauneVersEcran = trameEmpochage( "E",trameCouleurRecue, tramePocheRecue);
+                        String envoyerJauneVersEcran = trameEmpochage( "E", id ,trameCouleurRecue, tramePocheRecue);
                         envoyerTrame(envoyerJauneVersEcran);
                         indexBilleRouge++;
                         break;
@@ -340,10 +340,11 @@ public class ActivitePartie extends AppCompatActivity
                 + CommunicationBluetooth.SEPARATEUR + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
 
-    public String trameEmpochage(String type, int couleurBille, int idPoche)
+    public String trameEmpochage(String type, int idJoueur, int couleurBille, int idPoche)
     {
-        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + couleurBille
-                + CommunicationBluetooth.SEPARATEUR + idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
+        return CommunicationBluetooth.ENTETE + type + CommunicationBluetooth.SEPARATEUR + idJoueur +
+                CommunicationBluetooth.SEPARATEUR + couleurBille + CommunicationBluetooth.SEPARATEUR +
+                idPoche + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
 
     public String trameFaute(String type, int idJoueur, String faute)
