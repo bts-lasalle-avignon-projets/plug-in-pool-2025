@@ -13,15 +13,21 @@
 
 #define POSITION_TYPE_TRAME 0
 
-#define TRAME_RENCONTRE          'R'
-#define POSITION_TYPE_TRAME      0
-#define POSITION_NUMERO_TABLE    1
+#define TRAME_RENCONTRE          'D'
+#define POSITION_NB_MANCHES      1
 #define POSITION_PRENOM_JOUEUR_1 2
 #define POSITION_PRENOM_JOUEUR_2 3
 
-#define TRAME_MANCHE            'M'
-#define TRAME_CHANGEMENT_JOUEUR 'C'
-#define TRAME_EMPOCHAGE         'E'
+#define TRAME_CASSE                  'C'
+#define POSITION_ID_PARTIE           1
+#define POSITION_ID_JOUEUR           2
+#define POSITION_COULEUR_BILLE_CASSE 3
+#define POSITION_ID_POCHE_CASSE      4
+
+#define TRAME_EMPOCHAGE               'E'
+#define POSITION_ID_JOUEUR_MANCHE     1
+#define POSITION_COULEUR_BILLE_MANCHE 2
+#define POSITION_ID_POCHE_MANCHE      3
 
 class CommunicationBluetooth : public QObject
 {
@@ -38,10 +44,14 @@ class CommunicationBluetooth : public QObject
 
   signals:
     void connexionClient(bool etat);
-    void trameRencontreRecue(int     numeroTable,
+    void trameRencontreRecue(int     nbManches,
                              QString prenomJoueur1,
-                             QString prenomJoueur2,
-                             int     nbManches);
+                             QString prenomJoueur2);
+    void trameCasseRecue(int  idPartie,
+                         int  idJoueur,
+                         char couleurBille,
+                         int  idPoche);
+    void trameEmpochageRecue(int idJoueur, int couleurBille, int idPoche);
 
   private slots:
     void connecterClient();

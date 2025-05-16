@@ -2,6 +2,7 @@
 #define ECRANMATCH_H
 
 #include <QtWidgets>
+#include "couleurbille.h"
 
 #define NB_POCHES            6
 #define TEMPS_INCREMENTATION 1000 // ms
@@ -30,7 +31,9 @@ class EcranMatch : public QObject
     QLabel*          labelCompteAReboursManche;
     QLabel*          affichageNumeroTable;
     QLabel*          affichageNomJeu;
+    QLabel*          affichageMessage;
     int              secondesEcoulees;
+    int              secondesRestantes;
     QVector<QLabel*> boulesRouges;
     QVector<QLabel*> boulesJaunes;
 
@@ -51,13 +54,16 @@ class EcranMatch : public QObject
     virtual ~EcranMatch();
     QWidget* getEcran() const;
 
-    void afficherInformationsMatch(int     numeroTable,
+    void afficherInformationsMatch(int     nbManches,
                                    QString joueur1,
-                                   QString joueur2,
-                                   int     nbManches);
+                                   QString joueur2);
     void demarrerChronometre();
     void genererBoules();
     void initialiserPochesTable();
+    void retirerBoule(CouleurBille couleur);
+    void incrementerCompteurPoche(CouleurBille couleur, int idPoche);
+    void afficherMessageAction(QString message);
+    void demarrerCompteAReboursManche(int dureeEnSecondes);
 
   signals:
 };

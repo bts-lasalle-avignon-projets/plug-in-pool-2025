@@ -3,7 +3,7 @@
 #include <QDebug>
 
 Joueur::Joueur(const QString& nom, const QString& prenom, int id) :
-    nom(nom), prenom(prenom), id(id), couleur(CouleurBille::Aucune), points(0),
+    nom(nom), prenom(prenom), id(id), couleur(CouleurBille::AUCUNE), points(0),
     nbBillesRestantes(NB_BILLES_JOUEUR)
 {
     qDebug() << Q_FUNC_INFO << this << "nom" << nom << "prenom" << prenom

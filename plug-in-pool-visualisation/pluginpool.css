@@ -284,13 +284,13 @@ QLabel#bouleRougeImagePoche4{
 }
 QLabel#bouleRougeImagePoche5{
     background-image: url(:/bouleRougeQT.png);
-    background-color: red;
+    background-color: transparent;
     min-width: 50px;
     min-height: 50px;
     max-width: 50px;
     max-height: 50px;
     border-radius: 25px;
-    background-position: center;
+    background-position: 100% 100%;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -456,43 +456,61 @@ QLabel#compteurBoulesJaunesPoche1{
 }
 
 QLabel#compteurBoulesJaunesPoche2{
-font-size: 30px;
-background-color: none;
-border: none;
-text-align: center;
-font-family: 'REM';
-margin: 0px;
-padding: 0px;
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
 }
 
 QLabel#compteurBoulesJaunesPoche3{
-font-size: 30px;
-background-color: none;
-border: none;
-text-align: center;
-font-family: 'REM';
-margin: 0px;
-padding: 0px;
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
 }
 
 QLabel#compteurBoulesJaunesPoche4{
-font-size: 30px;
-background-color: none;
-border: none;
-text-align: center;
-font-family: 'REM';
-margin: 0px;
-padding: 0px;
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
 }
 
 QLabel#compteurBoulesJaunesPoche5{
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageMessage{
 font-size: 30px;
-background-color: none;
-border: none;
-text-align: center;
-font-family: 'REM';
-margin: 0px;
-padding: 0px;
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border: 5px solid red;
+    border-radius: 10px;
+    font-family: 'REM';
+    margin: 0 600px;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

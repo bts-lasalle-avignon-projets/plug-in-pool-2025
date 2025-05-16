@@ -4,9 +4,10 @@
 Match::Match(const QString& nom) :
     nom(nom), nbManchesGagnantes(NB_MANCHES),
     horodatage(QDateTime::currentDateTime()), etat(EtatMatch::Cree),
-    gagnant(AUCUN_GAGNANT), numeroTable(0)
+    gagnant(AUCUN_GAGNANT)
 {
     qDebug() << Q_FUNC_INFO << this << "nom" << nom;
+    joueurActif = 0;
 }
 
 void Match::setNbManchesGagnantes(int nbManchesGagnantes)
@@ -14,9 +15,9 @@ void Match::setNbManchesGagnantes(int nbManchesGagnantes)
     this->nbManchesGagnantes = nbManchesGagnantes;
 }
 
-void Match::setNumeroTable(int numeroTable)
+QString Match::getPrenomJoueur(int idJoueur) const
 {
-    this->numeroTable = numeroTable;
+    return joueurs[idJoueur].getPrenom();
 }
 
 void Match::enregistrerJoueurs(const QString& prenomJoueur1,

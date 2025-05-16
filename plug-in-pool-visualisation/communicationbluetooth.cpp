@@ -94,33 +94,46 @@ void CommunicationBluetooth::lireTrame()
             {
                 case TRAME_RENCONTRE:
                 {
-                    int nbManches = type.at(1).toLatin1() - '0';
-                    int numeroTable =
-                      contenuTrame[POSITION_NUMERO_TABLE].toInt();
+                    int nbManches = contenuTrame[POSITION_NB_MANCHES].toInt();
                     QString prenomJoueur1 =
                       contenuTrame[POSITION_PRENOM_JOUEUR_1];
                     QString prenomJoueur2 =
                       contenuTrame[POSITION_PRENOM_JOUEUR_2];
-                    qDebug()
-                      << Q_FUNC_INFO << "numeroTable" << numeroTable
-                      << "prenomJoueur1" << prenomJoueur1 << "prenomJoueur2"
-                      << prenomJoueur2 << "nbManches" << nbManches;
-                    emit trameRencontreRecue(numeroTable,
+                    qDebug() << Q_FUNC_INFO << "prenomJoueur1" << prenomJoueur1
+                             << "prenomJoueur2" << prenomJoueur2 << "nbManches"
+                             << nbManches;
+                    emit trameRencontreRecue(nbManches,
                                              prenomJoueur1,
-                                             prenomJoueur2,
-                                             nbManches);
+                                             prenomJoueur2);
                     break;
                 }
-                case TRAME_MANCHE:
+                case TRAME_CASSE:
                 {
-                    break;
-                }
-                case TRAME_CHANGEMENT_JOUEUR:
-                {
+                    int idPartie = contenuTrame[POSITION_ID_PARTIE].toInt();
+                    int idJoueur = contenuTrame[POSITION_ID_JOUEUR].toInt();
+                    int couleurBille =
+                      contenuTrame[POSITION_COULEUR_BILLE_CASSE].toInt();
+                    int idPoche = contenuTrame[POSITION_ID_POCHE_CASSE].toInt();
+                    qDebug() << Q_FUNC_INFO << "idPartie" << idPartie
+                             << "idJoueur" << idJoueur << "couleurBille"
+                             << couleurBille << "idPoche" << idPoche;
+                    emit trameCasseRecue(idPartie,
+                                         idJoueur,
+                                         couleurBille,
+                                         idPoche);
                     break;
                 }
                 case TRAME_EMPOCHAGE:
                 {
+                    int idJoueur =
+                      contenuTrame[POSITION_ID_JOUEUR_MANCHE].toInt();
+                    int couleurBille =
+                      contenuTrame[POSITION_COULEUR_BILLE_MANCHE].toInt();
+                    int idPoche =
+                      contenuTrame[POSITION_ID_POCHE_MANCHE].toInt();
+                    qDebug() << Q_FUNC_INFO << "couleurBille" << couleurBille
+                             << "idJoueur" << idJoueur << "idPoche" << idPoche;
+                    emit trameEmpochageRecue(idJoueur, couleurBille, idPoche);
                     break;
                 }
                 default:
