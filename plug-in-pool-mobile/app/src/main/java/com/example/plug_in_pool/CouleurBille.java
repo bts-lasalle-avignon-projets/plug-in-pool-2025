@@ -17,16 +17,4 @@ public enum CouleurBille {
     {
         return valeur;
     }
-
-    public static CouleurBille fromInt(int id)
-    {
-        for(CouleurBille couleur: CouleurBille.values())
-        {
-            if(couleur.getId() == id)
-            {
-                return couleur;
-            }
-        }
-        return AUCUNE;
-    }
 }

@@ -153,7 +153,7 @@ public class ActivitePartie extends AppCompatActivity
     private void casse()
     {
         boolean casseEstFini = false;
-        while(!casseEstFini)
+        if(!casseEstFini)
         {
             for(Joueur joueur: joueurs)
             {
@@ -167,10 +167,9 @@ public class ActivitePartie extends AppCompatActivity
                     switch(trameCouleurRecue)
                     {
                         case 0:
+                            retirerBilleRouge();
                             joueur.setCouleur(CouleurBille.ROUGE);
                             joueurs.get(1).setCouleur(CouleurBille.JAUNE);
-                            billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
-                            indexBilleRouge++;
                             String envoyerRougeVersEcran =
                               trameCasse("C",
                                          (nbPartiesGestion - nbPartiesGestion + 1),
@@ -181,10 +180,9 @@ public class ActivitePartie extends AppCompatActivity
                             casseEstFini = true;
                             break;
                         case 1:
+                            retirerBilleJaune();
                             joueur.setCouleur(CouleurBille.JAUNE);
                             joueurs.get(1).setCouleur(CouleurBille.ROUGE);
-                            billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                            indexBilleJaune++;
                             String envoyerJauneVersEcran =
                               trameCasse("C",
                                          (nbPartiesGestion - nbPartiesGestion + 1),
@@ -208,8 +206,7 @@ public class ActivitePartie extends AppCompatActivity
                         case 0:
                             joueur.setCouleur(CouleurBille.ROUGE);
                             joueurs.get(0).setCouleur(CouleurBille.JAUNE);
-                            billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
-                            indexBilleRouge++;
+                            retirerBilleRouge();
                             String envoyerRougeVersEcran =
                               trameCasse("C",
                                          (nbPartiesGestion - nbPartiesGestion + 1),
@@ -220,10 +217,9 @@ public class ActivitePartie extends AppCompatActivity
                             casseEstFini = true;
                             break;
                         case 1:
+                            retirerBilleJaune();
                             joueur.setCouleur(CouleurBille.JAUNE);
                             joueurs.get(0).setCouleur(CouleurBille.ROUGE);
-                            billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                            indexBilleJaune++;
                             String envoyerJauneVersEcran =
                               trameCasse("C",
                                          (nbPartiesGestion - nbPartiesGestion + 1),
@@ -242,75 +238,126 @@ public class ActivitePartie extends AppCompatActivity
                 else
                 {
                 }
+                trameCouleurRecue = -1;
+
                 if(casseEstFini)
                 {
                     break;
+                }
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch(InterruptedException e)
+                {
+                    e.printStackTrace();
                 }
             }
         }
     }
     private void manche()
     {
-        for(Joueur joueur: joueurs)
+        boolean mancheEstFini = false;
+        if(!mancheEstFini)
         {
-            joueur.afficherJoueur();
+            for(Joueur joueur: joueurs)
+            {
+                joueur.afficherJoueur();
 
-            int id = joueur.getId();
-            if(id == 0)
-            {
-                Log.d(TAG, "Attente empochage joueur 1");
-                switch(trameCouleurRecue)
+                int id = joueur.getId();
+                joueurActuel.setText(joueur.getNom() + " " + joueur.getPrenom());
+                if(id == 0)
                 {
-                    case 0:
-                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
-                        indexBilleRouge++;
-                        String envoyerRougeVersEcran =
-                          trameEmpochage("E", id, trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerRougeVersEcran);
-                        break;
-                    case 1:
-                        billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                        String envoyerJauneVersEcran =
-                          trameEmpochage("E", id, trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerJauneVersEcran);
-                        indexBilleRouge++;
-                        break;
-                    default:
-                        String envoyerFauteVersEcran = trameFaute("F", id, "");
-                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
-                        indexBilleRouge++;
-                        envoyerTrame(envoyerFauteVersEcran);
-                        break;
+                    Log.d(TAG, "Attente empochage joueur 1");
+                    switch(trameCouleurRecue)
+                    {
+                        case 0:
+                            retirerBilleRouge();
+                            String envoyerRougeVersEcran = trameEmpochage("E",
+                                                                          joueur.getId(),
+                                                                          trameCouleurRecue,
+                                                                          tramePocheRecue);
+                            envoyerTrame(envoyerRougeVersEcran);
+                            mancheEstFini = true;
+                            break;
+                        case 1:
+                            retirerBilleJaune();
+                            String envoyerJauneVersEcran = trameEmpochage("E",
+                                                                          joueur.getId(),
+                                                                          trameCouleurRecue,
+                                                                          tramePocheRecue);
+                            envoyerTrame(envoyerJauneVersEcran);
+                            mancheEstFini = true;
+                            break;
+                        default:
+                            String envoyerFauteVersEcran = trameFaute("F", id, "");
+                            envoyerTrame(envoyerFauteVersEcran);
+                            break;
+                    }
+                }
+                else if(id == 1)
+                {
+                    Log.d(TAG, "Attente empochage joueur 2");
+                    switch(trameCouleurRecue)
+                    {
+                        case 0:
+                            retirerBilleRouge();
+                            String envoyerRougeVersEcran = trameEmpochage("E",
+                                                                          joueur.getId(),
+                                                                          trameCouleurRecue,
+                                                                          tramePocheRecue);
+                            envoyerTrame(envoyerRougeVersEcran);
+                            mancheEstFini = true;
+                            break;
+                        case 1:
+                            joueurs.get(0).setCouleur(CouleurBille.ROUGE);
+                            String envoyerJauneVersEcran = trameEmpochage("E",
+                                                                          joueur.getId(),
+                                                                          trameCouleurRecue,
+                                                                          tramePocheRecue);
+                            envoyerTrame(envoyerJauneVersEcran);
+                            mancheEstFini = true;
+                            break;
+                        default:
+                            String envoyerFauteVersEcran = trameFaute("F", id, "");
+                            envoyerTrame(envoyerFauteVersEcran);
+                            break;
+                    }
+                }
+                else
+                {
+                }
+                trameCouleurRecue = -1;
+
+                if(mancheEstFini)
+                {
+                    break;
+                }
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch(InterruptedException e)
+                {
+                    e.printStackTrace();
                 }
             }
-            else if(id == 1)
-            {
-                Log.d(TAG, "Attente empochage joueur 2");
-                switch(trameCouleurRecue)
-                {
-                    case 0:
-                        billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
-                        indexBilleRouge++;
-                        String envoyerRougeVersEcran =
-                          trameEmpochage("E", id, trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerRougeVersEcran);
-                        break;
-                    case 1:
-                        billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
-                        String envoyerJauneVersEcran =
-                          trameEmpochage("E", id, trameCouleurRecue, tramePocheRecue);
-                        envoyerTrame(envoyerJauneVersEcran);
-                        indexBilleRouge++;
-                        break;
-                    default:
-                        String envoyerFauteVersEcran = trameFaute("F", id, "");
-                        envoyerTrame(envoyerFauteVersEcran);
-                        break;
-                }
-            }
-            else
-            {
-            }
+        }
+    }
+    public void retirerBilleRouge()
+    {
+        if(indexBilleRouge <= billesRouges.length)
+        {
+            billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
+            indexBilleRouge++;
+        }
+    }
+    public void retirerBilleJaune()
+    {
+        if(indexBilleJaune <= billesJaunes.length)
+        {
+            billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
+            indexBilleJaune++;
         }
     }
     private void verifierEtDemarrerBluetooth()
@@ -448,7 +495,7 @@ public class ActivitePartie extends AppCompatActivity
             casse();
             Log.d(TAG, "Joueur 1 : " + joueurs.get(0).getCouleur());
             Log.d(TAG, "Joueur 2 : " + joueurs.get(1).getCouleur());
-            // manche();
+            manche();
         }
         catch(NumberFormatException e)
         {
