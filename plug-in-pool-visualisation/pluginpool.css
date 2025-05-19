@@ -524,3 +524,13 @@ QWidget#ecranFin {
     margin: 0px;
     padding: 0px;
 }
+
+QLabel#affichageJoueurGagnant {
+    font-size: 45px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}

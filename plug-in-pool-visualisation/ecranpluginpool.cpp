@@ -90,3 +90,8 @@ EcranMatch* EcranPlugInPool::getEcranMatch() const
 {
     return ecranMatch;
 }
+
+EcranFin* EcranPlugInPool::getEcranFin() const
+{
+    return ecranFin;
+}

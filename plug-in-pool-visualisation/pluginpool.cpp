@@ -33,6 +33,11 @@ PlugInPool::PlugInPool(QObject* parent) :
             &CommunicationBluetooth::trameEmpochageRecue,
             this,
             &PlugInPool::empochage);
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::tramePartieTermineeRecue,
+            this,
+            &PlugInPool::terminerPartie);
 }
 
 PlugInPool::~PlugInPool()
@@ -72,10 +77,7 @@ void PlugInPool::configurerMatch(int     nbManches,
                                           prenomJoueur2);
     EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
     ecranAccueil->afficherEtatConfiguration("Configuration terminée");
-
-    QTimer::singleShot(TEMPS_AVANT_LANCEMENT_RENCONTRE,
-                       this,
-                       &PlugInPool::changerEcranMatch);
+    changerEcranMatch();
 }
 
 void PlugInPool::empochageCasse(int idPartie,
@@ -170,6 +172,16 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
     ecranMatch->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
+void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
+{
+    qDebug() << Q_FUNC_INFO << "idPartie" << idPartie << "idJoueurGagnant"
+             << idJoueurGagnant;
+    EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
+    QString   prenomGagnant = match->getPrenomJoueur(idJoueurGagnant);
+    ecranFin->afficherJoueurGagnant(prenomGagnant + " a gagné(e) cette partie");
+    changerEcranFin();
+}
+
 void PlugInPool::changerEcranMatch()
 {
     qDebug() << Q_FUNC_INFO;
@@ -177,4 +189,9 @@ void PlugInPool::changerEcranMatch()
     ecranPlugInPool->afficherEcranMatch();
     ecranMatch->demarrerChronometre();
     ecranMatch->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
+}
+
+void PlugInPool::changerEcranFin()
+{
+    ecranPlugInPool->afficherEcranFin();
 }

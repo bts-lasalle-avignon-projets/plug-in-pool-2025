@@ -136,6 +136,14 @@ void CommunicationBluetooth::lireTrame()
                     emit trameEmpochageRecue(idJoueur, couleurBille, idPoche);
                     break;
                 }
+                case TRAME_PARTIE_TERMINEE:
+                {
+                    int idPartie = contenuTrame[POSITION_ID_PARTIE].toInt();
+                    int idJoueurGagnant =
+                      contenuTrame[POSITION_ID_JOUEUR_GAGNANT].toInt();
+                    emit tramePartieTermineeRecue(idPartie, idJoueurGagnant);
+                    break;
+                }
                 default:
                 {
                     break;
