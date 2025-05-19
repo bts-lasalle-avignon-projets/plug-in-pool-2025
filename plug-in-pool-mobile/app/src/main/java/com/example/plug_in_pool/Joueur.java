@@ -25,8 +25,8 @@ public class Joueur implements Serializable
     public Joueur(String nom, String prenom, int points, int id)
     {
         Log.d(TAG,
-                "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
-                        " - id = " + id);
+              "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
+                " - id = " + id);
         this.nom    = nom;
         this.prenom = prenom;
         this.points = points;
@@ -49,12 +49,22 @@ public class Joueur implements Serializable
     {
         return prenom;
     }
-    public int ajouterPoint(){return points++;}
-    public int ajouterCouleur(int couleur)
+    public int ajouterPoint()
+    {
+        return points++;
+    }
+    public void setCouleur(CouleurBille couleur)
+    {
+        this.couleur = couleur;
+    }
+    public CouleurBille getCouleur()
     {
         return couleur;
     }
-    public int getId(){return id;}
+    public int getId()
+    {
+        return id;
+    }
 
     public void afficherJoueur()
     {
@@ -62,7 +72,8 @@ public class Joueur implements Serializable
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return nom + prenom;
     }
 }

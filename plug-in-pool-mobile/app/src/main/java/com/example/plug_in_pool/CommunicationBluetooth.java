@@ -1,9 +1,12 @@
 package com.example.plug_in_pool;
 
+import android.Manifest;
 import android.adservices.measurement.WebSourceRegistrationRequest;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
+
+import androidx.annotation.RequiresPermission;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,16 +26,16 @@ public class CommunicationBluetooth extends Thread
     protected static final String DEMARER_MATCH    = "D";
     protected static final String CASSE            = "C";
 
-    private static final String TAG = "_CommunicationBluetooth";
+    private static final String TAG       = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothDevice peripherique;
-    private BluetoothSocket socket;
-    private OutputStream outputStream;
-    private InputStream inputStream;
+    private BluetoothSocket       socket;
+    private OutputStream          outputStream;
+    private InputStream           inputStream;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private ReceptionListener receptionListener;
+    private ReceptionListener     receptionListener;
 
     public CommunicationBluetooth(BluetoothDevice peripherique)
     {
@@ -47,13 +50,13 @@ public class CommunicationBluetooth extends Thread
             socket = peripherique.createRfcommSocketToServiceRecord(SERIAL_UUID);
             socket.connect();
             outputStream = socket.getOutputStream();
-            inputStream = socket.getInputStream();
+            inputStream  = socket.getInputStream();
 
             Log.d(TAG, "Connexion Bluetooth réussie");
 
             new Thread(this::ecouterReception).start();
         }
-        catch (IOException e)
+        catch(IOException e)
         {
             Log.e(TAG, "Erreur lors de la connexion Bluetooth", e);
         }
@@ -64,7 +67,7 @@ public class CommunicationBluetooth extends Thread
         executor.execute(() -> {
             try
             {
-                if (outputStream != null)
+                if(outputStream != null)
                 {
                     outputStream.write(trame.getBytes());
                     outputStream.flush();
@@ -75,7 +78,7 @@ public class CommunicationBluetooth extends Thread
                     Log.e(TAG, "OutputStream nul, trame non envoyée");
                 }
             }
-            catch (IOException e)
+            catch(IOException e)
             {
                 Log.e(TAG, "Erreur lors de l'envoi de la trame", e);
             }
@@ -87,18 +90,25 @@ public class CommunicationBluetooth extends Thread
         byte[] buffer = new byte[1024];
         int bytes;
 
-        while (socket != null && socket.isConnected())
+        while(socket != null && socket.isConnected())
         {
             try
             {
                 bytes = inputStream.read(buffer);
+
+                if(bytes == -1)
+                {
+                    Log.e(TAG, "Connexion Bluetooth fermée (read = -1)");
+                    break;
+                }
+
                 String messageRecu = new String(buffer, 0, bytes);
 
                 Log.d(TAG, "Message reçu : " + messageRecu);
 
-                if (estTrameValide(messageRecu))
+                if(estTrameValide(messageRecu))
                 {
-                    if (receptionListener != null)
+                    if(receptionListener != null)
                     {
                         receptionListener.onMessageRecu(messageRecu);
                     }
@@ -108,11 +118,22 @@ public class CommunicationBluetooth extends Thread
                     Log.e(TAG, "Trame invalide reçue");
                 }
             }
-            catch (IOException e)
+            catch(IOException e)
             {
                 Log.e(TAG, "Erreur de réception", e);
                 break;
             }
+        }
+        try
+        {
+            if(inputStream != null)
+                inputStream.close();
+            if(socket != null)
+                socket.close();
+        }
+        catch(IOException e)
+        {
+            Log.e(TAG, "Erreur lors de la fermeture du socket", e);
         }
     }
 
@@ -123,21 +144,21 @@ public class CommunicationBluetooth extends Thread
 
     public boolean estTrameValide(String trame)
     {
-        if (trame == null)
+        if(trame == null)
         {
             return false;
         }
         trame = trame.trim();
 
-        if (!trame.startsWith(ENTETE) || !trame.endsWith(DELIMITATEUR_FIN))
+        if(!trame.startsWith(ENTETE) || !trame.endsWith(DELIMITATEUR_FIN))
         {
             return false;
         }
 
-        String contenu = trame.substring(1, trame.length() - 1);
+        String contenu    = trame.substring(1, trame.length() - 1);
         String[] morceaux = contenu.split(SEPARATEUR);
 
-        if (morceaux.length != 2)
+        if(morceaux.length != 2)
         {
             return false;
         }
@@ -148,14 +169,13 @@ public class CommunicationBluetooth extends Thread
             Integer.parseInt(morceaux[1]);
             return true;
         }
-        catch (NumberFormatException e)
+        catch(NumberFormatException e)
         {
             return false;
         }
     }
 
-    public interface ReceptionListener
-    {
+    public interface ReceptionListener {
         void onMessageRecu(String message);
     }
 
@@ -169,11 +189,14 @@ public class CommunicationBluetooth extends Thread
         executor.shutdownNow();
         try
         {
-            if (inputStream != null) inputStream.close();
-            if (outputStream != null) outputStream.close();
-            if (socket != null && socket.isConnected()) socket.close();
+            if(inputStream != null)
+                inputStream.close();
+            if(outputStream != null)
+                outputStream.close();
+            if(socket != null && socket.isConnected())
+                socket.close();
         }
-        catch (IOException e)
+        catch(IOException e)
         {
             Log.e(TAG, "Erreur lors de la fermeture de la connexion", e);
         }

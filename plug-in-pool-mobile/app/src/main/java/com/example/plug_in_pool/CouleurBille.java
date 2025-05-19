@@ -1,7 +1,6 @@
 package com.example.plug_in_pool;
 
-public enum CouleurBille
-{
+public enum CouleurBille {
     AUCUNE(-1),
     ROUGE(0),
     JAUNE(1),
@@ -21,9 +20,9 @@ public enum CouleurBille
 
     public static CouleurBille fromInt(int id)
     {
-        for (CouleurBille couleur : CouleurBille.values())
+        for(CouleurBille couleur: CouleurBille.values())
         {
-            if (couleur.getId() == id)
+            if(couleur.getId() == id)
             {
                 return couleur;
             }
