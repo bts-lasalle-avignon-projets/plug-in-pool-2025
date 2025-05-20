@@ -75,8 +75,6 @@ void PlugInPool::configurerMatch(int     nbManches,
     ecranMatch->afficherInformationsMatch(nbManches,
                                           prenomJoueur1,
                                           prenomJoueur2);
-    EcranAccueil* ecranAccueil = ecranPlugInPool->getEcranAccueil();
-    ecranAccueil->afficherEtatConfiguration("Configuration terminée");
     changerEcranMatch();
 }
 

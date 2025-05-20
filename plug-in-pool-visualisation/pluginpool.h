@@ -6,6 +6,7 @@
 
 #define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
 #define TEMPS_COMPTE_A_REBOURS          90
+#define RASPBERRY_PI
 
 class CommunicationBluetooth;
 class Match;
