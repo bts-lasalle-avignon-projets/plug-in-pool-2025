@@ -7,7 +7,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
 
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageVersion       = new QLabel("v1.0", ecran);
+    affichageVersion       = new QLabel("v0.1", ecran);
     affichageJoueurGagnant = new QLabel("Aucun joueur gagnant", ecran);
 
     affichageVersion->setObjectName("affichageVersion");

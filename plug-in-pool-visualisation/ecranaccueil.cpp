@@ -7,7 +7,7 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageVersion   = new QLabel("v1.0", ecran);
+    affichageVersion   = new QLabel("v0.1", ecran);
     connexionBluetooth = new QLabel("Attente connexion Bluetooth", ecran);
 
     affichageVersion->setObjectName("affichageVersion");

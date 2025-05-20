@@ -231,32 +231,32 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   <tr>
     <td>Afficher un écran d'accueil</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Visualiser l’empochage d’une bille</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Visualiser les données de la partie en temps réel</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Visualiser les données du match</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Dialoguer avec le terminal mobile</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
 </table>
 
