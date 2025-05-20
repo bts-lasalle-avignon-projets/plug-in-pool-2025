@@ -25,7 +25,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     espaceJoueurGagnant->addStretch();
 
     ecranFin->addLayout(espaceVersion);
-    ecranFin->addSpacing(600);
+    ecranFin->addSpacing(620);
     ecranFin->addLayout(espaceJoueurGagnant);
     ecranFin->addSpacing(80);
     ecranFin->addStretch();
