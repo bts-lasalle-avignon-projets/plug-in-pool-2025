@@ -52,8 +52,8 @@ public class ActivitePartie extends AppCompatActivity
     int          tramePocheRecue;
     boolean      partieFinie = false;
     int          nbPartiesGestion;
-    int          indexBilleRouge = 1;
-    int          indexBilleJaune = 1;
+    int          indexBilleRouge = 0;
+    int          indexBilleJaune = 0;
 
     private TextView texteJoueur1;
     private TextView texteJoueur2;
