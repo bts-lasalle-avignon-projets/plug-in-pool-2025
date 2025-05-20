@@ -25,10 +25,11 @@ EcranMatch::EcranMatch(QWidget* parent) : QObject(parent), ecran(parent)
     affichageNomJeu->setObjectName("affichageNomJeu");
     affichageMessage->setObjectName("affichageMessage");
 
-    QVBoxLayout* ecranMatch                     = new QVBoxLayout(ecran);
-    QHBoxLayout* espaceJoueursEtCompteARebours  = new QHBoxLayout();
-    QHBoxLayout* espaceBoules                   = new QHBoxLayout();
-    espaceTableBillard                          = new QGridLayout();
+    QVBoxLayout* ecranMatch                    = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceJoueursEtCompteARebours = new QHBoxLayout();
+    QHBoxLayout* espaceBoules                  = new QHBoxLayout();
+    espaceTableBillard                         = new QGridLayout();
+    espaceTableBillard->setAlignment(Qt::AlignCenter);
     QHBoxLayout* espaceNumeroTableEtChronometre = new QHBoxLayout();
 
     espaceBoulesRouges = new QHBoxLayout();

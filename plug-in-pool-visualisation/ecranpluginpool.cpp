@@ -48,6 +48,7 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 #ifdef RASPBERRY_PI
     qDebug() << Q_FUNC_INFO << "RASPBERRY_PI";
     showFullScreen();
+    // setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
 #else
     // setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
     showFullScreen();
@@ -55,6 +56,7 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 
     afficherEcranAccueil();
     // afficherEcranMatch();
+    // afficherEcranFin();
 }
 
 EcranPlugInPool::~EcranPlugInPool()
@@ -89,4 +91,9 @@ EcranAccueil* EcranPlugInPool::getEcranAccueil() const
 EcranMatch* EcranPlugInPool::getEcranMatch() const
 {
     return ecranMatch;
+}
+
+EcranFin* EcranPlugInPool::getEcranFin() const
+{
+    return ecranFin;
 }

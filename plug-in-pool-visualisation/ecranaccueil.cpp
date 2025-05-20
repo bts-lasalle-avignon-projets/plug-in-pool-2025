@@ -7,41 +7,31 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageCreateurs  = new QLabel(CREATEUR_APPLICATION, ecran);
-    affichageVersion    = new QLabel("v1.0", ecran);
-    connexionBluetooth  = new QLabel("Attente connexion Bluetooth", ecran);
-    configurationPartie = new QLabel("Configuration de la partie", ecran);
+    affichageVersion   = new QLabel("v1.0", ecran);
+    connexionBluetooth = new QLabel("Attente connexion Bluetooth", ecran);
 
-    affichageCreateurs->setObjectName("affichageCreateurs");
     affichageVersion->setObjectName("affichageVersion");
     connexionBluetooth->setObjectName("connexionBluetooth");
-    configurationPartie->setObjectName("configurationPartie");
 
-    QVBoxLayout* ecranAccueil              = new QVBoxLayout(ecran);
-    QHBoxLayout* espaceCreateursVersion    = new QHBoxLayout();
-    QHBoxLayout* espaceConnexionBluetooth  = new QHBoxLayout();
-    QHBoxLayout* espaceConfigurationPartie = new QHBoxLayout();
+    QVBoxLayout* ecranAccueil             = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceVersion            = new QHBoxLayout();
+    QHBoxLayout* espaceConnexionBluetooth = new QHBoxLayout();
 
-    espaceCreateursVersion->addWidget(affichageCreateurs);
-    espaceCreateursVersion->addStretch();
-    espaceCreateursVersion->addWidget(affichageVersion);
+    espaceVersion->addStretch();
+    espaceVersion->addWidget(affichageVersion);
+    espaceVersion->addStretch();
 
     espaceConnexionBluetooth->addStretch();
     espaceConnexionBluetooth->addWidget(connexionBluetooth);
     espaceConnexionBluetooth->addStretch();
 
-    espaceConfigurationPartie->addStretch();
-    espaceConfigurationPartie->addWidget(configurationPartie);
-    espaceConfigurationPartie->addStretch();
-
     /**
      * @todo Est-ce vraiment la bonne technique ?
      */
-    ecranAccueil->addLayout(espaceCreateursVersion);
-    ecranAccueil->addSpacing(700);
+    ecranAccueil->addStretch();
+    ecranAccueil->addLayout(espaceVersion);
+    ecranAccueil->addSpacing(640);
     ecranAccueil->addLayout(espaceConnexionBluetooth);
-    ecranAccueil->addSpacing(80);
-    ecranAccueil->addLayout(espaceConfigurationPartie);
     ecranAccueil->addStretch();
 }
 
@@ -63,11 +53,4 @@ void EcranAccueil::afficherEtatConnexion(QString message, bool etat)
     else
         connexionBluetooth->setProperty("class", "deconnecte");
     connexionBluetooth->style()->polish(connexionBluetooth);
-}
-
-void EcranAccueil::afficherEtatConfiguration(QString message)
-{
-    configurationPartie->setText(message);
-    configurationPartie->setProperty("class", "configure");
-    configurationPartie->style()->polish(configurationPartie);
 }

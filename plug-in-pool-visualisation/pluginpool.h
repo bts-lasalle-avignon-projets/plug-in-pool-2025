@@ -6,6 +6,7 @@
 
 #define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
 #define TEMPS_COMPTE_A_REBOURS          90
+#define RASPBERRY_PI
 
 class CommunicationBluetooth;
 class Match;
@@ -33,7 +34,9 @@ class PlugInPool : public QObject
                         int couleurBille,
                         int idPoche);
     void empochage(int idJoueur, int couleurBille, int idPoche);
+    void terminerPartie(int idPartie, int idJoueurGagnant);
     void changerEcranMatch();
+    void changerEcranFin();
 };
 
 #endif // PLUGINPOOL_H
