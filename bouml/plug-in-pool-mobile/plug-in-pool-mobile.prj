@@ -1,7 +1,7 @@
 format 224
 "plug-in-pool-mobile"
-  revision 1
-  modified_by 42 "tv"
+  revision 3
+  modified_by 2 "btssn2"
   java_root_dir "../../plug-in-pool-mobile/"
 
 
@@ -49,4 +49,6 @@ format 224
   package_ref 128170 // plug_in_pool
 
   package_ref 128298 // unknown
+
+  package_ref 128002 // Android
 end

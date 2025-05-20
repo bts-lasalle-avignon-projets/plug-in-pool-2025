@@ -1,0 +1,19 @@
+class FledgeErrorResponse
+!!!793602.java!!!	FledgeErrorResponse(in statusCode : int, inout errorMessage : String)
+        super(statusCode, errorMessage);
+!!!793730.java!!!	FledgeErrorResponse(inout in : Parcel)
+        super(in);
+!!!793858.java!!!	describeContents() : int
+        return 0;
+!!!793986.java!!!	writeToParcel(inout dest : Parcel, in flags : int) : void
+        Objects.requireNonNull(dest);
+
+        dest.writeInt(mStatusCode);
+        dest.writeString(mErrorMessage);
+!!!794114.java!!!	toString() : String
+        return "FledgeErrorResponse{"
+                + "mStatusCode="
+                + mStatusCode
+                + ", mErrorMessage='"
+                + mErrorMessage
+                + "'}";

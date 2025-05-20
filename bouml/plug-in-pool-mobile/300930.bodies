@@ -1,0 +1,119 @@
+class ActivityClientRecord
+!!!1225858.java!!!	ActivityClientRecord()
+            this.isForward = false;
+            init();
+!!!1225986.java!!!	ActivityClientRecord(inout token : IBinder, inout intent : Intent, in ident : int, inout info : ActivityInfo, inout overrideConfig : Configuration, inout referrer : String, inout voiceInteractor : IVoiceInteractor, inout state : Bundle, inout persistentState : PersistableBundle, inout pendingResults : List, inout pendingNewIntents : List, inout sceneTransitionInfo : SceneTransitionInfo, inout isForward : boolean, inout profilerInfo : ProfilerInfo, inout client : ClientTransactionHandler, inout assistToken : IBinder, inout shareableActivityToken : IBinder, inout launchedFromBubble : boolean, inout taskFragmentToken : IBinder, inout initialCallerInfoAccessToken : IBinder, inout activityWindowInfo : ActivityWindowInfo)
+            this.token = token;
+            this.assistToken = assistToken;
+            this.shareableActivityToken = shareableActivityToken;
+            this.ident = ident;
+            this.intent = intent;
+            this.referrer = referrer;
+            this.voiceInteractor = voiceInteractor;
+            this.activityInfo = info;
+            this.state = state;
+            this.persistentState = persistentState;
+            this.pendingResults = pendingResults;
+            this.pendingIntents = pendingNewIntents;
+            this.isForward = isForward;
+            this.profilerInfo = profilerInfo;
+            this.overrideConfig = overrideConfig;
+            this.packageInfo = client.getPackageInfoNoCheck(activityInfo.applicationInfo);
+            this.initialCallerInfoAccessToken = initialCallerInfoAccessToken;
+            mSceneTransitionInfo = sceneTransitionInfo;
+            mLaunchedFromBubble = launchedFromBubble;
+            mTaskFragmentToken = taskFragmentToken;
+            mActivityWindowInfo.set(activityWindowInfo);
+            init();
+!!!1226114.java!!!	init() : void
+            parent = null;
+            embeddedID = null;
+            paused = false;
+            stopped = false;
+            hideForNow = false;
+            activityConfigCallback = new ViewRootImpl.ActivityConfigCallback() {
+
+                @Override
+                public void onConfigurationChanged(@NonNull Configuration overrideConfig,
+                        int newDisplayId, @Nullable ActivityWindowInfo activityWindowInfo) {
+                    if (activity == null) {
+                        throw new IllegalStateException(
+                                "Received config update for non-existing activity");
+                    }
+                    if (activityWindowInfo == null) {
+                        Log.w(TAG, "Received empty ActivityWindowInfo update for r=" + activity);
+                        activityWindowInfo = mActivityWindowInfo;
+                    }
+                    activity.mMainThread.handleActivityConfigurationChanged(
+                            ActivityClientRecord.this, overrideConfig, newDisplayId,
+                            activityWindowInfo,
+                            false /* alwaysReportChange */);
+                }
+            };
+!!!1226242.java!!!	getLifecycleState() : int
+            return mLifecycleState;
+!!!1226370.java!!!	setState(in newLifecycleState : int) : void
+            mLifecycleState = newLifecycleState;
+            switch (mLifecycleState) {
+                case ON_CREATE:
+                    paused = true;
+                    stopped = true;
+                    break;
+                case ON_START:
+                    paused = true;
+                    stopped = false;
+                    break;
+                case ON_RESUME:
+                    paused = false;
+                    stopped = false;
+                    break;
+                case ON_PAUSE:
+                    paused = true;
+                    stopped = false;
+                    break;
+                case ON_STOP:
+                    paused = true;
+                    stopped = true;
+                    break;
+            }
+!!!1226498.java!!!	isPreHoneycomb() : boolean
+            return activity != null && activity.getApplicationInfo().targetSdkVersion
+                    < android.os.Build.VERSION_CODES.HONEYCOMB;
+!!!1226626.java!!!	isPreP() : boolean
+            return activity != null && activity.getApplicationInfo().targetSdkVersion
+                    < android.os.Build.VERSION_CODES.P;
+!!!1226754.java!!!	isPersistable() : boolean
+            return activityInfo.persistableMode == ActivityInfo.PERSIST_ACROSS_REBOOTS;
+!!!1226882.java!!!	isVisibleFromServer() : boolean
+            return activity != null && activity.mVisibleFromServer;
+!!!1227010.java!!!	getActivityWindowInfo() : ActivityWindowInfo
+            return mActivityWindowInfo;
+!!!1227138.java!!!	toString() : String
+            ComponentName componentName = intent != null ? intent.getComponent() : null;
+            return "ActivityRecord{"
+                + Integer.toHexString(System.identityHashCode(this))
+                + " token=" + token + " " + (componentName == null
+                        ? "no component name" : componentName.toShortString())
+                + "}";
+!!!1227266.java!!!	getStateString() : String
+            StringBuilder sb = new StringBuilder();
+            sb.append("ActivityClientRecord{");
+            sb.append("paused=").append(paused);
+            sb.append(", stopped=").append(stopped);
+            sb.append(", hideForNow=").append(hideForNow);
+            sb.append(", startsNotResumed=").append(startsNotResumed);
+            sb.append(", isForward=").append(isForward);
+            sb.append(", pendingConfigChanges=").append(pendingConfigChanges);
+            sb.append(", preserveWindow=").append(mPreserveWindow);
+            if (activity != null) {
+                sb.append(", Activity{");
+                sb.append("resumed=").append(activity.mResumed);
+                sb.append(", stopped=").append(activity.mStopped);
+                sb.append(", finished=").append(activity.isFinishing());
+                sb.append(", destroyed=").append(activity.isDestroyed());
+                sb.append(", startedActivity=").append(activity.mStartedActivity);
+                sb.append(", changingConfigurations=").append(activity.mChangingConfigurations);
+                sb.append("}");
+            }
+            sb.append("}");
+            return sb.toString();

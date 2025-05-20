@@ -1,0 +1,82 @@
+format 224
+"android" // Android::Sdk::sources::android-36::android
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/"
+  java_package "android"
+  package_ref 128642 // accessibilityservice
+
+  package_ref 129026 // util
+
+  package_ref 129154 // os
+
+  package_ref 129282 // view
+
+  package_ref 130050 // app
+
+  package_ref 130178 // content
+
+  package_ref 130562 // graphics
+
+  package_ref 130946 // database
+
+  package_ref 131202 // net
+
+  package_ref 132866 // hardware
+
+  package_ref 133378 // bluetooth
+
+  package_ref 133890 // accounts
+
+  package_ref 134274 // widget
+
+  package_ref 134658 // animation
+
+  package_ref 134914 // credentials
+
+  package_ref 135042 // window
+
+  package_ref 135682 // media
+
+  package_ref 135938 // transition
+
+  package_ref 136066 // text
+
+  package_ref 136834 // aconfig
+
+  package_ref 137346 // adservices
+
+  package_ref 139650 // federatedcompute
+
+  package_ref 140930 // annotation
+
+  package_ref 141058 // apex
+end

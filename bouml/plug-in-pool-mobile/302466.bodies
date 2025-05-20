@@ -1,0 +1,61 @@
+class Profiler
+!!!1234562.java!!!	setProfiler(inout profilerInfo : ProfilerInfo) : void
+            ParcelFileDescriptor fd = profilerInfo.profileFd;
+            if (profiling) {
+                if (fd != null) {
+                    try {
+                        fd.close();
+                    } catch (IOException e) {
+                        // Ignore
+                    }
+                }
+                return;
+            }
+            if (profileFd != null) {
+                try {
+                    profileFd.close();
+                } catch (IOException e) {
+                    // Ignore
+                }
+            }
+            profileFile = profilerInfo.profileFile;
+            profileFd = fd;
+            samplingInterval = profilerInfo.samplingInterval;
+            autoStopProfiler = profilerInfo.autoStopProfiler;
+            streamingOutput = profilerInfo.streamingOutput;
+            mClockType = profilerInfo.clockType;
+            mProfilerOutputVersion = profilerInfo.profilerOutputVersion;
+!!!1234690.java!!!	startProfiling() : void
+            if (profileFd == null || profiling) {
+                return;
+            }
+            try {
+                int bufferSize = SystemProperties.getInt("debug.traceview-buffer-size-mb", 8);
+                int flags = 0;
+                flags = mClockType | ProfilerInfo.getFlagsForOutputVersion(mProfilerOutputVersion);
+                VMDebug.startMethodTracing(profileFile, profileFd.getFileDescriptor(),
+                        bufferSize * 1024 * 1024, flags, samplingInterval != 0, samplingInterval,
+                        streamingOutput);
+                profiling = true;
+            } catch (RuntimeException e) {
+                Slog.w(TAG, "Profiling failed on path " + profileFile, e);
+                try {
+                    profileFd.close();
+                    profileFd = null;
+                } catch (IOException e2) {
+                    Slog.w(TAG, "Failure closing profile fd", e2);
+                }
+            }
+!!!1234818.java!!!	stopProfiling() : void
+            if (profiling) {
+                profiling = false;
+                Debug.stopMethodTracing();
+                if (profileFd != null) {
+                    try {
+                        profileFd.close();
+                    } catch (IOException e) {
+                    }
+                }
+                profileFd = null;
+                profileFile = null;
+            }

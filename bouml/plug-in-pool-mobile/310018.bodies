@@ -1,0 +1,3 @@
+class EtatManche
+!!!1262722.java!!!	EtatManche(in etatManche : int)
+            this.etatManche = etatManche;

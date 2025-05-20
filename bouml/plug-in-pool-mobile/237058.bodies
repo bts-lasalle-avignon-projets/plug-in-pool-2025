@@ -1,0 +1,12 @@
+class MeasurementErrorResponse
+!!!844802.java!!!	MeasurementErrorResponse(inout builder : Builder)
+        super(builder.mStatusCode, builder.mErrorMessage);
+!!!844930.java!!!	MeasurementErrorResponse(inout in : Parcel)
+        super(in);
+!!!845058.java!!!	describeContents() : int
+        return 0;
+!!!845186.java!!!	writeToParcel(inout dest : Parcel, in flags : int) : void
+        Objects.requireNonNull(dest);
+
+        dest.writeInt(mStatusCode);
+        dest.writeString(mErrorMessage);

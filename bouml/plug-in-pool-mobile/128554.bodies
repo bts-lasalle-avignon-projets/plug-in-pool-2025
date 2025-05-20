@@ -1,5 +1,5 @@
 class ActiviteHistorique
-!!!128426.java!!!	onCreate(inout savedInstanceState : Bundle) : void
+!!!1264514.java!!!	onCreate(inout savedInstanceState : Bundle) : void
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_historique);

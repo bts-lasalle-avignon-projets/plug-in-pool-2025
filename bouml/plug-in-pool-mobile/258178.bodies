@@ -1,0 +1,201 @@
+class GetTopicsResult
+!!!964866.java!!!	GetTopicsResult(in resultCode : int, inout errorMessage : String, inout taxonomyVersions : List, inout modelVersions : List, inout topics : List, inout encryptedTopics : List, inout encryptionKeys : List, inout encapsulatedKeys : List)
+        super(resultCode, errorMessage);
+        mTaxonomyVersions = taxonomyVersions;
+        mModelVersions = modelVersions;
+        mTopics = topics;
+        mEncryptedTopics = encryptedTopics;
+        mEncryptionKeys = encryptionKeys;
+        mEncapsulatedKeys = encapsulatedKeys;
+!!!964994.java!!!	GetTopicsResult(inout in : Parcel)
+        super(in.readInt(), in.readString());
+
+        mTaxonomyVersions = Collections.unmodifiableList(readLongList(in));
+        mModelVersions = Collections.unmodifiableList(readLongList(in));
+        mTopics = Collections.unmodifiableList(readIntegerList(in));
+        mEncryptedTopics = Collections.unmodifiableList(readByteArrayList(in));
+        mEncryptionKeys = Collections.unmodifiableList(readStringList(in));
+        mEncapsulatedKeys = Collections.unmodifiableList(readByteArrayList(in));
+!!!965122.java!!!	describeContents() : int
+        return 0;
+!!!965250.java!!!	writeToParcel(inout out : Parcel, in flags : int) : void
+        out.writeInt(mStatusCode);
+        out.writeString(mErrorMessage);
+        writeLongList(out, mTaxonomyVersions);
+        writeLongList(out, mModelVersions);
+        writeIntegerList(out, mTopics);
+        writeByteArrayList(out, mEncryptedTopics);
+        writeStringList(out, mEncryptionKeys);
+        writeByteArrayList(out, mEncapsulatedKeys);
+!!!965378.java!!!	isSuccess() : boolean
+        return getResultCode() == STATUS_SUCCESS;
+!!!965506.java!!!	getResultCode() : int
+        return mStatusCode;
+!!!965634.java!!!	getErrorMessage() : String
+        return mErrorMessage;
+!!!965762.java!!!	getTaxonomyVersions() : List
+        return mTaxonomyVersions;
+!!!965890.java!!!	getModelVersions() : List
+        return mModelVersions;
+!!!966018.java!!!	getTopics() : List
+        return mTopics;
+!!!966146.java!!!	getEncryptedTopics() : List
+        return mEncryptedTopics;
+!!!966274.java!!!	getEncryptionKeys() : List
+        return mEncryptionKeys;
+!!!966402.java!!!	getEncapsulatedKeys() : List
+        return mEncapsulatedKeys;
+!!!966530.java!!!	toString() : String
+        return "GetTopicsResult{"
+                + "mResultCode="
+                + mStatusCode
+                + ", mErrorMessage='"
+                + mErrorMessage
+                + '\''
+                + ", mTaxonomyVersions="
+                + mTaxonomyVersions
+                + ", mModelVersions="
+                + mModelVersions
+                + ", mTopics="
+                + mTopics
+                + ", mEncryptedTopics="
+                + prettyPrint(mEncryptedTopics)
+                + ", mEncryptionKeys="
+                + mEncryptionKeys
+                + ", mEncapsulatedKeys="
+                + prettyPrint(mEncapsulatedKeys)
+                + '}';
+!!!966658.java!!!	prettyPrint(inout listOfByteArrays : List) : String
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int index = 0; index < listOfByteArrays.size(); index++) {
+            stringBuilder.append(Arrays.toString(listOfByteArrays.get(index)));
+            if (index != listOfByteArrays.size() - 1) {
+                stringBuilder.append(", ");
+            }
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+!!!966786.java!!!	equals(inout o : Object) : boolean
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof GetTopicsResult)) {
+            return false;
+        }
+
+        GetTopicsResult that = (GetTopicsResult) o;
+
+        return mStatusCode == that.mStatusCode
+                && Objects.equals(mErrorMessage, that.mErrorMessage)
+                && mTaxonomyVersions.equals(that.mTaxonomyVersions)
+                && mModelVersions.equals(that.mModelVersions)
+                && mTopics.equals(that.mTopics)
+                && equals(mEncryptedTopics, that.mEncryptedTopics)
+                && mEncryptionKeys.equals(that.mEncryptionKeys);
+!!!966914.java!!!	equals(inout list1 : List, inout list2 : List) : boolean
+        if (list1 == null || list2 == null) {
+            return false;
+        }
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            if (!Arrays.equals(list1.get(i), list2.get(i))) {
+                return false;
+            }
+        }
+        return true;
+!!!967042.java!!!	hashCode() : int
+        return Objects.hash(
+                mStatusCode,
+                mErrorMessage,
+                mTaxonomyVersions,
+                mModelVersions,
+                mTopics,
+                hashCode(mEncryptedTopics),
+                mEncryptionKeys,
+                hashCode(mEncryptedTopics));
+!!!967170.java!!!	hashCode(inout list : List) : int
+        int hash = 0;
+        for (byte[] bytes : list) {
+            hash += Arrays.hashCode(bytes);
+        }
+        return hash;
+!!!967298.java!!!	readLongList(inout in : Parcel) : List
+        List<Long> list = new ArrayList<>();
+
+        int toReadCount = in.readInt();
+        // Negative toReadCount is handled implicitly
+        for (int i = 0; i < toReadCount; i++) {
+            list.add(in.readLong());
+        }
+
+        return list;
+!!!967426.java!!!	readIntegerList(inout in : Parcel) : List
+        List<Integer> list = new ArrayList<>();
+
+        int toReadCount = in.readInt();
+        // Negative toReadCount is handled implicitly
+        for (int i = 0; i < toReadCount; i++) {
+            list.add(in.readInt());
+        }
+
+        return list;
+!!!967554.java!!!	readStringList(inout in : Parcel) : List
+        List<String> list = new ArrayList<>();
+
+        int toReadCount = in.readInt();
+        // Negative toReadCount is handled implicitly
+        for (int i = 0; i < toReadCount; i++) {
+            list.add(in.readString());
+        }
+
+        return list;
+!!!967682.java!!!	readByteArrayList(inout in : Parcel) : List
+        List<byte[]> list = new ArrayList<>();
+
+        int toReadCount = in.readInt();
+        // Negative toReadCount is handled implicitly
+        for (int i = 0; i < toReadCount; i++) {
+            list.add(in.createByteArray());
+        }
+
+        return list;
+!!!967810.java!!!	writeLongList(inout out : Parcel, inout val : List) : void
+        if (val == null) {
+            out.writeInt(-1);
+            return;
+        }
+        out.writeInt(val.size());
+        for (Long l : val) {
+            out.writeLong(l);
+        }
+!!!967938.java!!!	writeIntegerList(inout out : Parcel, inout val : List) : void
+        if (val == null) {
+            out.writeInt(-1);
+            return;
+        }
+        out.writeInt(val.size());
+        for (Integer integer : val) {
+            out.writeInt(integer);
+        }
+!!!968066.java!!!	writeStringList(inout out : Parcel, inout val : List) : void
+        if (val == null) {
+            out.writeInt(-1);
+            return;
+        }
+        out.writeInt(val.size());
+        for (String string : val) {
+            out.writeString(string);
+        }
+!!!968194.java!!!	writeByteArrayList(inout out : Parcel, inout val : List) : void
+        if (val == null) {
+            out.writeInt(-1);
+            return;
+        }
+        out.writeInt(val.size());
+        for (byte[] bytes : val) {
+            out.writeByteArray(bytes);
+        }

@@ -1,0 +1,12 @@
+class SafeCancellationTransport
+!!!1244290.java!!!	SafeCancellationTransport(inout activityThread : ActivityThread, inout cancellation : CancellationSignal)
+            mWeakActivityThread = new WeakReference<>(activityThread);
+!!!1244418.java!!!	cancel() : void
+            final ActivityThread activityThread = mWeakActivityThread.get();
+            if (activityThread != null) {
+                final CancellationSignal cancellation = activityThread
+                        .removeSafeCancellationTransport(this);
+                if (cancellation != null) {
+                    cancellation.cancel();
+                }
+            }

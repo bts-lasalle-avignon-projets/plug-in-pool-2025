@@ -1,0 +1,53 @@
+class GetAppSetIdResult
+!!!768514.java!!!	GetAppSetIdResult(in resultCode : int, inout errorMessage : String, inout appSetId : String, in appSetIdScope : int)
+        super(resultCode, errorMessage);
+        mAppSetId = appSetId;
+        mAppSetIdScope = appSetIdScope;
+!!!768642.java!!!	GetAppSetIdResult(inout in : Parcel)
+        super(in);
+        Objects.requireNonNull(in);
+
+        mAppSetId = in.readString();
+        mAppSetIdScope = in.readInt();
+!!!768770.java!!!	describeContents() : int
+        return 0;
+!!!768898.java!!!	writeToParcel(inout out : Parcel, in flags : int) : void
+        out.writeInt(mStatusCode);
+        out.writeString(mErrorMessage);
+        out.writeString(mAppSetId);
+        out.writeInt(mAppSetIdScope);
+!!!769026.java!!!	getErrorMessage() : String
+        return mErrorMessage;
+!!!769154.java!!!	getAppSetId() : String
+        return mAppSetId;
+!!!769282.java!!!	getAppSetIdScope() : int
+        return mAppSetIdScope;
+!!!769410.java!!!	toString() : String
+        return "GetAppSetIdResult{"
+                + "mResultCode="
+                + mStatusCode
+                + ", mErrorMessage='"
+                + mErrorMessage
+                + '\''
+                + ", mAppSetId="
+                + mAppSetId
+                + ", mAppSetIdScope="
+                + mAppSetIdScope
+                + '}';
+!!!769538.java!!!	equals(inout o : Object) : boolean
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof GetAppSetIdResult)) {
+            return false;
+        }
+
+        GetAppSetIdResult that = (GetAppSetIdResult) o;
+
+        return mStatusCode == that.mStatusCode
+                && Objects.equals(mErrorMessage, that.mErrorMessage)
+                && Objects.equals(mAppSetId, that.mAppSetId)
+                && (mAppSetIdScope == that.mAppSetIdScope);
+!!!769666.java!!!	hashCode() : int
+        return Objects.hash(mStatusCode, mErrorMessage, mAppSetId, mAppSetIdScope);

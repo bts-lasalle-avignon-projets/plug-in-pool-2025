@@ -1,0 +1,4 @@
+class BindServiceData
+!!!1234050.java!!!	toString() : String
+            return "BindServiceData{token=" + token + " intent=" + intent
+                    + " bindSeq=" + bindSeq + "}";

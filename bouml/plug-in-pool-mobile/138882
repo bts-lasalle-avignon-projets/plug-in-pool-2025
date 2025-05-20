@@ -1,0 +1,187 @@
+format 224
+"extdata" // Android::Sdk::sources::android-36::android::adservices::extdata
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/adservices/extdata/"
+  java_package "android.adservices.extdata"
+  classview 137346 "extdata"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 235138 "GetAdServicesExtDataResult"
+      visibility public 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Represent the result from {@link AdServicesExtDataStorageService} API.
+
+@hide
+"
+      operation 836866 "GetAdServicesExtDataResult"
+	private explicit_return_type ""
+	nparams 3
+	  param in name "resultCode" explicit_type "int"
+	  param inout name "errorMessage" type class_ref 128130 // String
+	  param inout name "adServicesExtDataParams" explicit_type "AdServicesExtDataParams"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@AdServicesStatusUtils.StatusCode ${t0} ${p0}, @Nullable ${t1} ${p1}, @NonNull ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 836994 "GetAdServicesExtDataResult"
+	private explicit_return_type ""
+	nparams 1
+	  param inout name "in" type class_ref 129410 // Parcel
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 837122 "describeContents"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment " @hide "
+      end
+
+      operation 837250 "writeToParcel"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "out" type class_ref 129410 // Parcel
+	  param in name "flags" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment " @hide "
+      end
+
+      operation 837378 "getErrorMessage"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Nullable
+"
+	
+	
+	
+	comment "Returns the error message associated with this result.
+
+<p>If {@link #isSuccess} is {@code true}, the error message is always {@code null}. The error
+message may be {@code null} even if {@link #isSuccess} is {@code false}.
+"
+      end
+
+      operation 837506 "getAdServicesExtDataParams"
+	public explicit_return_type "AdServicesExtDataParams"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@NonNull
+"
+	
+	
+	
+	comment " Returns the AdServicesExtDataParams value. "
+      end
+
+      operation 837634 "toString"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@SuppressLint(\"DefaultLocale\")
+@Override
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 131458 "extdata"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+end

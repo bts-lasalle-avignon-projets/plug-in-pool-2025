@@ -1,0 +1,151 @@
+format 224
+
+classcanvas 131970 class_ref 128682 // ActivitePlugInPool
+  classdiagramsettings member_max_width 0 end
+  xyz 31.2 31.8 2000
+end
+classcanvas 132098 class_ref 128170 // ActiviteConfigurationMatch
+  classdiagramsettings member_max_width 0 end
+  xyz 432.8 34.8 2000
+end
+classcanvas 132226 class_ref 309250 // ActiviteGestionPartie
+  classdiagramsettings member_max_width 0 end
+  xyz 737.2 30.2 2000
+end
+classcanvas 132354 class_ref 309378 // ActivitePartie
+  classdiagramsettings member_max_width 0 end
+  xyz 1178.2 41 2000
+end
+classcanvas 132482 class_ref 309634 // BaseDeDonnees
+  classdiagramsettings member_max_width 0 end
+  xyz 391.8 573.2 3005
+end
+classcanvas 133122 class_ref 309506 // CommunicationBluetooth
+  classdiagramsettings member_max_width 0 end
+  xyz 1222.8 783 2006
+end
+classcanvas 133506 class_ref 129706 // Table
+  classdiagramsettings member_max_width 0 end
+  xyz 87.2 670 2000
+end
+classcanvas 133634 class_ref 129322 // Manche
+  classdiagramsettings member_max_width 0 end
+  xyz 212 678 2000
+end
+classcanvas 133762 class_ref 129450 // Match
+  classdiagramsettings member_max_width 0 end
+  xyz 70 521.8 2000
+end
+classcanvas 134018 class_ref 129194 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 805 566 3005
+end
+classcanvas 134786 class_ref 129066 // Empoche
+  classdiagramsettings member_max_width 0 end
+  xyz 401.8 879 2000
+end
+classcanvas 134914 class_ref 128938 // CouleurBille
+  classdiagramsettings member_max_width 0 end
+  xyz 826 868.2 3005
+end
+classcanvas 135682 class_ref 128810 // BlackBall
+  classdiagramsettings member_max_width 0 end
+  xyz 63.2 337.8 2000
+end
+classcanvas 135810 class_ref 128554 // ActiviteHistorique
+  classdiagramsettings member_max_width 0 end
+  xyz 249.2 28.8 2000
+end
+relationcanvas 132610 relation_ref 485762 // <unidirectional association>
+  from ref 132482 z 3006 to point 340.8 565.8
+  line 132738 z 3006 to point 340.8 615.8
+  line 132866 z 3006 to ref 132482
+  role_a_pos 263 623 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132994 relation_ref 489602 // <unidirectional association>
+  from ref 132098 z 3006 to ref 132482
+  role_a_pos 507 541 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133250 relation_ref 483330 // <unidirectional association>
+  from ref 132354 z 2007 to ref 133122
+  role_a_pos 1332 751 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133378 relation_ref 483458 // <unidirectional association>
+  from ref 132354 z 2007 to ref 133122
+  role_a_pos 1332 751 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134146 relation_ref 489730 // <unidirectional association>
+  from ref 132098 z 3006 stereotype "<<Vector>>" xyz 686 426 3006 to ref 134018
+  role_a_pos 833 543 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134274 relation_ref 483842 // <unidirectional association>
+  from ref 132354 z 3006 to ref 134018
+  role_a_pos 881 535 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134402 relation_ref 483970 // <unidirectional association>
+  from ref 132354 z 3006 to ref 134018
+  role_a_pos 883 535 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134530 relation_ref 482178 // <unidirectional association>
+  from ref 132226 z 3006 to ref 134018
+  role_a_pos 851 543 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134658 relation_ref 482306 // <unidirectional association>
+  from ref 132226 z 3006 to ref 134018
+  role_a_pos 853 543 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135042 relation_ref 488322 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135170 relation_ref 489090 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135298 relation_ref 490754 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  role_a_pos 759 881 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135426 relation_ref 491266 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135554 relation_ref 484226 // <unidirectional association>
+  from ref 132354 z 3006 to ref 134914
+  role_a_pos 920 845 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135938 relation_ref 491394 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136066 relation_ref 491522 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136194 relation_ref 498050 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136322 relation_ref 498306 // <unidirectional association>
+  from ref 134786 z 3006 to ref 134914
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

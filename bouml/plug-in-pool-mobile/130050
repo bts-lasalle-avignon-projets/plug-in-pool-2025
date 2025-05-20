@@ -1,0 +1,6118 @@
+format 224
+"app" // Android::Sdk::sources::android-36::android::app
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/app/"
+  java_package "android.app"
+  classview 129154 "app"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 136706 "BroadcastOptions"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 143362 "Application"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 191106 "ActivityLifecycleCallbacks"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 143746 "Notification"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 144002 "ActivityThread"
+      visibility public 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "This manages the execution of the main thread in an
+application process, scheduling and executing activities,
+broadcasts, and other operations on it as the activity
+manager requests.
+
+{@hide}
+"
+      class 300930 "ActivityClientRecord"
+	visibility public 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 518146 "ident"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 467074 // intent (<unidirectional association>)
+	  relation 467074 --->
+	    a role_name "intent" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 467074 // intent (<unidirectional association>)
+	    b parent class_ref 136066 // Intent
+	end
+
+	classrelation 467202 // referrer (<unidirectional association>)
+	  relation 467202 --->
+	    a role_name "referrer" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 467202 // referrer (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	attribute 518274 "voiceInteractor"
+	  package explicit_type "IVoiceInteractor"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 467330 // state (<unidirectional association>)
+	  relation 467330 --->
+	    a role_name "state" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 467330 // state (<unidirectional association>)
+	    b parent class_ref 136322 // Bundle
+	end
+
+	classrelation 467458 // persistentState (<unidirectional association>)
+	  relation 467458 --->
+	    a role_name "persistentState" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 467458 // persistentState (<unidirectional association>)
+	    b parent class_ref 194690 // PersistableBundle
+	end
+
+	classrelation 467970 // embeddedID (<unidirectional association>)
+	  relation 467970 --->
+	    a role_name "embeddedID" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 467970 // embeddedID (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	attribute 518402 "paused"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " TODO(lifecycler): Use mLifecycleState instead.
+"
+	end
+
+	attribute 518530 "stopped"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 518658 "hideForNow"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 468226 // createdConfig (<unidirectional association>)
+	  relation 468226 --->
+	    a role_name "createdConfig" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 468226 // createdConfig (<unidirectional association>)
+	    b parent class_ref 138242 // Configuration
+	end
+
+	classrelation 468354 // overrideConfig (<unidirectional association>)
+	  relation 468354 --->
+	    a role_name "overrideConfig" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 468354 // overrideConfig (<unidirectional association>)
+	    b parent class_ref 138242 // Configuration
+	end
+
+	classrelation 468482 // mActivityWindowInfo (<unidirectional association>)
+	  relation 468482 --->
+	    a role_name "mActivityWindowInfo" init_value " new ActivityWindowInfo()" const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@NonNull
+"
+	      classrelation_ref 468482 // mActivityWindowInfo (<unidirectional association>)
+	    b parent class_ref 301186 // ActivityWindowInfo
+	end
+
+	classrelation 468610 // mLastReportedActivityWindowInfo (<unidirectional association>)
+	  relation 468610 --->
+	    a role_name "mLastReportedActivityWindowInfo" init_value " new ActivityWindowInfo()" const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@NonNull
+"
+	      classrelation_ref 468610 // mLastReportedActivityWindowInfo (<unidirectional association>)
+	    b parent class_ref 301186 // ActivityWindowInfo
+	end
+
+	classrelation 468738 // tmpConfig (<unidirectional association>)
+	  relation 468738 --->
+	    a role_name "tmpConfig" init_value " new Configuration()" const_relation private
+	      comment " Used for consolidating configs before sending on to Activity.
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 468738 // tmpConfig (<unidirectional association>)
+	    b parent class_ref 138242 // Configuration
+	end
+
+	classrelation 468866 // activityConfigCallback (<unidirectional association>)
+	  relation 468866 --->
+	    a role_name "activityConfigCallback" package
+	      comment " Callback used for updating activity override config and camera compat control state.
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 468866 // activityConfigCallback (<unidirectional association>)
+	    b parent class_ref 196610 // ActivityConfigCallback
+	end
+
+	attribute 518786 "isTopResumedActivity"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " Indicates whether this activity is currently the topmost resumed one in the system.
+ This holds the last reported value from server.
+"
+	end
+
+	attribute 518914 "lastReportedTopResumedState"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " This holds the value last sent to the activity. This is needed, because an update from
+ server may come at random time, but we always need to report changes between ON_RESUME
+ and ON_PAUSE to the app.
+"
+	end
+
+	classrelation 468994 // profilerInfo (<unidirectional association>)
+	  relation 468994 --->
+	    a role_name "profilerInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 468994 // profilerInfo (<unidirectional association>)
+	    b parent class_ref 296450 // ProfilerInfo
+	end
+
+	classrelation 469122 // activityInfo (<unidirectional association>)
+	  relation 469122 --->
+	    a role_name "activityInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 469122 // activityInfo (<unidirectional association>)
+	    b parent class_ref 150018 // ActivityInfo
+	end
+
+	classrelation 469250 // compatInfo (<unidirectional association>)
+	  relation 469250 --->
+	    a role_name "compatInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 469250 // compatInfo (<unidirectional association>)
+	    b parent class_ref 302594 // CompatibilityInfo
+	end
+
+	classrelation 469378 // packageInfo (<unidirectional association>)
+	  relation 469378 --->
+	    a role_name "packageInfo" public
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 469378 // packageInfo (<unidirectional association>)
+	    b parent class_ref 144130 // LoadedApk
+	end
+
+	classrelation 469506 // pendingResults (<unidirectional association>)
+	  relation 469506 --->
+	    a role_name "pendingResults" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ResultInfo> ${name}${value};
+"
+	      classrelation_ref 469506 // pendingResults (<unidirectional association>)
+	    b parent class_ref 130178 // List
+	end
+
+	classrelation 469634 // pendingIntents (<unidirectional association>)
+	  relation 469634 --->
+	    a role_name "pendingIntents" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ReferrerIntent> ${name}${value};
+"
+	      classrelation_ref 469634 // pendingIntents (<unidirectional association>)
+	    b parent class_ref 130178 // List
+	end
+
+	attribute 519042 "startsNotResumed"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 519170 "isForward"
+	  const_attribute public explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 519298 "pendingConfigChanges"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 519426 "mIsUserLeaving"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " Whether we are in the process of performing on user leaving.
+"
+	end
+
+	classrelation 469890 // mPendingRemoveWindowManager (<unidirectional association>)
+	  relation 469890 --->
+	    a role_name "mPendingRemoveWindowManager" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 469890 // mPendingRemoveWindowManager (<unidirectional association>)
+	    b parent class_ref 141058 // WindowManager
+	end
+
+	attribute 519554 "mPreserveWindow"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 519682 "mLaunchedFromBubble"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " Whether this activiy was launched from a bubble. 
+"
+	end
+
+	attribute 519810 "mLastReportedWindowingMode"
+	  package explicit_type "int"
+	  init_value " WINDOWING_MODE_UNDEFINED"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment "This can be different from the current configuration because a new configuration may not
+always update to activity, e.g. windowing mode change without size change.
+
+"
+	end
+
+	attribute 519938 "mLifecycleState"
+	  private explicit_type "int"
+	  init_value " PRE_ON_CREATE"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@LifecycleState
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 470146 // mSizeConfigurations (<unidirectional association>)
+	  relation 470146 --->
+	    a role_name "mSizeConfigurations" private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 470146 // mSizeConfigurations (<unidirectional association>)
+	    b parent class_ref 288386 // SizeConfigurationBuckets
+	end
+
+	operation 1225858 "ActivityClientRecord"
+	  public explicit_return_type ""
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@VisibleForTesting
+@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.P, trackingBug = 115609023)
+"
+	  
+	  
+	  
+	end
+
+	operation 1225986 "ActivityClientRecord"
+	  public explicit_return_type ""
+	  nparams 21
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "intent" type class_ref 136066 // Intent
+	    param in name "ident" explicit_type "int"
+	    param inout name "info" type class_ref 150018 // ActivityInfo
+	    param inout name "overrideConfig" type class_ref 138242 // Configuration
+	    param inout name "referrer" type class_ref 128130 // String
+	    param inout name "voiceInteractor" explicit_type "IVoiceInteractor"
+	    param inout name "state" type class_ref 136322 // Bundle
+	    param inout name "persistentState" type class_ref 194690 // PersistableBundle
+	    param inout name "pendingResults" type class_ref 130178 // List
+	    param inout name "pendingNewIntents" type class_ref 130178 // List
+	    param inout name "sceneTransitionInfo" explicit_type "SceneTransitionInfo"
+	    param inout name "isForward" explicit_type "boolean"
+	    param inout name "profilerInfo" type class_ref 296450 // ProfilerInfo
+	    param inout name "client" explicit_type "ClientTransactionHandler"
+	    param inout name "assistToken" explicit_type "IBinder"
+	    param inout name "shareableActivityToken" explicit_type "IBinder"
+	    param inout name "launchedFromBubble" explicit_type "boolean"
+	    param inout name "taskFragmentToken" explicit_type "IBinder"
+	    param inout name "initialCallerInfoAccessToken" explicit_type "IBinder"
+	    param inout name "activityWindowInfo" type class_ref 301186 // ActivityWindowInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9}<ResultInfo> ${p9}, ${t10}<ReferrerIntent> ${p10}, ${t11} ${p11}, ${t12} ${p12}, ${t13} ${p13}, ${t14} ${p14}, ${t15} ${p15}, ${t16} ${p16}, ${t17} ${p17}, ${t18} ${p18}, ${t19} ${p19}, ${t20} ${p20}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1226114 "init"
+	  private explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment " Common initializer for all constructors. "
+	end
+
+	operation 1226242 "getLifecycleState"
+	  public explicit_return_type "int"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment " Get the current lifecycle state. "
+	end
+
+	operation 1226370 "setState"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "newLifecycleState" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@LifecycleState ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment " Update the current lifecycle state for internal bookkeeping. "
+	end
+
+	operation 1226498 "isPreHoneycomb"
+	  private explicit_return_type "boolean"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1226626 "isPreP"
+	  private explicit_return_type "boolean"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1226754 "isPersistable"
+	  public explicit_return_type "boolean"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1226882 "isVisibleFromServer"
+	  public explicit_return_type "boolean"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1227010 "getActivityWindowInfo"
+	  public return_type class_ref 301186 // ActivityWindowInfo
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NonNull
+"
+	  
+	  
+	  
+	end
+
+	operation 1227138 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1227266 "getStateString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 458754 // mDdmSyncStageUpdater (<unidirectional association>)
+	relation 458754 --->
+	  a role_name "mDdmSyncStageUpdater" init_value " new DdmSyncStageUpdater()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 458754 // mDdmSyncStageUpdater (<unidirectional association>)
+	  b parent class_ref 301826 // DdmSyncStageUpdater
+      end
+
+      classrelation 458882 // TAG (<unidirectional association>)
+	relation 458882 --->
+	  a role_name "TAG" init_value " \"ActivityThread\"" class_relation const_relation public
+	    comment " @hide 
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 458882 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 512258 "localLOGV"
+	class_attribute const_attribute package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 512386 "DEBUG_MESSAGES"
+	class_attribute const_attribute package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 512514 "DEBUG_BROADCAST"
+	class_attribute const_attribute public explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " @hide 
+"
+      end
+
+      attribute 512642 "DEBUG_RESULTS"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 512770 "DEBUG_BACKUP"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 512898 "DEBUG_CONFIGURATION"
+	class_attribute const_attribute public explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513026 "DEBUG_SERVICE"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513154 "DEBUG_MEMORY_TRIM"
+	class_attribute const_attribute public explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513282 "DEBUG_PROVIDER"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513410 "DEBUG_ORDER"
+	class_attribute const_attribute public explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513538 "DEBUG_APP_INFO"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513666 "MIN_TIME_BETWEEN_GCS"
+	class_attribute const_attribute private explicit_type "long"
+	init_value " 5*1000"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 513794 "CONTENT_PROVIDER_RETAIN_TIME"
+	class_attribute const_attribute private explicit_type "long"
+	init_value " 1000"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "The delay to release the provider when it has no more references. It reduces the number of
+transactions for acquiring and releasing provider if the client accesses the provider
+frequently in a short time.
+
+"
+      end
+
+      attribute 513922 "SQLITE_MEM_RELEASED_EVENT_LOG_TAG"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 75003"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 514050 "SERVICE_DONE_EXECUTING_ANON"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Type for IActivityManager.serviceDoneExecuting: anonymous operation 
+"
+      end
+
+      attribute 514178 "SERVICE_DONE_EXECUTING_START"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Type for IActivityManager.serviceDoneExecuting: done with an onStart call 
+"
+      end
+
+      attribute 514306 "SERVICE_DONE_EXECUTING_STOP"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Type for IActivityManager.serviceDoneExecuting: done stopping (destroying) service 
+"
+      end
+
+      attribute 514434 "SERVICE_DONE_EXECUTING_REBIND"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 3"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Type for IActivityManager.serviceDoneExecuting: done with an onRebind call 
+"
+      end
+
+      attribute 514562 "SERVICE_DONE_EXECUTING_UNBIND"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 4"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Type for IActivityManager.serviceDoneExecuting: done with an onUnbind call 
+"
+      end
+
+      attribute 514690 "VM_PROCESS_STATE_JANK_PERCEPTIBLE"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Use foreground GC policy (less pause time) and higher JIT weight. 
+"
+      end
+
+      attribute 514818 "VM_PROCESS_STATE_JANK_IMPERCEPTIBLE"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Use background GC policy and default JIT threshold. 
+"
+      end
+
+      attribute 514946 "REQUEST_DIRECT_ACTIONS_RETRY_TIME_MS"
+	class_attribute const_attribute private explicit_type "long"
+	init_value " 200"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " The delay time for retrying to request DirectActions. 
+"
+      end
+
+      attribute 515074 "REQUEST_DIRECT_ACTIONS_RETRY_MAX_COUNT"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 7"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " The max count for retrying to request DirectActions. 
+"
+      end
+
+      attribute 515202 "INVALID_PROC_STATE_SEQ"
+	class_attribute const_attribute public explicit_type "long"
+	init_value " -1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "Denotes an invalid sequence number corresponding to a process state change.
+
+"
+      end
+
+      classrelation 459010 // PROC_START_SEQ_IDENT (<unidirectional association>)
+	relation 459010 --->
+	  a role_name "PROC_START_SEQ_IDENT" init_value " \"seq=\"" class_relation const_relation public
+	    comment "
+Identifier for the sequence no. associated with this process start. It will be provided
+as one of the arguments when the process starts.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 459010 // PROC_START_SEQ_IDENT (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 459138 // mNetworkPolicyLock (<unidirectional association>)
+	relation 459138 --->
+	  a role_name "mNetworkPolicyLock" init_value " new Object()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 459138 // mNetworkPolicyLock (<unidirectional association>)
+	  b parent class_ref 128258 // Object
+      end
+
+      classrelation 459266 // DEFAULT_FULL_BACKUP_AGENT (<unidirectional association>)
+	relation 459266 --->
+	  a role_name "DEFAULT_FULL_BACKUP_AGENT" init_value " \"android.app.backup.FullBackupAgent\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 459266 // DEFAULT_FULL_BACKUP_AGENT (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 515330 "BINDER_CALLBACK_THROTTLE"
+	class_attribute const_attribute private explicit_type "long"
+	init_value " 10_100L"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 515458 "mBinderCallbackLast"
+	private explicit_type "long"
+	init_value " -1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 515586 "DEBUG_STORE_ENABLED"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value "
+            com.android.internal.os.Flags.debugStoreEnabled()"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 515714 "LONG_MESSAGE_THRESHOLD_MS"
+	class_attribute const_attribute private explicit_type "long"
+	init_value " 2000 * Build.HW_TIMEOUT_MULTIPLIER"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "Threshold for identifying long-running looper messages (in milliseconds).
+Calculated as 2 seconds multiplied by the hardware timeout multiplier.
+
+"
+      end
+
+      attribute 515842 "mNetworkBlockSeq"
+	private explicit_type "long"
+	init_value " INVALID_PROC_STATE_SEQ"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@GuardedBy(\"mNetworkPolicyLock\")
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "Denotes the sequence number of the process state change for which the main thread needs
+to block until the network rules are updated for it.
+
+Value of {@link #INVALID_PROC_STATE_SEQ} indicates there is no need for blocking.
+
+"
+      end
+
+      classrelation 459394 // mSystemContext (<unidirectional association>)
+	relation 459394 --->
+	  a role_name "mSystemContext" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 459394 // mSystemContext (<unidirectional association>)
+	  b parent class_ref 301698 // ContextImpl
+      end
+
+      classrelation 459522 // mDisplaySystemUiContexts (<unidirectional association>)
+	relation 459522 --->
+	  a role_name "mDisplaySystemUiContexts" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<WeakReference<Context>> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"this\")
+"
+	    classrelation_ref 459522 // mDisplaySystemUiContexts (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      attribute 515970 "sPackageManager"
+	class_attribute volatile package explicit_type "IPackageManager"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 516098 "sPermissionManager"
+	class_attribute volatile private explicit_type "IPermissionManager"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      class 301954 "ApplicationThread"
+	visibility private 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 477698 // <generalisation>
+	  relation 477698 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 477698 // <generalisation>
+	    b parent class_ref 306434 // Stub
+	end
+
+	classrelation 477826 // DB_CONNECTION_INFO_HEADER (<unidirectional association>)
+	  relation 477826 --->
+	    a role_name "DB_CONNECTION_INFO_HEADER" init_value " \"  %8s %8s %14s %5s %5s %5s  %s\"" class_relation const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 477826 // DB_CONNECTION_INFO_HEADER (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 477954 // DB_CONNECTION_INFO_FORMAT (<unidirectional association>)
+	  relation 477954 --->
+	    a role_name "DB_CONNECTION_INFO_FORMAT" init_value " \"  %8s %8s %14s %5d %5d %5d  %s\"" class_relation const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 477954 // DB_CONNECTION_INFO_FORMAT (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 478082 // DB_POOL_INFO_HEADER (<unidirectional association>)
+	  relation 478082 --->
+	    a role_name "DB_POOL_INFO_HEADER" init_value " \"  %13s %13s %13s  %s\"" class_relation const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 478082 // DB_POOL_INFO_HEADER (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 478210 // DB_POOL_INFO_FORMAT (<unidirectional association>)
+	  relation 478210 --->
+	    a role_name "DB_POOL_INFO_FORMAT" init_value " \"  %13d %13d %13d  %s\"" class_relation const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 478210 // DB_POOL_INFO_FORMAT (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	operation 1234946 "scheduleReceiver"
+	  public explicit_return_type "void"
+	  nparams 12
+	    param inout name "intent" type class_ref 136066 // Intent
+	    param inout name "info" type class_ref 150018 // ActivityInfo
+	    param inout name "compatInfo" type class_ref 302594 // CompatibilityInfo
+	    param in name "resultCode" explicit_type "int"
+	    param inout name "data" type class_ref 128130 // String
+	    param inout name "extras" type class_ref 136322 // Bundle
+	    param inout name "ordered" explicit_type "boolean"
+	    param inout name "assumeDelivered" explicit_type "boolean"
+	    param in name "sendingUser" explicit_type "int"
+	    param in name "processState" explicit_type "int"
+	    param in name "sendingUid" explicit_type "int"
+	    param inout name "sendingPackage" type class_ref 128130 // String
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}, ${t10} ${p10}, ${t11} ${p11}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235074 "scheduleReceiverList"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "info" type class_ref 130178 // List
+	  nexceptions 1
+	    exception class_ref 142338 // RemoteException
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}<ReceiverInfo> ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235202 "scheduleCreateBackupAgent"
+	  public explicit_return_type "void"
+	  nparams 4
+	    param inout name "app" type class_ref 134530 // ApplicationInfo
+	    param in name "backupMode" explicit_type "int"
+	    param in name "userId" explicit_type "int"
+	    param in name "backupDestination" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, @BackupDestination ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235330 "scheduleDestroyBackupAgent"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "app" type class_ref 134530 // ApplicationInfo
+	    param in name "userId" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235458 "scheduleCreateService"
+	  public explicit_return_type "void"
+	  nparams 4
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "info" type class_ref 304898 // ServiceInfo
+	    param inout name "compatInfo" type class_ref 302594 // CompatibilityInfo
+	    param in name "processState" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235586 "scheduleBindService"
+	  public explicit_return_type "void"
+	  nparams 5
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "intent" type class_ref 136066 // Intent
+	    param inout name "rebind" explicit_type "boolean"
+	    param in name "processState" explicit_type "int"
+	    param in name "bindSeq" explicit_type "long"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235714 "scheduleUnbindService"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "intent" type class_ref 136066 // Intent
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235842 "scheduleServiceArgs"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "args" type class_ref 293250 // ParceledListSlice
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1235970 "scheduleStopService"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "token" explicit_type "IBinder"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1236098 "scheduleTimeoutService"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param in name "startId" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1236226 "schedulePing"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "pong" type class_ref 202114 // RemoteCallback
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1236354 "scheduleTimeoutServiceForType"
+	  public explicit_return_type "void"
+	  nparams 3
+	    param inout name "token" explicit_type "IBinder"
+	    param in name "startId" explicit_type "int"
+	    param in name "fgsType" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, @ServiceInfo.ForegroundServiceType ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1236482 "bindApplication"
+	  public explicit_return_type "void"
+	  nparams 29
+	    param inout name "processName" type class_ref 128130 // String
+	    param inout name "appInfo" type class_ref 134530 // ApplicationInfo
+	    param inout name "sdkSandboxClientAppVolumeUuid" type class_ref 128130 // String
+	    param inout name "sdkSandboxClientAppPackage" type class_ref 128130 // String
+	    param inout name "isSdkInSandbox" explicit_type "boolean"
+	    param inout name "providerList" type class_ref 306562 // ProviderInfoList
+	    param inout name "instrumentationName" type class_ref 137090 // ComponentName
+	    param inout name "profilerInfo" type class_ref 296450 // ProfilerInfo
+	    param inout name "instrumentationArgs" type class_ref 136322 // Bundle
+	    param inout name "instrumentationWatcher" explicit_type "IInstrumentationWatcher"
+	    param inout name "instrumentationUiConnection" explicit_type "IUiAutomationConnection"
+	    param in name "debugMode" explicit_type "int"
+	    param inout name "enableBinderTracking" explicit_type "boolean"
+	    param inout name "trackAllocation" explicit_type "boolean"
+	    param inout name "isRestrictedBackupMode" explicit_type "boolean"
+	    param inout name "persistent" explicit_type "boolean"
+	    param inout name "config" type class_ref 138242 // Configuration
+	    param inout name "compatInfo" type class_ref 302594 // CompatibilityInfo
+	    param inout name "services" type class_ref 143106 // Map
+	    param inout name "coreSettings" type class_ref 136322 // Bundle
+	    param inout name "buildSerial" type class_ref 128130 // String
+	    param inout name "autofillOptions" type class_ref 139266 // AutofillOptions
+	    param inout name "contentCaptureOptions" type class_ref 139394 // ContentCaptureOptions
+	    param inout name "disabledCompatChanges" explicit_type "long"
+	  multiplicity "[]"
+	    param inout name "loggableCompatChanges" explicit_type "long"
+	  multiplicity "[]"
+	    param inout name "serializedSystemFontMap" type class_ref 305410 // SharedMemory
+	    param inout name "applicationSharedMemoryFd" type class_ref 143874 // FileDescriptor
+	    param in name "startRequestedElapsedTime" explicit_type "long"
+	    param in name "startRequestedUptime" explicit_type "long"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}, ${t10} ${p10}, ${t11} ${p11}, ${t12} ${p12}, ${t13} ${p13}, ${t14} ${p14}, ${t15} ${p15}, ${t16} ${p16}, ${t17} ${p17}, ${t18} ${p18}, ${t19} ${p19}, ${t20} ${p20}, ${t21} ${p21}, ${t22} ${p22}, ${t23}[] ${p23}, ${t24}[] ${p24}, ${t25} ${p25}, ${t26} ${p26}, ${t27} ${p27}, ${t28} ${p28}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1236610 "updateCompatOverrideScale"
+	  private explicit_return_type "void"
+	  nparams 1
+	    param inout name "info" type class_ref 302594 // CompatibilityInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1236738 "updateCompatOverrideDisplayRotation"
+	  private explicit_return_type "void"
+	  nparams 1
+	    param inout name "info" type class_ref 302594 // CompatibilityInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1236866 "runIsolatedEntryPoint"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "entryPoint" type class_ref 128130 // String
+	    param inout name "entryPointArgs" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1236994 "scheduleExit"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237122 "scheduleSuicide"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237250 "scheduleApplicationInfoChanged"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "ai" type class_ref 134530 // ApplicationInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237378 "updateTimeZone"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237506 "clearDnsCache"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237634 "updateHttpProxy"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237762 "processInBackground"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1237890 "dumpService"
+	  public explicit_return_type "void"
+	  nparams 3
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "servicetoken" explicit_type "IBinder"
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2}[] ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1238018 "scheduleRegisteredReceiver"
+	  public explicit_return_type "void"
+	  nparams 12
+	    param inout name "receiver" explicit_type "IIntentReceiver"
+	    param inout name "intent" type class_ref 136066 // Intent
+	    param in name "resultCode" explicit_type "int"
+	    param inout name "dataStr" type class_ref 128130 // String
+	    param inout name "extras" type class_ref 136322 // Bundle
+	    param inout name "ordered" explicit_type "boolean"
+	    param inout name "sticky" explicit_type "boolean"
+	    param inout name "assumeDelivered" explicit_type "boolean"
+	    param in name "sendingUser" explicit_type "int"
+	    param in name "processState" explicit_type "int"
+	    param in name "sendingUid" explicit_type "int"
+	    param inout name "sendingPackage" type class_ref 128130 // String
+	  nexceptions 1
+	    exception class_ref 142338 // RemoteException
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}, ${t10} ${p10}, ${t11} ${p11}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment " This function exists to make sure all receiver dispatching is
+ correctly ordered, since these are one-way calls and the binder driver
+ applies transaction ordering per object for such calls."
+	end
+
+	operation 1238146 "scheduleLowMemory"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1238274 "profilerControl"
+	  public explicit_return_type "void"
+	  nparams 3
+	    param inout name "start" explicit_type "boolean"
+	    param inout name "profilerInfo" type class_ref 296450 // ProfilerInfo
+	    param in name "profileType" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1238402 "dumpHeap"
+	  public explicit_return_type "void"
+	  nparams 7
+	    param inout name "managed" explicit_type "boolean"
+	    param inout name "mallocInfo" explicit_type "boolean"
+	    param inout name "runGc" explicit_type "boolean"
+	    param inout name "dumpBitmaps" type class_ref 128130 // String
+	    param inout name "path" type class_ref 128130 // String
+	    param inout name "fd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "finishCallback" type class_ref 202114 // RemoteCallback
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1238530 "attachAgent"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "agent" type class_ref 128130 // String
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1238658 "attachStartupAgents"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "dataDir" type class_ref 128130 // String
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1238786 "setSchedulingGroup"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "group" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1238914 "dispatchPackageBroadcast"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param in name "cmd" explicit_type "int"
+	    param inout name "packages" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1239042 "scheduleCrash"
+	  public explicit_return_type "void"
+	  nparams 3
+	    param inout name "msg" type class_ref 128130 // String
+	    param in name "typeId" explicit_type "int"
+	    param inout name "extras" type class_ref 136322 // Bundle
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, @Nullable ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1239170 "dumpResources"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "fd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "callback" type class_ref 202114 // RemoteCallback
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1239298 "dumpActivity"
+	  public explicit_return_type "void"
+	  nparams 4
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "activitytoken" explicit_type "IBinder"
+	    param inout name "prefix" type class_ref 128130 // String
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3}[] ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1239426 "dumpProvider"
+	  public explicit_return_type "void"
+	  nparams 3
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "providertoken" explicit_type "IBinder"
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2}[] ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1239554 "dumpMemInfo"
+	  public explicit_return_type "void"
+	  nparams 9
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "mem" type class_ref 294146 // MemoryInfo
+	    param inout name "checkin" explicit_type "boolean"
+	    param inout name "dumpFullInfo" explicit_type "boolean"
+	    param inout name "dumpDalvik" explicit_type "boolean"
+	    param inout name "dumpSummaryOnly" explicit_type "boolean"
+	    param inout name "dumpUnreachable" explicit_type "boolean"
+	    param inout name "dumpAllocatorStats" explicit_type "boolean"
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8}[] ${p8}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NeverCompile
+@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1239682 "dumpMemInfoNativeAllocations"
+	  private explicit_return_type "void"
+	  nparams 1
+	    param inout name "pw" type class_ref 142210 // PrintWriter
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NeverCompile
+"
+	  
+	  
+	  
+	end
+
+	operation 1239810 "dumpMemInfo"
+	  private explicit_return_type "void"
+	  nparams 8
+	    param inout name "pw" type class_ref 142210 // PrintWriter
+	    param inout name "memInfo" type class_ref 294146 // MemoryInfo
+	    param inout name "checkin" explicit_type "boolean"
+	    param inout name "dumpFullInfo" explicit_type "boolean"
+	    param inout name "dumpDalvik" explicit_type "boolean"
+	    param inout name "dumpSummaryOnly" explicit_type "boolean"
+	    param inout name "dumpUnreachable" explicit_type "boolean"
+	    param inout name "dumpAllocatorStats" explicit_type "boolean"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NeverCompile
+"
+	  
+	  
+	  
+	end
+
+	operation 1239938 "dumpMemInfoProto"
+	  public explicit_return_type "void"
+	  nparams 7
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "mem" type class_ref 294146 // MemoryInfo
+	    param inout name "dumpFullInfo" explicit_type "boolean"
+	    param inout name "dumpDalvik" explicit_type "boolean"
+	    param inout name "dumpSummaryOnly" explicit_type "boolean"
+	    param inout name "dumpUnreachable" explicit_type "boolean"
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6}[] ${p6}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NeverCompile
+@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1240066 "dumpMemInfo"
+	  private explicit_return_type "void"
+	  nparams 6
+	    param inout name "proto" type class_ref 306690 // ProtoOutputStream
+	    param inout name "memInfo" type class_ref 294146 // MemoryInfo
+	    param inout name "dumpFullInfo" explicit_type "boolean"
+	    param inout name "dumpDalvik" explicit_type "boolean"
+	    param inout name "dumpSummaryOnly" explicit_type "boolean"
+	    param inout name "dumpUnreachable" explicit_type "boolean"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@NeverCompile
+"
+	  
+	  
+	  
+	end
+
+	operation 1240194 "dumpGfxInfo"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1240322 "dumpCacheInfo"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1240450 "getDatabasesDir"
+	  private return_type class_ref 134658 // File
+	  nparams 1
+	    param inout name "context" type class_ref 131458 // Context
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1240578 "dumpDatabaseInfo"
+	  private explicit_return_type "void"
+	  nparams 3
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param inout name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	    param inout name "isSystem" explicit_type "boolean"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1}[] ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1240706 "dumpDbInfo"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param in name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	    param in name "args" type class_ref 128130 // String
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}final ${t0} ${p0}, final ${t1}[] ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1240834 "unstableProviderDied"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "provider" explicit_type "IBinder"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1240962 "requestAssistContextExtras"
+	  public explicit_return_type "void"
+	  nparams 5
+	    param inout name "activityToken" explicit_type "IBinder"
+	    param inout name "requestToken" explicit_type "IBinder"
+	    param in name "requestType" explicit_type "int"
+	    param in name "sessionId" explicit_type "int"
+	    param in name "flags" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1241090 "setCoreSettings"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "coreSettings" type class_ref 136322 // Bundle
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241218 "updatePackageCompatibilityInfo"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "pkg" type class_ref 128130 // String
+	    param inout name "info" type class_ref 302594 // CompatibilityInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241346 "scheduleTrimMemory"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "level" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241474 "scheduleTranslucentConversionComplete"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "drawComplete" explicit_type "boolean"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241602 "scheduleOnNewSceneTransitionInfo"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "info" explicit_type "SceneTransitionInfo"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241730 "setProcessState"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "state" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1241858 "setNetworkBlockSeq"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "procStateSeq" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	  comment "Updates {@link #mNetworkBlockSeq}. This is used by ActivityManagerService to inform
+the main thread that it needs to wait for the network rules to get updated before
+launching an activity.
+"
+	end
+
+	operation 1241986 "scheduleInstallProvider"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "provider" type class_ref 305282 // ProviderInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242114 "updateTimePrefs"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param in name "timeFormatPreference" explicit_type "int"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242242 "scheduleEnterAnimationComplete"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "token" explicit_type "IBinder"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242370 "notifyCleartextNetwork"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "firstPacket" explicit_type "byte"
+	  multiplicity "[]"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}[] ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242498 "startBinderTracking"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242626 "stopBinderTrackingAndDump"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "pfd" type class_ref 142850 // ParcelFileDescriptor
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242754 "scheduleLocalVoiceInteractionStarted"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "token" explicit_type "IBinder"
+	    param inout name "voiceInteractor" explicit_type "IVoiceInteractor"
+	  nexceptions 1
+	    exception class_ref 142338 // RemoteException
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1242882 "handleTrustStorageUpdate"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243010 "scheduleTransaction"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "transaction" type class_ref 300674 // ClientTransaction
+	  nexceptions 1
+	    exception class_ref 142338 // RemoteException
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243138 "scheduleTaskFragmentTransaction"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "organizer" explicit_type "ITaskFragmentOrganizer"
+	    param inout name "transaction" type class_ref 306818 // TaskFragmentTransaction
+	  nexceptions 1
+	    exception class_ref 142338 // RemoteException
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243266 "requestDirectActions"
+	  public explicit_return_type "void"
+	  nparams 4
+	    param inout name "activityToken" explicit_type "IBinder"
+	    param inout name "interactor" explicit_type "IVoiceInteractor"
+	    param inout name "cancellationCallback" type class_ref 202114 // RemoteCallback
+	    param inout name "callback" type class_ref 202114 // RemoteCallback
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}, @Nullable ${t2} ${p2}, @NonNull ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243394 "performDirectAction"
+	  public explicit_return_type "void"
+	  nparams 5
+	    param inout name "activityToken" explicit_type "IBinder"
+	    param inout name "actionId" type class_ref 128130 // String
+	    param inout name "arguments" type class_ref 136322 // Bundle
+	    param inout name "cancellationCallback" type class_ref 202114 // RemoteCallback
+	    param inout name "resultCallback" type class_ref 202114 // RemoteCallback
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}, @Nullable ${t2} ${p2}, @Nullable ${t3} ${p3}, @NonNull ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243522 "notifyContentProviderPublishStatus"
+	  public explicit_return_type "void"
+	  nparams 4
+	    param inout name "holder" type class_ref 303106 // ContentProviderHolder
+	    param inout name "authorities" type class_ref 128130 // String
+	    param in name "userId" explicit_type "int"
+	    param inout name "published" explicit_type "boolean"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243650 "instrumentWithoutRestart"
+	  public explicit_return_type "void"
+	  nparams 5
+	    param inout name "instrumentationName" type class_ref 137090 // ComponentName
+	    param inout name "instrumentationArgs" type class_ref 136322 // Bundle
+	    param inout name "instrumentationWatcher" explicit_type "IInstrumentationWatcher"
+	    param inout name "instrumentationUiConnection" explicit_type "IUiAutomationConnection"
+	    param inout name "targetInfo" type class_ref 134530 // ApplicationInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243778 "updateUiTranslationState"
+	  public explicit_return_type "void"
+	  nparams 6
+	    param inout name "activityToken" explicit_type "IBinder"
+	    param in name "state" explicit_type "int"
+	    param inout name "sourceSpec" type class_ref 196866 // TranslationSpec
+	    param inout name "targetSpec" type class_ref 196866 // TranslationSpec
+	    param inout name "viewIds" type class_ref 130178 // List
+	    param inout name "uiTranslationSpec" type class_ref 196994 // UiTranslationSpec
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4}<AutofillId> ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1243906 "getExecutableMethodFileOffsets"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param inout name "methodDescriptor" type class_ref 297986 // MethodDescriptor
+	    param inout name "resultCallback" type class_ref 298114 // IOffsetCallback
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 459650 // mAppThread (<unidirectional association>)
+	relation 459650 --->
+	  a role_name "mAppThread" init_value " new ApplicationThread()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 459650 // mAppThread (<unidirectional association>)
+	  b parent class_ref 301954 // ApplicationThread
+      end
+
+      classrelation 459778 // mLooper (<unidirectional association>)
+	relation 459778 --->
+	  a role_name "mLooper" init_value " Looper.myLooper()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 459778 // mLooper (<unidirectional association>)
+	  b parent class_ref 130946 // Looper
+      end
+
+      class 302082 "H"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 526338 "BIND_APPLICATION"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 110"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526466 "EXIT_APPLICATION"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 111"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526594 "RECEIVER"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 113"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526722 "CREATE_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 114"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526850 "SERVICE_ARGS"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 115"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526978 "STOP_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 116"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527106 "CONFIGURATION_CHANGED"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 118"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527234 "CLEAN_UP_CONTEXT"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 119"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527362 "GC_WHEN_IDLE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 120"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527490 "BIND_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 121"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527618 "UNBIND_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 122"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527746 "DUMP_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 123"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 527874 "LOW_MEMORY"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 124"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528002 "PROFILER_CONTROL"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 127"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528130 "CREATE_BACKUP_AGENT"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 128"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528258 "DESTROY_BACKUP_AGENT"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 129"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528386 "SUICIDE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 130"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528514 "REMOVE_PROVIDER"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 131"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528642 "DISPATCH_PACKAGE_BROADCAST"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 133"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528770 "SCHEDULE_CRASH"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 134"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 528898 "DUMP_HEAP"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 135"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529026 "DUMP_ACTIVITY"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 136"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529154 "SLEEPING"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 137"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529282 "SET_CORE_SETTINGS"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 138"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529410 "UPDATE_PACKAGE_COMPATIBILITY_INFO"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 139"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529538 "DUMP_PROVIDER"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 141"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529666 "UNSTABLE_PROVIDER_DIED"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 142"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529794 "REQUEST_ASSIST_CONTEXT_EXTRAS"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 143"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 529922 "TRANSLUCENT_CONVERSION_COMPLETE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 144"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530050 "INSTALL_PROVIDER"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 145"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530178 "ON_NEW_SCENE_TRANSITION_INFO"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 146"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530306 "ENTER_ANIMATION_COMPLETE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 149"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530434 "START_BINDER_TRACKING"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 150"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530562 "STOP_BINDER_TRACKING_AND_DUMP"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 151"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530690 "LOCAL_VOICE_INTERACTION_STARTED"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 154"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530818 "ATTACH_AGENT"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 155"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 530946 "APPLICATION_INFO_CHANGED"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 156"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531074 "RUN_ISOLATED_ENTRY_POINT"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 158"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531202 "EXECUTE_TRANSACTION"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 159"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531330 "RELAUNCH_ACTIVITY"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 160"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531458 "PURGE_RESOURCES"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 161"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531586 "ATTACH_STARTUP_AGENTS"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 162"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531714 "UPDATE_UI_TRANSLATION_STATE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 163"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531842 "SET_CONTENT_CAPTURE_OPTIONS_CALLBACK"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 164"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 531970 "DUMP_GFXINFO"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 165"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532098 "DUMP_RESOURCES"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 166"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532226 "TIMEOUT_SERVICE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 167"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532354 "PING"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 168"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532482 "INSTRUMENT_WITHOUT_RESTART"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 170"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532610 "FINISH_INSTRUMENTATION_WITHOUT_RESTART"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 171"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 532738 "TIMEOUT_SERVICE_FOR_TYPE"
+	  class_attribute const_attribute public explicit_type "int"
+	  init_value " 172"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1244930 "codeToString"
+	  package return_type class_ref 128130 // String
+	  nparams 1
+	    param in name "code" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1245058 "handleMessage"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "msg" type class_ref 177410 // Message
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 459906 // mH (<unidirectional association>)
+	relation 459906 --->
+	  a role_name "mH" init_value " new H()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 459906 // mH (<unidirectional association>)
+	  b parent class_ref 302082 // H
+      end
+
+      classrelation 460034 // mExecutor (<unidirectional association>)
+	relation 460034 --->
+	  a role_name "mExecutor" init_value " new HandlerExecutor(mH)" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 460034 // mExecutor (<unidirectional association>)
+	  b parent class_ref 133122 // Executor
+      end
+
+      classrelation 460162 // mActivities (<unidirectional association>)
+	relation 460162 --->
+	  a role_name "mActivities" init_value " new ArrayMap<>()" const_relation package
+	    comment "
+Maps from activity token to local record of running activities in this process.
+
+This variable is readable if the code is running in activity thread or holding {@link
+#mResourcesManager}. It's only writable if the code is running in activity thread and holding
+{@link #mResourcesManager}.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, ActivityClientRecord> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 460162 // mActivities (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 460290 // mPendingOverrideConfigs (<unidirectional association>)
+	relation 460290 --->
+	  a role_name "mPendingOverrideConfigs" init_value " new ArrayMap<>()" const_relation private
+	    comment " Maps from activity token to the pending override configuration. 
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, Configuration> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mPendingOverrideConfigs\")
+"
+	    classrelation_ref 460290 // mPendingOverrideConfigs (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 460418 // mPendingAppInfoUpdates (<unidirectional association>)
+	relation 460418 --->
+	  a role_name "mPendingAppInfoUpdates" init_value " new ArrayMap<>()" const_relation private
+	    comment "
+A queue of pending ApplicationInfo updates. In case when we get a concurrent update
+this queue allows us to only apply the latest object, and it can be applied on demand
+instead of waiting for the handler thread to reach the scheduled callback.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<String, ApplicationInfo> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mResourcesManager\")
+"
+	    classrelation_ref 460418 // mPendingAppInfoUpdates (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 460546 // mActivitiesToBeDestroyed (<unidirectional association>)
+	relation 460546 --->
+	  a role_name "mActivitiesToBeDestroyed" init_value "
+            Collections.synchronizedMap(new ArrayMap<>())" const_relation package
+	    comment " The activities to be truly destroyed (not include relaunch). 
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, DestroyActivityItem> ${name}${value};
+"
+	    classrelation_ref 460546 // mActivitiesToBeDestroyed (<unidirectional association>)
+	  b parent class_ref 143106 // Map
+      end
+
+      classrelation 460674 // mNewActivities (<unidirectional association>)
+	relation 460674 --->
+	  a role_name "mNewActivities" init_value " new ArrayList<>()" const_relation package
+	    comment " List of new activities that should be reported when next we idle.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ActivityClientRecord> ${name}${value};
+"
+	    classrelation_ref 460674 // mNewActivities (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      attribute 516226 "mNumVisibleActivities"
+	package explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Number of activities that are currently visible on-screen.
+"
+      end
+
+      classrelation 460802 // mNumLaunchingActivities (<unidirectional association>)
+	relation 460802 --->
+	  a role_name "mNumLaunchingActivities" init_value " new AtomicInteger()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 460802 // mNumLaunchingActivities (<unidirectional association>)
+	  b parent class_ref 159490 // AtomicInteger
+      end
+
+      attribute 516354 "mLastProcessState"
+	private explicit_type "int"
+	init_value " PROCESS_STATE_UNKNOWN"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@GuardedBy(\"mAppThread\")
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 460930 // mLastAssistStructures (<unidirectional association>)
+	relation 460930 --->
+	  a role_name "mLastAssistStructures" init_value " new ArrayList<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<WeakReference<AssistStructure>> ${name}${value};
+"
+	    classrelation_ref 460930 // mLastAssistStructures (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      classrelation 461058 // mConfigurationChangedListenerController (<unidirectional association>)
+	relation 461058 --->
+	  a role_name "mConfigurationChangedListenerController" init_value "
+            new ConfigurationChangedListenerController()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@NonNull
+"
+	    classrelation_ref 461058 // mConfigurationChangedListenerController (<unidirectional association>)
+	  b parent class_ref 302210 // ConfigurationChangedListenerController
+      end
+
+      attribute 516482 "mLastSessionId"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 516610 "mLastReportedDeviceId"
+	package explicit_type "int"
+	init_value " Context.DEVICE_ID_DEFAULT"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Holds the value of the last reported device ID value from the server for the top activity.
+"
+      end
+
+      classrelation 461186 // mServicesData (<unidirectional association>)
+	relation 461186 --->
+	  a role_name "mServicesData" init_value " new ArrayMap<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, CreateServiceData> ${name}${value};
+"
+	    classrelation_ref 461186 // mServicesData (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 461314 // mServices (<unidirectional association>)
+	relation 461314 --->
+	  a role_name "mServices" init_value " new ArrayMap<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, Service> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 461314 // mServices (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      class 302338 "AppBindData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 1234306 "AppBindData"
+	  package explicit_return_type ""
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  
+	  
+	  
+	end
+
+	classrelation 473218 // info (<unidirectional association>)
+	  relation 473218 --->
+	    a role_name "info" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 473218 // info (<unidirectional association>)
+	    b parent class_ref 144130 // LoadedApk
+	end
+
+	classrelation 473346 // processName (<unidirectional association>)
+	  relation 473346 --->
+	    a role_name "processName" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 473346 // processName (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 473474 // appInfo (<unidirectional association>)
+	  relation 473474 --->
+	    a role_name "appInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 473474 // appInfo (<unidirectional association>)
+	    b parent class_ref 134530 // ApplicationInfo
+	end
+
+	classrelation 473602 // sdkSandboxClientAppVolumeUuid (<unidirectional association>)
+	  relation 473602 --->
+	    a role_name "sdkSandboxClientAppVolumeUuid" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 473602 // sdkSandboxClientAppVolumeUuid (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 473730 // sdkSandboxClientAppPackage (<unidirectional association>)
+	  relation 473730 --->
+	    a role_name "sdkSandboxClientAppPackage" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 473730 // sdkSandboxClientAppPackage (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	attribute 523010 "isSdkInSandbox"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 473858 // providers (<unidirectional association>)
+	  relation 473858 --->
+	    a role_name "providers" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ProviderInfo> ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 473858 // providers (<unidirectional association>)
+	    b parent class_ref 130178 // List
+	end
+
+	classrelation 473986 // instrumentationName (<unidirectional association>)
+	  relation 473986 --->
+	    a role_name "instrumentationName" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 473986 // instrumentationName (<unidirectional association>)
+	    b parent class_ref 137090 // ComponentName
+	end
+
+	classrelation 474114 // instrumentationArgs (<unidirectional association>)
+	  relation 474114 --->
+	    a role_name "instrumentationArgs" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 474114 // instrumentationArgs (<unidirectional association>)
+	    b parent class_ref 136322 // Bundle
+	end
+
+	attribute 523138 "instrumentationWatcher"
+	  package explicit_type "IInstrumentationWatcher"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523266 "instrumentationUiAutomationConnection"
+	  package explicit_type "IUiAutomationConnection"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523394 "debugMode"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523522 "enableBinderTracking"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523650 "trackAllocation"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523778 "restrictedBackupMode"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 523906 "persistent"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 474242 // config (<unidirectional association>)
+	  relation 474242 --->
+	    a role_name "config" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 474242 // config (<unidirectional association>)
+	    b parent class_ref 138242 // Configuration
+	end
+
+	classrelation 474370 // compatInfo (<unidirectional association>)
+	  relation 474370 --->
+	    a role_name "compatInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.P, trackingBug = 115609023)
+"
+	      classrelation_ref 474370 // compatInfo (<unidirectional association>)
+	    b parent class_ref 302594 // CompatibilityInfo
+	end
+
+	classrelation 474498 // buildSerial (<unidirectional association>)
+	  relation 474498 --->
+	    a role_name "buildSerial" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 474498 // buildSerial (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 474626 // initProfilerInfo (<unidirectional association>)
+	  relation 474626 --->
+	    a role_name "initProfilerInfo" package
+	      comment " Initial values for {@link Profiler}. 
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 474626 // initProfilerInfo (<unidirectional association>)
+	    b parent class_ref 296450 // ProfilerInfo
+	end
+
+	classrelation 474754 // autofillOptions (<unidirectional association>)
+	  relation 474754 --->
+	    a role_name "autofillOptions" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 474754 // autofillOptions (<unidirectional association>)
+	    b parent class_ref 139266 // AutofillOptions
+	end
+
+	classrelation 474882 // contentCaptureOptions (<unidirectional association>)
+	  relation 474882 --->
+	    a role_name "contentCaptureOptions" package
+	      comment "
+Content capture options for the application - when null, it means ContentCapture is not
+enabled for the package.
+
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@Nullable
+"
+	      classrelation_ref 474882 // contentCaptureOptions (<unidirectional association>)
+	    b parent class_ref 139394 // ContentCaptureOptions
+	end
+
+	attribute 524034 "disabledCompatChanges"
+	  package explicit_type "long"
+	  multiplicity "[]"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 524162 "mLoggableCompatChanges"
+	  package explicit_type "long"
+	  multiplicity "[]"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 475010 // mSerializedSystemFontMap (<unidirectional association>)
+	  relation 475010 --->
+	    a role_name "mSerializedSystemFontMap" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475010 // mSerializedSystemFontMap (<unidirectional association>)
+	    b parent class_ref 305410 // SharedMemory
+	end
+
+	attribute 524290 "startRequestedElapsedTime"
+	  package explicit_type "long"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 524418 "startRequestedUptime"
+	  package explicit_type "long"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1234434 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 461442 // mBoundApplication (<unidirectional association>)
+	relation 461442 --->
+	  a role_name "mBoundApplication" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 461442 // mBoundApplication (<unidirectional association>)
+	  b parent class_ref 302338 // AppBindData
+      end
+
+      class 302466 "Profiler"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 475138 // profileFile (<unidirectional association>)
+	  relation 475138 --->
+	    a role_name "profileFile" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475138 // profileFile (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 475266 // profileFd (<unidirectional association>)
+	  relation 475266 --->
+	    a role_name "profileFd" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475266 // profileFd (<unidirectional association>)
+	    b parent class_ref 142850 // ParcelFileDescriptor
+	end
+
+	attribute 524546 "samplingInterval"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 524674 "autoStopProfiler"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 524802 "streamingOutput"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 524930 "mClockType"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 525058 "mProfilerOutputVersion"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 525186 "profiling"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 525314 "handlingProfiling"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1234562 "setProfiler"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "profilerInfo" type class_ref 296450 // ProfilerInfo
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1234690 "startProfiling"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1234818 "stopProfiling"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 461570 // mProfiler (<unidirectional association>)
+	relation 461570 --->
+	  a role_name "mProfiler" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 461570 // mProfiler (<unidirectional association>)
+	  b parent class_ref 302466 // Profiler
+      end
+
+      attribute 516738 "mCurDefaultDisplayDpi"
+	package explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553,
+            publicAlternatives = \"Use {@code Context#getResources()#getConfiguration()#densityDpi} \"
+                    + \"instead.\")
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 516866 "mDensityCompatMode"
+	package explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 461698 // mCompatibilityInfo (<unidirectional association>)
+	relation 461698 --->
+	  a role_name "mCompatibilityInfo" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 461698 // mCompatibilityInfo (<unidirectional association>)
+	  b parent class_ref 302594 // CompatibilityInfo
+      end
+
+      classrelation 461826 // mConfiguration (<unidirectional association>)
+	relation 461826 --->
+	  a role_name "mConfiguration" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage(trackingBug = 176961850, maxTargetSdk = Build.VERSION_CODES.R,
+            publicAlternatives = \"Use {@code Context#getResources()#getConfiguration()} instead.\")
+"
+	    classrelation_ref 461826 // mConfiguration (<unidirectional association>)
+	  b parent class_ref 138242 // Configuration
+      end
+
+      attribute 516994 "mUpdateHttpProxyOnBind"
+	private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@GuardedBy(\"this\")
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 461954 // mInitialApplication (<unidirectional association>)
+	relation 461954 --->
+	  a role_name "mInitialApplication" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 461954 // mInitialApplication (<unidirectional association>)
+	  b parent class_ref 143362 // Application
+      end
+
+      classrelation 462082 // mAllApplications (<unidirectional association>)
+	relation 462082 --->
+	  a role_name "mAllApplications" init_value " new ArrayList<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<Application> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 462082 // mAllApplications (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      classrelation 462210 // mBackupAgentsByUser (<unidirectional association>)
+	relation 462210 --->
+	  a role_name "mBackupAgentsByUser" init_value "
+            new SparseArray<>()" const_relation private
+	    comment "
+Bookkeeping of instantiated backup agents indexed first by user id, then by package name.
+Indexing by user id supports parallel backups across users on system packages as they run in
+the same process with the same package name. Indexing by package name supports multiple
+distinct applications running in the same process.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ArrayMap<String, BackupAgent>> ${name}${value};
+"
+	    classrelation_ref 462210 // mBackupAgentsByUser (<unidirectional association>)
+	  b parent class_ref 145794 // SparseArray
+      end
+
+      classrelation 462338 // sCurrentActivityThread (<unidirectional association>)
+	relation 462338 --->
+	  a role_name "sCurrentActivityThread" class_relation volatile private
+	    comment " Reference to singleton {@link ActivityThread} 
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 462338 // sCurrentActivityThread (<unidirectional association>)
+	  b parent class_ref 144002 // ActivityThread
+      end
+
+      classrelation 462466 // mInstrumentation (<unidirectional association>)
+	relation 462466 --->
+	  a role_name "mInstrumentation" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 462466 // mInstrumentation (<unidirectional association>)
+	  b parent class_ref 190594 // Instrumentation
+      end
+
+      classrelation 462594 // mInstrumentationPackageName (<unidirectional association>)
+	relation 462594 --->
+	  a role_name "mInstrumentationPackageName" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 462594 // mInstrumentationPackageName (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 462722 // mInstrumentationAppDir (<unidirectional association>)
+	relation 462722 --->
+	  a role_name "mInstrumentationAppDir" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 462722 // mInstrumentationAppDir (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 462850 // mInstrumentationSplitAppDirs (<unidirectional association>)
+	relation 462850 --->
+	  a role_name "mInstrumentationSplitAppDirs" multiplicity "[]" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 462850 // mInstrumentationSplitAppDirs (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 462978 // mInstrumentationLibDir (<unidirectional association>)
+	relation 462978 --->
+	  a role_name "mInstrumentationLibDir" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 462978 // mInstrumentationLibDir (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 463106 // mInstrumentedAppDir (<unidirectional association>)
+	relation 463106 --->
+	  a role_name "mInstrumentedAppDir" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 463106 // mInstrumentedAppDir (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 463234 // mInstrumentedSplitAppDirs (<unidirectional association>)
+	relation 463234 --->
+	  a role_name "mInstrumentedSplitAppDirs" multiplicity "[]" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 463234 // mInstrumentedSplitAppDirs (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 463362 // mInstrumentedLibDir (<unidirectional association>)
+	relation 463362 --->
+	  a role_name "mInstrumentedLibDir" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 463362 // mInstrumentedLibDir (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 517122 "mInstrumentingWithoutRestart"
+	package explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 517250 "mSystemThread"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 517378 "mSomeActivitiesChanged"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 463490 // mPackages (<unidirectional association>)
+	relation 463490 --->
+	  a role_name "mPackages" init_value " new ArrayMap<>()" const_relation package
+	    comment " These can be accessed by multiple threads; mResourcesManager is the lock.
+ XXX For now we keep around information about all packages we have
+ seen, not removing entries from this map.
+ NOTE: The activity and window managers need to call in to
+ ActivityThread to do things like update resource configurations,
+ which means this lock gets held while the activity and window managers
+ holds their own lock.  Thus you MUST NEVER call back into the activity manager
+ or window manager or anything that depends on them while holding this lock.
+ These LoadedApk are only valid for the userId that we're running as.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<String, WeakReference<LoadedApk>> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mResourcesManager\")
+@UnsupportedAppUsage
+"
+	    classrelation_ref 463490 // mPackages (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 463618 // mResourcePackages (<unidirectional association>)
+	relation 463618 --->
+	  a role_name "mResourcePackages" init_value " new ArrayMap<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<String, WeakReference<LoadedApk>> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mResourcesManager\")
+@UnsupportedAppUsage
+"
+	    classrelation_ref 463618 // mResourcePackages (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 463746 // mRelaunchingActivities (<unidirectional association>)
+	relation 463746 --->
+	  a role_name "mRelaunchingActivities" init_value " new ArrayList<>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ActivityClientRecord> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mResourcesManager\")
+"
+	    classrelation_ref 463746 // mRelaunchingActivities (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      classrelation 463874 // mPendingConfiguration (<unidirectional association>)
+	relation 463874 --->
+	  a role_name "mPendingConfiguration" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mResourcesManager\")
+@UnsupportedAppUsage(trackingBug = 176961850, maxTargetSdk = Build.VERSION_CODES.R,
+            publicAlternatives = \"Use {@code Context#getResources()#getConfiguration()} instead.\")
+"
+	    classrelation_ref 463874 // mPendingConfiguration (<unidirectional association>)
+	  b parent class_ref 138242 // Configuration
+      end
+
+      classrelation 464002 // mTransactionExecutor (<unidirectional association>)
+	relation 464002 --->
+	  a role_name "mTransactionExecutor" init_value " new TransactionExecutor(this)" const_relation private
+	    comment " An executor that performs multi-step transactions.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 464002 // mTransactionExecutor (<unidirectional association>)
+	  b parent class_ref 300802 // TransactionExecutor
+      end
+
+      classrelation 464130 // mResourcesManager (<unidirectional association>)
+	relation 464130 --->
+	  a role_name "mResourcesManager" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.P, trackingBug = 115609023)
+"
+	    classrelation_ref 464130 // mResourcesManager (<unidirectional association>)
+	  b parent class_ref 302722 // ResourcesManager
+      end
+
+      class 302850 "SafeCancellationTransport"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 478338 // <generalisation>
+	  relation 478338 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 478338 // <generalisation>
+	    b parent class_ref 306946 // Stub
+	end
+
+	classrelation 478466 // mWeakActivityThread (<unidirectional association>)
+	  relation 478466 --->
+	    a role_name "mWeakActivityThread" const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ActivityThread> ${name}${value};
+"
+	      java_annotation "@NonNull
+"
+	      classrelation_ref 478466 // mWeakActivityThread (<unidirectional association>)
+	    b parent class_ref 142722 // WeakReference
+	end
+
+	operation 1244290 "SafeCancellationTransport"
+	  package explicit_return_type ""
+	  nparams 2
+	    param inout name "activityThread" type class_ref 144002 // ActivityThread
+	    param inout name "cancellation" type class_ref 194946 // CancellationSignal
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}, @NonNull ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1244418 "cancel"
+	  public explicit_return_type "void"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 464258 // mRemoteCancellations (<unidirectional association>)
+	relation 464258 --->
+	  a role_name "mRemoteCancellations" private
+	    comment " Registry of remote cancellation transports pending a reply with reply handles.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<SafeCancellationTransport, CancellationSignal> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"this\")
+@Nullable
+"
+	    classrelation_ref 464258 // mRemoteCancellations (<unidirectional association>)
+	  b parent class_ref 143106 // Map
+      end
+
+      class 302978 "ProviderKey"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 464386 // authority (<unidirectional association>)
+	  relation 464386 --->
+	    a role_name "authority" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 464386 // authority (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	attribute 517506 "userId"
+	  const_attribute package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 464514 // mHolder (<unidirectional association>)
+	  relation 464514 --->
+	    a role_name "mHolder" package
+	      comment " Temp holder to be used between notifier and waiter"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@GuardedBy(\"mLock\")
+"
+	      classrelation_ref 464514 // mHolder (<unidirectional association>)
+	    b parent class_ref 303106 // ContentProviderHolder
+	end
+
+	classrelation 464642 // mLock (<unidirectional association>)
+	  relation 464642 --->
+	    a role_name "mLock" const_relation package
+	      comment " The lock to be used to get notified when the provider is ready"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 464642 // mLock (<unidirectional association>)
+	    b parent class_ref 128258 // Object
+	end
+
+	operation 1225474 "ProviderKey"
+	  public explicit_return_type ""
+	  nparams 2
+	    param inout name "authority" type class_ref 128130 // String
+	    param in name "userId" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1225602 "equals"
+	  public explicit_return_type "boolean"
+	  nparams 1
+	    param inout name "o" type class_ref 128258 // Object
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@Nullable ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+
+	operation 1225730 "hashCode"
+	  public explicit_return_type "int"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 464770 // mProviderMap (<unidirectional association>)
+	relation 464770 --->
+	  a role_name "mProviderMap" init_value " new ArrayMap<ProviderKey, ProviderClientRecord>()" const_relation package
+	    comment " The lock of mProviderMap protects the following variables.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ProviderKey, ProviderClientRecord> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 464770 // mProviderMap (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 464898 // mProviderRefCountMap (<unidirectional association>)
+	relation 464898 --->
+	  a role_name "mProviderRefCountMap" init_value " new ArrayMap<IBinder, ProviderRefCount>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, ProviderRefCount> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 464898 // mProviderRefCountMap (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 465026 // mLocalProviders (<unidirectional association>)
+	relation 465026 --->
+	  a role_name "mLocalProviders" init_value " new ArrayMap<IBinder, ProviderClientRecord>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IBinder, ProviderClientRecord> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.P, trackingBug = 115609023)
+"
+	    classrelation_ref 465026 // mLocalProviders (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 465154 // mLocalProvidersByName (<unidirectional association>)
+	relation 465154 --->
+	  a role_name "mLocalProvidersByName" init_value " new ArrayMap<ComponentName, ProviderClientRecord>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ComponentName, ProviderClientRecord> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 465154 // mLocalProvidersByName (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 465282 // mGetProviderKeys (<unidirectional association>)
+	relation 465282 --->
+	  a role_name "mGetProviderKeys" init_value " new ArrayMap<>()" const_relation package
+	    comment " Mitigation for b/74523247: Used to serialize calls to AM.getContentProvider().
+ Note we never removes items from this map but that's okay because there are only so many
+ users and so many authorities.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ProviderKey, ProviderKey> ${name}${value};
+"
+	    java_annotation "@GuardedBy(\"mGetProviderKeys\")
+"
+	    classrelation_ref 465282 // mGetProviderKeys (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 465410 // mOnPauseListeners (<unidirectional association>)
+	relation 465410 --->
+	  a role_name "mOnPauseListeners" init_value " new ArrayMap<Activity, ArrayList<OnActivityPausedListener>>()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<Activity, ArrayList<OnActivityPausedListener>> ${name}${value};
+"
+	    classrelation_ref 465410 // mOnPauseListeners (<unidirectional association>)
+	  b parent class_ref 128514 // ArrayMap
+      end
+
+      classrelation 465538 // mSplashScreenGlobal (<unidirectional association>)
+	relation 465538 --->
+	  a role_name "mSplashScreenGlobal" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 465538 // mSplashScreenGlobal (<unidirectional association>)
+	  b parent class_ref 303234 // SplashScreenManagerGlobal
+      end
+
+      class 303362 "GcIdler"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      classrelation 465666 // mGcIdler (<unidirectional association>)
+	relation 465666 --->
+	  a role_name "mGcIdler" init_value " new GcIdler()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 465666 // mGcIdler (<unidirectional association>)
+	  b parent class_ref 303362 // GcIdler
+      end
+
+      class 303490 "PurgeIdler"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      classrelation 465794 // mPurgeIdler (<unidirectional association>)
+	relation 465794 --->
+	  a role_name "mPurgeIdler" init_value " new PurgeIdler()" const_relation package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 465794 // mPurgeIdler (<unidirectional association>)
+	  b parent class_ref 303490 // PurgeIdler
+      end
+
+      attribute 517634 "mPurgeIdlerScheduled"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 517762 "mGcIdlerScheduled"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 517890 "mStartSeq"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Only accesssed from the main thread"
+      end
+
+      classrelation 466050 // mCoreSettings (<unidirectional association>)
+	relation 466050 --->
+	  a role_name "mCoreSettings" init_value " null" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 466050 // mCoreSettings (<unidirectional association>)
+	  b parent class_ref 136322 // Bundle
+      end
+
+      classrelation 466178 // mCoreSettingsLock (<unidirectional association>)
+	relation 466178 --->
+	  a role_name "mCoreSettingsLock" init_value " new Object()" const_relation private
+	    comment "
+The lock word for the {@link #mCoreSettings}.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 466178 // mCoreSettingsLock (<unidirectional association>)
+	  b parent class_ref 128258 // Object
+      end
+
+      attribute 518018 "mContentCaptureOptionsCallback"
+	private explicit_type "IContentCaptureOptionsCallback.Stub"
+	init_value " null"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 466306 // mConfigurationController (<unidirectional association>)
+	relation 466306 --->
+	  a role_name "mConfigurationController" private
+	    comment " A client side controller to handle process level configuration changes. 
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 466306 // mConfigurationController (<unidirectional association>)
+	  b parent class_ref 303618 // ConfigurationController
+      end
+
+      class 304002 "ProviderClientRecord"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 470274 // mNames (<unidirectional association>)
+	  relation 470274 --->
+	    a role_name "mNames" multiplicity "[]" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	      classrelation_ref 470274 // mNames (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 470402 // mProvider (<unidirectional association>)
+	  relation 470402 --->
+	    a role_name "mProvider" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 470402 // mProvider (<unidirectional association>)
+	    b parent class_ref 304130 // IContentProvider
+	end
+
+	classrelation 470530 // mLocalProvider (<unidirectional association>)
+	  relation 470530 --->
+	    a role_name "mLocalProvider" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 470530 // mLocalProvider (<unidirectional association>)
+	    b parent class_ref 304258 // ContentProvider
+	end
+
+	classrelation 470658 // mHolder (<unidirectional association>)
+	  relation 470658 --->
+	    a role_name "mHolder" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 470658 // mHolder (<unidirectional association>)
+	    b parent class_ref 303106 // ContentProviderHolder
+	end
+
+	operation 1227394 "ProviderClientRecord"
+	  package explicit_return_type ""
+	  nparams 4
+	    param inout name "names" type class_ref 128130 // String
+	  multiplicity "[]"
+	    param inout name "provider" type class_ref 304130 // IContentProvider
+	    param inout name "localProvider" type class_ref 304258 // ContentProvider
+	    param inout name "holder" type class_ref 303106 // ContentProviderHolder
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0}[] ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 304386 "ReceiverData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 1233410 "ReceiverData"
+	  public explicit_return_type ""
+	  nparams 11
+	    param inout name "intent" type class_ref 136066 // Intent
+	    param in name "resultCode" explicit_type "int"
+	    param inout name "resultData" type class_ref 128130 // String
+	    param inout name "resultExtras" type class_ref 136322 // Bundle
+	    param inout name "ordered" explicit_type "boolean"
+	    param inout name "sticky" explicit_type "boolean"
+	    param inout name "assumeDelivered" explicit_type "boolean"
+	    param inout name "token" explicit_type "IBinder"
+	    param in name "sendingUser" explicit_type "int"
+	    param in name "sendingUid" explicit_type "int"
+	    param inout name "sendingPackage" type class_ref 128130 // String
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}, ${t8} ${p8}, ${t9} ${p9}, ${t10} ${p10}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	classrelation 471682 // intent (<unidirectional association>)
+	  relation 471682 --->
+	    a role_name "intent" const_relation package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 471682 // intent (<unidirectional association>)
+	    b parent class_ref 136066 // Intent
+	end
+
+	classrelation 471810 // info (<unidirectional association>)
+	  relation 471810 --->
+	    a role_name "info" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 471810 // info (<unidirectional association>)
+	    b parent class_ref 150018 // ActivityInfo
+	end
+
+	classrelation 471938 // compatInfo (<unidirectional association>)
+	  relation 471938 --->
+	    a role_name "compatInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 471938 // compatInfo (<unidirectional association>)
+	    b parent class_ref 302594 // CompatibilityInfo
+	end
+
+	operation 1233538 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 304642 "CreateBackupAgentData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 472066 // appInfo (<unidirectional association>)
+	  relation 472066 --->
+	    a role_name "appInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 472066 // appInfo (<unidirectional association>)
+	    b parent class_ref 134530 // ApplicationInfo
+	end
+
+	attribute 521986 "backupMode"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 522114 "userId"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 522242 "backupDestination"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  java_annotation "@BackupDestination
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1233666 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 304770 "CreateServiceData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 1233794 "CreateServiceData"
+	  package explicit_return_type ""
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@UnsupportedAppUsage
+"
+	  
+	  
+	  
+	end
+
+	classrelation 472322 // info (<unidirectional association>)
+	  relation 472322 --->
+	    a role_name "info" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 472322 // info (<unidirectional association>)
+	    b parent class_ref 304898 // ServiceInfo
+	end
+
+	classrelation 472450 // compatInfo (<unidirectional association>)
+	  relation 472450 --->
+	    a role_name "compatInfo" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 472450 // compatInfo (<unidirectional association>)
+	    b parent class_ref 302594 // CompatibilityInfo
+	end
+
+	classrelation 472578 // intent (<unidirectional association>)
+	  relation 472578 --->
+	    a role_name "intent" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 472578 // intent (<unidirectional association>)
+	    b parent class_ref 136066 // Intent
+	end
+
+	operation 1233922 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 305026 "BindServiceData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 472834 // intent (<unidirectional association>)
+	  relation 472834 --->
+	    a role_name "intent" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 472834 // intent (<unidirectional association>)
+	    b parent class_ref 136066 // Intent
+	end
+
+	attribute 522370 "rebind"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 522498 "bindSeq"
+	  package explicit_type "long"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1234050 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 305154 "ServiceArgsData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 522626 "taskRemoved"
+	  package explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 522754 "startId"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 522882 "flags"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 473090 // args (<unidirectional association>)
+	  relation 473090 --->
+	    a role_name "args" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      java_annotation "@UnsupportedAppUsage
+"
+	      classrelation_ref 473090 // args (<unidirectional association>)
+	    b parent class_ref 136066 // Intent
+	end
+
+	operation 1234178 "toString"
+	  public return_type class_ref 128130 // String
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 305538 "DumpComponentInfo"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 475394 // fd (<unidirectional association>)
+	  relation 475394 --->
+	    a role_name "fd" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475394 // fd (<unidirectional association>)
+	    b parent class_ref 142850 // ParcelFileDescriptor
+	end
+
+	classrelation 475650 // prefix (<unidirectional association>)
+	  relation 475650 --->
+	    a role_name "prefix" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475650 // prefix (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 475778 // args (<unidirectional association>)
+	  relation 475778 --->
+	    a role_name "args" multiplicity "[]" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	      classrelation_ref 475778 // args (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+      end
+
+      class 305666 "ContextCleanupInfo"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 475906 // context (<unidirectional association>)
+	  relation 475906 --->
+	    a role_name "context" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 475906 // context (<unidirectional association>)
+	    b parent class_ref 301698 // ContextImpl
+	end
+
+	classrelation 476034 // what (<unidirectional association>)
+	  relation 476034 --->
+	    a role_name "what" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476034 // what (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 476162 // who (<unidirectional association>)
+	  relation 476162 --->
+	    a role_name "who" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476162 // who (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+      end
+
+      class 305794 "DumpHeapData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 525442 "managed"
+	  public explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	  comment " Whether to dump the native or managed heap.
+"
+	end
+
+	attribute 525570 "mallocInfo"
+	  public explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 525698 "runGc"
+	  public explicit_type "boolean"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	classrelation 476290 // dumpBitmaps (<unidirectional association>)
+	  relation 476290 --->
+	    a role_name "dumpBitmaps" public
+	      comment " compression format to dump bitmaps, null if no bitmaps to be dumped
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476290 // dumpBitmaps (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 476418 // path (<unidirectional association>)
+	  relation 476418 --->
+	    a role_name "path" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476418 // path (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 476546 // fd (<unidirectional association>)
+	  relation 476546 --->
+	    a role_name "fd" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476546 // fd (<unidirectional association>)
+	    b parent class_ref 142850 // ParcelFileDescriptor
+	end
+
+	classrelation 476674 // finishCallback (<unidirectional association>)
+	  relation 476674 --->
+	    a role_name "finishCallback" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476674 // finishCallback (<unidirectional association>)
+	    b parent class_ref 202114 // RemoteCallback
+	end
+      end
+
+      class 305922 "DumpResourcesData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 476802 // fd (<unidirectional association>)
+	  relation 476802 --->
+	    a role_name "fd" public
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476802 // fd (<unidirectional association>)
+	    b parent class_ref 142850 // ParcelFileDescriptor
+	end
+
+	classrelation 476930 // finishCallback (<unidirectional association>)
+	  relation 476930 --->
+	    a role_name "finishCallback" public
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 476930 // finishCallback (<unidirectional association>)
+	    b parent class_ref 202114 // RemoteCallback
+	end
+      end
+
+      class 306050 "UpdateCompatibilityData"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 477058 // pkg (<unidirectional association>)
+	  relation 477058 --->
+	    a role_name "pkg" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 477058 // pkg (<unidirectional association>)
+	    b parent class_ref 128130 // String
+	end
+
+	classrelation 477186 // info (<unidirectional association>)
+	  relation 477186 --->
+	    a role_name "info" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 477186 // info (<unidirectional association>)
+	    b parent class_ref 302594 // CompatibilityInfo
+	end
+      end
+
+      class 306178 "RequestAssistContextExtras"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 525826 "requestType"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 525954 "sessionId"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 526082 "flags"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 306306 "ReceiverList"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 477570 // receivers (<unidirectional association>)
+	  relation 477570 --->
+	    a role_name "receivers" package
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<ReceiverInfo> ${name}${value};
+"
+	      classrelation_ref 477570 // receivers (<unidirectional association>)
+	    b parent class_ref 130178 // List
+	end
+
+	attribute 526210 "index"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      operation 1244034 "createSafeCancellationTransport"
+	private return_type class_ref 302850 // SafeCancellationTransport
+	nparams 1
+	  param inout name "cancellationSignal" type class_ref 194946 // CancellationSignal
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@NonNull
+"
+	
+	
+	
+      end
+
+      operation 1244162 "removeSafeCancellationTransport"
+	private return_type class_ref 194946 // CancellationSignal
+	nparams 1
+	  param inout name "transport" type class_ref 302850 // SafeCancellationTransport
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@NonNull
+"
+	
+	
+	
+      end
+
+      operation 1244546 "throwRemoteServiceException"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "message" type class_ref 128130 // String
+	  param in name "typeId" explicit_type "int"
+	  param inout name "extras" type class_ref 136322 // Bundle
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, @Nullable ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1244674 "generateForegroundServiceDidNotStartInTimeException"
+	private return_type class_ref 307202 // ForegroundServiceDidNotStartInTimeException
+	nparams 2
+	  param inout name "message" type class_ref 128130 // String
+	  param inout name "extras" type class_ref 136322 // Bundle
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1244802 "generateForegroundServiceDidNotStopInTimeException"
+	private return_type class_ref 307330 // ForegroundServiceDidNotStopInTimeException
+	nparams 2
+	  param inout name "message" type class_ref 128130 // String
+	  param inout name "extras" type class_ref 136322 // Bundle
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      class 307458 "Idler"
+	visibility private 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 144130 "LoadedApk"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 144258 "StackTrace"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 190466 "Dialog"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 190594 "Instrumentation"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 190722 "ComponentCaller"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 190850 "SearchManager"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 191362 "FragmentManagerNonConfig"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 191490 "VoiceInteractor"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 191746 "FragmentController"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 193026 "ActivityTransitionState"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 193154 "SharedElementCallback"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 194178 "ScreenCaptureCallbackHandler"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 194434 "LoaderManager"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 195074 "PictureInPictureUiState"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 195202 "PictureInPictureParams"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 195330 "FragmentManager"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 195458 "Fragment"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 196098 "TaskStackBuilder"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 196354 "PendingIntent"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 197506 "FragmentManagerImpl"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 197634 "LoaderManagerImpl"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 198274 "PropertyInvalidatedCache"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 288130 "FragmentTransaction"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 288898 "LocalActivityManager"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 292354 "AppCompatTaskInfo"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 293122 "GrantedUriPermission"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 293634 "ApplicationStartInfo"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 293890 "ApplicationExitInfo"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 294914 "HomeVisibilityListener"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 295426 "ProcessMemoryState"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 296066 "BackgroundStartPrivileges"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 296450 "ProfilerInfo"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 296706 "AnrController"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 297474 "PendingIntentStats"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 297602 "ForegroundServiceDelegationOptions"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 299394 "ExitTransitionCoordinator"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 299522 "ExitTransitionCallbacks"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 300290 "TaskStackListener"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 301698 "ContextImpl"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 302210 "ConfigurationChangedListenerController"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 302722 "ResourcesManager"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 303106 "ContentProviderHolder"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 303618 "ConfigurationController"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 303746 "ResultInfo"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 307074 "RemoteServiceException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 307202 "ForegroundServiceDidNotStartInTimeException"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      class 307330 "ForegroundServiceDidNotStopInTimeException"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+  end
+
+  deploymentview 128642 "app"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+
+  package_ref 135426 // jank
+
+  package_ref 136322 // assist
+
+  package_ref 138498 // sdksandbox
+
+  package_ref 142082 // servertransaction
+end

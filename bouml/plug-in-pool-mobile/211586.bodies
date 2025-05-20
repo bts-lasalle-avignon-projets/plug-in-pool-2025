@@ -1,0 +1,53 @@
+class GetAdIdResult
+!!!706946.java!!!	GetAdIdResult(in resultCode : int, inout errorMessage : String, inout adId : String, inout isLimitAdTrackingEnabled : boolean)
+        super(resultCode, errorMessage);
+        mAdId = adId;
+        mLimitAdTrackingEnabled = isLimitAdTrackingEnabled;
+!!!707074.java!!!	GetAdIdResult(inout in : Parcel)
+        super(in);
+        Objects.requireNonNull(in);
+
+        mAdId = in.readString();
+        mLimitAdTrackingEnabled = in.readBoolean();
+!!!707202.java!!!	describeContents() : int
+        return 0;
+!!!707330.java!!!	writeToParcel(inout out : Parcel, in flags : int) : void
+        out.writeInt(mStatusCode);
+        out.writeString(mErrorMessage);
+        out.writeString(mAdId);
+        out.writeBoolean(mLimitAdTrackingEnabled);
+!!!707458.java!!!	getErrorMessage() : String
+        return mErrorMessage;
+!!!707586.java!!!	getAdId() : String
+        return mAdId;
+!!!707714.java!!!	isLatEnabled() : boolean
+        return mLimitAdTrackingEnabled;
+!!!707842.java!!!	toString() : String
+        return "GetAdIdResult{"
+                + "mResultCode="
+                + mStatusCode
+                + ", mErrorMessage='"
+                + mErrorMessage
+                + '\''
+                + ", mAdId="
+                + mAdId
+                + ", mLimitAdTrackingEnabled="
+                + mLimitAdTrackingEnabled
+                + '}';
+!!!707970.java!!!	equals(inout o : Object) : boolean
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof GetAdIdResult)) {
+            return false;
+        }
+
+        GetAdIdResult that = (GetAdIdResult) o;
+
+        return mStatusCode == that.mStatusCode
+                && Objects.equals(mErrorMessage, that.mErrorMessage)
+                && Objects.equals(mAdId, that.mAdId)
+                && (mLimitAdTrackingEnabled == that.mLimitAdTrackingEnabled);
+!!!708098.java!!!	hashCode() : int
+        return Objects.hash(mStatusCode, mErrorMessage, mAdId, mLimitAdTrackingEnabled);

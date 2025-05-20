@@ -1,0 +1,3 @@
+class MatchDeliverableMessages
+!!!1247234.java!!!	compareMessage(inout n : MessageQueue::MessageNode, inout h : Handler, in what : int, inout object : Object, inout r : Runnable, in when : long) : boolean
+            return n.mMessage.when <= when;

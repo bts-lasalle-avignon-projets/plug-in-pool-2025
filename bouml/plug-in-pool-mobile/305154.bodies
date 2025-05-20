@@ -1,0 +1,4 @@
+class ServiceArgsData
+!!!1234178.java!!!	toString() : String
+            return "ServiceArgsData{token=" + token + " startId=" + startId
+            + " args=" + args + "}";
