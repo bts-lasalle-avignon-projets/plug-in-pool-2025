@@ -1,7 +1,6 @@
 package com.example.plug_in_pool;
 
-public enum CouleurBille
-{
+public enum CouleurBille {
     AUCUNE(-1),
     ROUGE(0),
     JAUNE(1),
@@ -13,5 +12,9 @@ public enum CouleurBille
     CouleurBille(int valeur)
     {
         this.valeur = valeur;
+    }
+    public int getId()
+    {
+        return valeur;
     }
 }

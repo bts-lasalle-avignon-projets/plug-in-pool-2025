@@ -1,0 +1,44 @@
+format 224
+"java" // Android::Sdk::sources::android-36::java
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/java/"
+  java_package "java"
+  package_ref 128898 // lang
+
+  package_ref 129410 // util
+
+  package_ref 130818 // io
+
+  package_ref 137090 // nio
+
+  package_ref 137986 // time
+end

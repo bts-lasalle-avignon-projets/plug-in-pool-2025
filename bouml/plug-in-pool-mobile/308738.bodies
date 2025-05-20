@@ -1,0 +1,7 @@
+class MatchHandlerWhatAndObjectEquals
+!!!1253250.java!!!	compareMessage(inout n : MessageQueue::MessageNode, inout h : Handler, in what : int, inout object : Object, inout r : Runnable, in when : long) : boolean
+            final Message m = n.mMessage;
+            if (m.target == h && m.what == what && (object == null || object.equals(m.obj))) {
+                return true;
+            }
+            return false;

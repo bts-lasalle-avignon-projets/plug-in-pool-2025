@@ -1,0 +1,36 @@
+format 224
+"ondevicepersonalization" // Android::Sdk::sources::android-36::com::android::ondevicepersonalization
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/com/android/ondevicepersonalization/"
+  java_package "com.android.ondevicepersonalization"
+  package_ref 139394 // internal
+end

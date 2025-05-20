@@ -49,14 +49,34 @@ public class Joueur implements Serializable
     {
         return prenom;
     }
+    public int ajouterPoint()
+    {
+        return points++;
+    }
+    public int afficherPoint()
+    {
+        return points;
+    }
+    public void setCouleur(CouleurBille couleur)
+    {
+        this.couleur = couleur;
+    }
+    public CouleurBille getCouleur()
+    {
+        return couleur;
+    }
+    public int getId()
+    {
+        return id;
+    }
 
     public void afficherJoueur()
     {
         Log.d("Joueur", "Nom : " + nom + " | Prénom : " + prenom);
     }
-
     @Override
-    public String toString() {
+    public String toString()
+    {
         return nom + prenom;
     }
 }

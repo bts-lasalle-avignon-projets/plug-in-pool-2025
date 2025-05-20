@@ -1,0 +1,10 @@
+class MatchBarrierToken
+!!!1251202.java!!!	MatchBarrierToken(in token : int)
+            super();
+            mBarrierToken = token;
+!!!1251330.java!!!	compareMessage(inout n : MessageQueue::MessageNode, inout h : Handler, in what : int, inout object : Object, inout r : Runnable, in when : long) : boolean
+            final Message m = n.mMessage;
+            if (m.target == null && m.arg1 == mBarrierToken) {
+                return true;
+            }
+            return false;

@@ -1,0 +1,28 @@
+class GetAdServicesExtDataResult
+!!!836866.java!!!	GetAdServicesExtDataResult(in resultCode : int, inout errorMessage : String, inout adServicesExtDataParams : AdServicesExtDataParams)
+        super(resultCode, errorMessage);
+        mAdServicesExtDataParams = Objects.requireNonNull(adServicesExtDataParams);
+!!!836994.java!!!	GetAdServicesExtDataResult(inout in : Parcel)
+        super(in);
+        Objects.requireNonNull(in);
+        // Method deprecated starting from Android T; however, AdServicesExtDataStorageService is
+        // intended to only be used on Android S-.
+        mAdServicesExtDataParams =
+                in.readParcelable(AdServicesExtDataParams.class.getClassLoader());
+!!!837122.java!!!	describeContents() : int
+        return 0;
+!!!837250.java!!!	writeToParcel(inout out : Parcel, in flags : int) : void
+        out.writeInt(mStatusCode);
+        out.writeString(mErrorMessage);
+        out.writeParcelable(mAdServicesExtDataParams, flags);
+!!!837378.java!!!	getErrorMessage() : String
+        return mErrorMessage;
+!!!837506.java!!!	getAdServicesExtDataParams() : AdServicesExtDataParams
+        return mAdServicesExtDataParams;
+!!!837634.java!!!	toString() : String
+        return String.format(
+                "GetAdServicesExtIntDataResult{"
+                        + "mResultCode=%d, "
+                        + "mErrorMessage=%s, "
+                        + "mAdServicesExtDataParams=%s}",
+                mStatusCode, mErrorMessage, mAdServicesExtDataParams.toString());

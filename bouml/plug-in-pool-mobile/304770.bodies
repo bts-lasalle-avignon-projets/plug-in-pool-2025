@@ -1,0 +1,5 @@
+class CreateServiceData
+!!!1233922.java!!!	toString() : String
+            return "CreateServiceData{token=" + token + " className="
+            + info.name + " packageName=" + info.packageName
+            + " intent=" + intent + "}";

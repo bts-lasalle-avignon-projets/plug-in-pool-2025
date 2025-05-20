@@ -1,0 +1,12 @@
+class ReceiverData
+!!!1233410.java!!!	ReceiverData(inout intent : Intent, in resultCode : int, inout resultData : String, inout resultExtras : Bundle, inout ordered : boolean, inout sticky : boolean, inout assumeDelivered : boolean, inout token : IBinder, in sendingUser : int, in sendingUid : int, inout sendingPackage : String)
+            super(resultCode, resultData, resultExtras, TYPE_COMPONENT, ordered, sticky,
+                    assumeDelivered, token, sendingUser, intent.getFlags(), sendingUid,
+                    sendingPackage);
+            this.intent = intent;
+!!!1233538.java!!!	toString() : String
+            return "ReceiverData{intent=" + intent + " packageName=" +
+                    info.packageName + " resultCode=" + getResultCode()
+                    + " resultData=" + getResultData() + " resultExtras="
+                    + getResultExtras(false) + " sentFromUid="
+                    + getSentFromUid() + " sentFromPackage=" + getSentFromPackage() + "}";

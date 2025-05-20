@@ -1,7 +1,7 @@
 format 224
 "plug_in_pool" // plug_in_pool
-  revision 1
-  modified_by 42 "tv"
+  revision 3
+  modified_by 2 "btssn2"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -64,17 +64,43 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 128170 // <generalisation>
-	relation 128170 ---|>
+      classrelation 489218 // <generalisation>
+	relation 489218 ---|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 128170 // <generalisation>
+	    classrelation_ref 489218 // <generalisation>
 	  b parent class_ref 128298 // AppCompatActivity
       end
 
-      attribute 128170 "TAG"
-	class_attribute const_attribute private explicit_type "String"
-	init_value " \"_ActiviteConfigurationMatch\""
+      classrelation 489346 // TAG (<unidirectional association>)
+	relation 489346 --->
+	  a role_name "TAG" init_value "
+      \"_ActiviteConfigurationMatch\"" class_relation const_relation private
+	    comment "
+Constantes
+
+!< TAG pour les logs (cf. Logcat)"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 489346 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 489474 // boutonLancerMatch (<unidirectional association>)
+	relation 489474 --->
+	  a role_name "boutonLancerMatch" private
+	    comment "
+Éléments de l'interface
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 489474 // boutonLancerMatch (<unidirectional association>)
+	  b parent class_ref 207106 // Button
+      end
+
+      attribute 537346 "choixNomJoueur1"
+	private explicit_type "AutoCompleteTextView"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -83,15 +109,56 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
-	comment "Constantes
-
-!< TAG pour les logs"
       end
 
-      operation 128170 "onCreate"
+      attribute 537474 "choixNomJoueur2"
+	private explicit_type "AutoCompleteTextView"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 489602 // baseDonnees (<unidirectional association>)
+	relation 489602 --->
+	  a role_name "baseDonnees" private
+	    comment "!< Classe d'accès avec la base de données"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 489602 // baseDonnees (<unidirectional association>)
+	  b parent class_ref 309634 // BaseDeDonnees
+      end
+
+      classrelation 489730 // joueurs (<unidirectional association>)
+	relation 489730 --->
+	  stereotype "Vector"
+	  a role_name "joueurs" init_value " new Vector<Joueur>()" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 489730 // joueurs (<unidirectional association>)
+	  b parent class_ref 129194 // Joueur
+      end
+
+      classrelation 489858 // nomJoueurs (<unidirectional association>)
+	relation 489858 --->
+	  a role_name "nomJoueurs" private
+	    comment " Joueur                joueur1;
+ Joueur                joueur2;
+!< Tableau contenant les noms et prénoms des joueurs dans la base de données"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<String> ${name}${value};
+"
+	    classrelation_ref 489858 // nomJoueurs (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      operation 1263106 "onCreate"
 	protected explicit_return_type "void"
 	nparams 1
-	  param inout name "savedInstanceState" explicit_type "Bundle"
+	  param inout name "savedInstanceState" type class_ref 136322 // Bundle
 	
 	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -102,53 +169,124 @@ ${members}}
 	
 	
       end
-    end
 
-    class 128426 "ActiviteGestionMatch"
-      visibility public 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 128298 // <generalisation>
-	relation 128298 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128298 // <generalisation>
-	  b parent class_ref 128298 // AppCompatActivity
-      end
-
-      attribute 128298 "TAG"
-	class_attribute const_attribute private explicit_type "String"
-	init_value " \"_ActiviteGestionMatch\""
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-	comment "Constantes
-
-!< TAG pour les logs"
-      end
-
-      operation 128298 "onCreate"
+      operation 1263234 "onResume"
 	protected explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1263362 "initialiserVue"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1263490 "initialiserListeJoueurs"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1263618 "ajouterJoueur"
+	private explicit_return_type "boolean"
 	nparams 1
-	  param inout name "savedInstanceState" explicit_type "Bundle"
+	  param in name "numeroJoueur" explicit_type "int"
 	
 	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
-	java_annotation "@Override
+	
+	
+	
+      end
+
+      operation 1263746 "getValeurSaisie"
+	private explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1263874 "enregistrerDonnees"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1264002 "ajouterLesDeuxJoueurs"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1264130 "creerLeMatch"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1264258 "jouerMatch"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1264386 "estMatchConfigure"
+	private return_type class_ref 198914 // Boolean
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
 "
 	
 	
@@ -168,34 +306,31 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 128426 // <generalisation>
-	relation 128426 ---|>
+      classrelation 489986 // <generalisation>
+	relation 489986 ---|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 128426 // <generalisation>
+	    classrelation_ref 489986 // <generalisation>
 	  b parent class_ref 128298 // AppCompatActivity
       end
 
-      attribute 128426 "TAG"
-	class_attribute const_attribute private explicit_type "String"
-	init_value " \"_ActiviteHistorique\""
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-	comment "Constantes
+      classrelation 490114 // TAG (<unidirectional association>)
+	relation 490114 --->
+	  a role_name "TAG" init_value " \"_ActiviteHistorique\"" class_relation const_relation private
+	    comment "
+Constantes
 
 !< TAG pour les logs"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 490114 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
       end
 
-      operation 128426 "onCreate"
+      operation 1264514 "onCreate"
 	protected explicit_return_type "void"
 	nparams 1
-	  param inout name "savedInstanceState" explicit_type "Bundle"
+	  param inout name "savedInstanceState" type class_ref 136322 // Bundle
 	
 	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -232,34 +367,53 @@ ${members}};
       comment "@class EcranPrincipal
 @brief L'activité principale
 "
-      classrelation 128554 // <generalisation>
-	relation 128554 ---|>
+      classrelation 490242 // <generalisation>
+	relation 490242 ---|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 128554 // <generalisation>
+	    classrelation_ref 490242 // <generalisation>
 	  b parent class_ref 128298 // AppCompatActivity
       end
 
-      attribute 128554 "TAG"
-	class_attribute const_attribute private explicit_type "String"
-	init_value " \"_ActivitePlugInPool\""
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-	comment "Constantes
+      classrelation 490370 // TAG (<unidirectional association>)
+	relation 490370 --->
+	  a role_name "TAG" init_value " \"_ActivitePlugInPool\"" class_relation const_relation private
+	    comment "
+Constantes
 
 !< TAG pour les logs (cf. Logcat)"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 490370 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
       end
 
-      operation 128554 "onCreate"
+      classrelation 490498 // boutonConfigurationRencontre (<unidirectional association>)
+	relation 490498 --->
+	  a role_name "boutonConfigurationRencontre" package
+	    comment "
+Ressources GUI
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 490498 // boutonConfigurationRencontre (<unidirectional association>)
+	  b parent class_ref 207106 // Button
+      end
+
+      classrelation 490626 // boutonHistorique (<unidirectional association>)
+	relation 490626 --->
+	  a role_name "boutonHistorique" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 490626 // boutonHistorique (<unidirectional association>)
+	  b parent class_ref 207106 // Button
+      end
+
+      operation 1264642 "onCreate"
 	protected explicit_return_type "void"
 	nparams 1
-	  param inout name "savedInstanceState" explicit_type "Bundle"
+	  param inout name "savedInstanceState" type class_ref 136322 // Bundle
 	
 	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -269,14 +423,11 @@ ${members}};
 	
 	
 	
-	comment "Ressources GUI
-
-
-@brief Méthode appelée à la création de l'activité
+	comment "@brief Méthode appelée à la création de l'activité
 "
       end
 
-      operation 128682 "onStart"
+      operation 1264770 "onStart"
 	protected explicit_return_type "void"
 	nparams 0
 	
@@ -293,7 +444,7 @@ après un onStop()
 "
       end
 
-      operation 128810 "onResume"
+      operation 1264898 "onResume"
 	protected explicit_return_type "void"
 	nparams 0
 	
@@ -309,7 +460,7 @@ après un onStop()
 "
       end
 
-      operation 128938 "onPause"
+      operation 1265026 "onPause"
 	protected explicit_return_type "void"
 	nparams 0
 	
@@ -326,7 +477,7 @@ reprend sur un onResume()) ou avant onStop() (activité plus visible)
 "
       end
 
-      operation 129066 "onStop"
+      operation 1265154 "onStop"
 	protected explicit_return_type "void"
 	nparams 0
 	
@@ -342,7 +493,7 @@ reprend sur un onResume()) ou avant onStop() (activité plus visible)
 "
       end
 
-      operation 129194 "onDestroy"
+      operation 1265282 "onDestroy"
 	protected explicit_return_type "void"
 	nparams 0
 	
@@ -357,6 +508,42 @@ reprend sur un onResume()) ou avant onStop() (activité plus visible)
 	comment "@brief Méthode appelée à la destruction de l'application (après onStop()
 et détruite par le système Android)
 "
+      end
+
+      operation 1265410 "initialiserVue"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1265538 "allerConfigurerActivite"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1265666 "allerHistoriqueActivite"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
@@ -375,7 +562,7 @@ ${members}}
       comment "@class BlackBall
 @brief Définit des caractéristiques du billard Blackball
 "
-      attribute 128682 "NB_BILLES_COULEUR"
+      attribute 537602 "NB_BILLES_COULEUR"
 	class_attribute const_attribute public explicit_type "int"
 	init_value " 7"
 	cpp_decl ""
@@ -389,7 +576,7 @@ ${members}}
 	comment " !< Nombre de billes d'une même couleur (rouges ou jaunes)"
       end
 
-      attribute 128810 "NB_POCHES"
+      attribute 537730 "NB_POCHES"
 	class_attribute const_attribute public explicit_type "int"
 	init_value " 6"
 	cpp_decl ""
@@ -401,6 +588,32 @@ ${members}}
 	mysql_decl ""
 	MysqlColumn
 	comment "!< Nombre de poches de la table"
+      end
+
+      attribute 537858 "NB_JOUEURS"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 537986 "CONFIGURATION_FINI"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
       end
     end
 
@@ -417,74 +630,15 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      attribute 128938 "ROUGE"
+      attribute 536706 "AUCUNE"
 	public type class_ref 128938 // CouleurBille
 	cpp_decl ""
-	java_decl "  ${@}${name}(0),${comment}"
+	java_decl "  ${@}${name}(-1),${comment}"
 	php_decl ""
 	python_decl ""
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
-      end
-
-      attribute 129066 "JAUNE"
-	public type class_ref 128938 // CouleurBille
-	cpp_decl ""
-	java_decl "  ${@}${name}(1),${comment}"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129194 "BLANCHE"
-	public type class_ref 128938 // CouleurBille
-	cpp_decl ""
-	java_decl "  ${@}${name}(2),${comment}"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129322 "NOIRE"
-	public type class_ref 128938 // CouleurBille
-	cpp_decl ""
-	java_decl "  ${@}${name}(3),${comment}"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129450 "valeur"
-	const_attribute private explicit_type "int"
-	stereotype "attribute"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      operation 129322 "CouleurBille"
-	package explicit_return_type ""
-	nparams 1
-	  param in name "valeur" explicit_type "int"
-	
-	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
       end
     end
 
@@ -500,16 +654,34 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 128682 // couleur (<unidirectional association>)
-	relation 128682 --->
-	  a role_name "couleur" private
+      classrelation 488322 // <unidirectional association>
+	relation 488322 --->
+	  a role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128682 // couleur (<unidirectional association>)
+	    classrelation_ref 488322 // <unidirectional association>
 	  b parent class_ref 128938 // CouleurBille
       end
 
-      attribute 129578 "poche"
+      classrelation 489090 // <unidirectional association>
+	relation 489090 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 489090 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      classrelation 490754 // couleur (<unidirectional association>)
+	relation 490754 --->
+	  a role_name "couleur" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 490754 // couleur (<unidirectional association>)
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      attribute 538114 "poche"
 	private explicit_type "int"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -519,6 +691,64 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      operation 1265794 "empocherPremiereBille"
+	public return_type class_ref 128130 // String
+	nparams 1
+	  param in name "bille" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 491266 // <unidirectional association>
+	relation 491266 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 491266 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      classrelation 491394 // <unidirectional association>
+	relation 491394 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 491394 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      classrelation 491522 // <unidirectional association>
+	relation 491522 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 491522 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      classrelation 498050 // <unidirectional association>
+	relation 498050 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 498050 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      classrelation 498306 // <unidirectional association>
+	relation 498306 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 498306 // <unidirectional association>
+	  b parent class_ref 128938 // CouleurBille
       end
     end
 
@@ -534,116 +764,43 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      attribute 129706 "TAG"
-	class_attribute const_attribute private explicit_type "String"
-	init_value " \"_Produit\""
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-	comment "Constantes
+      classrelation 488450 // <realization>
+	relation 488450 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 488450 // <realization>
+	  b parent class_ref 186882 // Serializable
+      end
+
+      classrelation 488578 // <unidirectional association>
+	relation 488578 --->
+	  a role_name "" init_value " \"_Produit\"" class_relation const_relation private
+	    comment "
+Constantes
 
 !< TAG pour les logs"
-      end
-
-      attribute 129834 "nom"
-	private explicit_type "String"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129962 "prenom"
-	private explicit_type "String"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 130090 "points"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 130218 "id"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 130346 "nbBillesRestantes"
-	private explicit_type "int"
-	init_value " BlackBall.NB_BILLES_COULEUR"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      classrelation 128810 // couleur (<unidirectional association>)
-	relation 128810 --->
-	  a role_name "couleur" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128810 // couleur (<unidirectional association>)
-	  b parent class_ref 128938 // CouleurBille
+	    classrelation_ref 488578 // <unidirectional association>
+	  b parent class_ref 128130 // String
       end
 
-      classrelation 128938 // empoches (<unidirectional association>)
-	relation 128938 --->
-	  stereotype "List"
-	  a role_name "empoches" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+      classrelation 488706 // <unidirectional association>
+	relation 488706 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128938 // empoches (<unidirectional association>)
-	  b parent class_ref 129066 // Empoche
+	    classrelation_ref 488706 // <unidirectional association>
+	  b parent class_ref 128130 // String
       end
 
-      operation 129450 "Joueur"
-	public explicit_return_type ""
-	nparams 4
-	  param in name "nom" explicit_type "String"
-	  param in name "prenom" explicit_type "String"
-	  param in name "points" explicit_type "int"
-	  param in name "id" explicit_type "int"
-	
-	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
-  ${body}}
+      classrelation 488834 // <unidirectional association>
+	relation 488834 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	
-	
-	
+	    classrelation_ref 488834 // <unidirectional association>
+	  b parent class_ref 128130 // String
       end
     end
 
@@ -659,76 +816,86 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      attribute 130474 "numeroTable"
-	private explicit_type "int"
+      class 310018 "EtatManche"
+	visibility public stereotype "enum"
 	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
 "
 	php_decl ""
-	python_decl ""
+	python_2_2 python_decl ""
 	idl_decl ""
+	explicit_switch_type ""
 	mysql_decl ""
-	MysqlColumn
-      end
+	
+	attribute 536834 "Debut"
+	  public type class_ref 310018 // EtatManche
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(0),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
 
-      attribute 130602 "horodatage"
-	private explicit_type "LocalDateTime"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
+	attribute 536962 "EnCours"
+	  public type class_ref 310018 // EtatManche
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(1),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
 
-      attribute 130730 "gagnant"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
+	attribute 537090 "Fini"
+	  public type class_ref 310018 // EtatManche
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(2),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
 
-      attribute 130858 "joueurTable"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	attribute 537218 "etatManche"
+	  const_attribute private explicit_type "int"
+	  stereotype "attribute"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
 
-      attribute 130986 "couleursDefinies"
-	private explicit_type "boolean"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	classrelation 488962 // manche (<unidirectional association>)
+	  relation 488962 --->
+	    a role_name "manche" private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
+	      classrelation_ref 488962 // manche (<unidirectional association>)
+	    b parent class_ref 129322 // Manche
+	end
 
-      attribute 131114 "duree"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	operation 1262722 "EtatManche"
+	  package explicit_return_type ""
+	  nparams 1
+	    param in name "etatManche" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
 "
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
+	  
+	  
+	  
+	end
       end
     end
 
@@ -757,7 +924,7 @@ ${members}}
 	explicit_switch_type ""
 	mysql_decl ""
 	
-	attribute 131242 "Cree"
+	attribute 538242 "Cree"
 	  public type class_ref 129578 // EtatMatch
 	  cpp_decl ""
 	  java_decl "  ${@}${name}(0),${comment}"
@@ -768,7 +935,7 @@ ${members}}
 	  MysqlColumn
 	end
 
-	attribute 131370 "EnCours"
+	attribute 538370 "EnCours"
 	  public type class_ref 129578 // EtatMatch
 	  cpp_decl ""
 	  java_decl "  ${@}${name}(1),${comment}"
@@ -779,7 +946,7 @@ ${members}}
 	  MysqlColumn
 	end
 
-	attribute 131498 "Fini"
+	attribute 538498 "Fini"
 	  public type class_ref 129578 // EtatMatch
 	  cpp_decl ""
 	  java_decl "  ${@}${name}(2),${comment}"
@@ -790,7 +957,7 @@ ${members}}
 	  MysqlColumn
 	end
 
-	attribute 131626 "etatMatch"
+	attribute 538626 "etatMatch"
 	  const_attribute private explicit_type "int"
 	  stereotype "attribute"
 	  cpp_decl ""
@@ -803,16 +970,16 @@ ${members}}
 	  MysqlColumn
 	end
 
-	classrelation 129066 // match (<unidirectional association>)
-	  relation 129066 --->
+	classrelation 490882 // match (<unidirectional association>)
+	  relation 490882 --->
 	    a role_name "match" private
 	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	      classrelation_ref 129066 // match (<unidirectional association>)
+	      classrelation_ref 490882 // match (<unidirectional association>)
 	    b parent class_ref 129450 // Match
 	end
 
-	operation 129578 "EtatMatch"
+	operation 1265922 "EtatMatch"
 	  package explicit_return_type ""
 	  nparams 1
 	    param in name "etatMatch" explicit_type "int"
@@ -824,21 +991,89 @@ ${members}}
 	  
 	  
 	end
-      end
 
-      attribute 131754 "nom"
-	private explicit_type "String"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	attribute 545666 "CREE"
+	  public type class_ref 129578 // EtatMatch
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(0),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 545794 "EN_COURS"
+	  public type class_ref 129578 // EtatMatch
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(1),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 545922 "FINI"
+	  public type class_ref 129578 // EtatMatch
+	  cpp_decl ""
+	  java_decl "  ${@}${name}(2),${comment}"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 546050 "valeur"
+	  const_attribute private explicit_type "int"
+	  stereotype "attribute"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1272962 "EtatMatch"
+	  package explicit_return_type ""
+	  nparams 1
+	    param in name "valeur" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1273090 "getValeur"
+	  public explicit_return_type "int"
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
       end
 
-      attribute 131882 "nbManchesGagnantes"
+      classrelation 491010 // nom (<unidirectional association>)
+	relation 491010 --->
+	  a role_name "nom" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 491010 // nom (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 538754 "nbManchesGagnantes"
 	private explicit_type "int"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -850,7 +1085,7 @@ ${members}}
 	MysqlColumn
       end
 
-      attribute 132010 "horodatage"
+      attribute 538882 "horodatage"
 	private explicit_type "LocalDateTime"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -862,7 +1097,7 @@ ${members}}
 	MysqlColumn
       end
 
-      attribute 132138 "gagnant"
+      attribute 539010 "gagnant"
 	private explicit_type "int"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -874,13 +1109,22 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 129194 // etat (<unidirectional association>)
-	relation 129194 --->
+      classrelation 491138 // etat (<unidirectional association>)
+	relation 491138 --->
 	  a role_name "etat" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 129194 // etat (<unidirectional association>)
+	    classrelation_ref 491138 // etat (<unidirectional association>)
 	  b parent class_ref 129578 // EtatMatch
+      end
+
+      classrelation 498178 // <unidirectional association>
+	relation 498178 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 498178 // <unidirectional association>
+	  b parent class_ref 128130 // String
       end
     end
 
@@ -896,7 +1140,7 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      attribute 132266 "numero"
+      attribute 539138 "numero"
 	private explicit_type "int"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -913,6 +1157,1651 @@ ${members}}
       classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 show_relation_visibility yes end
       size A0
     end
+
+    classdiagram 128002 "classes-iteration2"
+      classdiagramsettings member_max_width 0 end
+      size A0
+    end
+
+    class 309122 "ExampleInstrumentedTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@RunWith(AndroidJUnit4.class)
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Instrumented test, which will execute on an Android device.
+
+@see <a href=\"http://d.android.com/tools/testing\">Testing documentation</a>
+"
+      operation 1272834 "useAppContext"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+      end
+    end
+
+    class 309250 "ActiviteGestionPartie"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 481538 // <generalisation>
+	relation 481538 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 481538 // <generalisation>
+	  b parent class_ref 128298 // AppCompatActivity
+      end
+
+      classrelation 481666 // TAG (<unidirectional association>)
+	relation 481666 --->
+	  a role_name "TAG" init_value " \"_ActiviteGestionPartie\"" class_relation const_relation private
+	    comment "
+Constantes
+
+!< TAG pour les logs"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 481666 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 534402 "DEMANDE_PERMISSIONS_BLUETOOTH"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 534530 "UUID_BLUETOOTH"
+	class_attribute const_attribute private explicit_type "UUID"
+	init_value "
+      UUID.fromString(\"00001101-0000-1000-8000-00805F9B34FB\")"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 481794 // textViewJoueur1 (<unidirectional association>)
+	relation 481794 --->
+	  a role_name "textViewJoueur1" private
+	    comment "
+Éléments de l'interface
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 481794 // textViewJoueur1 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 481922 // textViewJoueur2 (<unidirectional association>)
+	relation 481922 --->
+	  a role_name "textViewJoueur2" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 481922 // textViewJoueur2 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 482050 // texteNbParties (<unidirectional association>)
+	relation 482050 --->
+	  a role_name "texteNbParties" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482050 // texteNbParties (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      attribute 534658 "choixBluetoothEcran"
+	private explicit_type "AutoCompleteTextView"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 534786 "choixBluetoothTable"
+	private explicit_type "AutoCompleteTextView"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 482178 // joueur1 (<unidirectional association>)
+	relation 482178 --->
+	  a role_name "joueur1" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482178 // joueur1 (<unidirectional association>)
+	  b parent class_ref 129194 // Joueur
+      end
+
+      classrelation 482306 // joueur2 (<unidirectional association>)
+	relation 482306 --->
+	  a role_name "joueur2" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482306 // joueur2 (<unidirectional association>)
+	  b parent class_ref 129194 // Joueur
+      end
+
+      classrelation 482434 // nbParties (<unidirectional association>)
+	relation 482434 --->
+	  a role_name "nbParties" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482434 // nbParties (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 482562 // boutonLancerPartie (<unidirectional association>)
+	relation 482562 --->
+	  a role_name "boutonLancerPartie" package
+	    comment "
+Ressources GUI
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482562 // boutonLancerPartie (<unidirectional association>)
+	  b parent class_ref 207106 // Button
+      end
+
+      attribute 534914 "socketBluetooth"
+	private explicit_type "BluetoothSocket"
+	init_value " null"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "Bluetooth
+
+"
+      end
+
+      classrelation 482690 // peripheriqueBluetooth (<unidirectional association>)
+	relation 482690 --->
+	  a role_name "peripheriqueBluetooth" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482690 // peripheriqueBluetooth (<unidirectional association>)
+	  b parent class_ref 150658 // BluetoothDevice
+      end
+
+      attribute 535042 "adaptateurBluetooth"
+	private explicit_type "BluetoothAdapter"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 1255554 "onCreate"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "savedInstanceState" type class_ref 136322 // Bundle
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1255682 "onResume"
+	protected explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1255810 "initialiserVues"
+	package explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1255938 "recupererDonneesDeConfigurations"
+	package explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256066 "demanderPermissionsBluetooth"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256194 "configurerBluetooth"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256322 "listerPeripheriquesBluetooth"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256450 "connecterBluetooth"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "adresseMac" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256578 "extraireAdresseMac"
+	private return_type class_ref 128130 // String
+	nparams 1
+	  param inout name "texte" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256706 "envoyerAdresseMac"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "adresseMac" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1256834 "lancerUnePartie"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 309378 "ActivitePartie"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 482818 // <generalisation>
+	relation 482818 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 482818 // <generalisation>
+	  b parent class_ref 128298 // AppCompatActivity
+      end
+
+      classrelation 482946 // TAG (<unidirectional association>)
+	relation 482946 --->
+	  a role_name "TAG" init_value " \"_ActivitePartie\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 482946 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 483074 // ADRESSE_MAC_PC_B20 (<unidirectional association>)
+	relation 483074 --->
+	  a role_name "ADRESSE_MAC_PC_B20" init_value " \"00:1A:7D:DA:71:15\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483074 // ADRESSE_MAC_PC_B20 (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 483202 // ADRESSE_MAC_ECRAN (<unidirectional association>)
+	relation 483202 --->
+	  a role_name "ADRESSE_MAC_ECRAN" init_value " \"00:E0:4C:6D:20:45\"" class_relation const_relation private
+	    comment " 3C:71:BF:6A:F5:D2"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483202 // ADRESSE_MAC_ECRAN (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 535170 "REQUEST_BLUETOOTH_PERMISSION"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 483330 // communicationBluetoothEmission (<unidirectional association>)
+	relation 483330 --->
+	  a role_name "communicationBluetoothEmission" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483330 // communicationBluetoothEmission (<unidirectional association>)
+	  b parent class_ref 309506 // CommunicationBluetooth
+      end
+
+      classrelation 483458 // communicationBluetoothReception (<unidirectional association>)
+	relation 483458 --->
+	  a role_name "communicationBluetoothReception" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483458 // communicationBluetoothReception (<unidirectional association>)
+	  b parent class_ref 309506 // CommunicationBluetooth
+      end
+
+      classrelation 483586 // deviceEmission (<unidirectional association>)
+	relation 483586 --->
+	  a role_name "deviceEmission" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483586 // deviceEmission (<unidirectional association>)
+	  b parent class_ref 150658 // BluetoothDevice
+      end
+
+      classrelation 483714 // deviceReception (<unidirectional association>)
+	relation 483714 --->
+	  a role_name "deviceReception" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483714 // deviceReception (<unidirectional association>)
+	  b parent class_ref 150658 // BluetoothDevice
+      end
+
+      classrelation 483842 // joueur1 (<unidirectional association>)
+	relation 483842 --->
+	  a role_name "joueur1" package
+	    comment "
+Éléments de l'interface
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483842 // joueur1 (<unidirectional association>)
+	  b parent class_ref 129194 // Joueur
+      end
+
+      classrelation 483970 // joueur2 (<unidirectional association>)
+	relation 483970 --->
+	  a role_name "joueur2" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 483970 // joueur2 (<unidirectional association>)
+	  b parent class_ref 129194 // Joueur
+      end
+
+      classrelation 484098 // nbParties (<unidirectional association>)
+	relation 484098 --->
+	  a role_name "nbParties" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484098 // nbParties (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 484226 // couleurBille (<unidirectional association>)
+	relation 484226 --->
+	  a role_name "couleurBille" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484226 // couleurBille (<unidirectional association>)
+	  b parent class_ref 128938 // CouleurBille
+      end
+
+      attribute 535298 "idGagnant"
+	package explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 484354 // joueurs (<unidirectional association>)
+	relation 484354 --->
+	  a role_name "joueurs" init_value " new ArrayList<>()" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<Joueur> ${name}${value};
+"
+	    classrelation_ref 484354 // joueurs (<unidirectional association>)
+	  b parent class_ref 130178 // List
+      end
+
+      attribute 535426 "trameCouleurRecue"
+	package explicit_type "int"
+	init_value " -2"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 535554 "tramePocheRecue"
+	package explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 535682 "partieFinie"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 535810 "nbPartiesGestion"
+	package explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 535938 "indexBilleRouge"
+	package explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 536066 "indexBilleJaune"
+	package explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 484482 // texteJoueur1 (<unidirectional association>)
+	relation 484482 --->
+	  a role_name "texteJoueur1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484482 // texteJoueur1 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 484610 // texteJoueur2 (<unidirectional association>)
+	relation 484610 --->
+	  a role_name "texteJoueur2" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484610 // texteJoueur2 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 484738 // afficherPointsJoueur1 (<unidirectional association>)
+	relation 484738 --->
+	  a role_name "afficherPointsJoueur1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484738 // afficherPointsJoueur1 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 484866 // afficherPointsJoueur2 (<unidirectional association>)
+	relation 484866 --->
+	  a role_name "afficherPointsJoueur2" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484866 // afficherPointsJoueur2 (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 484994 // joueurActuel (<unidirectional association>)
+	relation 484994 --->
+	  a role_name "joueurActuel" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 484994 // joueurActuel (<unidirectional association>)
+	  b parent class_ref 203906 // TextView
+      end
+
+      classrelation 485122 // billesJaunes (<unidirectional association>)
+	relation 485122 --->
+	  a role_name "billesJaunes" multiplicity "[]" init_value " new ImageView[7]" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 485122 // billesJaunes (<unidirectional association>)
+	  b parent class_ref 203778 // ImageView
+      end
+
+      classrelation 485250 // billesRouges (<unidirectional association>)
+	relation 485250 --->
+	  a role_name "billesRouges" multiplicity "[]" init_value " new ImageView[7]" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 485250 // billesRouges (<unidirectional association>)
+	  b parent class_ref 203778 // ImageView
+      end
+
+      operation 1256962 "onCreate"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "savedInstanceState" type class_ref 136322 // Bundle
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1257090 "initialiserVues"
+	package explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257218 "getNbParties"
+	package explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257346 "recupererDonneesDeConfigurations"
+	package explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257474 "preparerLeMatch"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257602 "initialiserJoueurs"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257730 "casse"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257858 "manche"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1257986 "retirerBilleRouge"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258114 "retirerBilleJaune"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258242 "afficherJoueursCreer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258370 "verifierEtDemarrerBluetooth"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258498 "initialiserBluetooth"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258626 "envoyerTrame"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "trame" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258754 "estTrameValide"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param inout name "trame" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1258882 "decomposerTrameEmpochage"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "trame" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259010 "trameEtatPourTable"
+	public return_type class_ref 128130 // String
+	nparams 1
+	  param inout name "etat" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259138 "trameDemarrerMatch"
+	public return_type class_ref 128130 // String
+	nparams 4
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "nbParties" explicit_type "int"
+	  param inout name "prenomJoueur1" type class_ref 128130 // String
+	  param inout name "prenomJoueur2" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259266 "trameCasse"
+	public return_type class_ref 128130 // String
+	nparams 5
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "idPartie" explicit_type "int"
+	  param in name "idJoueur" explicit_type "int"
+	  param in name "couleurBille" explicit_type "int"
+	  param in name "idPoche" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259394 "trameEmpochage"
+	public return_type class_ref 128130 // String
+	nparams 4
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "idJoueur" explicit_type "int"
+	  param in name "couleurBille" explicit_type "int"
+	  param in name "idPoche" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259522 "trameFaute"
+	public return_type class_ref 128130 // String
+	nparams 3
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "idJoueur" explicit_type "int"
+	  param inout name "faute" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259650 "trameFinDePartie"
+	public return_type class_ref 128130 // String
+	nparams 3
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "idPartie" explicit_type "int"
+	  param in name "idJoueur" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259778 "trameFinDeMatch"
+	public return_type class_ref 128130 // String
+	nparams 3
+	  param inout name "type" type class_ref 128130 // String
+	  param in name "nbPartiesJoueur1" explicit_type "int"
+	  param in name "nbPartiesJoueur2" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1259906 "onDestroy"
+	protected explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1260034 "onRequestPermissionsResult"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "requestCode" explicit_type "int"
+	  param inout name "permissions" type class_ref 128130 // String
+	multiplicity "[]"
+	  param inout name "grantResults" explicit_type "int"
+	multiplicity "[]"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, @NonNull ${t1}[] ${p1}, @NonNull ${t2}[] ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+
+    class 309506 "CommunicationBluetooth"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 486914 // <generalisation>
+	relation 486914 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 486914 // <generalisation>
+	  b parent class_ref 192898 // Thread
+      end
+
+      classrelation 487042 // ENTETE (<unidirectional association>)
+	relation 487042 --->
+	  a role_name "ENTETE" init_value " \"$\"" class_relation const_relation protected
+	    comment "
+Format Trame
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487042 // ENTETE (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 487170 // SEPARATEUR (<unidirectional association>)
+	relation 487170 --->
+	  a role_name "SEPARATEUR" init_value " \"/\"" class_relation const_relation protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487170 // SEPARATEUR (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 487298 // DELIMITATEUR_FIN (<unidirectional association>)
+	relation 487298 --->
+	  a role_name "DELIMITATEUR_FIN" init_value " \"!\"" class_relation const_relation protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487298 // DELIMITATEUR_FIN (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 487426 // DEMARER_MATCH (<unidirectional association>)
+	relation 487426 --->
+	  a role_name "DEMARER_MATCH" init_value " \"D\"" class_relation const_relation protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487426 // DEMARER_MATCH (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 487554 // CASSE (<unidirectional association>)
+	relation 487554 --->
+	  a role_name "CASSE" init_value " \"C\"" class_relation const_relation protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487554 // CASSE (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 487682 // TAG (<unidirectional association>)
+	relation 487682 --->
+	  a role_name "TAG" init_value " \"_CommunicationBluetooth\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487682 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 536322 "SERIAL_UUID"
+	class_attribute const_attribute private explicit_type "UUID"
+	init_value " UUID.fromString(\"00001101-0000-1000-8000-00805F9B34FB\")"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 487810 // peripherique (<unidirectional association>)
+	relation 487810 --->
+	  a role_name "peripherique" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487810 // peripherique (<unidirectional association>)
+	  b parent class_ref 150658 // BluetoothDevice
+      end
+
+      attribute 536450 "socket"
+	private explicit_type "BluetoothSocket"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 536578 "outputStream"
+	private explicit_type "OutputStream"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 487938 // inputStream (<unidirectional association>)
+	relation 487938 --->
+	  a role_name "inputStream" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 487938 // inputStream (<unidirectional association>)
+	  b parent class_ref 135938 // InputStream
+      end
+
+      classrelation 488066 // executor (<unidirectional association>)
+	relation 488066 --->
+	  a role_name "executor" init_value " Executors.newSingleThreadExecutor()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 488066 // executor (<unidirectional association>)
+	  b parent class_ref 226690 // ExecutorService
+      end
+
+      class 309890 "ReceptionListener"
+	visibility public stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 1262338 "onMessageRecu"
+	  public explicit_return_type "void"
+	  nparams 1
+	    param inout name "message" type class_ref 128130 // String
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 488194 // receptionListener (<unidirectional association>)
+	relation 488194 --->
+	  a role_name "receptionListener" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 488194 // receptionListener (<unidirectional association>)
+	  b parent class_ref 309890 // ReceptionListener
+      end
+
+      operation 1261570 "CommunicationBluetooth"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "peripherique" type class_ref 150658 // BluetoothDevice
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261698 "run"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1261826 "envoyerTrameAsync"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "trame" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261954 "ecouterReception"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1262082 "estConnecte"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1262210 "estTrameValide"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param inout name "trame" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1262466 "setReceptionListener"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "listener" type class_ref 309890 // ReceptionListener
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1262594 "close"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 309634 "BaseDeDonnees"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 485378 // <generalisation>
+	relation 485378 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 485378 // <generalisation>
+	  b parent class_ref 309762 // SQLiteOpenHelper
+      end
+
+      classrelation 485506 // TAG (<unidirectional association>)
+	relation 485506 --->
+	  a role_name "TAG" init_value " \"_BaseDeDonnees\"" class_relation const_relation private
+	    comment "!< TAG pour les logs (cf. Logcat)"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 485506 // TAG (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 485634 // NOM_BDD (<unidirectional association>)
+	relation 485634 --->
+	  a role_name "NOM_BDD" init_value " \"plugin_pool.db\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 485634 // NOM_BDD (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 536194 "VERSION_BDD"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 485762 // baseDeDonnees (<unidirectional association>)
+	relation 485762 --->
+	  a role_name "baseDeDonnees" init_value "
+      null" class_relation private
+	    comment "!< L'instance unique de BaseDeDonnees (singleton)"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 485762 // baseDeDonnees (<unidirectional association>)
+	  b parent class_ref 309634 // BaseDeDonnees
+      end
+
+      classrelation 485890 // sqlite (<unidirectional association>)
+	relation 485890 --->
+	  a role_name "sqlite" const_relation private
+	    comment "<! L'accès à la base de données SQLite"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 485890 // sqlite (<unidirectional association>)
+	  b parent class_ref 135298 // SQLiteDatabase
+      end
+
+      classrelation 486018 // TABLE_JOUEURS (<unidirectional association>)
+	relation 486018 --->
+	  a role_name "TABLE_JOUEURS" init_value " \"joueurs\"" class_relation const_relation public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486018 // TABLE_JOUEURS (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486146 // TABLE_MATCHS (<unidirectional association>)
+	relation 486146 --->
+	  a role_name "TABLE_MATCHS" init_value " \"matchs\"" class_relation const_relation public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486146 // TABLE_MATCHS (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486274 // TABLE_MANCHES (<unidirectional association>)
+	relation 486274 --->
+	  a role_name "TABLE_MANCHES" init_value " \"manches\"" class_relation const_relation public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486274 // TABLE_MANCHES (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486402 // CREER_TABLE_JOUEURS (<unidirectional association>)
+	relation 486402 --->
+	  a role_name "CREER_TABLE_JOUEURS" init_value "
+      \"CREATE TABLE IF NOT EXISTS \" + TABLE_JOUEURS + \" (\"
+      + \"idJoueur INTEGER PRIMARY KEY AUTOINCREMENT, \"
+      + \"nom VARCHAR, \"
+      + \"prenom VARCHAR, \"
+      + \"points INTEGER DEFAULT 0, \"
+      + \"UNIQUE(nom, prenom));\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486402 // CREER_TABLE_JOUEURS (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486530 // CREER_TABLE_MATCHS (<unidirectional association>)
+	relation 486530 --->
+	  a role_name "CREER_TABLE_MATCHS" init_value "
+      \"CREATE TABLE IF NOT EXISTS \" + TABLE_MATCHS + \" (\"
+      + \"idMatch INTEGER PRIMARY KEY AUTOINCREMENT, \"
+      + \"idJoueur1 INTEGER NOT NULL, \"
+      + \"idJoueur2 INTEGER NOT NULL, \"
+      + \"nbPartiesGagnantes INTEGER DEFAULT 1, \"
+      + \"fini INTEGER DEFAULT 0, \"
+      + \"horodatage DATETIME NOT NULL, \"
+      + \"FOREIGN KEY (idJoueur1) REFERENCES joueurs(idJoueur) ON DELETE CASCADE, \"
+      + \"FOREIGN KEY (idJoueur2) REFERENCES joueurs(idJoueur) ON DELETE CASCADE);\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486530 // CREER_TABLE_MATCHS (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486658 // CREER_TABLE_MANCHES (<unidirectional association>)
+	relation 486658 --->
+	  a role_name "CREER_TABLE_MANCHES" init_value "
+      \"CREATE TABLE IF NOT EXISTS \" + TABLE_MANCHES + \" (\"
+      + \"idManche INTEGER PRIMARY KEY AUTOINCREMENT, \"
+      + \"idMatch INTEGER, \"
+      + \"idGagnant INTEGER, \"
+      + \"idPerdant INTEGER, \"
+      + \"numeroTable INTEGER, \"
+      + \"horodatage DATETIME UNIQUE NOT NULL, \"
+      + \"FOREIGN KEY (idGagnant) REFERENCES joueurs(idJoueur) ON DELETE CASCADE, \"
+      + \"FOREIGN KEY (idPerdant) REFERENCES joueurs(idJoueur) ON DELETE CASCADE,\"
+      + \"FOREIGN KEY (idMatch)   REFERENCES matchs(idMatch) ON DELETE CASCADE);\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486658 // CREER_TABLE_MANCHES (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 486786 // AJOUTER_JOUEURS (<unidirectional association>)
+	relation 486786 --->
+	  a role_name "AJOUTER_JOUEURS" init_value " \"INSERT INTO \" + TABLE_JOUEURS +
+                                                  \"(idJoueur, nom, prenom) VALUES \"
+                                                  + \" (1,'ARIATI','Axel'),\\n\"
+                                                  + \" (2,'BERNARD','Clément'),\\n\"
+                                                  + \" (3,'BLONDEL','Joshua'),\\n\"
+                                                  + \" (4,'BOUSQUET SOLFRINI','Valentin'),\\n\"
+                                                  + \" (5,'CLÉMENT','Aymeric'),\\n\"
+                                                  + \" (6,'GASSE','Lenny'),\\n\"
+                                                  + \" (7,'MILLOT','Pierre'),\\n\"
+                                                  + \" (8,'NAVARRO','Mattéo'),\\n\"
+                                                  + \" (9,'PESSINA','Nicolas'),\\n\"
+                                                  + \" (10,'RAFFIN','Louis'),\\n\"
+                                                  + \" (11,'SORIA-BONET','Enzo'),\\n\"
+                                                  + \" (12,'VALOBRA','Enzo'),\\n\"
+                                                  + \" (13,'VANDENBROUCKE','Théo'),\\n\"
+                                                  + \" (14,'VAUDAINE','Dylan');\\n\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 486786 // AJOUTER_JOUEURS (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      operation 1260162 "BaseDeDonnees"
+	private explicit_return_type ""
+	nparams 1
+	  param inout name "context" type class_ref 131458 // Context
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1260290 "getInstance"
+	class_operation public return_type class_ref 309634 // BaseDeDonnees
+	nparams 1
+	  param inout name "context" type class_ref 131458 // Context
+	
+	preserve_java_body_indent synchronized java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1260418 "effacer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1260546 "onCreate"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "baseDeDonnees" type class_ref 135298 // SQLiteDatabase
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1260674 "onUpgrade"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "baseDeDonnees" type class_ref 135298 // SQLiteDatabase
+	  param in name "oldVersion" explicit_type "int"
+	  param in name "newVersion" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1260802 "insererDonnees"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "baseDeDonnees" type class_ref 135298 // SQLiteDatabase
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1260930 "getNomsJoueurs"
+	public return_type class_ref 166274 // ArrayList
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}<String> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261058 "ajouterJoueur"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "nom" type class_ref 128130 // String
+	  param inout name "prenom" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261186 "creerMatch"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "idJoueur1" explicit_type "int"
+	  param in name "idJoueur2" explicit_type "int"
+	  param in name "nbPartiesGagnantes" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261314 "obtenirHorodatageActuel"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1261442 "getIdJoueur"
+	public explicit_return_type "int"
+	nparams 2
+	  param inout name "nom" type class_ref 128130 // String
+	  param inout name "prenom" type class_ref 128130 // String
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 310146 "ExampleUnitTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Example local unit test, which will execute on the development machine (host).
+
+@see <a href=\"http://d.android.com/tools/testing\">Testing documentation</a>
+"
+      operation 1273218 "addition_isCorrect"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+      end
+    end
   end
 
   deploymentview 128170 "plug_in_pool"
@@ -924,26 +2813,8 @@ ${members}}
       java_src "${comment}
 ${package}
 ${imports}
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 ${definition}"
       associated_elems
-	class_ref 128170 // ActiviteConfigurationMatch
-      end
-    end
-
-    artifact 128298 "ActiviteGestionMatch"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-${definition}"
-      associated_elems
-	class_ref 128426 // ActiviteGestionMatch
       end
     end
 
@@ -952,12 +2823,8 @@ ${definition}"
       java_src "${comment}
 ${package}
 ${imports}
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 ${definition}"
       associated_elems
-	class_ref 128554 // ActiviteHistorique
       end
     end
 
@@ -966,13 +2833,8 @@ ${definition}"
       java_src "${comment}
 ${package}
 ${imports}
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
 ${definition}"
       associated_elems
-	class_ref 128682 // ActivitePlugInPool
       end
       comment "@file ActivitePlugInPool.java
 @brief Déclaration de l'activité principale
@@ -987,7 +2849,6 @@ ${package}
 ${imports}
 ${definition}"
       associated_elems
-	class_ref 128810 // BlackBall
       end
     end
 
@@ -998,7 +2859,6 @@ ${package}
 ${imports}
 ${definition}"
       associated_elems
-	class_ref 128938 // CouleurBille
       end
     end
 
@@ -1009,7 +2869,6 @@ ${package}
 ${imports}
 ${definition}"
       associated_elems
-	class_ref 129066 // Empoche
       end
     end
 
@@ -1018,13 +2877,8 @@ ${definition}"
       java_src "${comment}
 ${package}
 ${imports}
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 ${definition}"
       associated_elems
-	class_ref 129194 // Joueur
       end
     end
 
@@ -1033,10 +2887,8 @@ ${definition}"
       java_src "${comment}
 ${package}
 ${imports}
-import java.time.LocalDateTime;
 ${definition}"
       associated_elems
-	class_ref 129322 // Manche
       end
     end
 
@@ -1045,10 +2897,8 @@ ${definition}"
       java_src "${comment}
 ${package}
 ${imports}
-import java.time.LocalDateTime;
 ${definition}"
       associated_elems
-	class_ref 129450 // Match
       end
     end
 
@@ -1059,8 +2909,48 @@ ${package}
 ${imports}
 ${definition}"
       associated_elems
-	class_ref 129706 // Table
       end
     end
+
+    artifact 184706 "ActiviteGestionPartie"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+      end
+    end
+
+    artifact 184834 "ActivitePartie"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+      end
+    end
+
+    artifact 184962 "BaseDeDonnees"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+      end
+    end
+
+    artifact 185090 "CommunicationBluetooth"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+      end
+    end
+
   end
 end

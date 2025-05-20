@@ -1,0 +1,44 @@
+format 224
+"android" // Android::Sdk::sources::android-36::com::android
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/com/android/"
+  java_package "com.android"
+  package_ref 131970 // internal
+
+  package_ref 137602 // adservices
+
+  package_ref 139266 // ondevicepersonalization
+
+  package_ref 140034 // federatedcompute
+
+  package_ref 141698 // modules
+end

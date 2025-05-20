@@ -1,0 +1,88 @@
+format 224
+"adservices" // Android::Sdk::sources::android-36::android::adservices
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/adservices/"
+  java_package "android.adservices"
+  classview 135810 "adservices"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+  end
+
+  deploymentview 130434 "adservices"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+
+  package_ref 137474 // adid
+
+  package_ref 137730 // common
+
+  package_ref 137858 // adselection
+
+  package_ref 138114 // appsetid
+
+  package_ref 138242 // cobalt
+
+  package_ref 138626 // customaudience
+
+  package_ref 138754 // exceptions
+
+  package_ref 138882 // extdata
+
+  package_ref 139010 // measurement
+
+  package_ref 139138 // ondevicepersonalization
+
+  package_ref 140418 // shell
+
+  package_ref 140546 // signals
+
+  package_ref 140674 // topics
+end

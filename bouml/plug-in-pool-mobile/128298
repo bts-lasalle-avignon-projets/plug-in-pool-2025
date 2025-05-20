@@ -1,7 +1,7 @@
 format 224
 "unknown" // unknown
-  revision 1
-  modified_by 42 "tv"
+  revision 2
+  modified_by 2 "btssn2"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -64,5 +64,43 @@ ${members}}
       mysql_decl ""
       
     end
+
+    class 309762 "SQLiteOpenHelper"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
   end
+
+  package_ref 129666 // IAccessibilityInputMethodSession
+
+  package_ref 132226 // IDataShareWriteAdapter
+
+  package_ref 132738 // IAccessibilityServiceClient
+
+  package_ref 133634 // IBrailleDisplayController
+
+  package_ref 134018 // IAccountAuthenticator
+
+  package_ref 135170 // IMessenger
+
+  package_ref 136450 // IRequestFinishCallback
+
+  package_ref 136706 // IAccountManagerResponse
+
+  package_ref 139906 // IIsolatedService
+
+  package_ref 141570 // IUidObserver
+
+  package_ref 142338 // IApplicationThread
+
+  package_ref 142594 // ICancellationSignal
 end

@@ -1,5 +1,150 @@
 class ActiviteConfigurationMatch
-!!!128170.java!!!	onCreate(inout savedInstanceState : Bundle) : void
+!!!1263106.java!!!	onCreate(inout savedInstanceState : Bundle) : void
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_configuration_match);
+
+        Log.d(TAG, "onCreate()");
+
+        initialiserVue();
+!!!1263234.java!!!	onResume() : void
+        super.onResume();
+        Log.d(TAG, "onResume()");
+
+        joueurs.clear();
+!!!1263362.java!!!	initialiserVue() : void
+        Log.d(TAG, "initialiserVue()");
+        boutonLancerMatch = findViewById(R.id.boutonLancerMatch);
+        choixNomJoueur1   = findViewById(R.id.choixNomJoueur1);
+        choixNomJoueur2   = findViewById(R.id.choixNomJoueur2);
+
+        baseDonnees = BaseDeDonnees.getInstance(this);
+
+        initialiserListeJoueurs();
+        jouerMatch();
+!!!1263490.java!!!	initialiserListeJoueurs() : void
+        Log.d(TAG, "ajouterJoueurs()");
+        nomJoueurs = baseDonnees.getNomsJoueurs();
+        ArrayAdapter<String> listeJoueurs =
+          new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomJoueurs);
+        choixNomJoueur1.setAdapter(listeJoueurs);
+        choixNomJoueur2.setAdapter(listeJoueurs);
+!!!1263618.java!!!	ajouterJoueur(in numeroJoueur : int) : boolean
+        String nomJoueur = "";
+        if(numeroJoueur == 1)
+            nomJoueur = choixNomJoueur1.getText().toString().trim();
+        else if(numeroJoueur == 2)
+            nomJoueur = choixNomJoueur2.getText().toString().trim();
+
+        String[] donneesJoueur = nomJoueur.split(" ");
+        if(donneesJoueur.length == 2)
+        {
+            String prenom = donneesJoueur[0];
+            String nom    = donneesJoueur[1];
+            Joueur joueur = new Joueur(nom, prenom);
+            joueurs.add(joueur);
+            Log.d(TAG,
+                  "ajouterJoueur(" + numeroJoueur + ") " + joueur.getPrenom() + " " +
+                    joueur.getNom());
+            baseDonnees.ajouterJoueur(nom, prenom);
+            return true;
+        }
+
+        return false;
+!!!1263746.java!!!	getValeurSaisie() : int
+        EditText nbParties        = findViewById(R.id.choixNbParties);
+        String   choixUtilisateur = nbParties.getText().toString().trim();
+
+        if(choixUtilisateur.isEmpty())
+        {
+            return 1;
+        }
+
+        try
+        {
+            return Integer.parseInt(choixUtilisateur);
+        }
+        catch(NumberFormatException e)
+        {
+            Log.d("getValeurSaisie", "Entrée non valide : " + choixUtilisateur);
+            return 1;
+        }
+!!!1263874.java!!!	enregistrerDonnees() : boolean
+        if(!ajouterLesDeuxJoueurs())
+        {
+            return false;
+        }
+
+        return creerLeMatch();
+!!!1264002.java!!!	ajouterLesDeuxJoueurs() : boolean
+        return ajouterJoueur(1) && ajouterJoueur(2);
+!!!1264130.java!!!	creerLeMatch() : boolean
+        int nbParties = getValeurSaisie();
+
+        Joueur joueur1 = joueurs.get(0);
+        Joueur joueur2 = joueurs.get(1);
+
+        int id1 = baseDonnees.getIdJoueur(joueur1.getNom(), joueur1.getPrenom());
+        int id2 = baseDonnees.getIdJoueur(joueur2.getNom(), joueur2.getPrenom());
+
+        Log.d(TAG, "id1 : " + id1 + ", id2 : " + id2 + ", nbParties : " + nbParties);
+
+        if(id1 != -1 && id2 != -1)
+        {
+            baseDonnees.creerMatch(id1, id2, nbParties);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+!!!1264258.java!!!	jouerMatch() : void
+        boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if(estMatchConfigure())
+                {
+                    Log.d(TAG,
+                          "jouerMatch() " + choixNomJoueur1.getText().toString() + " vs " +
+                            choixNomJoueur2.getText().toString());
+
+                    if(enregistrerDonnees())
+                    {
+                        Log.d(TAG, "jouerMatch() nbJoueurs : " + joueurs.size());
+                        Intent changerVue =
+                          new Intent(ActiviteConfigurationMatch.this, ActiviteGestionPartie.class);
+                        changerVue.putExtra("joueur1", joueurs.elementAt(0));
+                        changerVue.putExtra("joueur2", joueurs.elementAt(1));
+                        changerVue.putExtra("nbParties", getValeurSaisie());
+                        startActivity(changerVue);
+                    }
+                    else
+                    {
+                    }
+                }
+                else
+                {
+                    Log.d(TAG, "jouerMatch() configuration incomplète ou invalide !");
+                }
+            }
+        });
+!!!1264386.java!!!	estMatchConfigure() : Boolean
+        Log.d(TAG, "estMatchConfigure()");
+
+        // il faut un nom de joueur 1
+        if(choixNomJoueur1.getText().toString().isEmpty())
+            return false;
+
+        // il faut un nom de joueur 2
+        if(choixNomJoueur2.getText().toString().isEmpty())
+            return false;
+
+        // il faut que le nom de joueur 1 soit différent du nom de joueur 2
+        if(choixNomJoueur1.getText().toString().equals(choixNomJoueur2.getText().toString()))
+            return false;
+
+        Log.d(TAG,
+              "estMatchConfigure() joueur1 = " + choixNomJoueur1.getText().toString() +
+                " - joueur2 = " + choixNomJoueur2.getText().toString());
+        return true;
