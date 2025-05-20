@@ -53,6 +53,10 @@ public class Joueur implements Serializable
     {
         return points++;
     }
+    public int afficherPoint()
+    {
+        return points;
+    }
     public void setCouleur(CouleurBille couleur)
     {
         this.couleur = couleur;
@@ -70,7 +74,6 @@ public class Joueur implements Serializable
     {
         Log.d("Joueur", "Nom : " + nom + " | Prénom : " + prenom);
     }
-
     @Override
     public String toString()
     {

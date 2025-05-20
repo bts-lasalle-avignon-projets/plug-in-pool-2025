@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import java.util.List;
-import java.util.Vector;
 
 public class ActivitePartie extends AppCompatActivity
 {
@@ -57,8 +56,8 @@ public class ActivitePartie extends AppCompatActivity
 
     private TextView texteJoueur1;
     private TextView texteJoueur2;
-    private TextView nbPointsJoueur1;
-    private TextView nbPointsJoueur2;
+    private TextView afficherPointsJoueur1;
+    private TextView afficherPointsJoueur2;
     private TextView joueurActuel;
     private ImageView[] billesJaunes = new ImageView[7];
     private ImageView[] billesRouges = new ImageView[7];
@@ -75,10 +74,10 @@ public class ActivitePartie extends AppCompatActivity
     }
     void initialiserVues()
     {
+        afficherPointsJoueur1 = findViewById(R.id.nbPointsDuJoueur1);
+        afficherPointsJoueur2 = findViewById(R.id.nbPointsDuJoueur2);
         texteJoueur1    = findViewById(R.id.textePourNbPointsJoueur1);
         texteJoueur2    = findViewById(R.id.textePourNbPointsJoueur2);
-        nbPointsJoueur1 = findViewById(R.id.nbPointsDuJoueur1);
-        nbPointsJoueur2 = findViewById(R.id.nbPointsDuJoueur2);
         joueurActuel    = findViewById(R.id.nomDuJoueur);
         for(int i = 0; i < 7; i++)
         {
@@ -160,7 +159,6 @@ public class ActivitePartie extends AppCompatActivity
                 joueur.afficherJoueur();
 
                 int id = joueur.getId();
-                joueurActuel.setText(joueur.getNom() + " " + joueur.getPrenom());
                 if(id == 0)
                 {
                     Log.d(TAG, "Attente empochage joueur 1");
@@ -178,6 +176,9 @@ public class ActivitePartie extends AppCompatActivity
                                          tramePocheRecue);
                             envoyerTrame(envoyerRougeVersEcran);
                             casseEstFini = true;
+                            joueurActuel.setText(joueur2.getNom() + " " + joueur2.getPrenom());
+                            joueurs.get(0).ajouterPoint();
+                            afficherPointsJoueur1.setText(String.valueOf(joueurs.get(0).afficherPoint()));
                             break;
                         case 1:
                             retirerBilleJaune();
@@ -191,10 +192,14 @@ public class ActivitePartie extends AppCompatActivity
                                          tramePocheRecue);
                             envoyerTrame(envoyerJauneVersEcran);
                             casseEstFini = true;
+                            joueurActuel.setText(joueur2.getNom() + " " + joueur2.getPrenom());
+                            joueurs.get(0).ajouterPoint();
+                            afficherPointsJoueur1.setText(String.valueOf(joueurs.get(0).afficherPoint()));
                             break;
                         default:
                             String envoyerFauteVersEcran = trameFaute("F", id, "");
                             envoyerTrame(envoyerFauteVersEcran);
+                            joueurActuel.setText(joueur2.getNom() + " " + joueur2.getPrenom());
                             break;
                     }
                 }
@@ -215,6 +220,9 @@ public class ActivitePartie extends AppCompatActivity
                                          tramePocheRecue);
                             envoyerTrame(envoyerRougeVersEcran);
                             casseEstFini = true;
+                            joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
+                            joueurs.get(1).ajouterPoint();
+                            afficherPointsJoueur2.setText(String.valueOf(joueurs.get(1).afficherPoint()));
                             break;
                         case 1:
                             retirerBilleJaune();
@@ -228,10 +236,14 @@ public class ActivitePartie extends AppCompatActivity
                                          tramePocheRecue);
                             envoyerTrame(envoyerJauneVersEcran);
                             casseEstFini = true;
+                            joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
+                            joueurs.get(1).ajouterPoint();
+                            afficherPointsJoueur2.setText(String.valueOf(joueurs.get(1).afficherPoint()));
                             break;
                         default:
                             String envoyerFauteVersEcran = trameFaute("F", id, "");
                             envoyerTrame(envoyerFauteVersEcran);
+                            joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
                             break;
                     }
                 }
@@ -257,6 +269,7 @@ public class ActivitePartie extends AppCompatActivity
     }
     private void manche()
     {
+        Log.d(TAG, "La casse est finie ! Maintenant place au match !");
         boolean mancheEstFini = false;
         if(!mancheEstFini)
         {
@@ -272,7 +285,6 @@ public class ActivitePartie extends AppCompatActivity
                     switch(trameCouleurRecue)
                     {
                         case 0:
-                            retirerBilleRouge();
                             String envoyerRougeVersEcran = trameEmpochage("E",
                                                                           joueur.getId(),
                                                                           trameCouleurRecue,
@@ -281,7 +293,6 @@ public class ActivitePartie extends AppCompatActivity
                             mancheEstFini = true;
                             break;
                         case 1:
-                            retirerBilleJaune();
                             String envoyerJauneVersEcran = trameEmpochage("E",
                                                                           joueur.getId(),
                                                                           trameCouleurRecue,
@@ -301,7 +312,6 @@ public class ActivitePartie extends AppCompatActivity
                     switch(trameCouleurRecue)
                     {
                         case 0:
-                            retirerBilleRouge();
                             String envoyerRougeVersEcran = trameEmpochage("E",
                                                                           joueur.getId(),
                                                                           trameCouleurRecue,
@@ -346,19 +356,25 @@ public class ActivitePartie extends AppCompatActivity
     }
     public void retirerBilleRouge()
     {
-        if(indexBilleRouge <= billesRouges.length)
+        if (indexBilleRouge < billesRouges.length)
         {
             billesRouges[indexBilleRouge].setVisibility(ImageView.GONE);
             indexBilleRouge++;
         }
     }
+
     public void retirerBilleJaune()
     {
-        if(indexBilleJaune <= billesJaunes.length)
+        if (indexBilleJaune < billesJaunes.length)
         {
             billesJaunes[indexBilleJaune].setVisibility(ImageView.GONE);
             indexBilleJaune++;
         }
+    }
+    public void afficherJoueursCreer()
+    {
+        Log.d(TAG, "Joueur 1 : " + joueurs.get(0).getCouleur());
+        Log.d(TAG, "Joueur 2 : " + joueurs.get(1).getCouleur());
     }
     private void verifierEtDemarrerBluetooth()
     {
@@ -493,8 +509,6 @@ public class ActivitePartie extends AppCompatActivity
                         Toast.LENGTH_LONG)
               .show();
             casse();
-            Log.d(TAG, "Joueur 1 : " + joueurs.get(0).getCouleur());
-            Log.d(TAG, "Joueur 2 : " + joueurs.get(1).getCouleur());
             manche();
         }
         catch(NumberFormatException e)
