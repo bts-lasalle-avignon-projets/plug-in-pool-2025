@@ -87,11 +87,11 @@ Ainsi, les joueurs peuvent :
 
 Le terminal mobile Android, stocke chaque match dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de la visualiser ou la purger. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écran d'affichage.
 
-#### Maquette de l'application Android
+#### IHM de l'application Android
 
-![](./images/androidAcceuilEtHistorique.png)
+![](./images/accueilEtConfiguration.png)
 
-![](./images/androidMatchEtConfiguration.png)
+![](./images/gestionEtPartie.png)
 
 #### Recette
 
@@ -117,13 +117,13 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   <tr>
     <td>Lancer un match</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Gérer le déroulement d'un match</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
@@ -132,21 +132,26 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
-    <tr>
+  <tr>
     <td>Consulter l'historique des matchs</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
-    <tr>
+  <tr>
     <td>Purger l'historique</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
   </tr>
-    </tr>
+  <tr>
+    <td>Dialoguer avec l'écran</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
+  </tr>
     <tr>
-    <td>Dialoguer avec les modules</td>
+    <td>Dialoguer avec la table de billard</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
@@ -231,32 +236,32 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   <tr>
     <td>Afficher un écran d'accueil</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Visualiser l’empochage d’une bille</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Visualiser les données de la partie en temps réel</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Visualiser les données du match</td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Dialoguer avec le terminal mobile</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
 </table>
 
@@ -279,8 +284,7 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 - [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
-- [ ] Jouer une partie ou plusieurs parties
-- [ ] Afficher les données de la partie en cours
+- [x] Gérer la casse et une manche
 - [x] Liaison entre la table de billard et le terminal mobile Android
 - [x] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
@@ -288,6 +292,8 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 > Du 24 Mai 2025 au 30 Mai 2025
 
+- [ ] Jouer une ou plusieurs parties
+- [ ] Afficher les données de la partie en cours
 - [ ] Stocker les données de la partie dans la base de données
 
 ### Itération 4
@@ -295,6 +301,20 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 > Du 31 Mai 2025 au 15 Juin 2025
 
 ## Changelog
+
+### Version 0.1
+
+- [x] Créer les maquettes des interfaces
+- [x] Initialiser le dépot
+- [x] Créer les vues Android
+- [x] Paramétrer un match
+- [x] Lancer une ou plusieurs partie(s)
+- [x] Choisir un ou des joueurs existants pour lancer un match
+- [x] Créer un ou des nouveaux joueurs
+- [x] Enregister dans la base de données les nouveaux joueurs
+- [x] Gérer la casse et une manche
+- [x] Liaison entre la table de billard et le terminal mobile Android
+- [x] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
 ## TODO
 
