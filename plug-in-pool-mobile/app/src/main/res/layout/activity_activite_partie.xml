@@ -188,18 +188,7 @@
                     app:srcCompat="@drawable/bille_jaune"
                     tools:ignore="HardcodedText,ImageContrastCheck" />
 
-                <ImageView
-                    android:id="@+id/billeBlanche"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="bille blanche"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:srcCompat="@drawable/bille_blanche"
-                    tools:ignore="HardcodedText" />
-
             </LinearLayout>
-
 
             <ImageView
                 android:id="@+id/imageTableBillard"
@@ -294,16 +283,6 @@
                     app:srcCompat="@drawable/bille_rouge"
                     tools:ignore="HardcodedText,ImageContrastCheck" />
 
-                <ImageView
-                    android:id="@+id/billeNoire"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="bille noire"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:srcCompat="@drawable/bille_noire"
-                    tools:ignore="HardcodedText" />
-
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -312,7 +291,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pied"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/blanc"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -320,14 +299,15 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -400,6 +380,7 @@
                 android:textColor="@color/noir"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/boutonFinMatch"
                 android:layout_width="wrap_content"
@@ -415,6 +396,45 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="232dp"
+            android:layout_height="385dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="567dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <Button
+                android:id="@+id/boutonFaute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/vert"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="320dp"
+                android:minWidth="300dp"
+                android:text="@string/boutonFauteEmpochage"
+                android:textColor="@color/noir"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/boutonBillePoussee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/vert"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="320dp"
+                android:minWidth="300dp"
+                android:text="@string/boutonFauteBillePoussee"
+                android:textColor="@color/noir"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

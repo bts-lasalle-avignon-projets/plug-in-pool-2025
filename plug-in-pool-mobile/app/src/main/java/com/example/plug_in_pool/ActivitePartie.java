@@ -82,13 +82,13 @@ public class ActivitePartie extends AppCompatActivity
         texteJoueur1    = findViewById(R.id.textePourNbPointsJoueur1);
         texteJoueur2    = findViewById(R.id.textePourNbPointsJoueur2);
         joueurActuel    = findViewById(R.id.nomDuJoueur);
-        for(int i = 0; i < 7; i++)
+        for(int i = 0; i < 6; i++)
         {
             int resID =
               getResources().getIdentifier("billeJaune" + (i + 1), "id", getPackageName());
             billesJaunes[i] = findViewById(resID);
         }
-        for(int j = 0; j < 7; j++)
+        for(int j = 0; j < 6; j++)
         {
             int resID =
               getResources().getIdentifier("billeRouge" + (j + 1), "id", getPackageName());
