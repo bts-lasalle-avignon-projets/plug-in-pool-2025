@@ -1,0 +1,632 @@
+format 224
+"widget" // Android::Sdk::sources::android-36::android::widget
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/widget/"
+  java_package "android.widget"
+  classview 132866 "widget"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 156930 "FrameLayout"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@RemoteView
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "FrameLayout is designed to block out an area on the screen to display
+a single item. Generally, FrameLayout should be used to hold a single child view, because it can
+be difficult to organize child views in a way that's scalable to different screen sizes without
+the children overlapping each other. You can, however, add multiple children to a FrameLayout
+and control their position within the FrameLayout by assigning gravity to each child, using the
+<a href=\"FrameLayout.LayoutParams.html#attr_android:layout_gravity\">{@code
+android:layout_gravity}</a> attribute.
+<p>Child views are drawn in a stack, with the most recently added child on top.
+The size of the FrameLayout is the size of its largest child (plus padding), visible
+or not (if the FrameLayout's parent permits). Views that are {@link android.view.View#GONE} are
+used for sizing
+only if {@link #setMeasureAllChildren(boolean) setConsiderGoneChildrenWhenMeasuring()}
+is set to true.
+
+@attr ref android.R.styleable#FrameLayout_measureAllChildren
+"
+      attribute 322178 "DEFAULT_CHILD_GRAVITY"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " Gravity.TOP | Gravity.START"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 322306 "mMeasureAllChildren"
+	package explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@ViewDebug.ExportedProperty(category = \"measurement\")
+@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 322434 "mForegroundPaddingLeft"
+	private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@ViewDebug.ExportedProperty(category = \"padding\")
+@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 322562 "mForegroundPaddingTop"
+	private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@ViewDebug.ExportedProperty(category = \"padding\")
+@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 322690 "mForegroundPaddingRight"
+	private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@ViewDebug.ExportedProperty(category = \"padding\")
+@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 322818 "mForegroundPaddingBottom"
+	private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@ViewDebug.ExportedProperty(category = \"padding\")
+@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 231170 // mMatchParentChildren (<unidirectional association>)
+	relation 231170 --->
+	  a role_name "mMatchParentChildren" init_value " new ArrayList<>(1)" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<View> ${name}${value};
+"
+	    classrelation_ref 231170 // mMatchParentChildren (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      operation 549634 "FrameLayout"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "context" type class_ref 131458 // Context
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 549762 "FrameLayout"
+	public explicit_return_type ""
+	nparams 2
+	  param inout name "context" type class_ref 131458 // Context
+	  param inout name "attrs" type class_ref 134146 // AttributeSet
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}, @Nullable ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 549890 "FrameLayout"
+	public explicit_return_type ""
+	nparams 3
+	  param inout name "context" type class_ref 131458 // Context
+	  param inout name "attrs" type class_ref 134146 // AttributeSet
+	  param in name "defStyleAttr" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}, @Nullable ${t1} ${p1}, @AttrRes ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550018 "FrameLayout"
+	public explicit_return_type ""
+	nparams 4
+	  param inout name "context" type class_ref 131458 // Context
+	  param inout name "attrs" type class_ref 134146 // AttributeSet
+	  param in name "defStyleAttr" explicit_type "int"
+	  param in name "defStyleRes" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}, @Nullable ${t1} ${p1}, @AttrRes ${t2} ${p2}, @StyleRes ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550146 "setForegroundGravity"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "foregroundGravity" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@android.view.RemotableViewMethod
+"
+	
+	
+	
+	comment "Describes how the foreground is positioned. Defaults to START and TOP.
+
+@param foregroundGravity See {@link android.view.Gravity}
+
+@see #getForegroundGravity()
+
+@attr ref android.R.styleable#View_foregroundGravity
+"
+      end
+
+      operation 550274 "generateDefaultLayoutParams"
+	protected explicit_return_type "LayoutParams"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "Returns a set of layout parameters with a width of
+{@link android.view.ViewGroup.LayoutParams#MATCH_PARENT},
+and a height of {@link android.view.ViewGroup.LayoutParams#MATCH_PARENT}.
+"
+      end
+
+      operation 550402 "getPaddingLeftWithForeground"
+	package explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550530 "getPaddingRightWithForeground"
+	package explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550658 "getPaddingTopWithForeground"
+	private explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550786 "getPaddingBottomWithForeground"
+	private explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 550914 "onMeasure"
+	protected explicit_return_type "void"
+	nparams 2
+	  param in name "widthMeasureSpec" explicit_type "int"
+	  param in name "heightMeasureSpec" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 551042 "onLayout"
+	protected explicit_return_type "void"
+	nparams 5
+	  param inout name "changed" explicit_type "boolean"
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "right" explicit_type "int"
+	  param in name "bottom" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 551170 "layoutChildren"
+	package explicit_return_type "void"
+	nparams 5
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "right" explicit_type "int"
+	  param in name "bottom" explicit_type "int"
+	  param inout name "forceLeftGravity" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 551298 "setMeasureAllChildren"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "measureAll" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@android.view.RemotableViewMethod
+"
+	
+	
+	
+	comment "Sets whether to consider all children, or just those in
+the VISIBLE or INVISIBLE state, when measuring. Defaults to false.
+
+@param measureAll true to consider children marked GONE, false otherwise.
+Default value is false.
+
+@attr ref android.R.styleable#FrameLayout_measureAllChildren
+"
+      end
+
+      operation 551426 "getConsiderGoneChildrenWhenMeasuring"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Deprecated
+"
+	
+	
+	
+	comment "Determines whether all children, or just those in the VISIBLE or
+INVISIBLE state, are considered when measuring.
+
+@return Whether all children are considered when measuring.
+
+@deprecated This method is deprecated in favor of
+{@link #getMeasureAllChildren() getMeasureAllChildren()}, which was
+renamed for consistency with
+{@link #setMeasureAllChildren(boolean) setMeasureAllChildren()}.
+"
+      end
+
+      operation 551554 "getMeasureAllChildren"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@InspectableProperty
+"
+	
+	
+	
+	comment "Determines whether all children, or just those in the VISIBLE or
+INVISIBLE state, are considered when measuring.
+
+@return Whether all children are considered when measuring.
+"
+      end
+
+      operation 551682 "generateLayoutParams"
+	public explicit_return_type "LayoutParams"
+	nparams 1
+	  param inout name "attrs" type class_ref 134146 // AttributeSet
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 551810 "shouldDelayChildPressedState"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 551938 "checkLayoutParams"
+	protected explicit_return_type "boolean"
+	nparams 1
+	  param inout name "p" explicit_type "LayoutParams"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 552066 "generateLayoutParams"
+	protected explicit_return_type "LayoutParams"
+	nparams 1
+	  param inout name "lp" explicit_type "LayoutParams"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 552194 "getAccessibilityClassName"
+	public return_type class_ref 133378 // CharSequence
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 552322 "encodeProperties"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "encoder" type class_ref 180482 // ViewHierarchyEncoder
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment " @hide "
+      end
+    end
+
+    class 179714 "ScrollBarDrawable"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 195586 "Toolbar"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 203394 "ListView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 203778 "ImageView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 203906 "TextView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 207106 "Button"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+
+  deploymentview 130050 "widget"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+end

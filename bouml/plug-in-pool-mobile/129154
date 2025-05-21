@@ -1,0 +1,2186 @@
+format 224
+"os" // Android::Sdk::sources::android-36::android::os
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/os/"
+  java_package "android.os"
+  classview 128386 "os"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 129410 "Parcel"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 130946 "Looper"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 136194 "UserHandle"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 136322 "Bundle"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 142338 "RemoteException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 142850 "ParcelFileDescriptor"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 177410 "Message"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 177538 "MessageQueue"
+      visibility public 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@RavenwoodKeepWholeClass
+@RavenwoodRedirectionClass(\"MessageQueue_ravenwood\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Low-level class holding the list of messages to be dispatched by a
+{@link Looper}.  Messages are not added directly to a MessageQueue,
+but rather through {@link Handler} objects associated with the Looper.
+
+<p>You can retrieve the MessageQueue for the current thread with
+{@link Looper#myQueue() Looper.myQueue()}.
+"
+      class 307586 "IdleHandler"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      classrelation 478722 // TAG_L (<unidirectional association>)
+	relation 478722 --->
+	  a role_name "TAG_L" init_value " \"LegacyMessageQueue\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 478722 // TAG_L (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      classrelation 478850 // TAG_C (<unidirectional association>)
+	relation 478850 --->
+	  a role_name "TAG_C" init_value " \"ConcurrentMessageQueue\"" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 478850 // TAG_C (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 532866 "DEBUG"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 532994 "TRACE"
+	class_attribute const_attribute private explicit_type "boolean"
+	init_value " false"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 533122 "mQuitAllowed"
+	const_attribute private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " True if the message queue can be quit.
+"
+      end
+
+      attribute 533250 "mPtr"
+	private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	java_annotation "@UnsupportedAppUsage
+@SuppressWarnings(\"unused\")
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " used by native code"
+      end
+
+      classrelation 478978 // mMessages (<unidirectional association>)
+	relation 478978 --->
+	  a role_name "mMessages" package
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 478978 // mMessages (<unidirectional association>)
+	  b parent class_ref 177410 // Message
+      end
+
+      classrelation 479106 // mLast (<unidirectional association>)
+	relation 479106 --->
+	  a role_name "mLast" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 479106 // mLast (<unidirectional association>)
+	  b parent class_ref 177410 // Message
+      end
+
+      classrelation 479234 // mIdleHandlers (<unidirectional association>)
+	relation 479234 --->
+	  a role_name "mIdleHandlers" init_value " new ArrayList<IdleHandler>()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<IdleHandler> ${name}${value};
+"
+	    java_annotation "@UnsupportedAppUsage
+"
+	    classrelation_ref 479234 // mIdleHandlers (<unidirectional association>)
+	  b parent class_ref 166274 // ArrayList
+      end
+
+      class 307714 "FileDescriptorRecord"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      classrelation 479362 // mFileDescriptorRecords (<unidirectional association>)
+	relation 479362 --->
+	  a role_name "mFileDescriptorRecords" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}<FileDescriptorRecord> ${name}${value};
+"
+	    classrelation_ref 479362 // mFileDescriptorRecords (<unidirectional association>)
+	  b parent class_ref 145794 // SparseArray
+      end
+
+      classrelation 479490 // mPendingIdleHandlers (<unidirectional association>)
+	relation 479490 --->
+	  a role_name "mPendingIdleHandlers" multiplicity "[]" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	    classrelation_ref 479490 // mPendingIdleHandlers (<unidirectional association>)
+	  b parent class_ref 307586 // IdleHandler
+      end
+
+      attribute 533378 "mQuitting"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 533506 "mBlocked"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Indicates whether next() is blocked waiting in pollOnce() with a non-zero timeout.
+"
+      end
+
+      attribute 533634 "mAsyncMessageCount"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Tracks the number of async message. We use this in enqueueMessage() to avoid searching the
+ queue for async messages when inserting a message at the tail.
+"
+      end
+
+      classrelation 479618 // mMessageCount (<unidirectional association>)
+	relation 479618 --->
+	  a role_name "mMessageCount" init_value " new AtomicLong()" const_relation private
+	    comment "
+@hide
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 479618 // mMessageCount (<unidirectional association>)
+	  b parent class_ref 307842 // AtomicLong
+      end
+
+      classrelation 479746 // mThread (<unidirectional association>)
+	relation 479746 --->
+	  a role_name "mThread" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 479746 // mThread (<unidirectional association>)
+	  b parent class_ref 192898 // Thread
+      end
+
+      attribute 533762 "mTid"
+	const_attribute private explicit_type "long"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 533890 "mUseConcurrent"
+	const_attribute private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "Select between two implementations of message queue. The legacy implementation is used
+by default as it provides maximum compatibility with applications and tests that
+reach into MessageQueue via the mMessages field. The concurrent implemmentation is used for
+system processes and provides a higher level of concurrency and higher enqueue throughput
+than the legacy implementation.
+
+"
+      end
+
+      classrelation 479874 // sIsProcessAllowedToUseConcurrent (<unidirectional association>)
+	relation 479874 --->
+	  a role_name "sIsProcessAllowedToUseConcurrent" init_value " null" class_relation private
+	    comment "
+Caches process-level checks that determine `mUseConcurrent`.
+This is to avoid redoing checks that shouldn't change during the process's lifetime.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 479874 // sIsProcessAllowedToUseConcurrent (<unidirectional association>)
+	  b parent class_ref 198914 // Boolean
+      end
+
+      operation 1245186 "nativeInit"
+	class_operation private explicit_return_type "long"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${)}${throws};
+s"
+	java_annotation "@RavenwoodRedirect
+"
+	
+	
+	
+      end
+
+      operation 1245314 "nativeDestroy"
+	class_operation private explicit_return_type "void"
+	nparams 1
+	  param in name "ptr" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${t0} ${p0}${)}${throws};
+s"
+	java_annotation "@RavenwoodRedirect
+"
+	
+	
+	
+      end
+
+      operation 1245442 "nativePollOnce"
+	private explicit_return_type "void"
+	nparams 2
+	  param in name "ptr" explicit_type "long"
+	  param in name "timeoutMillis" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws};
+s"
+	java_annotation "@UnsupportedAppUsage
+@RavenwoodRedirect
+"
+	
+	
+	
+      end
+
+      operation 1245570 "nativeWake"
+	class_operation private explicit_return_type "void"
+	nparams 1
+	  param in name "ptr" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${t0} ${p0}${)}${throws};
+s"
+	java_annotation "@RavenwoodRedirect
+"
+	
+	
+	
+	comment "non-static for callbacks"
+      end
+
+      operation 1245698 "nativeIsPolling"
+	class_operation private explicit_return_type "boolean"
+	nparams 1
+	  param in name "ptr" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${t0} ${p0}${)}${throws};
+s"
+	java_annotation "@RavenwoodRedirect
+"
+	
+	
+	
+      end
+
+      operation 1245826 "nativeSetFileDescriptorEvents"
+	class_operation private explicit_return_type "void"
+	nparams 3
+	  param in name "ptr" explicit_type "long"
+	  param in name "fd" explicit_type "int"
+	  param in name "events" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}native ${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws};
+s"
+	java_annotation "@RavenwoodRedirect
+"
+	
+	
+	
+      end
+
+      operation 1245954 "MessageQueue"
+	package explicit_return_type ""
+	nparams 1
+	  param inout name "quitAllowed" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246082 "initIsProcessAllowedToUseConcurrent"
+	class_operation private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246210 "throwIfNotTest"
+	class_operation private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@RavenwoodReplace
+"
+	
+	
+	
+      end
+
+      operation 1246338 "throwIfNotTest$ravenwood"
+	class_operation private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246466 "isInstrumenting"
+	class_operation private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246594 "finalize"
+	protected explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Throwable"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 1246722 "decAndTraceMessageCount"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246850 "incAndTraceMessageCount"
+	private explicit_return_type "void"
+	nparams 2
+	  param inout name "msg" type class_ref 177410 // Message
+	  param in name "when" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1246978 "traceMessageCount"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " @hide "
+      end
+
+      operation 1247106 "dispose"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " Disposes of the underlying message queue.
+ Must only be called on the looper thread or the finalizer."
+      end
+
+      class 307970 "MatchDeliverableMessages"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 480002 // <generalisation>
+	  relation 480002 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 480002 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	operation 1247234 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      class 308098 "MessageCompare"
+	abstract visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      class 308226 "MessageNode"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      classrelation 480130 // mMatchDeliverableMessages (<unidirectional association>)
+	relation 480130 --->
+	  a role_name "mMatchDeliverableMessages" init_value "
+            new MatchDeliverableMessages()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 480130 // mMatchDeliverableMessages (<unidirectional association>)
+	  b parent class_ref 307970 // MatchDeliverableMessages
+      end
+
+      operation 1247362 "isIdleConcurrent"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1247490 "isIdleLegacy"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1247618 "isIdle"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Returns true if the looper has no pending messages which are due to be processed.
+
+<p>This method is safe to call from any thread.
+
+@return True if the looper is idle.
+"
+      end
+
+      operation 1247746 "addIdleHandlerConcurrent"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1247874 "addIdleHandlerLegacy"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1248002 "addIdleHandler"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Add a new {@link IdleHandler} to this message queue.  This may be
+removed automatically for you by returning false from
+{@link IdleHandler#queueIdle IdleHandler.queueIdle()} when it is
+invoked, or explicitly removing it with {@link #removeIdleHandler}.
+
+<p>This method is safe to call from any thread.
+
+@param handler The IdleHandler to be added.
+"
+      end
+
+      operation 1248130 "removeIdleHandlerConcurrent"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1248258 "removeIdleHandlerLegacy"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1248386 "removeIdleHandler"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "handler" type class_ref 307586 // IdleHandler
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remove an {@link IdleHandler} from the queue that was previously added
+with {@link #addIdleHandler}.  If the given object is not currently
+in the idle list, nothing is done.
+
+<p>This method is safe to call from any thread.
+
+@param handler The IdleHandler to be removed.
+"
+      end
+
+      operation 1248514 "isPollingConcurrent"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1248642 "isPollingLegacy"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1248770 "isPolling"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Returns whether this looper's thread is currently polling for more work to do.
+This is a good signal that the loop is still alive rather than being stuck
+handling a callback.  Note that this method is intrinsically racy, since the
+state of the loop can change before you get the result back.
+
+<p>This method is safe to call from any thread.
+
+@return True if the looper is currently polling for events.
+@hide
+"
+      end
+
+      operation 1248898 "isPollingLocked"
+	private explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1249026 "addOnFileDescriptorEventListenerConcurrent"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	  param in name "events" explicit_type "int"
+	  param inout name "listener" type class_ref 308354 // OnFileDescriptorEventListener
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @OnFileDescriptorEventListener.Events ${t1} ${p1}, @NonNull ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      class 308354 "OnFileDescriptorEventListener"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      operation 1249154 "addOnFileDescriptorEventListenerLegacy"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	  param in name "events" explicit_type "int"
+	  param inout name "listener" type class_ref 308354 // OnFileDescriptorEventListener
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @OnFileDescriptorEventListener.Events ${t1} ${p1}, @NonNull ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1249282 "addOnFileDescriptorEventListener"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	  param in name "events" explicit_type "int"
+	  param inout name "listener" type class_ref 308354 // OnFileDescriptorEventListener
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, @OnFileDescriptorEventListener.Events ${t1} ${p1}, @NonNull ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@RavenwoodThrow(blockedBy = android.os.ParcelFileDescriptor.class)
+"
+	
+	
+	
+	comment "Adds a file descriptor listener to receive notification when file descriptor
+related events occur.
+<p>
+If the file descriptor has already been registered, the specified events
+and listener will replace any that were previously associated with it.
+It is not possible to set more than one listener per file descriptor.
+</p><p>
+It is important to always unregister the listener when the file descriptor
+is no longer of use.
+</p>
+
+@param fd The file descriptor for which a listener will be registered.
+@param events The set of events to receive: a combination of the
+{@link OnFileDescriptorEventListener#EVENT_INPUT},
+{@link OnFileDescriptorEventListener#EVENT_OUTPUT}, and
+{@link OnFileDescriptorEventListener#EVENT_ERROR} event masks.  If the requested
+set of events is zero, then the listener is unregistered.
+@param listener The listener to invoke when file descriptor events occur.
+
+@see OnFileDescriptorEventListener
+@see #removeOnFileDescriptorEventListener
+"
+      end
+
+      operation 1249410 "removeOnFileDescriptorEventListenerConcurrent"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1249538 "removeOnFileDescriptorEventListenerLegacy"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1249666 "removeOnFileDescriptorEventListener"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@RavenwoodThrow(blockedBy = android.os.ParcelFileDescriptor.class)
+"
+	
+	
+	
+	comment "Removes a file descriptor listener.
+<p>
+This method does nothing if no listener has been registered for the
+specified file descriptor.
+</p>
+
+@param fd The file descriptor whose listener will be unregistered.
+
+@see OnFileDescriptorEventListener
+@see #addOnFileDescriptorEventListener
+"
+      end
+
+      operation 1249794 "updateOnFileDescriptorEventListenerLocked"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "fd" type class_ref 143874 // FileDescriptor
+	  param in name "events" explicit_type "int"
+	  param inout name "listener" type class_ref 308354 // OnFileDescriptorEventListener
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@RavenwoodThrow(blockedBy = android.os.ParcelFileDescriptor.class)
+"
+	
+	
+	
+      end
+
+      operation 1249922 "dispatchEvents"
+	private explicit_return_type "int"
+	nparams 2
+	  param in name "fd" explicit_type "int"
+	  param in name "events" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
+"
+	
+	
+	
+	comment " Called from native code."
+      end
+
+      classrelation 480258 // mMessagesDelivered (<unidirectional association>)
+	relation 480258 --->
+	  a role_name "mMessagesDelivered" init_value " new AtomicLong()" class_relation const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 480258 // mMessagesDelivered (<unidirectional association>)
+	  b parent class_ref 307842 // AtomicLong
+      end
+
+      attribute 534018 "mNextPollTimeoutMillis"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " This is only read/written from the Looper thread. For use with Concurrent MQ 
+"
+      end
+
+      attribute 534146 "mMessageDirectlyQueued"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 1250050 "nextMessage"
+	private return_type class_ref 177410 // Message
+	nparams 2
+	  param inout name "peek" explicit_type "boolean"
+	  param inout name "returnEarliest" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250178 "nextConcurrent"
+	private return_type class_ref 177410 // Message
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250306 "nextLegacy"
+	private return_type class_ref 177410 // Message
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250434 "next"
+	package return_type class_ref 177410 // Message
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@UnsupportedAppUsage
+"
+	
+	
+	
+      end
+
+      operation 1250562 "quit"
+	package explicit_return_type "void"
+	nparams 1
+	  param inout name "safe" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250690 "postSyncBarrierConcurrent"
+	private explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250818 "postSyncBarrierLegacy"
+	private explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1250946 "postSyncBarrier"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@UnsupportedAppUsage
+@TestApi
+"
+	
+	
+	
+	comment "Posts a synchronization barrier to the Looper's message queue.
+
+Message processing occurs as usual until the message queue encounters the
+synchronization barrier that has been posted.  When the barrier is encountered,
+later synchronous messages in the queue are stalled (prevented from being executed)
+until the barrier is released by calling {@link #removeSyncBarrier} and specifying
+the token that identifies the synchronization barrier.
+
+This method is used to immediately postpone execution of all subsequently posted
+synchronous messages until a condition is met that releases the barrier.
+Asynchronous messages (see {@link Message#isAsynchronous} are exempt from the barrier
+and continue to be processed as usual.
+
+This call must be always matched by a call to {@link #removeSyncBarrier} with
+the same token to ensure that the message queue resumes normal operation.
+Otherwise the application will probably hang!
+
+@return A token that uniquely identifies the barrier.  This token must be
+passed to {@link #removeSyncBarrier} to release the barrier.
+
+@hide
+"
+      end
+
+      operation 1251074 "postSyncBarrier"
+	private explicit_return_type "int"
+	nparams 1
+	  param in name "when" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      class 308482 "MatchBarrierToken"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 480386 // <generalisation>
+	  relation 480386 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 480386 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	attribute 534274 "mBarrierToken"
+	  package explicit_type "int"
+	  cpp_decl ""
+	  java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	operation 1251202 "MatchBarrierToken"
+	  package explicit_return_type ""
+	  nparams 1
+	    param in name "token" explicit_type "int"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 1251330 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      operation 1251458 "removeSyncBarrierConcurrent"
+	private explicit_return_type "void"
+	nparams 1
+	  param in name "token" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1251586 "removeSyncBarrierLegacy"
+	private explicit_return_type "void"
+	nparams 1
+	  param in name "token" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1251714 "removeSyncBarrier"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "token" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@UnsupportedAppUsage
+@TestApi
+"
+	
+	
+	
+	comment "Removes a synchronization barrier.
+
+@param token The synchronization barrier token that was returned by
+{@link #postSyncBarrier}.
+
+@throws IllegalStateException if the barrier was not found.
+
+@hide
+"
+      end
+
+      operation 1251842 "enqueueMessageConcurrent"
+	private explicit_return_type "boolean"
+	nparams 2
+	  param inout name "msg" type class_ref 177410 // Message
+	  param in name "when" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1251970 "enqueueMessageLegacy"
+	private explicit_return_type "boolean"
+	nparams 2
+	  param inout name "msg" type class_ref 177410 // Message
+	  param in name "when" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1252098 "enqueueMessage"
+	package explicit_return_type "boolean"
+	nparams 2
+	  param inout name "msg" type class_ref 177410 // Message
+	  param in name "when" explicit_type "long"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1252226 "legacyPeekOrPoll"
+	private return_type class_ref 177410 // Message
+	nparams 1
+	  param inout name "peek" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1252354 "peekWhenForTest"
+	package return_type class_ref 185730 // Long
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@SuppressLint(\"VisiblySynchronized\")
+"
+	
+	
+	
+	comment "Get the timestamp of the next executable message in our priority queue.
+Returns null if there are no messages ready for delivery.
+
+Caller must ensure that this doesn't race 'next' from the Looper thread.
+"
+      end
+
+      operation 1252482 "pollForTest"
+	package return_type class_ref 177410 // Message
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@SuppressLint(\"VisiblySynchronized\")
+@Nullable
+"
+	
+	
+	
+	comment "Return the next executable message in our priority queue.
+Returns null if there are no messages ready for delivery
+
+Caller must ensure that this doesn't race 'next' from the Looper thread.
+"
+      end
+
+      operation 1252610 "isBlockedOnSyncBarrier"
+	package explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return true if we are blocked on a sync barrier
+
+Calls to this method must not be allowed to race with `next`.
+Specifically, the Looper thread must be paused before calling this method,
+and may not be resumed until after returning from this method.
+"
+      end
+
+      class 308610 "MatchHandlerWhatAndObject"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 480514 // <generalisation>
+	  relation 480514 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 480514 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	operation 1252738 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 480642 // mMatchHandlerWhatAndObject (<unidirectional association>)
+	relation 480642 --->
+	  a role_name "mMatchHandlerWhatAndObject" init_value "
+            new MatchHandlerWhatAndObject()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 480642 // mMatchHandlerWhatAndObject (<unidirectional association>)
+	  b parent class_ref 308610 // MatchHandlerWhatAndObject
+      end
+
+      operation 1252866 "hasMessagesConcurrent"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1252994 "hasMessagesLegacy"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1253122 "hasMessages"
+	package explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      class 308738 "MatchHandlerWhatAndObjectEquals"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 480770 // <generalisation>
+	  relation 480770 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 480770 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	operation 1253250 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 480898 // mMatchHandlerWhatAndObjectEquals (<unidirectional association>)
+	relation 480898 --->
+	  a role_name "mMatchHandlerWhatAndObjectEquals" init_value "
+            new MatchHandlerWhatAndObjectEquals()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 480898 // mMatchHandlerWhatAndObjectEquals (<unidirectional association>)
+	  b parent class_ref 308738 // MatchHandlerWhatAndObjectEquals
+      end
+
+      operation 1253378 "hasEqualMessagesConcurrent"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1253506 "hasEqualMessagesLegacy"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1253634 "hasEqualMessages"
+	package explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      class 308866 "MatchHandlerRunnableAndObject"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 481026 // <generalisation>
+	  relation 481026 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 481026 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	operation 1253762 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 481154 // mMatchHandlerRunnableAndObject (<unidirectional association>)
+	relation 481154 --->
+	  a role_name "mMatchHandlerRunnableAndObject" init_value "
+            new MatchHandlerRunnableAndObject()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 481154 // mMatchHandlerRunnableAndObject (<unidirectional association>)
+	  b parent class_ref 308866 // MatchHandlerRunnableAndObject
+      end
+
+      operation 1253890 "hasMessagesConcurrent"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param inout name "r" explicit_type "Runnable"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254018 "hasMessagesLegacy"
+	private explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param inout name "r" explicit_type "Runnable"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254146 "hasMessages"
+	package explicit_return_type "boolean"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param inout name "r" explicit_type "Runnable"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
+"
+	
+	
+	
+      end
+
+      class 308994 "MatchHandler"
+	visibility private 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 481282 // <generalisation>
+	  relation 481282 ---|>
+	    a public
+	      java "${type}"
+	      classrelation_ref 481282 // <generalisation>
+	    b parent class_ref 308098 // MessageCompare
+	end
+
+	operation 1254274 "compareMessage"
+	  public explicit_return_type "boolean"
+	  nparams 6
+	    param inout name "n" type class_ref 308226 // MessageNode
+	    param inout name "h" explicit_type "Handler"
+	    param in name "what" explicit_type "int"
+	    param inout name "object" type class_ref 128258 // Object
+	    param inout name "r" explicit_type "Runnable"
+	    param in name "when" explicit_type "long"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	end
+      end
+
+      classrelation 481410 // mMatchHandler (<unidirectional association>)
+	relation 481410 --->
+	  a role_name "mMatchHandler" init_value " new MatchHandler()" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 481410 // mMatchHandler (<unidirectional association>)
+	  b parent class_ref 308994 // MatchHandler
+      end
+
+      operation 1254402 "hasMessagesConcurrent"
+	private explicit_return_type "boolean"
+	nparams 1
+	  param inout name "h" explicit_type "Handler"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254530 "hasMessagesLegacy"
+	private explicit_return_type "boolean"
+	nparams 1
+	  param inout name "h" explicit_type "Handler"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254658 "hasMessages"
+	package explicit_return_type "boolean"
+	nparams 1
+	  param inout name "h" explicit_type "Handler"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254786 "removeMessagesConcurrent"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1254914 "removeMessagesLegacy"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1255042 "removeMessages"
+	package explicit_return_type "void"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1255170 "removeEqualMessagesConcurrent"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	  param inout name "object" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 1255298 "removeEqualMessagesLegacy"
+	public explicit_return_type ""
+	nparams 2
+	  param inout name "h" explicit_type "Handler"
+	  param in name "what" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 194690 "PersistableBundle"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 194946 "CancellationSignal"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 202114 "RemoteCallback"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 284674 "ShellCallback"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 284802 "ResultReceiver"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 285314 "TransactionTracker"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 286466 "IBinderCallback"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 290050 "IpcDataCache"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 290178 "QueryHandler"
+	abstract visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 294018 "Debug"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 294146 "MemoryInfo"
+	visibility package 
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 294274 "LocaleList"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 294786 "WorkSource"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 296194 "TransactionTooLargeException"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 301826 "DdmSyncStageUpdater"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 305410 "SharedMemory"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+
+  deploymentview 128130 "os"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+
+  package_ref 141954 // instrumentation
+end

@@ -1,0 +1,62 @@
+format 224
+"exceptions" // Android::Sdk::sources::android-36::android::adservices::exceptions
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/adservices/exceptions/"
+  java_package "android.adservices.exceptions"
+  classview 137218 "exceptions"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+  end
+
+  deploymentview 131330 "exceptions"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+end

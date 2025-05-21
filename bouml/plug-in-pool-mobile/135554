@@ -1,0 +1,69 @@
+format 224
+"stream" // Android::Sdk::sources::android-36::java::util::stream
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/java/util/stream/"
+  java_package "java.util.stream"
+  classview 134146 "stream"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 184322 "Stream"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+end

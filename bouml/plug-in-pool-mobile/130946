@@ -1,0 +1,113 @@
+format 224
+"database" // Android::Sdk::sources::android-36::android::database
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/database/"
+  java_package "android.database"
+  package_ref 131074 // sqlite
+
+  classview 130178 "database"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 135554 "DatabaseErrorHandler"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 192258 "Cursor"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 204674 "DataSetObserver"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 204930 "DataSetObservable"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+end

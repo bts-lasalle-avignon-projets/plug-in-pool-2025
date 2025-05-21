@@ -1,0 +1,97 @@
+class BaseDeDonnees
+!!!1260162.java!!!	BaseDeDonnees(inout context : Context)
+        super(context, NOM_BDD, null, VERSION_BDD);
+        Log.d(TAG, "BaseDeDonnees()");
+        sqlite = this.getWritableDatabase();
+!!!1260290.java!!!	getInstance(inout context : Context) : BaseDeDonnees
+        Log.d(TAG, "getInstance()");
+        if(baseDeDonnees == null)
+        {
+            baseDeDonnees = new BaseDeDonnees(context);
+        }
+        return baseDeDonnees;
+!!!1260418.java!!!	effacer() : void
+        Log.d(TAG, "effacer()");
+        onUpgrade(sqlite, sqlite.getVersion(), sqlite.getVersion() + 1);
+!!!1260546.java!!!	onCreate(inout baseDeDonnees : SQLiteDatabase) : void
+        Log.d(TAG, "onCreate()");
+        baseDeDonnees.execSQL(CREER_TABLE_JOUEURS);
+        baseDeDonnees.execSQL(CREER_TABLE_MATCHS);
+        baseDeDonnees.execSQL(CREER_TABLE_MANCHES);
+        insererDonnees(baseDeDonnees);
+!!!1260674.java!!!	onUpgrade(inout baseDeDonnees : SQLiteDatabase, in oldVersion : int, in newVersion : int) : void
+        Log.d(TAG, "onUpgrade()");
+        baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_MANCHES);
+        baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_MATCHS);
+        baseDeDonnees.execSQL("DROP TABLE IF EXISTS " + TABLE_JOUEURS);
+        baseDeDonnees.setVersion(newVersion);
+        onCreate(baseDeDonnees);
+!!!1260802.java!!!	insererDonnees(inout baseDeDonnees : SQLiteDatabase) : void
+        Log.d(TAG, "insererDonnees()");
+        // Pour les tests
+        baseDeDonnees.execSQL(AJOUTER_JOUEURS);
+!!!1260930.java!!!	getNomsJoueurs() : ArrayList
+        ArrayList<String> joueurs = new ArrayList<String>();
+        Cursor            curseur = sqlite.rawQuery("SELECT nom,prenom FROM joueurs", null);
+        if(curseur.moveToFirst())
+        {
+            do
+            {
+                String nomJoueur    = curseur.getString(0);
+                String prenomJoueur = curseur.getString(1);
+                joueurs.add(prenomJoueur + " " + nomJoueur);
+            } while(curseur.moveToNext());
+        }
+        curseur.close();
+        Log.d(TAG, "getJoueurs() " + joueurs);
+
+        return joueurs;
+!!!1261058.java!!!	ajouterJoueur(inout nom : String, inout prenom : String) : void
+        try
+        {
+            Log.d(TAG, "ajouterJoueur(" + nom + ", " + prenom + ")");
+            sqlite.execSQL("INSERT INTO joueurs (nom, prenom) VALUES ('" + nom + "', '" + prenom +
+                           "')");
+        }
+        catch(SQLiteConstraintException e)
+        {
+            Log.d(TAG, "ajouterJoueur() joueur déjà présent dans la base de données !");
+        }
+!!!1261186.java!!!	creerMatch(in idJoueur1 : int, in idJoueur2 : int, in nbPartiesGagnantes : int) : void
+        String horodatage = obtenirHorodatageActuel();
+        try
+        {
+            Log.d(TAG, "ajouterMatch(" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", " + horodatage + ")");
+            sqlite.execSQL("INSERT INTO matchs (idJoueur1, idJoueur2, nbPartiesGagnantes, fini, horodatage) " +
+                    "VALUES (" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", 0, '" + horodatage + "')");
+        }
+        catch (SQLiteConstraintException e)
+        {
+            Log.d(TAG, "ajouterMatch() : erreur de contrainte, peut-être une clé étrangère invalide !");
+        }
+!!!1261314.java!!!	obtenirHorodatageActuel() : String
+        SimpleDateFormat horodatage = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return horodatage.format(new Date());
+!!!1261442.java!!!	getIdJoueur(inout nom : String, inout prenom : String) : int
+        int idJoueur = -1;
+
+        try
+        {
+            Cursor curseur = sqlite.rawQuery(
+                    "SELECT idJoueur FROM joueurs WHERE nom = ? AND prenom = ?",
+                    new String[]{nom, prenom}
+            );
+
+            if (curseur.moveToFirst())
+            {
+                idJoueur = curseur.getInt(0);
+            }
+
+            curseur.close();
+        }
+        catch (Exception e)
+        {
+            Log.d(TAG, "getIdJoueur() : erreur - " + e.getMessage());
+        }
+
+        return idJoueur;

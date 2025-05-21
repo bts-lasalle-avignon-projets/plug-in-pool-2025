@@ -1,0 +1,168 @@
+format 224
+"util" // Android::Sdk::sources::android-36::com::android::internal::util
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/com/android/internal/util/"
+  java_package "com.android.internal.util"
+  classview 130946 "util"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 140674 "RingBuffer"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 141698 "SyncResultReceiver"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 151042 "FunctionalUtils"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      class 151170 "RemoteExceptionIgnoringConsumer"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      class 286210 "ThrowingRunnable"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+
+      class 286338 "ThrowingSupplier"
+	visibility package stereotype "interface"
+	cpp_decl ""
+	java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+      end
+    end
+
+    class 269314 "VirtualRefBasePtr"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 289538 "RateLimitingCache"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+  end
+
+  package_ref 136194 // dump
+end

@@ -1,0 +1,14 @@
+class Empoche
+!!!1265794.java!!!	empocherPremiereBille(in bille : int) : String
+        CouleurBille couleur = CouleurBille.values()[bille];
+        switch (couleur)
+        {
+            case ROUGE:
+                return "R";
+            case JAUNE:
+                return "J";
+            case AUCUNE:
+                return "A";
+            default:
+                return "";
+        }

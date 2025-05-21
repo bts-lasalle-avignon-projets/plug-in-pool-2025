@@ -1,0 +1,9 @@
+class Joueur
+!!!129450.java!!!	Joueur(in nom : String, in prenom : String, in points : int, in id : int)
+        Log.d(TAG,
+              "Produit() nom = " + nom + " - prenom = " + prenom + " - points = " + points +
+                " - id = " + id);
+        this.nom    = nom;
+        this.prenom = prenom;
+        this.points = points;
+        this.id     = id;

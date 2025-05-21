@@ -1,0 +1,61 @@
+format 224
+
+classcanvas 128042 class_ref 128554 // EcranPlugInPool
+  classdiagramsettings member_max_width 0 end
+  xyz 29 33 2000
+end
+classcanvas 128170 class_ref 128810 // PlugInPool
+  classdiagramsettings member_max_width 0 end
+  xyz 757 33 2006
+end
+classcanvas 128426 class_ref 128938 // Empoche
+  classdiagramsettings member_max_width 0 end
+  xyz 32 720 2000
+end
+classcanvas 128554 class_ref 129066 // Joueur
+  classdiagramsettings member_max_width 0 end
+  xyz 606 678 3005
+end
+classcanvas 128810 class_ref 129194 // Manche
+  classdiagramsettings member_max_width 0 end
+  xyz 1513 221 3011
+end
+classcanvas 129066 class_ref 129322 // Match
+  classdiagramsettings member_max_width 0 end
+  xyz 711 242 3017
+end
+classcanvas 129450 class_ref 128170 // CommunicationBluetooth
+  classdiagramsettings member_max_width 0 end
+  xyz 1397 33 3005
+end
+relationcanvas 128298 relation_ref 128426 // <unidirectional association>
+  from ref 128042 z 2007 to ref 128170
+  role_a_pos 653 47 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128682 relation_ref 128810 // <directional composition>
+  from ref 128554 z 3006 stereotype "<<QList>>" xyz 489.5 756 3006 to ref 128426
+  role_a_pos 470 731 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128938 relation_ref 128938 // <directional composition>
+  from ref 128810 z 3012 stereotype "<<QList>>" xyz 1235 561 3012 to ref 128554
+  role_a_pos 1076 646 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129194 relation_ref 129194 // <directional composition>
+  from ref 129066 z 3018 stereotype "<<QList>>" xyz 904.5 527.5 3018 to ref 128554
+  role_a_pos 958 652 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129322 relation_ref 129322 // <directional composition>
+  from ref 129066 z 3018 stereotype "<<QList>>" xyz 1305 310 3018 to ref 128810
+  role_a_pos 1422 285 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129578 relation_ref 129578 // <unidirectional association>
+  from ref 128170 z 3006 to ref 129450
+  role_a_pos 1179 47 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

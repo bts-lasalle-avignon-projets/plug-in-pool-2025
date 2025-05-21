@@ -1,0 +1,239 @@
+class FrameLayout
+!!!549634.java!!!	FrameLayout(inout context : Context)
+        super(context);
+!!!549762.java!!!	FrameLayout(inout context : Context, inout attrs : AttributeSet)
+        this(context, attrs, 0);
+!!!549890.java!!!	FrameLayout(inout context : Context, inout attrs : AttributeSet, in defStyleAttr : int)
+        this(context, attrs, defStyleAttr, 0);
+!!!550018.java!!!	FrameLayout(inout context : Context, inout attrs : AttributeSet, in defStyleAttr : int, in defStyleRes : int)
+        super(context, attrs, defStyleAttr, defStyleRes);
+
+        final TypedArray a = context.obtainStyledAttributes(
+                attrs, R.styleable.FrameLayout, defStyleAttr, defStyleRes);
+        saveAttributeDataForStyleable(context, R.styleable.FrameLayout,
+                attrs, a, defStyleAttr, defStyleRes);
+
+        if (a.getBoolean(R.styleable.FrameLayout_measureAllChildren, false)) {
+            setMeasureAllChildren(true);
+        }
+
+        a.recycle();
+!!!550146.java!!!	setForegroundGravity(in foregroundGravity : int) : void
+        if (getForegroundGravity() != foregroundGravity) {
+            super.setForegroundGravity(foregroundGravity);
+
+            // calling get* again here because the set above may apply default constraints
+            final Drawable foreground = getForeground();
+            if (getForegroundGravity() == Gravity.FILL && foreground != null) {
+                Rect padding = new Rect();
+                if (foreground.getPadding(padding)) {
+                    mForegroundPaddingLeft = padding.left;
+                    mForegroundPaddingTop = padding.top;
+                    mForegroundPaddingRight = padding.right;
+                    mForegroundPaddingBottom = padding.bottom;
+                }
+            } else {
+                mForegroundPaddingLeft = 0;
+                mForegroundPaddingTop = 0;
+                mForegroundPaddingRight = 0;
+                mForegroundPaddingBottom = 0;
+            }
+
+            requestLayout();
+        }
+!!!550274.java!!!	generateDefaultLayoutParams() : LayoutParams
+        return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+!!!550402.java!!!	getPaddingLeftWithForeground() : int
+        return isForegroundInsidePadding() ? Math.max(mPaddingLeft, mForegroundPaddingLeft) :
+            mPaddingLeft + mForegroundPaddingLeft;
+!!!550530.java!!!	getPaddingRightWithForeground() : int
+        return isForegroundInsidePadding() ? Math.max(mPaddingRight, mForegroundPaddingRight) :
+            mPaddingRight + mForegroundPaddingRight;
+!!!550658.java!!!	getPaddingTopWithForeground() : int
+        return isForegroundInsidePadding() ? Math.max(mPaddingTop, mForegroundPaddingTop) :
+            mPaddingTop + mForegroundPaddingTop;
+!!!550786.java!!!	getPaddingBottomWithForeground() : int
+        return isForegroundInsidePadding() ? Math.max(mPaddingBottom, mForegroundPaddingBottom) :
+            mPaddingBottom + mForegroundPaddingBottom;
+!!!550914.java!!!	onMeasure(in widthMeasureSpec : int, in heightMeasureSpec : int) : void
+        int count = getChildCount();
+
+        final boolean measureMatchParentChildren =
+                MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY ||
+                MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY;
+        mMatchParentChildren.clear();
+
+        int maxHeight = 0;
+        int maxWidth = 0;
+        int childState = 0;
+
+        for (int i = 0; i < count; i++) {
+            final View child = getChildAt(i);
+            if (mMeasureAllChildren || child.getVisibility() != GONE) {
+                measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
+                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                maxWidth = Math.max(maxWidth,
+                        child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin);
+                maxHeight = Math.max(maxHeight,
+                        child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin);
+                childState = combineMeasuredStates(childState, child.getMeasuredState());
+                if (measureMatchParentChildren) {
+                    if (lp.width == LayoutParams.MATCH_PARENT ||
+                            lp.height == LayoutParams.MATCH_PARENT) {
+                        mMatchParentChildren.add(child);
+                    }
+                }
+            }
+        }
+
+        // Account for padding too
+        maxWidth += getPaddingLeftWithForeground() + getPaddingRightWithForeground();
+        maxHeight += getPaddingTopWithForeground() + getPaddingBottomWithForeground();
+
+        // Check against our minimum height and width
+        maxHeight = Math.max(maxHeight, getSuggestedMinimumHeight());
+        maxWidth = Math.max(maxWidth, getSuggestedMinimumWidth());
+
+        // Check against our foreground's minimum height and width
+        final Drawable drawable = getForeground();
+        if (drawable != null) {
+            maxHeight = Math.max(maxHeight, drawable.getMinimumHeight());
+            maxWidth = Math.max(maxWidth, drawable.getMinimumWidth());
+        }
+
+        setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
+                resolveSizeAndState(maxHeight, heightMeasureSpec,
+                        childState << MEASURED_HEIGHT_STATE_SHIFT));
+
+        count = mMatchParentChildren.size();
+        if (count > 1) {
+            for (int i = 0; i < count; i++) {
+                final View child = mMatchParentChildren.get(i);
+                final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+
+                final int childWidthMeasureSpec;
+                if (lp.width == LayoutParams.MATCH_PARENT) {
+                    final int width = Math.max(0, getMeasuredWidth()
+                            - getPaddingLeftWithForeground() - getPaddingRightWithForeground()
+                            - lp.leftMargin - lp.rightMargin);
+                    childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
+                            width, MeasureSpec.EXACTLY);
+                } else {
+                    childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec,
+                            getPaddingLeftWithForeground() + getPaddingRightWithForeground() +
+                            lp.leftMargin + lp.rightMargin,
+                            lp.width);
+                }
+
+                final int childHeightMeasureSpec;
+                if (lp.height == LayoutParams.MATCH_PARENT) {
+                    final int height = Math.max(0, getMeasuredHeight()
+                            - getPaddingTopWithForeground() - getPaddingBottomWithForeground()
+                            - lp.topMargin - lp.bottomMargin);
+                    childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(
+                            height, MeasureSpec.EXACTLY);
+                } else {
+                    childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec,
+                            getPaddingTopWithForeground() + getPaddingBottomWithForeground() +
+                            lp.topMargin + lp.bottomMargin,
+                            lp.height);
+                }
+
+                child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+            }
+        }
+!!!551042.java!!!	onLayout(inout changed : boolean, in left : int, in top : int, in right : int, in bottom : int) : void
+        layoutChildren(left, top, right, bottom, false /* no force left gravity */);
+!!!551170.java!!!	layoutChildren(in left : int, in top : int, in right : int, in bottom : int, inout forceLeftGravity : boolean) : void
+        final int count = getChildCount();
+
+        final int parentLeft = getPaddingLeftWithForeground();
+        final int parentRight = right - left - getPaddingRightWithForeground();
+
+        final int parentTop = getPaddingTopWithForeground();
+        final int parentBottom = bottom - top - getPaddingBottomWithForeground();
+
+        for (int i = 0; i < count; i++) {
+            final View child = getChildAt(i);
+            if (child.getVisibility() != GONE) {
+                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+
+                final int width = child.getMeasuredWidth();
+                final int height = child.getMeasuredHeight();
+
+                int childLeft;
+                int childTop;
+
+                int gravity = lp.gravity;
+                if (gravity == -1) {
+                    gravity = DEFAULT_CHILD_GRAVITY;
+                }
+
+                final int layoutDirection = getLayoutDirection();
+                final int absoluteGravity = Gravity.getAbsoluteGravity(gravity, layoutDirection);
+                final int verticalGravity = gravity & Gravity.VERTICAL_GRAVITY_MASK;
+
+                switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
+                    case Gravity.CENTER_HORIZONTAL:
+                        childLeft = parentLeft + (parentRight - parentLeft - width) / 2 +
+                        lp.leftMargin - lp.rightMargin;
+                        break;
+                    case Gravity.RIGHT:
+                        if (!forceLeftGravity) {
+                            childLeft = parentRight - width - lp.rightMargin;
+                            break;
+                        }
+                    case Gravity.LEFT:
+                    default:
+                        childLeft = parentLeft + lp.leftMargin;
+                }
+
+                switch (verticalGravity) {
+                    case Gravity.TOP:
+                        childTop = parentTop + lp.topMargin;
+                        break;
+                    case Gravity.CENTER_VERTICAL:
+                        childTop = parentTop + (parentBottom - parentTop - height) / 2 +
+                        lp.topMargin - lp.bottomMargin;
+                        break;
+                    case Gravity.BOTTOM:
+                        childTop = parentBottom - height - lp.bottomMargin;
+                        break;
+                    default:
+                        childTop = parentTop + lp.topMargin;
+                }
+
+                child.layout(childLeft, childTop, childLeft + width, childTop + height);
+            }
+        }
+!!!551298.java!!!	setMeasureAllChildren(inout measureAll : boolean) : void
+        mMeasureAllChildren = measureAll;
+!!!551426.java!!!	getConsiderGoneChildrenWhenMeasuring() : boolean
+        return getMeasureAllChildren();
+!!!551554.java!!!	getMeasureAllChildren() : boolean
+        return mMeasureAllChildren;
+!!!551682.java!!!	generateLayoutParams(inout attrs : AttributeSet) : LayoutParams
+        return new FrameLayout.LayoutParams(getContext(), attrs);
+!!!551810.java!!!	shouldDelayChildPressedState() : boolean
+        return false;
+!!!551938.java!!!	checkLayoutParams(inout p : LayoutParams) : boolean
+        return p instanceof LayoutParams;
+!!!552066.java!!!	generateLayoutParams(inout lp : LayoutParams) : LayoutParams
+        if (sPreserveMarginParamsInLayoutParamConversion) {
+            if (lp instanceof LayoutParams) {
+                return new LayoutParams((LayoutParams) lp);
+            } else if (lp instanceof MarginLayoutParams) {
+                return new LayoutParams((MarginLayoutParams) lp);
+            }
+        }
+        return new LayoutParams(lp);
+!!!552194.java!!!	getAccessibilityClassName() : CharSequence
+        return FrameLayout.class.getName();
+!!!552322.java!!!	encodeProperties(inout encoder : ViewHierarchyEncoder) : void
+        super.encodeProperties(encoder);
+
+        encoder.addProperty("measurement:measureAllChildren", mMeasureAllChildren);
+        encoder.addProperty("padding:foregroundPaddingLeft", mForegroundPaddingLeft);
+        encoder.addProperty("padding:foregroundPaddingTop", mForegroundPaddingTop);
+        encoder.addProperty("padding:foregroundPaddingRight", mForegroundPaddingRight);
+        encoder.addProperty("padding:foregroundPaddingBottom", mForegroundPaddingBottom);

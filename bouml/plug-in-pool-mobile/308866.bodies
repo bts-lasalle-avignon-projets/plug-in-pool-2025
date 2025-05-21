@@ -1,0 +1,7 @@
+class MatchHandlerRunnableAndObject
+!!!1253762.java!!!	compareMessage(inout n : MessageQueue::MessageNode, inout h : Handler, in what : int, inout object : Object, inout r : Runnable, in when : long) : boolean
+            final Message m = n.mMessage;
+            if (m.target == h && m.callback == r && (object == null || m.obj == object)) {
+                return true;
+            }
+            return false;

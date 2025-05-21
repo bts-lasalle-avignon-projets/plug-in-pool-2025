@@ -1,0 +1,3 @@
+class CouleurBille
+!!!129322.java!!!	CouleurBille(in valeur : int)
+        this.valeur = valeur;

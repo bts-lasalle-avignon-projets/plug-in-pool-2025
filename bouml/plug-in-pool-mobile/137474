@@ -1,0 +1,252 @@
+format 224
+"adid" // Android::Sdk::sources::android-36::android::adservices::adid
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/android/adservices/adid/"
+  java_package "android.adservices.adid"
+  classview 135938 "adid"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 211586 "GetAdIdResult"
+      visibility public 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Represent the result from the getAdId API.
+
+@hide
+"
+      classrelation 278146 // mAdId (<unidirectional association>)
+	relation 278146 --->
+	  a role_name "mAdId" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@NonNull
+"
+	    classrelation_ref 278146 // mAdId (<unidirectional association>)
+	  b parent class_ref 128130 // String
+      end
+
+      attribute 352770 "mLimitAdTrackingEnabled"
+	const_attribute private explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 706946 "GetAdIdResult"
+	private explicit_return_type ""
+	nparams 4
+	  param in name "resultCode" explicit_type "int"
+	  param inout name "errorMessage" type class_ref 128130 // String
+	  param inout name "adId" type class_ref 128130 // String
+	  param inout name "isLimitAdTrackingEnabled" explicit_type "boolean"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@AdServicesStatusUtils.StatusCode ${t0} ${p0}, @Nullable ${t1} ${p1}, @NonNull ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 707074 "GetAdIdResult"
+	private explicit_return_type ""
+	nparams 1
+	  param inout name "in" type class_ref 129410 // Parcel
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}@NonNull ${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 707202 "describeContents"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment " @hide "
+      end
+
+      operation 707330 "writeToParcel"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "out" type class_ref 129410 // Parcel
+	  param in name "flags" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}@NonNull ${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment " @hide "
+      end
+
+      operation 707458 "getErrorMessage"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Nullable
+"
+	
+	
+	
+	comment "Returns the error message associated with this result.
+
+<p>If {@link #isSuccess} is {@code true}, the error message is always {@code null}. The error
+message may be {@code null} even if {@link #isSuccess} is {@code false}.
+"
+      end
+
+      operation 707586 "getAdId"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@NonNull
+"
+	
+	
+	
+	comment " Returns the advertising ID associated with this result. "
+      end
+
+      operation 707714 "isLatEnabled"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " Returns the Limited adtracking field associated with this result. "
+      end
+
+      operation 707842 "toString"
+	public return_type class_ref 128130 // String
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 707970 "equals"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param inout name "o" type class_ref 128258 // Object
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 708098 "hashCode"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 130562 "adid"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+end

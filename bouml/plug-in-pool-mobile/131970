@@ -1,0 +1,44 @@
+format 224
+"internal" // Android::Sdk::sources::android-36::com::android::internal
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "Android/Sdk/sources/android-36/com/android/internal/"
+  java_package "com.android.internal"
+  package_ref 132098 // util
+
+  package_ref 132610 // inputmethod
+
+  package_ref 134530 // view
+
+  package_ref 141186 // os
+
+  package_ref 142210 // content
+end

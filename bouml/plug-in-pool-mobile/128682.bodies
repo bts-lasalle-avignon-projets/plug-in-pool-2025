@@ -1,0 +1,48 @@
+class ActivitePlugInPool
+!!!1264642.java!!!	onCreate(inout savedInstanceState : Bundle) : void
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        Log.d(TAG, "onCreate()");
+
+        initialiserVue();
+!!!1264770.java!!!	onStart() : void
+        super.onStart();
+        Log.d(TAG, "onStart()");
+!!!1264898.java!!!	onResume() : void
+        super.onResume();
+        Log.d(TAG, "onResume()");
+!!!1265026.java!!!	onPause() : void
+        super.onPause();
+        Log.d(TAG, "onPause()");
+!!!1265154.java!!!	onStop() : void
+        super.onStop();
+        Log.d(TAG, "onStop()");
+!!!1265282.java!!!	onDestroy() : void
+        super.onDestroy();
+        Log.d(TAG, "onDestroy()");
+!!!1265410.java!!!	initialiserVue() : void
+        boutonConfigurationRencontre = findViewById(R.id.configuration_rencontre);
+        boutonHistorique             = findViewById(R.id.historique);
+        allerConfigurerActivite();
+        allerHistoriqueActivite();
+!!!1265538.java!!!	allerConfigurerActivite() : void
+        boutonConfigurationRencontre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue =
+                  new Intent(ActivitePlugInPool.this, ActiviteConfigurationMatch.class);
+                startActivity(changerDeVue);
+            }
+        });
+!!!1265666.java!!!	allerHistoriqueActivite() : void
+        boutonHistorique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent changerDeVue = new Intent(ActivitePlugInPool.this, ActiviteHistorique.class);
+                startActivity(changerDeVue);
+            }
+        });

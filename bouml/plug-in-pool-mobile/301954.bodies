@@ -1,0 +1,888 @@
+class ApplicationThread
+!!!1234946.java!!!	scheduleReceiver(inout intent : Intent, inout info : ActivityInfo, inout compatInfo : CompatibilityInfo, in resultCode : int, inout data : String, inout extras : Bundle, inout ordered : boolean, inout assumeDelivered : boolean, in sendingUser : int, in processState : int, in sendingUid : int, inout sendingPackage : String) : void
+            updateProcessState(processState, false);
+            ReceiverData r = new ReceiverData(intent, resultCode, data, extras,
+                    ordered, false, assumeDelivered, mAppThread.asBinder(), sendingUser,
+                    sendingUid, sendingPackage);
+            r.info = info;
+            sendMessage(H.RECEIVER, r);
+!!!1235074.java!!!	scheduleReceiverList(inout info : List) : void
+            for (int i = 0; i < info.size(); i++) {
+                ReceiverInfo r = info.get(i);
+                if (r.registered) {
+                    scheduleRegisteredReceiver(r.receiver, r.intent,
+                            r.resultCode, r.data, r.extras, r.ordered, r.sticky,
+                            r.assumeDelivered, r.sendingUser, r.processState,
+                            r.sendingUid, r.sendingPackage);
+                } else {
+                    scheduleReceiver(r.intent, r.activityInfo, r.compatInfo,
+                            r.resultCode, r.data, r.extras, r.sync,
+                            r.assumeDelivered, r.sendingUser, r.processState,
+                            r.sendingUid, r.sendingPackage);
+                }
+            }
+!!!1235202.java!!!	scheduleCreateBackupAgent(inout app : ApplicationInfo, in backupMode : int, in userId : int, in backupDestination : int) : void
+            CreateBackupAgentData d = new CreateBackupAgentData();
+            d.appInfo = app;
+            d.backupMode = backupMode;
+            d.userId = userId;
+            d.backupDestination = backupDestination;
+
+            sendMessage(H.CREATE_BACKUP_AGENT, d);
+!!!1235330.java!!!	scheduleDestroyBackupAgent(inout app : ApplicationInfo, in userId : int) : void
+            CreateBackupAgentData d = new CreateBackupAgentData();
+            d.appInfo = app;
+            d.userId = userId;
+
+            sendMessage(H.DESTROY_BACKUP_AGENT, d);
+!!!1235458.java!!!	scheduleCreateService(inout token : IBinder, inout info : ServiceInfo, inout compatInfo : CompatibilityInfo, in processState : int) : void
+            updateProcessState(processState, false);
+            CreateServiceData s = new CreateServiceData();
+            s.token = token;
+            s.info = info;
+
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleCreateService. token="
+                        + token);
+            }
+            sendMessage(H.CREATE_SERVICE, s);
+!!!1235586.java!!!	scheduleBindService(inout token : IBinder, inout intent : Intent, inout rebind : boolean, in processState : int, in bindSeq : long) : void
+            updateProcessState(processState, false);
+            BindServiceData s = new BindServiceData();
+            s.token = token;
+            s.intent = intent;
+            s.rebind = rebind;
+            s.bindSeq = bindSeq;
+
+            if (DEBUG_SERVICE)
+                Slog.v(TAG, "scheduleBindService token=" + token + " intent=" + intent + " uid="
+                        + Binder.getCallingUid() + " pid=" + Binder.getCallingPid());
+
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleBindService. token="
+                        + token + " bindSeq=" + bindSeq);
+            }
+            sendMessage(H.BIND_SERVICE, s);
+!!!1235714.java!!!	scheduleUnbindService(inout token : IBinder, inout intent : Intent) : void
+            BindServiceData s = new BindServiceData();
+            s.token = token;
+            s.intent = intent;
+            s.bindSeq = -1;
+
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleUnbindService. token="
+                        + token);
+            }
+            sendMessage(H.UNBIND_SERVICE, s);
+!!!1235842.java!!!	scheduleServiceArgs(inout token : IBinder, inout args : ParceledListSlice) : void
+            List<ServiceStartArgs> list = args.getList();
+
+            for (int i = 0; i < list.size(); i++) {
+                ServiceStartArgs ssa = list.get(i);
+                ServiceArgsData s = new ServiceArgsData();
+                s.token = token;
+                s.taskRemoved = ssa.taskRemoved;
+                s.startId = ssa.startId;
+                s.flags = ssa.flags;
+                s.args = ssa.args;
+
+                if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                    Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleServiceArgs. token="
+                            + token + " startId=" + s.startId);
+                }
+                sendMessage(H.SERVICE_ARGS, s);
+            }
+!!!1235970.java!!!	scheduleStopService(inout token : IBinder) : void
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleStopService. token="
+                        + token);
+            }
+            sendMessage(H.STOP_SERVICE, token);
+!!!1236098.java!!!	scheduleTimeoutService(inout token : IBinder, in startId : int) : void
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER, "scheduleTimeoutService. token="
+                        + token);
+            }
+            sendMessage(H.TIMEOUT_SERVICE, token, startId);
+!!!1236226.java!!!	schedulePing(inout pong : RemoteCallback) : void
+            sendMessage(H.PING, pong);
+!!!1236354.java!!!	scheduleTimeoutServiceForType(inout token : IBinder, in startId : int, in fgsType : int) : void
+            if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.instant(Trace.TRACE_TAG_ACTIVITY_MANAGER,
+                        "scheduleTimeoutServiceForType. token=" + token);
+            }
+            sendMessage(H.TIMEOUT_SERVICE_FOR_TYPE, token, startId, fgsType);
+!!!1236482.java!!!	bindApplication(inout processName : String, inout appInfo : ApplicationInfo, inout sdkSandboxClientAppVolumeUuid : String, inout sdkSandboxClientAppPackage : String, inout isSdkInSandbox : boolean, inout providerList : ProviderInfoList, inout instrumentationName : ComponentName, inout profilerInfo : ProfilerInfo, inout instrumentationArgs : Bundle, inout instrumentationWatcher : IInstrumentationWatcher, inout instrumentationUiConnection : IUiAutomationConnection, in debugMode : int, inout enableBinderTracking : boolean, inout trackAllocation : boolean, inout isRestrictedBackupMode : boolean, inout persistent : boolean, inout config : Configuration, inout compatInfo : CompatibilityInfo, inout services : Map, inout coreSettings : Bundle, inout buildSerial : String, inout autofillOptions : AutofillOptions, inout contentCaptureOptions : ContentCaptureOptions, inout disabledCompatChanges : long [[]], inout loggableCompatChanges : long [[]], inout serializedSystemFontMap : SharedMemory, inout applicationSharedMemoryFd : FileDescriptor, in startRequestedElapsedTime : long, in startRequestedUptime : long) : void
+            if (services != null) {
+                if (false) {
+                    // Test code to make sure the app could see the passed-in services.
+                    for (Object oname : services.keySet()) {
+                        if (services.get(oname) == null) {
+                            continue; // AM just passed in a null service.
+                        }
+                        String name = (String) oname;
+
+                        // See b/79378449 about the following exemption.
+                        switch (name) {
+                            case "package":
+                            case Context.WINDOW_SERVICE:
+                                continue;
+                        }
+
+                        if (ServiceManager.getService(name) == null) {
+                            Log.wtf(TAG, "Service " + name + " should be accessible by this app");
+                        }
+                    }
+                }
+
+                // Setup the service cache in the ServiceManager
+                ServiceManager.initServiceCache(services);
+            }
+
+            // This must be initialized as early as possible to ensure availability for any
+            // downstream callers.
+            if (com.android.internal.os.Flags.applicationSharedMemoryEnabled()) {
+                ApplicationSharedMemory instance =
+                        ApplicationSharedMemory.fromFileDescriptor(
+                                applicationSharedMemoryFd, /* mutable= */ false);
+                if (android.content.pm.Flags.cacheSdkSystemFeatures()) {
+                    SystemFeaturesCache.setInstance(
+                            new SystemFeaturesCache(instance.readSystemFeaturesCache()));
+                }
+                instance.closeFileDescriptor();
+                ApplicationSharedMemory.setInstance(instance);
+            }
+
+            setCoreSettings(coreSettings);
+
+            AppBindData data = new AppBindData();
+            data.processName = processName;
+            data.appInfo = appInfo;
+            data.sdkSandboxClientAppVolumeUuid = sdkSandboxClientAppVolumeUuid;
+            data.sdkSandboxClientAppPackage = sdkSandboxClientAppPackage;
+            data.isSdkInSandbox = isSdkInSandbox;
+            data.providers = providerList.getList();
+            data.instrumentationName = instrumentationName;
+            data.instrumentationArgs = instrumentationArgs;
+            data.instrumentationWatcher = instrumentationWatcher;
+            data.instrumentationUiAutomationConnection = instrumentationUiConnection;
+            data.debugMode = debugMode;
+            data.enableBinderTracking = enableBinderTracking;
+            data.trackAllocation = trackAllocation;
+            data.restrictedBackupMode = isRestrictedBackupMode;
+            data.persistent = persistent;
+            data.config = config;
+            data.compatInfo = compatInfo;
+            data.initProfilerInfo = profilerInfo;
+            data.buildSerial = buildSerial;
+            data.autofillOptions = autofillOptions;
+            data.contentCaptureOptions = contentCaptureOptions;
+            data.disabledCompatChanges = disabledCompatChanges;
+            data.mLoggableCompatChanges = loggableCompatChanges;
+            data.mSerializedSystemFontMap = serializedSystemFontMap;
+            data.startRequestedElapsedTime = startRequestedElapsedTime;
+            data.startRequestedUptime = startRequestedUptime;
+            updateCompatOverrideScale(compatInfo);
+            updateCompatOverrideDisplayRotation(compatInfo);
+            CompatibilityInfo.applyOverrideIfNeeded(config);
+            sendMessage(H.BIND_APPLICATION, data);
+!!!1236610.java!!!	updateCompatOverrideScale(inout info : CompatibilityInfo) : void
+            if (info.hasOverrideScaling()) {
+                CompatibilityInfo.setOverrideInvertedScale(info.applicationInvertedScale,
+                        info.applicationDensityInvertedScale);
+            } else {
+                CompatibilityInfo.setOverrideInvertedScale(/* invertScale */ 1f,
+                        /* densityInvertScale */1f);
+            }
+!!!1236738.java!!!	updateCompatOverrideDisplayRotation(inout info : CompatibilityInfo) : void
+            if (info.isOverrideDisplayRotationRequired()) {
+                CompatibilityInfo.setOverrideDisplayRotation(info.applicationDisplayRotation);
+            } else {
+                CompatibilityInfo.setOverrideDisplayRotation(
+                        WindowConfiguration.ROTATION_UNDEFINED);
+            }
+!!!1236866.java!!!	runIsolatedEntryPoint(inout entryPoint : String, inout entryPointArgs : String [[]]) : void
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = entryPoint;
+            args.arg2 = entryPointArgs;
+            sendMessage(H.RUN_ISOLATED_ENTRY_POINT, args);
+!!!1236994.java!!!	scheduleExit() : void
+            sendMessage(H.EXIT_APPLICATION, null);
+!!!1237122.java!!!	scheduleSuicide() : void
+            sendMessage(H.SUICIDE, null);
+!!!1237250.java!!!	scheduleApplicationInfoChanged(inout ai : ApplicationInfo) : void
+            synchronized (mResourcesManager) {
+                var oldAi = mPendingAppInfoUpdates.put(ai.packageName, ai);
+                if (oldAi != null && oldAi.createTimestamp > ai.createTimestamp) {
+                    Slog.w(TAG, "Skipping application info changed for obsolete AI with TS "
+                            + ai.createTimestamp + " < already pending TS "
+                            + oldAi.createTimestamp);
+                    mPendingAppInfoUpdates.put(ai.packageName, oldAi);
+                    return;
+                }
+            }
+            mResourcesManager.appendPendingAppInfoUpdate(new String[]{ai.sourceDir}, ai);
+            mH.removeMessages(H.APPLICATION_INFO_CHANGED, ai.packageName);
+            sendMessage(H.APPLICATION_INFO_CHANGED, ai.packageName);
+!!!1237378.java!!!	updateTimeZone() : void
+            TimeZone.setDefault(null);
+!!!1237506.java!!!	clearDnsCache() : void
+            // a non-standard API to get this to libcore
+            InetAddress.clearDnsCache();
+            // Allow libcore to perform the necessary actions as it sees fit upon a network
+            // configuration change.
+            NetworkEventDispatcher.getInstance().dispatchNetworkConfigurationChange();
+!!!1237634.java!!!	updateHttpProxy() : void
+            final Application app;
+            synchronized (ActivityThread.this) {
+                app = getApplication();
+                if (null == app) {
+                    // The app is not bound yet. Make a note to update the HTTP proxy when the
+                    // app is bound.
+                    mUpdateHttpProxyOnBind = true;
+                    return;
+                }
+            }
+            // App is present, update the proxy inline.
+            ActivityThread.updateHttpProxy(app);
+!!!1237762.java!!!	processInBackground() : void
+            mH.removeMessages(H.GC_WHEN_IDLE);
+            mH.sendMessage(mH.obtainMessage(H.GC_WHEN_IDLE));
+!!!1237890.java!!!	dumpService(inout pfd : ParcelFileDescriptor, inout servicetoken : IBinder, inout args : String [[]]) : void
+            DumpComponentInfo data = new DumpComponentInfo();
+            try {
+                data.fd = pfd.dup();
+                data.token = servicetoken;
+                data.args = args;
+                sendMessage(H.DUMP_SERVICE, data, 0, 0, true /*async*/);
+            } catch (IOException e) {
+                Slog.w(TAG, "dumpService failed", e);
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1238018.java!!!	scheduleRegisteredReceiver(inout receiver : IIntentReceiver, inout intent : Intent, in resultCode : int, inout dataStr : String, inout extras : Bundle, inout ordered : boolean, inout sticky : boolean, inout assumeDelivered : boolean, in sendingUser : int, in processState : int, in sendingUid : int, inout sendingPackage : String) : void
+            updateProcessState(processState, false);
+
+            // We can't modify IIntentReceiver due to UnsupportedAppUsage, so
+            // try our best to shortcut to known subclasses, and alert if
+            // registered using a custom IIntentReceiver that isn't able to
+            // report an expected delivery event
+            if (receiver instanceof LoadedApk.ReceiverDispatcher.InnerReceiver) {
+                ((LoadedApk.ReceiverDispatcher.InnerReceiver) receiver).performReceive(intent,
+                        resultCode, dataStr, extras, ordered, sticky, assumeDelivered, sendingUser,
+                        sendingUid, sendingPackage);
+            } else {
+                if (!assumeDelivered) {
+                    Log.wtf(TAG, "scheduleRegisteredReceiver() called for " + receiver
+                            + " and " + intent + " without mechanism to finish delivery");
+                }
+                if (sendingUid != Process.INVALID_UID || sendingPackage != null) {
+                    Log.wtf(TAG,
+                            "scheduleRegisteredReceiver() called for " + receiver + " and " + intent
+                                    + " from " + sendingPackage + " (UID: " + sendingUid
+                                    + ") without mechanism to propagate the sender's identity");
+                }
+                receiver.performReceive(intent, resultCode, dataStr, extras, ordered, sticky,
+                        sendingUser);
+            }
+!!!1238146.java!!!	scheduleLowMemory() : void
+            sendMessage(H.LOW_MEMORY, null);
+!!!1238274.java!!!	profilerControl(inout start : boolean, inout profilerInfo : ProfilerInfo, in profileType : int) : void
+            sendMessage(H.PROFILER_CONTROL, profilerInfo, start ? 1 : 0, profileType);
+!!!1238402.java!!!	dumpHeap(inout managed : boolean, inout mallocInfo : boolean, inout runGc : boolean, inout dumpBitmaps : String, inout path : String, inout fd : ParcelFileDescriptor, inout finishCallback : RemoteCallback) : void
+            DumpHeapData dhd = new DumpHeapData();
+            dhd.managed = managed;
+            dhd.mallocInfo = mallocInfo;
+            dhd.dumpBitmaps = dumpBitmaps;
+            dhd.runGc = runGc;
+            dhd.path = path;
+            try {
+                // Since we're going to dump the heap asynchronously, dup the file descriptor before
+                // it's closed on returning from the IPC call.
+                dhd.fd = fd.dup();
+            } catch (IOException e) {
+                Slog.e(TAG, "Failed to duplicate heap dump file descriptor", e);
+                return;
+            } finally {
+                IoUtils.closeQuietly(fd);
+            }
+            dhd.finishCallback = finishCallback;
+            sendMessage(H.DUMP_HEAP, dhd, 0, 0, true /*async*/);
+!!!1238530.java!!!	attachAgent(inout agent : String) : void
+            sendMessage(H.ATTACH_AGENT, agent);
+!!!1238658.java!!!	attachStartupAgents(inout dataDir : String) : void
+            sendMessage(H.ATTACH_STARTUP_AGENTS, dataDir);
+!!!1238786.java!!!	setSchedulingGroup(in group : int) : void
+            // Note: do this immediately, since going into the foreground
+            // should happen regardless of what pending work we have to do
+            // and the activity manager will wait for us to report back that
+            // we are done before sending us to the background.
+            try {
+                Process.setProcessGroup(Process.myPid(), group);
+            } catch (Exception e) {
+                Slog.w(TAG, "Failed setting process group to " + group, e);
+            }
+!!!1238914.java!!!	dispatchPackageBroadcast(in cmd : int, inout packages : String [[]]) : void
+            sendMessage(H.DISPATCH_PACKAGE_BROADCAST, packages, cmd);
+!!!1239042.java!!!	scheduleCrash(inout msg : String, in typeId : int, inout extras : Bundle) : void
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = msg;
+            args.arg2 = extras;
+            sendMessage(H.SCHEDULE_CRASH, args, typeId);
+!!!1239170.java!!!	dumpResources(inout fd : ParcelFileDescriptor, inout callback : RemoteCallback) : void
+            DumpResourcesData data = new DumpResourcesData();
+            try {
+                data.fd = fd.dup();
+                data.finishCallback = callback;
+                sendMessage(H.DUMP_RESOURCES, data, 0, 0, false /*async*/);
+            } catch (IOException e) {
+                Slog.w(TAG, "dumpResources failed", e);
+            } finally {
+                IoUtils.closeQuietly(fd);
+            }
+!!!1239298.java!!!	dumpActivity(inout pfd : ParcelFileDescriptor, inout activitytoken : IBinder, inout prefix : String, inout args : String [[]]) : void
+            DumpComponentInfo data = new DumpComponentInfo();
+            try {
+                data.fd = pfd.dup();
+                data.token = activitytoken;
+                data.prefix = prefix;
+                data.args = args;
+                sendMessage(H.DUMP_ACTIVITY, data, 0, 0, true /*async*/);
+            } catch (IOException e) {
+                Slog.w(TAG, "dumpActivity failed", e);
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1239426.java!!!	dumpProvider(inout pfd : ParcelFileDescriptor, inout providertoken : IBinder, inout args : String [[]]) : void
+            DumpComponentInfo data = new DumpComponentInfo();
+            try {
+                data.fd = pfd.dup();
+                data.token = providertoken;
+                data.args = args;
+                sendMessage(H.DUMP_PROVIDER, data, 0, 0, true /*async*/);
+            } catch (IOException e) {
+                Slog.w(TAG, "dumpProvider failed", e);
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1239554.java!!!	dumpMemInfo(inout pfd : ParcelFileDescriptor, inout mem : Debug::MemoryInfo, inout checkin : boolean, inout dumpFullInfo : boolean, inout dumpDalvik : boolean, inout dumpSummaryOnly : boolean, inout dumpUnreachable : boolean, inout dumpAllocatorStats : boolean, inout args : String [[]]) : void
+            FileOutputStream fout = new FileOutputStream(pfd.getFileDescriptor());
+            PrintWriter pw = new FastPrintWriter(fout);
+            try {
+                dumpMemInfo(pw, mem, checkin, dumpFullInfo, dumpDalvik, dumpSummaryOnly,
+                            dumpUnreachable, dumpAllocatorStats);
+            } finally {
+                pw.flush();
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1239682.java!!!	dumpMemInfoNativeAllocations(inout pw : PrintWriter) : void
+            pw.println(" ");
+            pw.println(" Native Allocations");
+            printRow(pw, TWO_COUNT_COLUMN_HEADER, "", "Count", "", "Total(kB)");
+            printRow(pw, TWO_COUNT_COLUMN_HEADER, "", "------", "", "------");
+
+            for (NativeAllocationRegistry.Metrics m : NativeAllocationRegistry.getMetrics()) {
+                // group into 3 major categories: Bitmap, HardwareBuffer and Other
+                final String className = switch (m.getClassName()) {
+                    case "android.graphics.Bitmap" -> "Bitmap";
+                    case "android.hardware.HardwareBuffer" -> "HardwareBuffer";
+                    default -> "Other";
+                };
+
+                if (m.getMallocedCount() != 0 || m.getMallocedBytes() != 0) {
+                    printRow(pw, TWO_COUNT_COLUMNS, className + " (malloced):",
+                        m.getMallocedCount(), "", m.getMallocedBytes() / 1024);
+                }
+                if (m.getNonmallocedCount() != 0 || m.getNonmallocedBytes() != 0) {
+                    printRow(pw, TWO_COUNT_COLUMNS, className + " (nonmalloced):",
+                        m.getNonmallocedCount(), "", m.getNonmallocedBytes() / 1024);
+                }
+            }
+!!!1239810.java!!!	dumpMemInfo(inout pw : PrintWriter, inout memInfo : Debug::MemoryInfo, inout checkin : boolean, inout dumpFullInfo : boolean, inout dumpDalvik : boolean, inout dumpSummaryOnly : boolean, inout dumpUnreachable : boolean, inout dumpAllocatorStats : boolean) : void
+            long nativeMax = Debug.getNativeHeapSize() / 1024;
+            long nativeAllocated = Debug.getNativeHeapAllocatedSize() / 1024;
+            long nativeFree = Debug.getNativeHeapFreeSize() / 1024;
+
+            Runtime runtime = Runtime.getRuntime();
+            runtime.gc();  // Do GC since countInstancesOfClass counts unreachable objects.
+            long dalvikMax = runtime.totalMemory() / 1024;
+            long dalvikFree = runtime.freeMemory() / 1024;
+            long dalvikAllocated = dalvikMax - dalvikFree;
+
+            Class[] classesToCount = new Class[] {
+                    ContextImpl.class,
+                    Activity.class,
+                    WebView.class,
+                    View.class,
+                    ViewRootImpl.class
+            };
+            long[] instanceCounts = VMDebug.countInstancesOfClasses(classesToCount, true);
+            long appContextInstanceCount = instanceCounts[0];
+            long activityInstanceCount = instanceCounts[1];
+            long webviewInstanceCount = instanceCounts[2];
+            long viewInstanceCount = instanceCounts[3];
+            long viewRootInstanceCount = instanceCounts[4];
+
+            int globalAssetCount = AssetManager.getGlobalAssetCount();
+            int globalAssetManagerCount = AssetManager.getGlobalAssetManagerCount();
+            int binderLocalObjectCount = Debug.getBinderLocalObjectCount();
+            int binderProxyObjectCount = Debug.getBinderProxyObjectCount();
+            int binderDeathObjectCount = Debug.getBinderDeathObjectCount();
+            long parcelSize = Parcel.getGlobalAllocSize();
+            long parcelCount = Parcel.getGlobalAllocCount();
+            SQLiteDebug.PagerStats stats = SQLiteDebug.getDatabaseInfo();
+
+            dumpMemInfoTable(pw, memInfo, checkin, dumpFullInfo, dumpDalvik, dumpSummaryOnly,
+                    Process.myPid(),
+                    (mBoundApplication != null) ? mBoundApplication.processName : "unknown",
+                    nativeMax, nativeAllocated, nativeFree,
+                    dalvikMax, dalvikAllocated, dalvikFree);
+
+            if (checkin) {
+                // NOTE: if you change anything significant below, also consider changing
+                // ACTIVITY_THREAD_CHECKIN_VERSION.
+
+                // Object counts
+                pw.print(viewInstanceCount); pw.print(',');
+                pw.print(viewRootInstanceCount); pw.print(',');
+                pw.print(appContextInstanceCount); pw.print(',');
+                pw.print(activityInstanceCount); pw.print(',');
+
+                pw.print(globalAssetCount); pw.print(',');
+                pw.print(globalAssetManagerCount); pw.print(',');
+                pw.print(binderLocalObjectCount); pw.print(',');
+                pw.print(binderProxyObjectCount); pw.print(',');
+
+                pw.print(binderDeathObjectCount); pw.print(',');
+
+                // SQL
+                pw.print(stats.memoryUsed / 1024); pw.print(',');
+                pw.print(stats.memoryUsed / 1024); pw.print(',');
+                pw.print(stats.pageCacheOverflow / 1024); pw.print(',');
+                pw.print(stats.largestMemAlloc / 1024);
+                for (int i = 0; i < stats.dbStats.size(); i++) {
+                    DbStats dbStats = stats.dbStats.get(i);
+                    pw.print(','); pw.print(dbStats.dbName);
+                    pw.print(','); pw.print(dbStats.pageSize);
+                    pw.print(','); pw.print(dbStats.dbSize);
+                    pw.print(','); pw.print(dbStats.lookaside);
+                    pw.print(','); pw.print(dbStats.cacheHits);
+                    pw.print(','); pw.print(dbStats.cacheMisses);
+                    pw.print(','); pw.print(dbStats.cacheSize);
+                }
+                pw.println();
+
+                return;
+            }
+
+            pw.println(" ");
+            pw.println(" Objects");
+            printRow(pw, TWO_COUNT_COLUMNS, "Views:", viewInstanceCount, "ViewRootImpl:",
+                    viewRootInstanceCount);
+
+            printRow(pw, TWO_COUNT_COLUMNS, "AppContexts:", appContextInstanceCount,
+                    "Activities:", activityInstanceCount);
+
+            printRow(pw, TWO_COUNT_COLUMNS, "Assets:", globalAssetCount,
+                    "AssetManagers:", globalAssetManagerCount);
+
+            printRow(pw, TWO_COUNT_COLUMNS, "Local Binders:", binderLocalObjectCount,
+                    "Proxy Binders:", binderProxyObjectCount);
+            printRow(pw, TWO_COUNT_COLUMNS, "Parcel memory:", parcelSize/1024,
+                    "Parcel count:", parcelCount);
+            printRow(pw, TWO_COUNT_COLUMNS, "Death Recipients:", binderDeathObjectCount,
+                    "WebViews:", webviewInstanceCount);
+
+            if (com.android.libcore.readonly.Flags.nativeMetrics()) {
+                dumpMemInfoNativeAllocations(pw);
+            }
+
+            // SQLite mem info
+            pw.println(" ");
+            pw.println(" SQL");
+            printRow(pw, ONE_COUNT_COLUMN, "MEMORY_USED:", stats.memoryUsed / 1024);
+            printRow(pw, TWO_COUNT_COLUMNS, "PAGECACHE_OVERFLOW:",
+                    stats.pageCacheOverflow / 1024, "MALLOC_SIZE:", stats.largestMemAlloc / 1024);
+            pw.println(" ");
+            int N = stats.dbStats.size();
+            if (N > 0) {
+                pw.println(" DATABASES");
+                printRow(pw, DB_CONNECTION_INFO_HEADER, "pgsz", "dbsz", "Lookaside(b)",
+                        "cache hits", "cache misses", "cache size", "Dbname");
+                pw.println("PER CONNECTION STATS");
+                for (int i = 0; i < N; i++) {
+                    DbStats dbStats = stats.dbStats.get(i);
+                    if (dbStats.arePoolStats) {
+                        // these will be printed after
+                        continue;
+                    }
+                    printRow(pw, DB_CONNECTION_INFO_FORMAT,
+                            (dbStats.pageSize > 0) ? String.valueOf(dbStats.pageSize) : " ",
+                            (dbStats.dbSize > 0) ? String.valueOf(dbStats.dbSize) : " ",
+                            (dbStats.lookaside > 0) ? String.valueOf(dbStats.lookaside) : " ",
+                            dbStats.cacheHits, dbStats.cacheMisses, dbStats.cacheSize,
+                            dbStats.dbName);
+                }
+                // Print stats accumulated through all the connections that have existed in the
+                // pool since it was opened.
+                pw.println("POOL STATS");
+                printRow(pw, DB_POOL_INFO_HEADER, "cache hits", "cache misses", "cache size",
+                        "Dbname");
+                for (int i = 0; i < N; i++) {
+                    DbStats dbStats = stats.dbStats.get(i);
+                    if (!dbStats.arePoolStats) {
+                        continue;
+                    }
+                    printRow(pw, DB_POOL_INFO_FORMAT, dbStats.cacheHits, dbStats.cacheMisses,
+                            dbStats.cacheSize, dbStats.dbName);
+                }
+            }
+
+            // Asset details.
+            String assetAlloc = AssetManager.getAssetAllocations();
+            if (assetAlloc != null) {
+                pw.println(" ");
+                pw.println(" Asset Allocations");
+                pw.print(assetAlloc);
+            }
+
+            // Unreachable native memory
+            if (dumpUnreachable) {
+                boolean showContents = ((mBoundApplication != null)
+                    && ((mBoundApplication.appInfo.flags&ApplicationInfo.FLAG_DEBUGGABLE) != 0))
+                    || android.os.Build.IS_DEBUGGABLE;
+                pw.println(" ");
+                pw.println(" Unreachable memory");
+                pw.print(Debug.getUnreachableMemory(100, showContents));
+            }
+            if (dumpAllocatorStats) {
+                Debug.logAllocatorStats();
+            }
+!!!1239938.java!!!	dumpMemInfoProto(inout pfd : ParcelFileDescriptor, inout mem : Debug::MemoryInfo, inout dumpFullInfo : boolean, inout dumpDalvik : boolean, inout dumpSummaryOnly : boolean, inout dumpUnreachable : boolean, inout args : String [[]]) : void
+            ProtoOutputStream proto = new ProtoOutputStream(pfd.getFileDescriptor());
+            try {
+                dumpMemInfo(proto, mem, dumpFullInfo, dumpDalvik, dumpSummaryOnly, dumpUnreachable);
+            } finally {
+                proto.flush();
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1240066.java!!!	dumpMemInfo(inout proto : ProtoOutputStream, inout memInfo : Debug::MemoryInfo, inout dumpFullInfo : boolean, inout dumpDalvik : boolean, inout dumpSummaryOnly : boolean, inout dumpUnreachable : boolean) : void
+            long nativeMax = Debug.getNativeHeapSize() / 1024;
+            long nativeAllocated = Debug.getNativeHeapAllocatedSize() / 1024;
+            long nativeFree = Debug.getNativeHeapFreeSize() / 1024;
+
+            Runtime runtime = Runtime.getRuntime();
+            runtime.gc();  // Do GC since countInstancesOfClass counts unreachable objects.
+            long dalvikMax = runtime.totalMemory() / 1024;
+            long dalvikFree = runtime.freeMemory() / 1024;
+            long dalvikAllocated = dalvikMax - dalvikFree;
+
+            Class[] classesToCount = new Class[] {
+                    ContextImpl.class,
+                    Activity.class,
+                    WebView.class,
+                    View.class,
+                    ViewRootImpl.class
+            };
+            long[] instanceCounts = VMDebug.countInstancesOfClasses(classesToCount, true);
+            long appContextInstanceCount = instanceCounts[0];
+            long activityInstanceCount = instanceCounts[1];
+            long webviewInstanceCount = instanceCounts[2];
+            long viewInstanceCount = instanceCounts[3];
+            long viewRootInstanceCount = instanceCounts[4];
+
+            int globalAssetCount = AssetManager.getGlobalAssetCount();
+            int globalAssetManagerCount = AssetManager.getGlobalAssetManagerCount();
+            int binderLocalObjectCount = Debug.getBinderLocalObjectCount();
+            int binderProxyObjectCount = Debug.getBinderProxyObjectCount();
+            int binderDeathObjectCount = Debug.getBinderDeathObjectCount();
+            long parcelSize = Parcel.getGlobalAllocSize();
+            long parcelCount = Parcel.getGlobalAllocCount();
+            SQLiteDebug.PagerStats stats = SQLiteDebug.getDatabaseInfo();
+
+            final long mToken = proto.start(MemInfoDumpProto.AppData.PROCESS_MEMORY);
+            proto.write(MemInfoDumpProto.ProcessMemory.PID, Process.myPid());
+            proto.write(MemInfoDumpProto.ProcessMemory.PROCESS_NAME,
+                    (mBoundApplication != null) ? mBoundApplication.processName : "unknown");
+            dumpMemInfoTable(proto, memInfo, dumpDalvik, dumpSummaryOnly,
+                    nativeMax, nativeAllocated, nativeFree,
+                    dalvikMax, dalvikAllocated, dalvikFree);
+            proto.end(mToken);
+
+            final long oToken = proto.start(MemInfoDumpProto.AppData.OBJECTS);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.VIEW_INSTANCE_COUNT,
+                    viewInstanceCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.VIEW_ROOT_INSTANCE_COUNT,
+                    viewRootInstanceCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.APP_CONTEXT_INSTANCE_COUNT,
+                    appContextInstanceCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.ACTIVITY_INSTANCE_COUNT,
+                    activityInstanceCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.GLOBAL_ASSET_COUNT,
+                    globalAssetCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.GLOBAL_ASSET_MANAGER_COUNT,
+                    globalAssetManagerCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.LOCAL_BINDER_OBJECT_COUNT,
+                    binderLocalObjectCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.PROXY_BINDER_OBJECT_COUNT,
+                    binderProxyObjectCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.PARCEL_MEMORY_KB,
+                    parcelSize / 1024);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.PARCEL_COUNT, parcelCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.BINDER_OBJECT_DEATH_COUNT,
+                    binderDeathObjectCount);
+            proto.write(MemInfoDumpProto.AppData.ObjectStats.WEBVIEW_INSTANCE_COUNT,
+                    webviewInstanceCount);
+            proto.end(oToken);
+
+            // SQLite mem info
+            final long sToken = proto.start(MemInfoDumpProto.AppData.SQL);
+            proto.write(MemInfoDumpProto.AppData.SqlStats.MEMORY_USED_KB,
+                    stats.memoryUsed / 1024);
+            proto.write(MemInfoDumpProto.AppData.SqlStats.PAGECACHE_OVERFLOW_KB,
+                    stats.pageCacheOverflow / 1024);
+            proto.write(MemInfoDumpProto.AppData.SqlStats.MALLOC_SIZE_KB,
+                    stats.largestMemAlloc / 1024);
+            int n = stats.dbStats.size();
+            for (int i = 0; i < n; i++) {
+                DbStats dbStats = stats.dbStats.get(i);
+
+                final long dToken = proto.start(MemInfoDumpProto.AppData.SqlStats.DATABASES);
+                proto.write(MemInfoDumpProto.AppData.SqlStats.Database.NAME, dbStats.dbName);
+                proto.write(MemInfoDumpProto.AppData.SqlStats.Database.PAGE_SIZE, dbStats.pageSize);
+                proto.write(MemInfoDumpProto.AppData.SqlStats.Database.DB_SIZE, dbStats.dbSize);
+                proto.write(MemInfoDumpProto.AppData.SqlStats.Database.LOOKASIDE_B,
+                        dbStats.lookaside);
+                proto.write(
+                        MemInfoDumpProto.AppData.SqlStats.Database.CACHE_HITS, dbStats.cacheHits);
+                proto.write(MemInfoDumpProto.AppData.SqlStats.Database.CACHE_MISSES,
+                        dbStats.cacheMisses);
+                proto.write(
+                        MemInfoDumpProto.AppData.SqlStats.Database.CACHE_SIZE, dbStats.cacheSize);
+                proto.end(dToken);
+            }
+            proto.end(sToken);
+
+            // Asset details.
+            String assetAlloc = AssetManager.getAssetAllocations();
+            if (assetAlloc != null) {
+                proto.write(MemInfoDumpProto.AppData.ASSET_ALLOCATIONS, assetAlloc);
+            }
+
+            // Unreachable native memory
+            if (dumpUnreachable) {
+                int flags = mBoundApplication == null ? 0 : mBoundApplication.appInfo.flags;
+                boolean showContents = (flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0
+                        || android.os.Build.IS_DEBUGGABLE;
+                proto.write(MemInfoDumpProto.AppData.UNREACHABLE_MEMORY,
+                        Debug.getUnreachableMemory(100, showContents));
+            }
+!!!1240194.java!!!	dumpGfxInfo(inout pfd : ParcelFileDescriptor, inout args : String [[]]) : void
+            DumpComponentInfo data = new DumpComponentInfo();
+            try {
+                data.fd = pfd.dup();
+                data.token = null;
+                data.args = args;
+                sendMessage(H.DUMP_GFXINFO, data, 0, 0, true /*async*/);
+            } catch (IOException e) {
+                Slog.w(TAG, "dumpGfxInfo failed", e);
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1240322.java!!!	dumpCacheInfo(inout pfd : ParcelFileDescriptor, inout args : String [[]]) : void
+            try {
+                PropertyInvalidatedCache.dumpCacheInfo(pfd, args);
+                BroadcastStickyCache.dumpCacheInfo(pfd);
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1240450.java!!!	getDatabasesDir(inout context : Context) : File
+            // There's no simple way to get the databases/ path, so do it this way.
+            return context.getDatabasePath("a").getParentFile();
+!!!1240578.java!!!	dumpDatabaseInfo(inout pfd : ParcelFileDescriptor, inout args : String [[]], inout isSystem : boolean) : void
+            PrintWriter pw = new FastPrintWriter(
+                    new FileOutputStream(pfd.getFileDescriptor()));
+            PrintWriterPrinter printer = new PrintWriterPrinter(pw);
+            SQLiteDebug.dump(printer, args, isSystem);
+            pw.flush();
+!!!1240706.java!!!	dumpDbInfo(in pfd : ParcelFileDescriptor, in args : String [[]]) : void
+            if (mSystemThread) {
+                // Ensure this invocation is asynchronous to prevent writer waiting if buffer cannot
+                // be consumed. But it must duplicate the file descriptor first, since caller might
+                // be closing it.
+                final ParcelFileDescriptor dup;
+                try {
+                    dup = pfd.dup();
+                } catch (IOException e) {
+                    Log.w(TAG, "Could not dup FD " + pfd.getFileDescriptor().getInt$());
+                    return;
+                } finally {
+                    IoUtils.closeQuietly(pfd);
+                }
+
+                AsyncTask.THREAD_POOL_EXECUTOR.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            dumpDatabaseInfo(dup, args, true);
+                        } finally {
+                            IoUtils.closeQuietly(dup);
+                        }
+                    }
+                });
+            } else {
+                dumpDatabaseInfo(pfd, args, false);
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1240834.java!!!	unstableProviderDied(inout provider : IBinder) : void
+            sendMessage(H.UNSTABLE_PROVIDER_DIED, provider);
+!!!1240962.java!!!	requestAssistContextExtras(inout activityToken : IBinder, inout requestToken : IBinder, in requestType : int, in sessionId : int, in flags : int) : void
+            RequestAssistContextExtras cmd = new RequestAssistContextExtras();
+            cmd.activityToken = activityToken;
+            cmd.requestToken = requestToken;
+            cmd.requestType = requestType;
+            cmd.sessionId = sessionId;
+            cmd.flags = flags;
+            sendMessage(H.REQUEST_ASSIST_CONTEXT_EXTRAS, cmd);
+!!!1241090.java!!!	setCoreSettings(inout coreSettings : Bundle) : void
+            sendMessage(H.SET_CORE_SETTINGS, coreSettings);
+!!!1241218.java!!!	updatePackageCompatibilityInfo(inout pkg : String, inout info : CompatibilityInfo) : void
+            UpdateCompatibilityData ucd = new UpdateCompatibilityData();
+            ucd.pkg = pkg;
+            ucd.info = info;
+            updateCompatOverrideScale(info);
+            updateCompatOverrideDisplayRotation(info);
+            sendMessage(H.UPDATE_PACKAGE_COMPATIBILITY_INFO, ucd);
+!!!1241346.java!!!	scheduleTrimMemory(in level : int) : void
+            final Runnable r = PooledLambda.obtainRunnable(ActivityThread::handleTrimMemory,
+                    ActivityThread.this, level).recycleOnUse();
+            // Schedule trimming memory after drawing the frame to minimize jank-risk.
+            Choreographer choreographer = Choreographer.getMainThreadInstance();
+            if (choreographer != null) {
+                choreographer.postCallback(Choreographer.CALLBACK_COMMIT, r, null);
+            } else {
+                mH.post(r);
+            }
+!!!1241474.java!!!	scheduleTranslucentConversionComplete(inout token : IBinder, inout drawComplete : boolean) : void
+            sendMessage(H.TRANSLUCENT_CONVERSION_COMPLETE, token, drawComplete ? 1 : 0);
+!!!1241602.java!!!	scheduleOnNewSceneTransitionInfo(inout token : IBinder, inout info : SceneTransitionInfo) : void
+            sendMessage(H.ON_NEW_SCENE_TRANSITION_INFO,
+                    new Pair<IBinder, SceneTransitionInfo>(token, info));
+!!!1241730.java!!!	setProcessState(in state : int) : void
+            updateProcessState(state, true);
+!!!1241858.java!!!	setNetworkBlockSeq(in procStateSeq : long) : void
+            synchronized (mNetworkPolicyLock) {
+                mNetworkBlockSeq = procStateSeq;
+            }
+!!!1241986.java!!!	scheduleInstallProvider(inout provider : ProviderInfo) : void
+            sendMessage(H.INSTALL_PROVIDER, provider);
+!!!1242114.java!!!	updateTimePrefs(in timeFormatPreference : int) : void
+            final Boolean timeFormatPreferenceBool;
+            // For convenience we are using the Intent extra values.
+            if (timeFormatPreference == Intent.EXTRA_TIME_PREF_VALUE_USE_12_HOUR) {
+                timeFormatPreferenceBool = Boolean.FALSE;
+            } else if (timeFormatPreference == Intent.EXTRA_TIME_PREF_VALUE_USE_24_HOUR) {
+                timeFormatPreferenceBool = Boolean.TRUE;
+            } else {
+                // timeFormatPreference == Intent.EXTRA_TIME_PREF_VALUE_USE_LOCALE_DEFAULT
+                // (or unknown).
+                timeFormatPreferenceBool = null;
+            }
+            DateFormat.set24HourTimePref(timeFormatPreferenceBool);
+!!!1242242.java!!!	scheduleEnterAnimationComplete(inout token : IBinder) : void
+            sendMessage(H.ENTER_ANIMATION_COMPLETE, token);
+!!!1242370.java!!!	notifyCleartextNetwork(inout firstPacket : byte [[]]) : void
+            if (StrictMode.vmCleartextNetworkEnabled()) {
+                StrictMode.onCleartextNetworkDetected(firstPacket);
+            }
+!!!1242498.java!!!	startBinderTracking() : void
+            sendMessage(H.START_BINDER_TRACKING, null);
+!!!1242626.java!!!	stopBinderTrackingAndDump(inout pfd : ParcelFileDescriptor) : void
+            try {
+                sendMessage(H.STOP_BINDER_TRACKING_AND_DUMP, pfd.dup());
+            } catch (IOException e) {
+            } finally {
+                IoUtils.closeQuietly(pfd);
+            }
+!!!1242754.java!!!	scheduleLocalVoiceInteractionStarted(inout token : IBinder, inout voiceInteractor : IVoiceInteractor) : void
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = token;
+            args.arg2 = voiceInteractor;
+            sendMessage(H.LOCAL_VOICE_INTERACTION_STARTED, args);
+!!!1242882.java!!!	handleTrustStorageUpdate() : void
+            NetworkSecurityPolicy.getInstance().handleTrustStorageUpdate();
+!!!1243010.java!!!	scheduleTransaction(inout transaction : ClientTransaction) : void
+            ActivityThread.this.scheduleTransaction(transaction);
+!!!1243138.java!!!	scheduleTaskFragmentTransaction(inout organizer : ITaskFragmentOrganizer, inout transaction : TaskFragmentTransaction) : void
+            // TODO(b/352665082): ITaskFragmentOrganizer can be cleanup to be a IBinder token
+            organizer.onTransactionReady(transaction);
+!!!1243266.java!!!	requestDirectActions(inout activityToken : IBinder, inout interactor : IVoiceInteractor, inout cancellationCallback : RemoteCallback, inout callback : RemoteCallback) : void
+            final CancellationSignal cancellationSignal = new CancellationSignal();
+            if (cancellationCallback != null) {
+                final ICancellationSignal transport = createSafeCancellationTransport(
+                        cancellationSignal);
+                final Bundle cancellationResult = new Bundle();
+                cancellationResult.putBinder(VoiceInteractor.KEY_CANCELLATION_SIGNAL,
+                        transport.asBinder());
+                cancellationCallback.sendResult(cancellationResult);
+            }
+            mH.sendMessage(PooledLambda.obtainMessage(ActivityThread::handleRequestDirectActions,
+                    ActivityThread.this, activityToken, interactor, cancellationSignal, callback,
+                    REQUEST_DIRECT_ACTIONS_RETRY_MAX_COUNT));
+!!!1243394.java!!!	performDirectAction(inout activityToken : IBinder, inout actionId : String, inout arguments : Bundle, inout cancellationCallback : RemoteCallback, inout resultCallback : RemoteCallback) : void
+            final CancellationSignal cancellationSignal = new CancellationSignal();
+            if (cancellationCallback != null) {
+                final ICancellationSignal transport = createSafeCancellationTransport(
+                        cancellationSignal);
+                final Bundle cancellationResult = new Bundle();
+                cancellationResult.putBinder(VoiceInteractor.KEY_CANCELLATION_SIGNAL,
+                        transport.asBinder());
+                cancellationCallback.sendResult(cancellationResult);
+            }
+            mH.sendMessage(PooledLambda.obtainMessage(ActivityThread::handlePerformDirectAction,
+                    ActivityThread.this, activityToken, actionId, arguments,
+                    cancellationSignal, resultCallback));
+!!!1243522.java!!!	notifyContentProviderPublishStatus(inout holder : ContentProviderHolder, inout authorities : String, in userId : int, inout published : boolean) : void
+            final String auths[] = authorities.split(";");
+            for (String auth: auths) {
+                final ProviderKey key = getGetProviderKey(auth, userId);
+                synchronized (key.mLock) {
+                    key.mHolder = holder;
+                    key.mLock.notifyAll();
+                }
+            }
+!!!1243650.java!!!	instrumentWithoutRestart(inout instrumentationName : ComponentName, inout instrumentationArgs : Bundle, inout instrumentationWatcher : IInstrumentationWatcher, inout instrumentationUiConnection : IUiAutomationConnection, inout targetInfo : ApplicationInfo) : void
+            AppBindData data = new AppBindData();
+            data.instrumentationName = instrumentationName;
+            data.instrumentationArgs = instrumentationArgs;
+            data.instrumentationWatcher = instrumentationWatcher;
+            data.instrumentationUiAutomationConnection = instrumentationUiConnection;
+            data.appInfo = targetInfo;
+            sendMessage(H.INSTRUMENT_WITHOUT_RESTART, data);
+!!!1243778.java!!!	updateUiTranslationState(inout activityToken : IBinder, in state : int, inout sourceSpec : TranslationSpec, inout targetSpec : TranslationSpec, inout viewIds : List, inout uiTranslationSpec : UiTranslationSpec) : void
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = activityToken;
+            args.arg2 = state;
+            args.arg3 = sourceSpec;
+            args.arg4 = targetSpec;
+            args.arg5 = viewIds;
+            args.arg6 = uiTranslationSpec;
+            sendMessage(H.UPDATE_UI_TRANSLATION_STATE, args);
+!!!1243906.java!!!	getExecutableMethodFileOffsets(inout methodDescriptor : MethodDescriptor, inout resultCallback : IOffsetCallback) : void
+            Method method = MethodDescriptorParser.parseMethodDescriptor(
+                    getClass().getClassLoader(), methodDescriptor);
+            VMDebug.ExecutableMethodFileOffsets location =
+                    VMDebug.getExecutableMethodFileOffsets(method);
+            try {
+                if (location == null) {
+                    resultCallback.onResult(null);
+                    return;
+                }
+                ExecutableMethodFileOffsets ret = new ExecutableMethodFileOffsets();
+                ret.containerPath = location.getContainerPath();
+                ret.containerOffset = location.getContainerOffset();
+                ret.methodOffset = location.getMethodOffset();
+                resultCallback.onResult(ret);
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
