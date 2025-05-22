@@ -25,6 +25,8 @@ public class CommunicationBluetooth extends Thread
     protected static final String DELIMITATEUR_FIN = "!";
     protected static final String DEMARER_MATCH    = "D";
     protected static final String CASSE            = "C";
+    protected static final String EMPOCHAGE        = "E";
+    protected static final String FAUTE            = "F";
 
     private static final String TAG       = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -42,7 +44,6 @@ public class CommunicationBluetooth extends Thread
         this.peripherique = peripherique;
     }
 
-    @Override
     public void run()
     {
         try

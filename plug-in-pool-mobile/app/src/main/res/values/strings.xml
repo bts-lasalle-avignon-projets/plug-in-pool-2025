@@ -17,6 +17,7 @@
     <string name="boutonLancerMatch">Lancer un match</string>
     <string name="boutonDemarerDePartie">Démarer la partie</string>
     <string name="boutonFinDePartie">Fin de partie</string>
+    <string name="boutonValideEmpochage">Validé empochage</string>
     <string name="boutonFauteEmpochage">Faute aucun empochage</string>
     <string name="boutonFauteBillePoussee">Faute bille poussée</string>
     <string name="boutonLancerPartie">Lancer une partie</string>
