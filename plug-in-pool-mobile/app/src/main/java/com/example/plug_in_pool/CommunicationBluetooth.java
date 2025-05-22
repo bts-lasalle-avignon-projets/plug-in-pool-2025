@@ -2,11 +2,14 @@ package com.example.plug_in_pool;
 
 import android.Manifest;
 import android.adservices.measurement.WebSourceRegistrationRequest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import androidx.annotation.RequiresPermission;
+import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +31,7 @@ public class CommunicationBluetooth extends Thread
 
     private static final String TAG       = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final int    DEMANDE_PERMISSIONS_BLUETOOTH = 1;
 
     private final BluetoothDevice peripherique;
     private BluetoothSocket       socket;
@@ -42,6 +46,7 @@ public class CommunicationBluetooth extends Thread
         this.peripherique = peripherique;
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void run()
     {
