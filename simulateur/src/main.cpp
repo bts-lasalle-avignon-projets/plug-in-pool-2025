@@ -293,7 +293,7 @@ void envoyerTrameEmpoche(Poche numeroPoche, CouleurBille couleurBille)
 
     // Format : $couleurBille/idPoche!
     sprintf((char*)trameEnvoi,
-            "%sE/%d/%d!",
+            "%s%d/%d!",
             entete.c_str(),
             int(couleurBille),
             int(numeroPoche));
