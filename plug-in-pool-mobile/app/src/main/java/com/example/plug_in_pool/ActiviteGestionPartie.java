@@ -142,6 +142,14 @@ public class ActiviteGestionPartie extends AppCompatActivity
         if(!adaptateurBluetooth.isEnabled())
         {
             Intent activerBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[] { android.Manifest.permission.BLUETOOTH_CONNECT,
+                                android.Manifest.permission.BLUETOOTH_SCAN },
+                        DEMANDE_PERMISSIONS_BLUETOOTH);
+                return;
+            }
             startActivityForResult(activerBluetooth, 1);
         }
     }
