@@ -42,14 +42,16 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private AutoCompleteTextView choixBluetoothEcran;
     private AutoCompleteTextView choixBluetoothTable;
 
-    Joueur joueur1;
-    Joueur joueur2;
-    String nbParties;
+    private Joueur joueur1;
+    private Joueur joueur2;
+    private String nbParties;
+    private String adresseMacEcran;
+    private String adresseMacTable;
 
     /**
      * Ressources GUI
      */
-    Button boutonLancerPartie;
+    private Button boutonLancerPartie;
 
     /**
      * Bluetooth
@@ -143,13 +145,11 @@ public class ActiviteGestionPartie extends AppCompatActivity
         {
             Intent activerBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[] { android.Manifest.permission.BLUETOOTH_CONNECT,
+                                android.Manifest.permission.BLUETOOTH_SCAN },
+                        DEMANDE_PERMISSIONS_BLUETOOTH);
                 return;
             }
             startActivityForResult(activerBluetooth, 1);
@@ -188,12 +188,14 @@ public class ActiviteGestionPartie extends AppCompatActivity
         choixBluetoothEcran.setOnItemClickListener((parent, view, position, id) -> {
             String selection  = (String)parent.getItemAtPosition(position);
             String adresseMac = extraireAdresseMac(selection);
+            adresseMacEcran   = adresseMac;
             connecterBluetooth(adresseMac);
         });
 
         choixBluetoothTable.setOnItemClickListener((parent, view, position, id) -> {
             String selection  = (String)parent.getItemAtPosition(position);
             String adresseMac = extraireAdresseMac(selection);
+            adresseMacTable   = adresseMac;
             connecterBluetooth(adresseMac);
         });
     }
@@ -220,7 +222,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
             Log.d(TAG, "Socket créée, démarrage de la connexion...");
             socketBluetooth.connect();
             Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
-            envoyerAdresseMac(adresseMac);
         }
         catch(IOException e)
         {
@@ -240,18 +241,22 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 Log.e(TAG, "Échec de la connexion alternative : " + ex.getMessage());
             }
         }
+        if (socketBluetooth != null)
+        {
+            try
+            {
+                socketBluetooth.close();
+                socketBluetooth = null;
+            }
+            catch (IOException e)
+            {
+            }
+        }
     }
 
     private String extraireAdresseMac(String texte)
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
-    }
-
-    private void envoyerAdresseMac(String adresseMac)
-    {
-        Intent changerVue = new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
-        changerVue.putExtra("adresseMac", adresseMac);
-        startActivity(changerVue);
     }
     private void lancerUnePartie()
     {
@@ -264,8 +269,17 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 changerDeVue.putExtra("joueur1", joueur1);
                 changerDeVue.putExtra("joueur2", joueur2);
                 changerDeVue.putExtra("nbParties", nbParties);
+                changerDeVue.putExtra("adresseMacEcran", adresseMacEcran);
+                changerDeVue.putExtra("adresseMacTable", adresseMacTable);
                 startActivity(changerDeVue);
             }
         });
     }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+    }
+
 }

@@ -26,12 +26,13 @@ public class ActivitePartie extends AppCompatActivity
 {
     private static final String TAG = "_ActivitePartie";
 
-    private static final String ADRESSE_MAC_TABLE = "3C:71:BF:6A:F5:D2";
-    private static final String ADRESSE_MAC_ECRAN  = "00:E0:4C:6D:20:45";
-/*
-00:E0:4C:6D:20:45 PC_B20
-2C:CF:67:94:F2:3D Pi
-*/
+    //private static final String ADRESSE_MAC_TABLE = "3C:71:BF:6A:F5:D2";
+    //private static final String ADRESSE_MAC_ECRAN  = "00:E0:4C:63:17:22";
+    /*
+    00:E0:4C:6D:20:45 PC_B20
+    2C:CF:67:94:F2:3D Pi
+    00:E0:4C:6D:20:45 Ecran
+    */
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
 
     private CommunicationBluetooth communicationBluetoothEcran;
@@ -46,6 +47,8 @@ public class ActivitePartie extends AppCompatActivity
     private Joueur       joueur1;
     private Joueur       joueur2;
     private String       nbParties;
+    private String       adresseMacEcran;
+    private String       adresseMacTable;
     private CouleurBille couleurBille;
     private Match match;
 
@@ -122,12 +125,17 @@ public class ActivitePartie extends AppCompatActivity
 
     void recupererDonneesDeConfigurations()
     {
-        Intent intent = getIntent();
-        joueur1       = (Joueur)intent.getSerializableExtra("joueur1");
+        Intent intent   = getIntent();
+        joueur1         = (Joueur)intent.getSerializableExtra("joueur1");
         Log.d(TAG, "recupererDonneesDeConfigurations: " + joueur1);
-        joueur2 = (Joueur)intent.getSerializableExtra("joueur2");
+        joueur2         = (Joueur)intent.getSerializableExtra("joueur2");
         Log.d(TAG, "recupererDonneesDeConfigurations: " + joueur2);
-        nbParties = intent.getSerializableExtra("nbParties").toString();
+        nbParties       = intent.getSerializableExtra("nbParties").toString();
+        Log.d(TAG, "recupererDonneesDeConfigurations: " + nbParties);
+        adresseMacEcran = intent.getSerializableExtra("adresseMacEcran").toString();
+        Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacEcran + " (adresse mac ecran)");
+        adresseMacTable = intent.getStringExtra("adresseMacTable");
+        Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacTable + " (adresse mac table)");
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -442,7 +450,7 @@ public class ActivitePartie extends AppCompatActivity
             return;
         }
 
-        deviceReception = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC_TABLE);
+        deviceReception = adaptateurBluetooth.getRemoteDevice(adresseMacTable);
         communicationBluetoothTable = new CommunicationBluetooth(deviceReception);
         communicationBluetoothTable.setReceptionListener(message -> {
             runOnUiThread(() -> {
@@ -460,7 +468,7 @@ public class ActivitePartie extends AppCompatActivity
                 Toast.makeText(this, "Connexion table (ESP32) réussie", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "Connexion Bluetooth à la table réussie");
 
-                deviceEmission = adaptateurBluetooth.getRemoteDevice(ADRESSE_MAC_ECRAN);
+                deviceEmission = adaptateurBluetooth.getRemoteDevice(adresseMacEcran);
                 communicationBluetoothEcran = new CommunicationBluetooth(deviceEmission);
                 communicationBluetoothEcran.setReceptionListener(message -> {
                     Log.d(TAG, "Message reçu de l’écran : " + message);
