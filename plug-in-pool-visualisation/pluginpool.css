@@ -108,6 +108,78 @@ QLabel#affichageJoueurDeux {
     padding: 0px;
 }
 
+QLabel#affichageCouleurAttribueJoueurUn{
+    background-image: url(:/bouleAttribueQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#affichageCouleurAttribueJoueurDeux{
+    background-image: url(:/bouleAttribueQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#affichageCouleurAttribueJoueurUn.attribuerRouge {
+    background-image: url(:/bouleRougeQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#affichageCouleurAttribueJoueurDeux.attribuerRouge {
+    background-image: url(:/bouleRougeQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#affichageCouleurAttribueJoueurUn.attribuerJaune {
+    background-image: url(:/bouleJauneQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+QLabel#affichageCouleurAttribueJoueurDeux.attribuerJaune {
+    background-image: url(:/bouleJauneQT.png);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 QLabel#labelChronometre {
     font-size: 30px;
     background-color: none;
@@ -218,165 +290,8 @@ QWidget#poche {
     background-size: contain;
 }
 
-QLabel#bouleRougeImagePoche0{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: red;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleRougeImagePoche1{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: red;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleRougeImagePoche2{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: red;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleRougeImagePoche3{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: red;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleRougeImagePoche4{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: red;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-QLabel#bouleRougeImagePoche5{
-    background-image: url(:/bouleRougeQT.png);
-    background-color: transparent;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: 100% 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-
-QLabel#bouleJauneImagePoche0{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleJauneImagePoche1{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-
-}
-
-QLabel#bouleJauneImagePoche2{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleJauneImagePoche3{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleJauneImagePoche4{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-QLabel#bouleJauneImagePoche5{
-    background-image: url(:/bouleJauneQT.png);
-    background-color: yellow;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 QLabel#compteurBoulesRougesPoche0{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -386,7 +301,7 @@ QLabel#compteurBoulesRougesPoche0{
 }
 
 QLabel#compteurBoulesRougesPoche1{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -396,7 +311,7 @@ QLabel#compteurBoulesRougesPoche1{
 }
 
 QLabel#compteurBoulesRougesPoche2{
-font-size: 30px;
+font-size: 40px;
 background-color: none;
 border: none;
 text-align: center;
@@ -406,7 +321,7 @@ padding: 0px;
 }
 
 QLabel#compteurBoulesRougesPoche3{
-font-size: 30px;
+font-size: 40px;
 background-color: none;
 border: none;
 text-align: center;
@@ -416,7 +331,7 @@ padding: 0px;
 }
 
 QLabel#compteurBoulesRougesPoche4{
-font-size: 30px;
+font-size: 40px;
 background-color: none;
 border: none;
 text-align: center;
@@ -426,7 +341,7 @@ padding: 0px;
 }
 
 QLabel#compteurBoulesRougesPoche5{
-font-size: 30px;
+font-size: 40px;
 background-color: none;
 border: none;
 text-align: center;
@@ -436,7 +351,7 @@ padding: 0px;
 }
 
 QLabel#compteurBoulesJaunesPoche0{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -446,7 +361,7 @@ QLabel#compteurBoulesJaunesPoche0{
 }
 
 QLabel#compteurBoulesJaunesPoche1{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -456,7 +371,7 @@ QLabel#compteurBoulesJaunesPoche1{
 }
 
 QLabel#compteurBoulesJaunesPoche2{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -466,7 +381,7 @@ QLabel#compteurBoulesJaunesPoche2{
 }
 
 QLabel#compteurBoulesJaunesPoche3{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -476,7 +391,7 @@ QLabel#compteurBoulesJaunesPoche3{
 }
 
 QLabel#compteurBoulesJaunesPoche4{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -486,7 +401,7 @@ QLabel#compteurBoulesJaunesPoche4{
 }
 
 QLabel#compteurBoulesJaunesPoche5{
-    font-size: 30px;
+    font-size: 40px;
     background-color: none;
     border: none;
     text-align: center;
@@ -495,22 +410,13 @@ QLabel#compteurBoulesJaunesPoche5{
     padding: 0px;
 }
 
-QLabel#affichageMessage{
-font-size: 30px;
+QLabel#affichageMessage {
+    font-size: 30px;
     background-color: darkgreen;
     color: white;
-    text-align: center;
-    vertical-align: middle;
-    width: 100px;
-    height: 100px;
     border: 5px solid red;
     border-radius: 10px;
     font-family: 'REM';
-    margin: 0 600px;
-    box-sizing: border-box;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
 }
 
 

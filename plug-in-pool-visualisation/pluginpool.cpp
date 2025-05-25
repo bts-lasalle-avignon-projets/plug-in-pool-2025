@@ -94,6 +94,7 @@ void PlugInPool::empochageCasse(int idPartie,
         {
             ecranMatch->afficherMessageAction(prenom + " a les boules Rouges");
             ecranMatch->retirerBoule(couleurBoule);
+            ecranMatch->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
@@ -101,6 +102,7 @@ void PlugInPool::empochageCasse(int idPartie,
         {
             ecranMatch->afficherMessageAction(prenom + " a les boules Jaunes");
             ecranMatch->retirerBoule(couleurBoule);
+            ecranMatch->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
