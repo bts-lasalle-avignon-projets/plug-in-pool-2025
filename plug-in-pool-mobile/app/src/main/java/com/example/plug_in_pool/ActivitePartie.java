@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,14 +26,6 @@ import java.util.List;
 public class ActivitePartie extends AppCompatActivity
 {
     private static final String TAG = "_ActivitePartie";
-
-    //private static final String ADRESSE_MAC_TABLE = "3C:71:BF:6A:F5:D2";
-    //private static final String ADRESSE_MAC_ECRAN  = "00:E0:4C:63:17:22";
-    /*
-    00:E0:4C:6D:20:45 PC_B20
-    2C:CF:67:94:F2:3D Pi
-    00:E0:4C:6D:20:45 Ecran
-    */
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
 
     private CommunicationBluetooth communicationBluetoothEcran;
@@ -52,14 +45,13 @@ public class ActivitePartie extends AppCompatActivity
     private CouleurBille couleurBille;
     private Match match;
 
-    int          idGagnant;
     List<Joueur> joueurs           = new ArrayList<>();
-    int          trameCouleurRecue = -2;
-    int          tramePocheRecue;
-    boolean      partieFinie = false;
-    int          nbPartiesGestion;
-    int          indexBilleRouge = 0;
-    int          indexBilleJaune = 0;
+    private int          trameCouleurRecue = -2;
+    private int          tramePocheRecue;
+    private int          nbPartiesGestion;
+    private int          nbPartiesCompteur = 0;
+    private int          indexBilleRouge   = 0;
+    private int          indexBilleJaune   = 0;
 
     private TextView texteJoueur1;
     private TextView texteJoueur2;
@@ -108,7 +100,7 @@ public class ActivitePartie extends AppCompatActivity
         {
             try
             {
-                nbPartiesGestion = Integer.parseInt(nbParties);
+                nbPartiesGestion  = Integer.parseInt(nbParties);
             }
             catch(NumberFormatException e)
             {
@@ -155,6 +147,7 @@ public class ActivitePartie extends AppCompatActivity
         joueur2 = new Joueur(joueur2.getNom(), joueur2.getPrenom(), 0, 1);
         joueurs.add(joueur1);
         joueurs.add(joueur2);
+        joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
 
         String envoyerConfigurationVersEcran =
           trameDemarrerMatch(CommunicationBluetooth.DEMARER_MATCH,
@@ -172,6 +165,7 @@ public class ActivitePartie extends AppCompatActivity
     private void casse()
     {
         boolean casseEstFini = false;
+        nbPartiesCompteur++;
         if(!casseEstFini)
         {
             for(Joueur joueur: joueurs)
@@ -184,38 +178,25 @@ public class ActivitePartie extends AppCompatActivity
                     switch(trameCouleurRecue)
                     {
                         case 0:
-                            retirerBilleRouge();
-                            joueur.setCouleur(CouleurBille.ROUGE);
-                            joueurs.get(1).setCouleur(CouleurBille.JAUNE);
+                            casseEstFini = attribuerCouleurRouge(id);
                             String envoyerRougeVersEcran =
                               trameCasse(CommunicationBluetooth.CASSE,
-                                         (nbPartiesGestion - nbPartiesGestion + 1),
+                                         nbPartiesCompteur,
                                          joueur.getId(),
                                          trameCouleurRecue,
                                          tramePocheRecue);
                             envoyerTrame(envoyerRougeVersEcran);
-                            casseEstFini = true;
-                            joueurActuel.setText(joueur2.getNom() + " " + joueur2.getPrenom());
-                            joueurs.get(0).ajouterPoint();
                             afficherPointsJoueur1.setText(String.valueOf(joueurs.get(0).afficherPoint()));
-                            afficherJoueursCreer();
                             break;
                         case 1:
-                            retirerBilleJaune();
-                            joueur.setCouleur(CouleurBille.JAUNE);
-                            joueurs.get(1).setCouleur(CouleurBille.ROUGE);
+                            casseEstFini = attribuerCouleurJaune(id);
                             String envoyerJauneVersEcran =
                               trameCasse(CommunicationBluetooth.CASSE,
-                                         (nbPartiesGestion - nbPartiesGestion + 1),
-                                         joueur.getId(),
-                                         trameCouleurRecue,
-                                         tramePocheRecue);
+                                      nbPartiesCompteur, joueur.getId(),
+                                      trameCouleurRecue,
+                                      tramePocheRecue);
                             envoyerTrame(envoyerJauneVersEcran);
-                            casseEstFini = true;
-                            joueurActuel.setText(joueur2.getNom() + " " + joueur2.getPrenom());
-                            joueurs.get(0).ajouterPoint();
                             afficherPointsJoueur1.setText(String.valueOf(joueurs.get(0).afficherPoint()));
-                            afficherJoueursCreer();
                             break;
                         case 3:
                             String envoyerFauteNoireVersEcran = trameFaute(CommunicationBluetooth.FAUTE, joueurs.get(0).getId(), "Noire");
@@ -240,13 +221,12 @@ public class ActivitePartie extends AppCompatActivity
                             retirerBilleRouge();
                             String envoyerRougeVersEcran =
                               trameCasse(CommunicationBluetooth.CASSE,
-                                         (nbPartiesGestion - nbPartiesGestion + 1),
+                                         nbPartiesCompteur,
                                          joueur.getId(),
                                          trameCouleurRecue,
                                          tramePocheRecue);
                             envoyerTrame(envoyerRougeVersEcran);
                             casseEstFini = true;
-                            joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
                             joueurs.get(1).ajouterPoint();
                             afficherPointsJoueur2.setText(String.valueOf(joueurs.get(1).afficherPoint()));
                             afficherJoueursCreer();
@@ -257,13 +237,12 @@ public class ActivitePartie extends AppCompatActivity
                             joueurs.get(0).setCouleur(CouleurBille.ROUGE);
                             String envoyerJauneVersEcran =
                               trameCasse(CommunicationBluetooth.CASSE,
-                                         (nbPartiesGestion - nbPartiesGestion + 1),
+                                         nbPartiesCompteur,
                                          joueur.getId(),
                                          trameCouleurRecue,
                                          tramePocheRecue);
                             envoyerTrame(envoyerJauneVersEcran);
                             casseEstFini = true;
-                            joueurActuel.setText(joueur1.getNom() + " " + joueur1.getPrenom());
                             joueurs.get(1).ajouterPoint();
                             afficherPointsJoueur2.setText(String.valueOf(joueurs.get(1).afficherPoint()));
                             afficherJoueursCreer();
@@ -303,6 +282,26 @@ public class ActivitePartie extends AppCompatActivity
         }
     }
 
+    private boolean attribuerCouleurRouge(int id)
+    {
+        joueurs.get(id).setCouleur(CouleurBille.ROUGE);
+        joueurs.get((id + 1) % 2).setCouleur(CouleurBille.JAUNE);
+        retirerBilleRouge();
+        joueurs.get(id).ajouterPoint();
+        afficherJoueursCreer();
+
+        return true;
+    }
+    private boolean attribuerCouleurJaune(int id)
+    {
+        joueurs.get(id).setCouleur(CouleurBille.JAUNE);
+        joueurs.get((id + 1) % 2).setCouleur(CouleurBille.ROUGE);
+        retirerBilleJaune();
+        joueurs.get(id).ajouterPoint();
+        afficherJoueursCreer();
+
+        return true;
+    }
     private int indexJoueurActuel = 0;
     private void manche()
     {
@@ -417,7 +416,7 @@ public class ActivitePartie extends AppCompatActivity
                 casse();
                 break;
             case EN_COURS:
-                Log.d(TAG, "Lancement de la partie");
+            Log.d(TAG, "Attente empochage");
                 manche();
                 break;
             case FINI:
@@ -635,9 +634,8 @@ public class ActivitePartie extends AppCompatActivity
                         Toast.LENGTH_LONG)
                 .show();
             String envoyerFinVersEcran =
-                    trameFinDePartie("T",
-                            joueurs.get(1).afficherPoint(),
-                            joueurs.get(0).afficherPoint());
+                    trameFinDePartie("T", nbPartiesCompteur,
+                            joueurs.get(0).getId());
             envoyerTrame(envoyerFinVersEcran);
         }
         else if (joueurs.get(0).afficherPoint() > joueurs.get(1).afficherPoint())
@@ -648,9 +646,8 @@ public class ActivitePartie extends AppCompatActivity
                         Toast.LENGTH_LONG)
                 .show();
             String envoyerFinVersEcran =
-                    trameFinDePartie("T",
-                            joueurs.get(1).afficherPoint(),
-                            joueurs.get(0).afficherPoint());
+                    trameFinDePartie("T", nbPartiesCompteur,
+                            joueurs.get(0).getId());
             envoyerTrame(envoyerFinVersEcran);
         }
         else
@@ -658,10 +655,38 @@ public class ActivitePartie extends AppCompatActivity
             Log.d(TAG, "finDeMatch: Erreur pas de points ou égalité");
         }
     }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        String trameReprise;
+        trameReprise = trameEtatPourTable("R");
+        envoyerTrameVersTable(trameReprise);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        String tramePause;
+        tramePause = trameEtatPourTable("P");
+        envoyerTrameVersTable(tramePause);
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+    }
+
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
+        String trameAbandon;
+        trameAbandon = trameEtatPourTable("A");
+        envoyerTrameVersTable(trameAbandon);
         if(communicationBluetoothEcran != null)
             communicationBluetoothEcran.close();
         if(communicationBluetoothTable != null)
