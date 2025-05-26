@@ -88,6 +88,47 @@ QWidget#ecranMatch {
     padding: 0px;
 }
 
+QLabel#affichageJoueurUnMatch {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageJoueurDeuxMatch {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageNombreParties {
+    font-size: 30px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Écran Partie */
+QWidget#ecranPartie {
+    background-image: url(":/ecranPartieQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
 QLabel#affichageJoueurUn {
     font-size: 30px;
     background-color: none;

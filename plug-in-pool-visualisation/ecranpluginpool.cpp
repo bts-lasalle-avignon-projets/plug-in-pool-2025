@@ -30,16 +30,20 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     ecranAccueil                = new EcranAccueil(widgetEcranAccueil);
     QWidget* widgetEcranMatch   = new QWidget();
     ecranMatch                  = new EcranMatch(widgetEcranMatch);
+    QWidget* widgetEcranPartie  = new QWidget();
+    ecranPartie                 = new EcranPartie(widgetEcranPartie);
     QWidget* widgetEcranFin     = new QWidget();
     ecranFin                    = new EcranFin(widgetEcranFin);
 
     ecransInterface->setObjectName("ecransInterface");
     widgetEcranAccueil->setObjectName("ecranAccueil");
     widgetEcranMatch->setObjectName("ecranMatch");
+    widgetEcranPartie->setObjectName("ecranPartie");
     widgetEcranFin->setObjectName("ecranFin");
 
     ecransInterface->addWidget(widgetEcranAccueil);
     ecransInterface->addWidget(widgetEcranMatch);
+    ecransInterface->addWidget(widgetEcranPartie);
     ecransInterface->addWidget(widgetEcranFin);
 
     interfacePlugInPool = new QVBoxLayout(this);
@@ -56,6 +60,7 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 
     afficherEcranAccueil();
     // afficherEcranMatch();
+    // afficherEcranPartie();
     // afficherEcranFin();
 }
 
@@ -77,6 +82,12 @@ void EcranPlugInPool::afficherEcranMatch()
     ecransInterface->setCurrentWidget(ecranMatch->getEcran());
 }
 
+void EcranPlugInPool::afficherEcranPartie()
+{
+    qDebug() << Q_FUNC_INFO;
+    ecransInterface->setCurrentWidget(ecranPartie->getEcran());
+}
+
 void EcranPlugInPool::afficherEcranFin()
 {
     qDebug() << Q_FUNC_INFO;
@@ -86,6 +97,11 @@ void EcranPlugInPool::afficherEcranFin()
 EcranAccueil* EcranPlugInPool::getEcranAccueil() const
 {
     return ecranAccueil;
+}
+
+EcranPartie* EcranPlugInPool::getEcranPartie() const
+{
+    return ecranPartie;
 }
 
 EcranMatch* EcranPlugInPool::getEcranMatch() const

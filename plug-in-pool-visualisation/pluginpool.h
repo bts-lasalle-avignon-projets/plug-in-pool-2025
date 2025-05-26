@@ -36,6 +36,7 @@ class PlugInPool : public QObject
     void empochage(int idJoueur, int couleurBille, int idPoche);
     void terminerPartie(int idPartie, int idJoueurGagnant);
     void changerEcranMatch();
+    void changerEcranPartie();
     void changerEcranFin();
 };
 

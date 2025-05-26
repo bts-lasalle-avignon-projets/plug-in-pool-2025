@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file alias="ecranAccueilQT.png">images/ecranAccueilQT.png</file>
         <file alias="ecranMatchQT.png">images/ecranMatchQT.png</file>
+        <file alias="ecranPartieQT.png">images/ecranPartieQT.png</file>
         <file alias="ecranFinQT.png">images/ecranFinQT.png</file>
         <file alias="bouleRougeQT.png">images/bouleRougeQT.png</file>
         <file alias="bouleJauneQT.png">images/bouleJauneQT.png</file>

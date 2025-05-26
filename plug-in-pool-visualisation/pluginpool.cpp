@@ -69,13 +69,21 @@ void PlugInPool::configurerMatch(int     nbManches,
     qDebug() << Q_FUNC_INFO << "prenomJoueur1" << prenomJoueur1
              << "prenomJoueur2" << prenomJoueur2 << "nbManches" << nbManches;
 
-    EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
+    EcranMatch*  ecranMatch  = ecranPlugInPool->getEcranMatch();
+    EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
     match->enregistrerJoueurs(prenomJoueur1, prenomJoueur2);
     match->setNbManchesGagnantes(nbManches);
+
     ecranMatch->afficherInformationsMatch(nbManches,
                                           prenomJoueur1,
                                           prenomJoueur2);
+
     changerEcranMatch();
+
+    ecranPartie->afficherInformationsPartie(nbManches,
+                                            prenomJoueur1,
+                                            prenomJoueur2);
+    changerEcranPartie();
 }
 
 void PlugInPool::empochageCasse(int idPartie,
@@ -86,43 +94,43 @@ void PlugInPool::empochageCasse(int idPartie,
     qDebug() << Q_FUNC_INFO << "idPartie" << idPartie << "idJoueur" << idJoueur
              << "couleurBille" << couleurBille << "idPoche" << idPoche;
     CouleurBille couleurBoule = static_cast<CouleurBille>(couleurBille);
-    EcranMatch*  ecranMatch   = ecranPlugInPool->getEcranMatch();
+    EcranPartie* ecranPartie  = ecranPlugInPool->getEcranPartie();
     QString      prenom       = match->getPrenomJoueur(idJoueur);
     switch(couleurBoule)
     {
         case ROUGE:
         {
-            ecranMatch->afficherMessageAction(prenom + " a les boules Rouges");
-            ecranMatch->retirerBoule(couleurBoule);
-            ecranMatch->attribuerCouleurBille(idJoueur, couleurBoule);
-            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            ecranPartie->afficherMessageAction(prenom + " a les boules Rouges");
+            ecranPartie->retirerBoule(couleurBoule);
+            ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
+            ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case JAUNE:
         {
-            ecranMatch->afficherMessageAction(prenom + " a les boules Jaunes");
-            ecranMatch->retirerBoule(couleurBoule);
-            ecranMatch->attribuerCouleurBille(idJoueur, couleurBoule);
-            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            ecranPartie->afficherMessageAction(prenom + " a les boules Jaunes");
+            ecranPartie->retirerBoule(couleurBoule);
+            ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
+            ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case BLANCHE:
         {
-            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
+            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
         case NOIR:
         {
-            ecranMatch->afficherMessageAction("Faute : Partie Terminé");
+            ecranPartie->afficherMessageAction("Faute : Partie Terminé");
             break;
         }
         case AUCUNE:
         {
-            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
+            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
     }
-    ecranMatch->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
+    ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
 void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
@@ -130,46 +138,46 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
     qDebug() << Q_FUNC_INFO << "idJoueur" << idJoueur << "couleurBille"
              << couleurBille << "idPoche" << idPoche;
     CouleurBille couleurBoule = static_cast<CouleurBille>(couleurBille);
-    EcranMatch*  ecranMatch   = ecranPlugInPool->getEcranMatch();
+    EcranPartie* ecranPartie  = ecranPlugInPool->getEcranPartie();
     QString      prenom       = match->getPrenomJoueur(idJoueur);
 
     switch(couleurBoule)
     {
         case ROUGE:
         {
-            ecranMatch->afficherMessageAction(
+            ecranPartie->afficherMessageAction(
               prenom + " a mis la boule rouge dans la poche " +
               QString::number(idPoche));
-            ecranMatch->retirerBoule(couleurBoule);
-            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            ecranPartie->retirerBoule(couleurBoule);
+            ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case JAUNE:
         {
-            ecranMatch->afficherMessageAction(
+            ecranPartie->afficherMessageAction(
               prenom + " a mis la boule jaune dans la poche " +
               QString::number(idPoche));
-            ecranMatch->retirerBoule(couleurBoule);
-            ecranMatch->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            ecranPartie->retirerBoule(couleurBoule);
+            ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
         case BLANCHE:
         {
-            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
+            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
         case NOIR:
         {
-            ecranMatch->afficherMessageAction("Faute : Partie Terminé");
+            ecranPartie->afficherMessageAction("Faute : Partie Terminé");
             break;
         }
         case AUCUNE:
         {
-            ecranMatch->afficherMessageAction("Faute : Joueur suivant");
+            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
             break;
         }
     }
-    ecranMatch->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
+    ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
 void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
@@ -187,8 +195,14 @@ void PlugInPool::changerEcranMatch()
     qDebug() << Q_FUNC_INFO;
     EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
     ecranPlugInPool->afficherEcranMatch();
-    ecranMatch->demarrerChronometre();
-    ecranMatch->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
+}
+void PlugInPool::changerEcranPartie()
+{
+    qDebug() << Q_FUNC_INFO;
+    EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
+    ecranPlugInPool->afficherEcranPartie();
+    ecranPartie->demarrerChronometre();
+    ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
 void PlugInPool::changerEcranFin()
