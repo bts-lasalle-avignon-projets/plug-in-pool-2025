@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.CursorIndexOutOfBoundsException;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import androidx.core.content.ContextCompat;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -53,11 +55,14 @@ public class ActivitePartie extends AppCompatActivity
     private int          indexBilleRouge   = 0;
     private int          indexBilleJaune   = 0;
 
+    private TextView tableStatut;
+    private TextView ecranStatut;
     private TextView texteJoueur1;
     private TextView texteJoueur2;
     private TextView afficherPointsJoueur1;
     private TextView afficherPointsJoueur2;
     private TextView joueurActuel;
+    private TextView joueurGagnant;
     private ImageView[] billesJaunes = new ImageView[7];
     private ImageView[] billesRouges = new ImageView[7];
 
@@ -75,6 +80,8 @@ public class ActivitePartie extends AppCompatActivity
     }
     void initialiserVues()
     {
+        tableStatut = findViewById(R.id.tableStatut);
+        ecranStatut = findViewById(R.id.ecranStatut);
         afficherPointsJoueur1 = findViewById(R.id.nbPointsDuJoueur1);
         afficherPointsJoueur2 = findViewById(R.id.nbPointsDuJoueur2);
         texteJoueur1    = findViewById(R.id.textePourNbPointsJoueur1);
@@ -464,7 +471,7 @@ public class ActivitePartie extends AppCompatActivity
 
         new Handler().postDelayed(() -> {
             if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte()) {
-                Toast.makeText(this, "Connexion table (ESP32) réussie", Toast.LENGTH_SHORT).show();
+                tableConnecter();
                 Log.d(TAG, "Connexion Bluetooth à la table réussie");
 
                 deviceEmission = adaptateurBluetooth.getRemoteDevice(adresseMacEcran);
@@ -476,19 +483,39 @@ public class ActivitePartie extends AppCompatActivity
 
                 new Handler().postDelayed(() -> {
                     if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte()) {
-                        Toast.makeText(this, "Connexion écran réussie", Toast.LENGTH_SHORT).show();
+                        ecranConnecter();
                         Log.d(TAG, "Connexion Bluetooth à l'écran réussie");
                     } else {
-                        Toast.makeText(this, "Bluetooth (écran) non connecté", Toast.LENGTH_LONG).show();
+                        ecranNonConnecter();
                         Log.e(TAG, "Connexion à l’écran ÉCHOUÉE !");
                     }
                 }, 2000);
 
             } else {
-                Toast.makeText(this, "Connexion à la table échouée, annulation écran", Toast.LENGTH_LONG).show();
+                tableNonConnecter();
                 Log.e(TAG, "Connexion à la table ÉCHOUÉE !");
             }
         }, 3000);
+    }
+    public void ecranNonConnecter()
+    {
+        ecranStatut.setBackgroundColor(ContextCompat.getColor(this, R.color.rouge));
+        ecranStatut.setText("Erreur de connexion à l'écran");
+    }
+    public void ecranConnecter()
+    {
+        ecranStatut.setBackgroundColor(ContextCompat.getColor(this, R.color.vertFonce));
+        ecranStatut.setText("Connexion à l'écran reussie");
+    }
+    public void tableNonConnecter()
+    {
+        tableStatut.setBackgroundColor(ContextCompat.getColor(this, R.color.rouge));
+        tableStatut.setText("Erreur de connexion à la table");
+    }
+    public void tableConnecter()
+    {
+        tableStatut.setBackgroundColor(ContextCompat.getColor(this, R.color.vertFonce));
+        tableStatut.setText("Connexion à la table réussie");
     }
     public void envoyerTrame(String trame)
     {
@@ -496,6 +523,7 @@ public class ActivitePartie extends AppCompatActivity
             Log.d(TAG, "Envoi vers écran : " + trame);
             communicationBluetoothEcran.envoyerTrameAsync(trame);
         } else {
+            ecranNonConnecter();
             Log.e(TAG, "Échec envoi écran : Bluetooth (écran) non connecté");
         }
     }
@@ -505,6 +533,7 @@ public class ActivitePartie extends AppCompatActivity
             Log.d(TAG, "Envoi vers table : " + trame);
             communicationBluetoothTable.envoyerTrameAsync(trame);
         } else {
+            tableNonConnecter();
             Log.e(TAG, "Échec envoi table : Connexion Bluetooth table non disponible");
         }
     }

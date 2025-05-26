@@ -88,6 +88,37 @@
             android:paddingEnd="16dp"
             tools:ignore="HardcodedText" />
 
+        <TextView
+            android:id="@+id/tableStatut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Attente de connexion à la table"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:background="@color/jaune"
+            android:gravity="center"
+            android:fontFamily="sans-serif"
+            app:layout_constraintTop_toBottomOf="@id/nomDuJoueur"
+            app:layout_constraintEnd_toStartOf="@id/ecranStatut"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ecranStatut"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/ecranStatut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Attente de connexion à l'écran"
+            android:textSize="20sp"
+            android:textColor="@color/noir"
+            android:background="@color/jaune"
+            android:gravity="center"
+            android:fontFamily="sans-serif"
+            app:layout_constraintTop_toBottomOf="@id/nomDuJoueur"
+            app:layout_constraintStart_toEndOf="@id/tableStatut"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="HardcodedText" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -322,6 +353,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="Joueur 1 :"
+                    android:paddingRight="10dp"
                     android:textColor="@color/noir"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
@@ -351,6 +383,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="Joueur 2 :"
+                    android:paddingRight="10dp"
                     android:textColor="@color/noir"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
