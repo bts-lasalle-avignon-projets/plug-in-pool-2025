@@ -36,16 +36,14 @@ class EcranMatch : public QObject
     int              secondesRestantes;
     QVector<QLabel*> boulesRouges;
     QVector<QLabel*> boulesJaunes;
+    QLabel*          affichageCouleurAttribueJoueurUn;
+    QLabel*          affichageCouleurAttribueJoueurDeux;
 
     QHBoxLayout* espaceBoulesRouges;
     QHBoxLayout* espaceBoulesJaunes;
     QHBoxLayout* espaceBouleBlanche;
     QHBoxLayout* espaceBouleNoir;
 
-    QGridLayout* espaceTableBillard;
-
-    QLabel* bouleRougeImagePoche[NB_POCHES];
-    QLabel* bouleJauneImagePoche[NB_POCHES];
     QLabel* compteurBoulesRougesPoche[NB_POCHES];
     QLabel* compteurBoulesJaunesPoche[NB_POCHES];
 
@@ -64,6 +62,7 @@ class EcranMatch : public QObject
     void incrementerCompteurPoche(CouleurBille couleur, int idPoche);
     void afficherMessageAction(QString message);
     void demarrerCompteAReboursManche(int dureeEnSecondes);
+    void attribuerCouleurBille(int idJoueur, int couleurBille);
 
   signals:
 };
