@@ -405,7 +405,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/rouge"
                 android:fontFamily="sans-serif-medium"
                 android:maxWidth="320dp"
@@ -413,6 +412,22 @@
                 android:text="@string/boutonDemarerDePartie"
                 android:textColor="@color/noir"
                 android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/boutonTirLoupe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/vert"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="320dp"
+                android:minWidth="300dp"
+                android:text="@string/boutonTirLoupe"
+                android:textColor="@color/noir"
+                android:textSize="16sp"
+                android:visibility="gone"
                 android:textStyle="bold" />
 
             <Button
@@ -433,5 +448,15 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/joueurGagnant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/joueurGagnant"
+        android:textColor="@color/noir"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toBottomOf="@+id/tableBillard"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
