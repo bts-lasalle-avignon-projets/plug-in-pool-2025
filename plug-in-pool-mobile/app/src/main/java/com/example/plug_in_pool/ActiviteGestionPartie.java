@@ -51,7 +51,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
     /**
      * Ressources GUI
      */
-    private Button boutonLancerPartie;
+    private Button boutonSuivant;
 
     /**
      * Bluetooth
@@ -93,7 +93,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
         texteNbParties      = findViewById(R.id.texteNbParties);
         choixBluetoothEcran = findViewById(R.id.choixBluetoothEcran);
         choixBluetoothTable = findViewById(R.id.choixBluetoothTable);
-        boutonLancerPartie = findViewById(R.id.boutonLancerPartie);
+        boutonSuivant = findViewById(R.id.boutonSuivant);
         lancerUnePartie();
     }
 
@@ -260,7 +260,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
     }
     private void lancerUnePartie()
     {
-        boutonLancerPartie.setOnClickListener(new View.OnClickListener() {
+        boutonSuivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {

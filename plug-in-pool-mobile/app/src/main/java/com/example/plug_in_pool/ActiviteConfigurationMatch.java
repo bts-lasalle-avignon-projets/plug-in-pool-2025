@@ -31,7 +31,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     /**
      * Éléments de l'interface
      */
-    private Button               boutonLancerMatch;
+    private Button               boutonSuivant;
     private AutoCompleteTextView choixNomJoueur1;
     private AutoCompleteTextView choixNomJoueur2;
 
@@ -66,7 +66,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private void initialiserVue()
     {
         Log.d(TAG, "initialiserVue()");
-        boutonLancerMatch = findViewById(R.id.boutonLancerMatch);
+        boutonSuivant = findViewById(R.id.boutonSuivant);
         choixNomJoueur1   = findViewById(R.id.choixNomJoueur1);
         choixNomJoueur2   = findViewById(R.id.choixNomJoueur2);
 
@@ -172,7 +172,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
 
     private void jouerMatch()
     {
-        boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
+        boutonSuivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
