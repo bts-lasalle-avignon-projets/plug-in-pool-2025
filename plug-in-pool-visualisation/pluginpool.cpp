@@ -69,6 +69,8 @@ void PlugInPool::configurerMatch(int     nbManches,
     qDebug() << Q_FUNC_INFO << "prenomJoueur1" << prenomJoueur1
              << "prenomJoueur2" << prenomJoueur2 << "nbManches" << nbManches;
 
+    qDebug() << Q_FUNC_INFO << "Configurer match";
+
     EcranMatch*  ecranMatch  = ecranPlugInPool->getEcranMatch();
     EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
     match->enregistrerJoueurs(prenomJoueur1, prenomJoueur2);
@@ -79,13 +81,17 @@ void PlugInPool::configurerMatch(int     nbManches,
                                           prenomJoueur2);
 
     changerEcranMatch();
-    ecranMatch->demarrerCompteAReboursDebutMatch(
-      TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH);
 
-    ecranPartie->afficherInformationsPartie(nbManches,
-                                            prenomJoueur1,
-                                            prenomJoueur2);
-    changerEcranPartie();
+    connect(ecranMatch,
+            &EcranMatch::compteAReboursDebutMatchTermine,
+            this,
+            [=]()
+            {
+                ecranPartie->afficherInformationsPartie(nbManches,
+                                                        prenomJoueur1,
+                                                        prenomJoueur2);
+                changerEcranPartie();
+            });
 }
 
 void PlugInPool::empochageCasse(int idPartie,
@@ -197,6 +203,12 @@ void PlugInPool::changerEcranMatch()
     qDebug() << Q_FUNC_INFO;
     EcranMatch* ecranMatch = ecranPlugInPool->getEcranMatch();
     ecranPlugInPool->afficherEcranMatch();
+    QTimer::singleShot(TEMPS_AVANT_COMPTE_A_REBOURS,
+                       [ecranMatch]()
+                       {
+                           ecranMatch->demarrerCompteAReboursDebutMatch(
+                             TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH);
+                       });
 }
 void PlugInPool::changerEcranPartie()
 {

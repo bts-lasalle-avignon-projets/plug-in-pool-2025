@@ -20,6 +20,7 @@ class EcranMatch : public QWidget
     QLabel*  affichageNombreParties;
     QTimer*  compteAReboursDebutMatch;
     QLabel*  affichageCompteAReboursDebutMatch;
+    QLabel*  affichageFondCompteAReboursDebutMatch;
     int      secondesEcoulees;
     int      secondesRestantes;
 
@@ -32,8 +33,10 @@ class EcranMatch : public QWidget
                                    QString joueur1,
                                    QString joueur2);
     void demarrerCompteAReboursDebutMatch(int dureeEnSecondes);
+    void positionnerAffichageJoueurs();
 
   signals:
+    void compteAReboursDebutMatchTermine();
 };
 
 #endif // ECRANMATCH_H

@@ -8,45 +8,34 @@ EcranMatch::EcranMatch(QWidget* parent) : QWidget(parent), ecran(parent)
     affichageJoueurDeux               = new QLabel("Joueur 2", ecran);
     affichageNombreParties            = new QLabel("1 Partie Gagnante", ecran);
     affichageCompteAReboursDebutMatch = new QLabel(ecran);
+    compteAReboursDebutMatch          = new QTimer(ecran);
+    affichageFondCompteAReboursDebutMatch = new QLabel(ecran);
 
     affichageJoueurUn->setObjectName("affichageJoueurUnMatch");
     affichageJoueurDeux->setObjectName("affichageJoueurDeuxMatch");
     affichageNombreParties->setObjectName("affichageNombreParties");
     affichageCompteAReboursDebutMatch->setObjectName(
       "affichageCompteAReboursDebutMatch");
+    affichageFondCompteAReboursDebutMatch->setObjectName(
+      "affichageFondCompteAReboursDebutMatch");
 
     QVBoxLayout* ecranMatch = new QVBoxLayout(ecran);
 
-    QHBoxLayout* espaceJoueurs        = new QHBoxLayout(ecran);
-    QHBoxLayout* espaceJoueurUn       = new QHBoxLayout(ecran);
-    QHBoxLayout* espaceJoueurDeux     = new QHBoxLayout(ecran);
-    QHBoxLayout* espaceNombreParties  = new QHBoxLayout(ecran);
-    QHBoxLayout* espaceCompteARebours = new QHBoxLayout(ecran);
+    QHBoxLayout* espaceNombreParties = new QHBoxLayout(ecran);
 
-    espaceJoueurs->addLayout(espaceJoueurUn);
-    espaceJoueurs->addLayout(espaceCompteARebours);
-    espaceJoueurs->addLayout(espaceJoueurDeux);
-
-    espaceJoueurUn->addStretch();
-    espaceJoueurUn->addWidget(affichageJoueurUn);
-    espaceJoueurUn->addStretch();
-
-    espaceCompteARebours->addStretch();
-    espaceCompteARebours->addWidget(affichageCompteAReboursDebutMatch);
-    espaceCompteARebours->addStretch();
-
+    affichageFondCompteAReboursDebutMatch->setVisible(false);
     affichageCompteAReboursDebutMatch->setVisible(false);
+    affichageFondCompteAReboursDebutMatch->clear();
     affichageCompteAReboursDebutMatch->clear();
-
-    espaceJoueurDeux->addStretch();
-    espaceJoueurDeux->addWidget(affichageJoueurDeux);
-    espaceJoueurDeux->addStretch();
 
     espaceNombreParties->addWidget(affichageNombreParties);
 
-    ecranMatch->addLayout(espaceJoueurs);
+    affichageNombreParties->setAlignment(Qt::AlignCenter);
+
     ecranMatch->addStretch();
     ecranMatch->addLayout(espaceNombreParties);
+
+    positionnerAffichageJoueurs();
 }
 
 EcranMatch::~EcranMatch()
@@ -65,7 +54,8 @@ void EcranMatch::afficherInformationsMatch(int     nbManches,
 {
     affichageJoueurUn->setText(joueur1);
     affichageJoueurDeux->setText(joueur2);
-    affichageNombreParties->setText(nbManches + " Manche(s) Gagnante(s)");
+    affichageNombreParties->setText(QString::number(nbManches) +
+                                    " Partie(s) Gagnante(s)");
 }
 
 void EcranMatch::demarrerCompteAReboursDebutMatch(int dureeEnSecondes)
@@ -75,18 +65,25 @@ void EcranMatch::demarrerCompteAReboursDebutMatch(int dureeEnSecondes)
     secondesRestantes = dureeEnSecondes;
 
     affichageCompteAReboursDebutMatch->setVisible(true);
+    affichageFondCompteAReboursDebutMatch->setVisible(true);
 
     affichageCompteAReboursDebutMatch->setText("5");
 
     connect(compteAReboursDebutMatch,
             &QTimer::timeout,
             this,
-            [=]()
+            [this]()
             {
                 secondesRestantes--;
-                if(secondesRestantes <= 1)
+                if(secondesRestantes <= 0)
                 {
                     compteAReboursDebutMatch->stop();
+                    affichageCompteAReboursDebutMatch->clear();
+                    affichageFondCompteAReboursDebutMatch->clear();
+                    affichageCompteAReboursDebutMatch->setVisible(false);
+                    affichageFondCompteAReboursDebutMatch->setVisible(false);
+
+                    emit compteAReboursDebutMatchTermine();
                 }
                 else
                 {
@@ -96,4 +93,22 @@ void EcranMatch::demarrerCompteAReboursDebutMatch(int dureeEnSecondes)
             });
 
     compteAReboursDebutMatch->start(TEMPS_INCREMENTATION);
+}
+
+void EcranMatch::positionnerAffichageJoueurs()
+{
+    affichageJoueurUn->setFixedSize(300, 100);
+    affichageJoueurUn->move(300, 520);
+
+    affichageJoueurDeux->setFixedSize(300, 100);
+    affichageJoueurDeux->move(1410, 520);
+
+    affichageCompteAReboursDebutMatch->setFixedSize(400, 400);
+    affichageCompteAReboursDebutMatch->move(810, 410);
+
+    affichageFondCompteAReboursDebutMatch->setFixedSize(480, 480);
+    affichageFondCompteAReboursDebutMatch->move(700, 350);
+
+    affichageFondCompteAReboursDebutMatch->lower();
+    affichageCompteAReboursDebutMatch->raise();
 }
