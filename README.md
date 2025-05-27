@@ -17,7 +17,7 @@
 
 <table>
     <tr>
-        <th colspan="2">Plug-In-Pool</th>
+        <th colspan="2">GitHub Actions</th>
     </tr>
     <tr>
         <td>
