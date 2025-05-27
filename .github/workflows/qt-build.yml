@@ -23,11 +23,21 @@ jobs:
           fi
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: "5.12.8"
-          host: "linux"
-          target: "desktop"
+        run: |
+          attempt=0
+          max_attempts=3
+          while [ $attempt -lt $max_attempts ]; do
+            attempt=$((attempt + 1))
+            if jurplel/install-qt-action@v2 --version "5.12.8" --host "linux" --target "desktop"; then
+              break
+            else
+              sleep 10
+            fi
+          done
+
+          if [ $attempt -eq $max_attempts ]; then
+            exit 1
+          fi
 
       - name: Run qmake
         run: |
