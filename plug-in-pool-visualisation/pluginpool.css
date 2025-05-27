@@ -504,3 +504,24 @@ QLabel#affichageJoueurGagnant {
     margin: 0px;
     padding: 0px;
 }
+
+/* Écran Fin Match */
+QWidget#ecranFinMatch {
+    background-image: url(":/ecranFinMatchQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
+QWidget#affichageScores {
+    font-size: 45px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}

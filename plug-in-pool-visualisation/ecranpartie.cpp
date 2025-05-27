@@ -13,7 +13,7 @@ EcranPartie::EcranPartie(QWidget* parent) : QObject(parent), ecran(parent)
     labelCompteAReboursManche          = new QLabel("01:30", ecran);
     affichageNumeroTable               = new QLabel("Table n° 1", ecran);
     affichageNomJeu                    = new QLabel("PlugInPool", ecran);
-    affichageMessage                   = new QLabel("Message", ecran);
+    affichageMessage                   = new QLabel(ecran);
     affichageCouleurAttribueJoueurUn   = new QLabel(ecran);
     affichageCouleurAttribueJoueurDeux = new QLabel(ecran);
 

@@ -11,6 +11,7 @@ SOURCES += \
     communicationbluetooth.cpp \
     ecranaccueil.cpp \
     ecranfin.cpp \
+    ecranfinmatch.cpp \
     ecranmatch.cpp \
     ecranpartie.cpp \
     empoche.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     couleurbille.h \
     ecranaccueil.h \
     ecranfin.h \
+    ecranfinmatch.h \
     ecranmatch.h \
     ecranpartie.h \
     ecranpluginpool.h \
