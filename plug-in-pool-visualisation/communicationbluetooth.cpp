@@ -12,7 +12,11 @@ CommunicationBluetooth::CommunicationBluetooth(QObject* parent) :
         return;
     }
 
+    qDebug() << Q_FUNC_INFO << peripheriqueLocal.name()
+             << peripheriqueLocal.address().toString();
+
     peripheriqueLocal.powerOn();
+    peripheriqueLocal.setHostMode(QBluetoothLocalDevice::HostDiscoverable);
 
     serveur = new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this);
 

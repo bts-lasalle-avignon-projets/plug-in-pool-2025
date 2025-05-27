@@ -15,6 +15,10 @@
     </tr>
 </table>
 
+[![Qt Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml)
+
+[![Android Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml)
+
 # Projet 2025 : Plug-In-Pool
 
 - [Projet 2025 : Plug-In-Pool](#projet-2025--plug-in-pool)
