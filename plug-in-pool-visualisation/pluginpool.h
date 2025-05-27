@@ -4,8 +4,10 @@
 #include <QObject>
 #include <QTimer>
 
-#define TEMPS_AVANT_LANCEMENT_RENCONTRE 5000
-#define TEMPS_COMPTE_A_REBOURS          90
+#define TEMPS_AVANT_LANCEMENT_RENCONTRE    5000
+#define TEMPS_AVANT_COMPTE_A_REBOURS       5000
+#define TEMPS_COMPTE_A_REBOURS             90
+#define TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH 5
 #define RASPBERRY_PI
 
 class CommunicationBluetooth;
@@ -36,6 +38,7 @@ class PlugInPool : public QObject
     void empochage(int idJoueur, int couleurBille, int idPoche);
     void terminerPartie(int idPartie, int idJoueurGagnant);
     void changerEcranMatch();
+    void changerEcranPartie();
     void changerEcranFin();
 };
 

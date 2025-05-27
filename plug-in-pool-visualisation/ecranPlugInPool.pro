@@ -12,6 +12,7 @@ SOURCES += \
     ecranaccueil.cpp \
     ecranfin.cpp \
     ecranmatch.cpp \
+    ecranpartie.cpp \
     empoche.cpp \
     joueur.cpp \
     main.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     ecranaccueil.h \
     ecranfin.h \
     ecranmatch.h \
+    ecranpartie.h \
     ecranpluginpool.h \
     empoche.h \
     joueur.h \

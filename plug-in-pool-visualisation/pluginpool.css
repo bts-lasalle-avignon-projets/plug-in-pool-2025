@@ -88,6 +88,70 @@ QWidget#ecranMatch {
     padding: 0px;
 }
 
+QLabel#affichageJoueurUnMatch {
+    font-family: "Segoe UI";
+    font-size: 60px;
+    font-weight: bold;
+    background-color: none;
+    border: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageJoueurDeuxMatch {
+    font-family: "Segoe UI";
+    font-size: 60px;
+    font-weight: bold;
+    background-color: none;
+    border: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageNombreParties {
+    font-family: "Segoe UI";
+    font-size: 45px;
+    font-weight: bold;
+    background-color: none;
+    border: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageCompteAReboursDebutMatch {
+    background-color: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    font-size: 240px;
+}
+
+QLabel#affichageFondCompteAReboursDebutMatch {
+    background-image: url(":/fondCompteAReboursDebutMatch.png");
+    min-width: 480px;
+    min-height: 480px;
+    max-width: 480px;
+    max-height: 480px;
+    border-radius: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Écran Partie */
+QWidget#ecranPartie {
+    background-image: url(":/ecranPartieQT.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 3px solid #a8d08d;
+    margin: 0px;
+    padding: 0px;
+}
+
 QLabel#affichageJoueurUn {
     font-size: 30px;
     background-color: none;
