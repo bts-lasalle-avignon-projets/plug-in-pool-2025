@@ -118,6 +118,14 @@ QLabel#affichageNombreParties {
     padding: 0px;
 }
 
+QLabel#affichageCompteAReboursDebutMatch {
+    background-image: url(":/fondCompteAReboursDebutMatch.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-size: 48px;
+}
+
 /* Écran Partie */
 QWidget#ecranPartie {
     background-image: url(":/ecranPartieQT.png");

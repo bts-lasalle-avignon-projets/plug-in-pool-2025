@@ -108,18 +108,22 @@ void EcranPartie::demarrerChronometre()
 {
     secondesEcoulees = 0;
 
-    connect(chronometre, &QTimer::timeout, this, [=]() {
-        secondesEcoulees++;
+    connect(chronometre,
+            &QTimer::timeout,
+            this,
+            [=]()
+            {
+                secondesEcoulees++;
 
-        int minutes  = secondesEcoulees / MINUTE;
-        int secondes = secondesEcoulees % MINUTE;
+                int minutes  = secondesEcoulees / MINUTE;
+                int secondes = secondesEcoulees % MINUTE;
 
-        QString temps =
-          QString("%1:%2")
-            .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
-            .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
-        labelChronometre->setText(temps);
-    });
+                QString temps =
+                  QString("%1:%2")
+                    .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+                    .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+                labelChronometre->setText(temps);
+            });
 
     chronometre->start(TEMPS_INCREMENTATION);
 }
@@ -132,27 +136,32 @@ void EcranPartie::demarrerCompteAReboursManche(int dureeEnSecondes)
 
     labelCompteAReboursManche->setText("00:00");
 
-    connect(compteAReboursManche, &QTimer::timeout, this, [=]() {
-        if(secondesRestantes <= 0)
-        {
-            compteAReboursManche->stop();
-            labelCompteAReboursManche->setText("00:00");
-            afficherMessageAction("Temps écoulé ! Au tour du joueur suivant");
-        }
-        else
-        {
-            int minutes  = secondesRestantes / MINUTE;
-            int secondes = secondesRestantes % MINUTE;
+    connect(
+      compteAReboursManche,
+      &QTimer::timeout,
+      this,
+      [=]()
+      {
+          if(secondesRestantes <= 0)
+          {
+              compteAReboursManche->stop();
+              labelCompteAReboursManche->setText("00:00");
+              afficherMessageAction("Temps écoulé ! Au tour du joueur suivant");
+          }
+          else
+          {
+              int minutes  = secondesRestantes / MINUTE;
+              int secondes = secondesRestantes % MINUTE;
 
-            QString temps =
-              QString("%1:%2")
-                .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
-                .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+              QString temps =
+                QString("%1:%2")
+                  .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+                  .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
 
-            labelCompteAReboursManche->setText(temps);
-            secondesRestantes--;
-        }
-    });
+              labelCompteAReboursManche->setText(temps);
+              secondesRestantes--;
+          }
+      });
 
     compteAReboursManche->start(TEMPS_INCREMENTATION);
 }

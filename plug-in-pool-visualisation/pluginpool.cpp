@@ -79,6 +79,8 @@ void PlugInPool::configurerMatch(int     nbManches,
                                           prenomJoueur2);
 
     changerEcranMatch();
+    ecranMatch->demarrerCompteAReboursDebutMatch(
+      TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH);
 
     ecranPartie->afficherInformationsPartie(nbManches,
                                             prenomJoueur1,
