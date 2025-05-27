@@ -4,7 +4,7 @@ EcranFinMatch::EcranFinMatch(QWidget* parent) : QWidget(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageVersion       = new QLabel("v0.1", ecran);
+    affichageVersion       = new QLabel("v1.0", ecran);
     affichageJoueurGagnant = new QLabel("Aucun joueur gagnant", ecran);
     affichageScores        = new QLabel("Aucun Score", ecran);
 
