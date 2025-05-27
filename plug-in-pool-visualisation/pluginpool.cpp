@@ -38,6 +38,11 @@ PlugInPool::PlugInPool(QObject* parent) :
             &CommunicationBluetooth::tramePartieTermineeRecue,
             this,
             &PlugInPool::terminerPartie);
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::trameMatchTermineeRecue,
+            this,
+            &PlugInPool::terminerMatch);
 }
 
 PlugInPool::~PlugInPool()
@@ -108,7 +113,6 @@ void PlugInPool::empochageCasse(int idPartie,
     {
         case ROUGE:
         {
-            ecranPartie->afficherMessageAction(prenom + " a les boules Rouges");
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
@@ -116,7 +120,6 @@ void PlugInPool::empochageCasse(int idPartie,
         }
         case JAUNE:
         {
-            ecranPartie->afficherMessageAction(prenom + " a les boules Jaunes");
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
@@ -194,8 +197,30 @@ void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
              << idJoueurGagnant;
     EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
     QString   prenomGagnant = match->getPrenomJoueur(idJoueurGagnant);
-    ecranFin->afficherJoueurGagnant(prenomGagnant + " a gagné(e) cette partie");
+    ecranFin->afficherJoueurGagnant(prenomGagnant + " a gagné cette partie");
     changerEcranFin();
+}
+
+void PlugInPool::terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux)
+{
+    qDebug() << Q_FUNC_INFO << "nbPartiesJoueurUn" << nbPartiesJoueurUn
+             << "nbPartiesJoueurDeux" << nbPartiesJoueurDeux;
+    EcranFinMatch* ecranFinMatch = ecranPlugInPool->getEcranFinMatch();
+    if(nbPartiesJoueurUn > nbPartiesJoueurDeux)
+    {
+        ecranFinMatch->afficherJoueurGagnant(match->getPrenomJoueur(0) +
+                                             " a gagné ce Match");
+    }
+    else if(nbPartiesJoueurDeux > nbPartiesJoueurUn)
+    {
+        ecranFinMatch->afficherJoueurGagnant(match->getPrenomJoueur(1) +
+                                             " a gagné ce Match");
+    }
+    ecranFinMatch->afficherScores(match->getPrenomJoueur(0) + " :      " +
+                                  QString::number(nbPartiesJoueurUn) + "  -  " +
+                                  QString::number(nbPartiesJoueurDeux) +
+                                  "      : " + match->getPrenomJoueur(1));
+    changerEcranFinMatch();
 }
 
 void PlugInPool::changerEcranMatch()
@@ -222,4 +247,9 @@ void PlugInPool::changerEcranPartie()
 void PlugInPool::changerEcranFin()
 {
     ecranPlugInPool->afficherEcranFin();
+}
+
+void PlugInPool::changerEcranFinMatch()
+{
+    ecranPlugInPool->afficherEcranFinMatch();
 }
