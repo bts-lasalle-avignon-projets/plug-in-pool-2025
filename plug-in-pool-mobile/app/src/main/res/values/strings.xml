@@ -8,13 +8,20 @@
     <string name="boutonVersConfiguration">Configurer un match</string>
     <string name="texteSelectionJoueur1">Joueur n°1</string>
     <string name="texteSelectionJoueur2">Joueur n°2</string>
+    <string name="texteChoixBluetoothEcran">Choisir un écran</string>
+    <string name="texteChoixBluetoothTable">Choisir une table</string>
+    <string name="choisirLiaisonBluetooth">Saisir le flux Bluetooth et choisir dans la liste</string>
     <string name="choisirUnJoueurEnregistrer1">Saisir le nom et prénom du joueur et/ou choisir dans la liste</string>
     <string name="choisirUnJoueurEnregistrer2">Saisir le nom et prénom du joueur et/ou choisir dans la liste</string>
     <string name="nbParties">Choisir le nombre de parties</string>
     <string name="boutonSuivant">Suivant</string>
     <string name="boutonDemarerDePartie">Démarer la partie</string>
-    <string name="boutonFinDePartie">Fin de partie</string>
+    <string name="boutonFinDeMatch">Fin de match</string>
     <string name="boutonLancerPartie">Lancer une partie</string>
     <string name="joueurGagnant">Le joueur gagnant est :</string>
+    <string name="numeroPartieEnCours">ID Partie en cours</string>
+    <string name="empochage">Aucun empochage pour le moment ...</string>
     <string name="boutonTirLoupe">Tir loupé</string>
+    <string name="purgerHistorique">Vider l\'historique</string>
+    <string name="retourAccueil">Accueil</string>
 </resources>

@@ -45,16 +45,20 @@ public class ActivitePartie extends AppCompatActivity
     private String       nbParties;
     private String       adresseMacEcran;
     private String       adresseMacTable;
-    private Match match;
+    private Match        match;
 
     List<Joueur> joueurs           = new ArrayList<>();
-    private int          trameCouleurRecue = -2;
+    private final int    numeroTable = 2;
+    private final int    idMatch     = 1;
     private int          tramePocheRecue;
     private int          nbPartiesGestion;
-    private int          nbPartiesCompteur = 0;
-    private int          indexBilleRouge   = 0;
-    private int          indexBilleJaune   = 0;
-    private int          indexJoueurActuel = 0;
+    private int          trameCouleurRecue      = -2;
+    private int          nbPartiesCompteur      = 0;
+    private int          indexBilleRouge        = 0;
+    private int          indexBilleJaune        = 0;
+    private int          indexJoueurActuel      = 0;
+    private int          nbPartiesGagnerJoueur1 = 0;
+    private int          nbPartiesGagnerJoueur2 = 0;
 
     private TextView tableStatut;
     private TextView ecranStatut;
@@ -63,7 +67,9 @@ public class ActivitePartie extends AppCompatActivity
     private TextView afficherPointsJoueur1;
     private TextView afficherPointsJoueur2;
     private TextView joueurActuel;
+    private TextView idPartieEnCours;
     private TextView joueurGagnant;
+    private TextView messageEmpochage;
     private ImageView[] billesJaunes = new ImageView[7];
     private ImageView[] billesRouges = new ImageView[7];
     private Button boutonDemarrer;
@@ -108,7 +114,9 @@ public class ActivitePartie extends AppCompatActivity
         texteJoueur1          = findViewById(R.id.textePourNbPointsJoueur1);
         texteJoueur2          = findViewById(R.id.textePourNbPointsJoueur2);
         joueurActuel          = findViewById(R.id.nomDuJoueur);
+        idPartieEnCours       = findViewById(R.id.idPartieEnCours);
         joueurGagnant         = findViewById(R.id.joueurGagnant);
+        messageEmpochage      = findViewById(R.id.empochage);
         boutonDemarrer        = findViewById(R.id.boutonDemarerMatch);
         boutonTirLoupe        = findViewById(R.id.boutonTirLoupe);
         boutonTerminer        = findViewById(R.id.boutonFinMatch);
@@ -133,7 +141,6 @@ public class ActivitePartie extends AppCompatActivity
             System.err.println("nbParties est null ou vide.");
         }
     }
-
     private void recupererDonneesDeConfigurations()
     {
         Intent intent   = getIntent();
@@ -183,7 +190,6 @@ public class ActivitePartie extends AppCompatActivity
                             CouleurBille.AUCUNE.getId(),
                             aucunePoche
                     );
-
             envoyerTrame(envoyerTirLoupeVersEcran);
         });
     }
@@ -204,15 +210,17 @@ public class ActivitePartie extends AppCompatActivity
     }
     private void demarrerDetectionTable()
     {
-        String trameDetection = trameEtatPourTable("A");
+        String trameDetection = trameEtatPourTable(CommunicationBluetooth.DEMARRER_DETECTION);
         envoyerTrameVersTable(trameDetection);
     }
-
-    private void casse() {
+    private void casse()
+    {
         boolean casseEstFini = false;
         nbPartiesCompteur++;
+        idPartieEnCours.setText("Partie n° " + nbPartiesCompteur + " en cours");
 
-        if (!casseEstFini) {
+        if (!casseEstFini)
+        {
             Joueur joueur = joueurs.get(indexJoueurActuel);
             int id = joueur.getId();
             joueur.afficherJoueur();
@@ -222,9 +230,12 @@ public class ActivitePartie extends AppCompatActivity
                 case 0:
                     casseEstFini = attribuerCouleurRouge(id);
                     envoyerTrame(trameCasse(CommunicationBluetooth.CASSE, nbPartiesCompteur, id, trameCouleurRecue, tramePocheRecue));
-                    if (id == 0) {
+                    if (id == 0)
+                    {
                         afficherPointsJoueur1.setText(String.valueOf(joueur.afficherPoint()));
-                    } else {
+                    }
+                    else
+                    {
                         afficherPointsJoueur2.setText(String.valueOf(joueur.afficherPoint()));
                     }
                     break;
@@ -232,9 +243,12 @@ public class ActivitePartie extends AppCompatActivity
                 case 1:
                     casseEstFini = attribuerCouleurJaune(id);
                     envoyerTrame(trameCasse(CommunicationBluetooth.CASSE, nbPartiesCompteur, id, trameCouleurRecue, tramePocheRecue));
-                    if (id == 0) {
+                    if (id == 0)
+                    {
                         afficherPointsJoueur1.setText(String.valueOf(joueur.afficherPoint()));
-                    } else {
+                    }
+                    else
+                    {
                         afficherPointsJoueur2.setText(String.valueOf(joueur.afficherPoint()));
                     }
                     break;
@@ -259,13 +273,17 @@ public class ActivitePartie extends AppCompatActivity
 
             trameCouleurRecue = -1;
 
-            if (casseEstFini) {
+            if (casseEstFini)
+            {
                 match.setEtat(Match.EtatMatch.EN_COURS);
             }
 
-            try {
+            try
+            {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e)
+            {
                 e.printStackTrace();
             }
         }
@@ -291,7 +309,7 @@ public class ActivitePartie extends AppCompatActivity
 
         return true;
     }
-    private void manche()
+    private void partie()
     {
         if (trameCouleurRecue == -1) return;
 
@@ -305,7 +323,6 @@ public class ActivitePartie extends AppCompatActivity
                 if (joueur.getCouleur() == CouleurBille.ROUGE)
                 {
                     retirerBilleRouge();
-                    Log.d(TAG, "trame part du joueur qui as la couleur");
                     String trameRouge = trameEmpochage(CommunicationBluetooth.EMPOCHAGE, id, trameCouleurRecue, tramePocheRecue);
                     envoyerTrame(trameRouge);
                     joueur.ajouterPoint();
@@ -323,7 +340,6 @@ public class ActivitePartie extends AppCompatActivity
                 if (joueur.getCouleur() == CouleurBille.JAUNE)
                 {
                     retirerBilleJaune();
-                    Log.d(TAG, "trame part du joueur qui as la couleur");
                     String trameJaune = trameEmpochage(CommunicationBluetooth.EMPOCHAGE, id, trameCouleurRecue, tramePocheRecue);
                     envoyerTrame(trameJaune);
                     joueur.ajouterPoint();
@@ -377,7 +393,6 @@ public class ActivitePartie extends AppCompatActivity
         if (indexBilleRouge == 7 || indexBilleJaune == 7)
         {
             match.setEtat(Match.EtatMatch.FINI);
-            runOnUiThread(this::gestionDuMatch);
         }
     }
     public void retirerBilleRouge()
@@ -410,11 +425,11 @@ public class ActivitePartie extends AppCompatActivity
                 casse();
                 break;
             case EN_COURS:
-            Log.d(TAG, "Attente empochage");
-                manche();
+                Log.d(TAG, "Attente empochage");
+                partie();
                 break;
             case FINI:
-                finDeMatch();
+                finDePartie();
                 break;
         }
     }
@@ -573,13 +588,7 @@ public class ActivitePartie extends AppCompatActivity
             trameCouleurRecue = Integer.parseInt(morceaux[0]);
             tramePocheRecue   = Integer.parseInt(morceaux[1]);
 
-            Log.d(TAG, "Couleur : " + trameCouleurRecue + ", Poche : " + tramePocheRecue);
-            Toast
-              .makeText(this,
-                        "Trame reçue : Couleur " + trameCouleurRecue + " | Poche " +
-                          tramePocheRecue,
-                        Toast.LENGTH_LONG)
-              .show();
+            messageEmpochage.setText("Bille " + CouleurBille.utiliserId(trameCouleurRecue) + " empochée dans la poche " + tramePocheRecue);
             gestionDuMatch();
 
         }
@@ -590,6 +599,11 @@ public class ActivitePartie extends AppCompatActivity
     }
 
     public String trameEtatPourTable(String etat)
+    {
+        return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;
+    }
+
+    public String trameEtatPourEcran(String etat)
     {
         return CommunicationBluetooth.ENTETE + etat + CommunicationBluetooth.DELIMITATEUR_FIN;
     }
@@ -639,29 +653,81 @@ public class ActivitePartie extends AppCompatActivity
           CommunicationBluetooth.DELIMITATEUR_FIN;
     }
 
-    public void finDeMatch()
+    public void finDePartie()
     {
         boutonTirLoupe.setVisibility(Button.GONE);
-        if (joueurs.get(0).afficherPoint() < joueurs.get(1).afficherPoint())
+
+        Joueur joueur1 = joueurs.get(0);
+        Joueur joueur2 = joueurs.get(1);
+
+        int pointsJoueur1 = joueur1.afficherPoint();
+        int pointsJoueur2 = joueur2.afficherPoint();
+
+        if (pointsJoueur1 < pointsJoueur2)
         {
-            joueurGagnant.setText("Le joueur gagnant est : " + joueurs.get(1).getNom() + " " + joueurs.get(1).getPrenom() + " avec " + joueurs.get(1).afficherPoint() + "points");
-            String envoyerFinVersEcran =
-                    trameFinDePartie("T", nbPartiesCompteur,
-                            joueurs.get(1).getId());
-            envoyerTrame(envoyerFinVersEcran);
+            joueurGagnant.setText("Le joueur gagnant est : " + joueur2.getNom() + " " + joueur2.getPrenom() + " avec " + pointsJoueur2 + " points");
+            String trame = trameFinDePartie(CommunicationBluetooth.PARTIE_TERMINER, nbPartiesCompteur, joueur2.getId());
+            envoyerTrame(trame);
+            nbPartiesGagnerJoueur2++;
+            Log.d(TAG, "nbPartiesGagnees Joueur 2 : " + nbPartiesGagnerJoueur2);
         }
-        else if (joueurs.get(0).afficherPoint() > joueurs.get(1).afficherPoint())
+        else if (pointsJoueur1 > pointsJoueur2)
         {
-            joueurGagnant.setText("Le joueur gagnant est : " + joueurs.get(0).getNom() + " " + joueurs.get(0).getPrenom() + " avec " + joueurs.get(0).afficherPoint() + "points");
-            String envoyerFinVersEcran =
-                    trameFinDePartie("T", nbPartiesCompteur,
-                            joueurs.get(0).getId());
-            envoyerTrame(envoyerFinVersEcran);
+            joueurGagnant.setText("Le joueur gagnant est : " + joueur1.getNom() + " " + joueur1.getPrenom() + " avec " + pointsJoueur1 + " points");
+            String trame = trameFinDePartie(CommunicationBluetooth.PARTIE_TERMINER, nbPartiesCompteur, joueur1.getId());
+            envoyerTrame(trame);
+            nbPartiesGagnerJoueur1++;
+            Log.d(TAG, "nbPartiesGagnees Joueur 1 : " + nbPartiesGagnerJoueur1);
         }
         else
         {
-            Log.d(TAG, "finDeMatch: Erreur pas de points ou égalité");
+            joueurGagnant.setText("Égalité entre les deux joueurs avec " + pointsJoueur1 + " points");
+            Log.d(TAG, "finDeMatch : Égalité");
         }
+
+        afficherJoueurGagnant();
+        Log.d(TAG, "Fin du match");
+    }
+    private void afficherJoueurGagnant()
+    {
+        if (nbPartiesGagnerJoueur1 > nbPartiesGagnerJoueur2)
+        {
+            idPartieEnCours.setText("");
+            messageEmpochage.setText("");
+            boutonTerminer.setVisibility(Button.VISIBLE);
+            joueurGagnant.setText("Le Joueur 1 à gagner " + nbPartiesGagnerJoueur1 + " parties");
+            matchTermnier();
+        }
+        else if(nbPartiesGagnerJoueur1 < nbPartiesGagnerJoueur2)
+        {
+            idPartieEnCours.setText("");
+            messageEmpochage.setText("");
+            boutonTerminer.setVisibility(Button.VISIBLE);
+            joueurGagnant.setText("Le Joueur 1 à gagner " + nbPartiesGagnerJoueur2 + " parties");
+            matchTermnier();
+        }
+        else
+        {
+            idPartieEnCours.setText("");
+            messageEmpochage.setText("");
+            boutonTerminer.setVisibility(Button.VISIBLE);
+            joueurGagnant.setText("Egalité entre le joueur 1 et le joueur 2");
+            matchTermnier();
+        }
+    }
+    public void matchTermnier()
+    {
+        boutonTerminer.setOnClickListener(view -> {
+            envoyerFinDeMatch(nbPartiesGagnerJoueur1, nbPartiesGagnerJoueur2);
+            Intent changerDeVue = new Intent(ActivitePartie.this, ActiviteHistorique.class);
+            startActivity(changerDeVue);
+        });
+    }
+    public void envoyerFinDeMatch(int nbJoueur1Parties, int nbJoueur2Parties)
+    {
+        String envoyerTrameVersEcrans=
+                trameFinDeMatch(CommunicationBluetooth.MATCH_TERMINER, nbJoueur1Parties, nbJoueur2Parties);
+        envoyerTrame(envoyerTrameVersEcrans);
     }
 
     @Override
@@ -669,8 +735,8 @@ public class ActivitePartie extends AppCompatActivity
     {
         super.onResume();
         String trameReprise;
-        trameReprise = trameEtatPourTable("R");
-        envoyerTrameVersTable(trameReprise);
+        trameReprise = trameEtatPourEcran(CommunicationBluetooth.REPRISE);
+        envoyerTrame(trameReprise);
     }
 
     @Override
@@ -678,8 +744,8 @@ public class ActivitePartie extends AppCompatActivity
     {
         super.onPause();
         String tramePause;
-        tramePause = trameEtatPourTable("P");
-        envoyerTrameVersTable(tramePause);
+        tramePause = trameEtatPourEcran(CommunicationBluetooth.PAUSE);
+        envoyerTrame(tramePause);
     }
 
     @Override
@@ -692,9 +758,9 @@ public class ActivitePartie extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        String trameAbandon;
-        trameAbandon = trameEtatPourTable("A");
-        envoyerTrameVersTable(trameAbandon);
+        String trameDesactivation;
+        trameDesactivation = trameEtatPourTable(CommunicationBluetooth.DESACTIVER_DETECTION);
+        envoyerTrameVersTable(trameDesactivation);
         if(communicationBluetoothEcran != null)
             communicationBluetoothEcran.close();
         if(communicationBluetoothTable != null)
