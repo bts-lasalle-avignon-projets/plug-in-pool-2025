@@ -111,25 +111,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         return false;
     }
 
-    private int getValeurSaisie()
-    {
-        EditText nbParties        = findViewById(R.id.choixNbParties);
-        String   choixUtilisateur = nbParties.getText().toString().trim();
-
-        if(choixUtilisateur.isEmpty())
-        {
-            return 1;
-        }
-
-        try
-        {
-            return Integer.parseInt(choixUtilisateur);
-        }
-        catch(NumberFormatException e)
-        {
-            Log.d("getValeurSaisie", "Entrée non valide : " + choixUtilisateur);
-            return 1;
-        }
+    private int getValeurSaisie() {
+        return 1;
     }
 
     private boolean enregistrerDonnees()
