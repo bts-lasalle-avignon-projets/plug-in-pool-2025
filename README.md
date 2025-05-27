@@ -222,11 +222,19 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 #### Maquette de l'application Qt
 
-![](./images/AccueilEcran.png)
+![](./images/ecranAccueil.png)
 
-![](./images/RencontreEcran.png)
+![](./images/ecranMatch.png)
 
-![](./images/FinEcran.png)
+![](./images/ecranPartie.png)
+
+![](./images/ecranPartieCasse.png)
+
+![](./images/ecranPartieEmpochage.png)
+
+![](./images/ecranFinPartie.png)
+
+![](./images/ecranFinMatch.png)
 
 #### Recette
 
