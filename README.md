@@ -15,9 +15,19 @@
     </tr>
 </table>
 
-[![Qt Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml)
-
-[![Android Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml)
+<table>
+    <tr>
+        <th colspan="2">Plug-In-Pool</th>
+    </tr>
+    <tr>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg" alt="Android"/></a>
+        </td>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg" alt="Qt"/></a>
+        </td>
+    </tr>
+</table>
 
 # Projet 2025 : Plug-In-Pool
 
@@ -93,9 +103,13 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
 
 #### IHM de l'application Android
 
-![](./images/accueilEtConfiguration.png)
+![](./images/accueilEtCreationOuChoixDesJoueurs.png)
 
-![](./images/gestionEtPartie.png)
+![](./images/choixDesAppreilsEtActivitePartie.png)
+
+![](./images/demarerPartieEtEmpochage.png)
+
+![](./images/finDePartieEtHistorique.png)
 
 #### Recette
 
@@ -127,8 +141,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   <tr>
     <td>Gérer le déroulement d'un match</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Enregistrer les données des parties</td>
@@ -138,15 +152,15 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   </tr>
   <tr>
     <td>Consulter l'historique des matchs</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Purger l'historique</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Dialoguer avec l'écran</td>
@@ -284,7 +298,7 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 > Du 29 Mars 2025 au 23 Mai 2025
 
 - [x] Paramétrer un match
-- [x] Lancer une ou plusieurs partie(s)
+- [x] Lancer une partie
 - [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
@@ -296,15 +310,28 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 > Du 24 Mai 2025 au 30 Mai 2025
 
-- [ ] Jouer une ou plusieurs parties
-- [ ] Afficher les données de la partie en cours
-- [ ] Stocker les données de la partie dans la base de données
+- [x] Jouer une parties
+- [x] Afficher les données de la partie en cours
+- [x] Afficher le joueur gagant
+- [x] Visualiser l'historique
+- [x] Purger l'historique
 
 ### Itération 4
 
 > Du 31 Mai 2025 au 15 Juin 2025
 
+- [ ] Jouer plusieurs parties
+- [ ] Enregistrer les données du match dans la base de données
+
 ## Changelog
+
+### Verson 1.0
+
+- [x] Jouer une parties
+- [x] Afficher les données de la partie en cours
+- [x] Afficher le joueur gagant
+- [x] Visualiser l'historique
+- [x] Purger l'historique
 
 ### Version 0.1
 
@@ -323,6 +350,14 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 ## TODO
 
 ## Défauts constatés non corrigés
+
+### Android
+
+- Si la première tentative de connexion à un appareils Bluetooth échoue. Il apparait comme : *"Erreur de connexion"* dans l'application Android, alors qu'il est en réalité bien connecté.
+
+### Qt
+
+- Si deux trames sont envoyées à la suite depuis la tablette Android vers l'écran de visualisation. Elles sont considérées comme une seule.
 
 ## Équipe de développement
 

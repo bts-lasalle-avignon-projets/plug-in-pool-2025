@@ -22,6 +22,6 @@
     <string name="numeroPartieEnCours">ID Partie en cours</string>
     <string name="empochage">Aucun empochage pour le moment ...</string>
     <string name="boutonTirLoupe">Tir loupé</string>
-    <string name="purgerHistorique">Vider l\'historique</string>
+    <string name="purgerHistorique">Purger l\'historique</string>
     <string name="retourAccueil">Accueil</string>
 </resources>
