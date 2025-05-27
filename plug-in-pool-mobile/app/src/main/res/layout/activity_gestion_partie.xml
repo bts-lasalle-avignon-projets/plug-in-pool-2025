@@ -205,29 +205,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/liaisonBluetooth">
 
-        <AutoCompleteTextView
-            android:id="@+id/choixBluetoothEcran"
+        <Spinner
+            android:id="@+id/spinnerBluetoothEcran"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/choisirLiaisonBluetooth"
+            android:layout_weight="1"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
+            android:prompt="@string/choisirLiaisonBluetooth"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/choixBluetoothTable"
+            app:layout_constraintEnd_toStartOf="@id/spinnerBluetoothTable"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
-        <AutoCompleteTextView
-            android:id="@+id/choixBluetoothTable"
+        <Spinner
+            android:id="@+id/spinnerBluetoothTable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/choisirLiaisonBluetooth"
+            android:layout_weight="1"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:prompt="@string/choisirLiaisonBluetooth"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/choixBluetoothEcran" />
+            app:layout_constraintStart_toEndOf="@id/spinnerBluetoothEcran"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -240,14 +245,14 @@
         android:layout_marginTop="60dp">
 
         <Button
-            android:id="@+id/boutonLancerPartie"
+            android:id="@+id/boutonSuivant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="300dp"
             android:maxWidth="320dp"
             android:backgroundTint="@color/rouge"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/boutonLancerPartie"
+            android:text="@string/boutonSuivant"
             android:textColor="@color/noir"
             android:textSize="16sp"
             android:textStyle="bold"

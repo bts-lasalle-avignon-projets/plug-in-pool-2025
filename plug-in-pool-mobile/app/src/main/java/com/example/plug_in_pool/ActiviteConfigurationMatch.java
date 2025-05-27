@@ -31,7 +31,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     /**
      * Éléments de l'interface
      */
-    private Button               boutonLancerMatch;
+    private Button               boutonSuivant;
     private AutoCompleteTextView choixNomJoueur1;
     private AutoCompleteTextView choixNomJoueur2;
 
@@ -66,7 +66,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private void initialiserVue()
     {
         Log.d(TAG, "initialiserVue()");
-        boutonLancerMatch = findViewById(R.id.boutonLancerMatch);
+        boutonSuivant = findViewById(R.id.boutonSuivant);
         choixNomJoueur1   = findViewById(R.id.choixNomJoueur1);
         choixNomJoueur2   = findViewById(R.id.choixNomJoueur2);
 
@@ -111,25 +111,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
         return false;
     }
 
-    private int getValeurSaisie()
-    {
-        EditText nbParties        = findViewById(R.id.choixNbParties);
-        String   choixUtilisateur = nbParties.getText().toString().trim();
-
-        if(choixUtilisateur.isEmpty())
-        {
-            return 1;
-        }
-
-        try
-        {
-            return Integer.parseInt(choixUtilisateur);
-        }
-        catch(NumberFormatException e)
-        {
-            Log.d("getValeurSaisie", "Entrée non valide : " + choixUtilisateur);
-            return 1;
-        }
+    private int getValeurSaisie() {
+        return 1;
     }
 
     private boolean enregistrerDonnees()
@@ -172,7 +155,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
 
     private void jouerMatch()
     {
-        boutonLancerMatch.setOnClickListener(new View.OnClickListener() {
+        boutonSuivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {

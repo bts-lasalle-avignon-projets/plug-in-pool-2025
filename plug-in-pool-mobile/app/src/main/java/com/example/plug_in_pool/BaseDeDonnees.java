@@ -203,4 +203,99 @@ public class BaseDeDonnees extends SQLiteOpenHelper
 
         return idJoueur;
     }
+    public void ajouterManche(int idMatch, int idGagnant, int idPerdant, int numeroTable)
+    {
+        String horodatage = obtenirHorodatageActuel();
+        try
+        {
+            sqlite.execSQL("INSERT INTO manches (idMatch, idGagnant, idPerdant, numeroTable, horodatage) " +
+                            "VALUES (?, ?, ?, ?, ?)",
+                    new Object[]{idMatch, idGagnant, idPerdant, numeroTable, horodatage});
+            Log.d(TAG, "ajouterManche() ajoutée avec succès");
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "ajouterManche() erreur : " + e.getMessage());
+        }
+    }
+    public void terminerMatch(int idMatch)
+    {
+        try
+        {
+            sqlite.execSQL("UPDATE matchs SET fini = 1 WHERE idMatch = ?", new Object[]{idMatch});
+            Log.d(TAG, "terminerMatch() match " + idMatch + " marqué comme terminé");
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "terminerMatch() erreur : " + e.getMessage());
+        }
+    }
+    public ArrayList<String> getInfosMatchs()
+    {
+        ArrayList<String> infosMatchs = new ArrayList<>();
+
+        String requete = "SELECT " +
+                "m.idMatch, " +
+                "j1.prenom || ' ' || j1.nom AS joueur1, " +
+                "j2.prenom || ' ' || j2.nom AS joueur2, " +
+                "m.nbPartiesGagnantes, " +
+                "m.fini, " +
+                "m.horodatage " +
+                "FROM matchs m " +
+                "JOIN joueurs j1 ON m.idJoueur1 = j1.idJoueur " +
+                "JOIN joueurs j2 ON m.idJoueur2 = j2.idJoueur " +
+                "ORDER BY m.horodatage DESC";
+
+        Cursor curseur = null;
+
+        try
+        {
+            curseur = sqlite.rawQuery(requete, null);
+            if(curseur.moveToFirst())
+            {
+                do
+                {
+                    int idMatch             = curseur.getInt(0);
+                    String joueur1          = curseur.getString(1);
+                    String joueur2          = curseur.getString(2);
+                    int nbPartiesGagnantes  = curseur.getInt(3);
+                    int fini                = curseur.getInt(4);
+                    String horodatage       = curseur.getString(5);
+
+                    String ligne = "Match #" + idMatch +
+                            " : " + joueur1 + " vs " + joueur2 +
+                            " | nombre de parties : " + nbPartiesGagnantes +
+                            " | Terminé : " + (fini == 1 ? "Oui" : "Non") +
+                            " | Date : " + horodatage;
+
+                    infosMatchs.add(ligne);
+                } while(curseur.moveToNext());
+            }
+        }
+        catch(Exception e)
+        {
+            Log.e(TAG, "getInfosMatchs() : erreur - " + e.getMessage());
+        }
+        finally
+        {
+            if(curseur != null) curseur.close();
+        }
+
+        Log.d(TAG, "getInfosMatchs() : " + infosMatchs.size() + " lignes récupérées");
+        return infosMatchs;
+    }
+    public void purgerHistorique()
+    {
+        try
+        {
+            Log.d(TAG, "purgerHistorique()");
+            sqlite.execSQL("DELETE FROM manches");
+            sqlite.execSQL("DELETE FROM matchs");
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "purgerHistorique() : erreur - " + e.getMessage());
+        }
+    }
+
 }

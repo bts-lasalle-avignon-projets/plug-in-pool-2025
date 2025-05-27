@@ -1,5 +1,6 @@
 package com.example.plug_in_pool;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -8,9 +9,11 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -39,17 +42,19 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private TextView             textViewJoueur1;
     private TextView             textViewJoueur2;
     private TextView             texteNbParties;
-    private AutoCompleteTextView choixBluetoothEcran;
-    private AutoCompleteTextView choixBluetoothTable;
+    private Spinner choixBluetoothEcran;
+    private Spinner choixBluetoothTable;
 
-    Joueur joueur1;
-    Joueur joueur2;
-    String nbParties;
+    private Joueur joueur1;
+    private Joueur joueur2;
+    private String nbParties;
+    private String adresseMacEcran;
+    private String adresseMacTable;
 
     /**
      * Ressources GUI
      */
-    Button boutonLancerPartie;
+    private Button boutonSuivant;
 
     /**
      * Bluetooth
@@ -89,9 +94,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
         textViewJoueur1     = findViewById(R.id.nomJoueur1);
         textViewJoueur2     = findViewById(R.id.nomJoueur2);
         texteNbParties      = findViewById(R.id.texteNbParties);
-        choixBluetoothEcran = findViewById(R.id.choixBluetoothEcran);
-        choixBluetoothTable = findViewById(R.id.choixBluetoothTable);
-        boutonLancerPartie = findViewById(R.id.boutonLancerPartie);
+        choixBluetoothEcran = findViewById(R.id.spinnerBluetoothEcran);
+        choixBluetoothTable = findViewById(R.id.spinnerBluetoothTable);
+        boutonSuivant = findViewById(R.id.boutonSuivant);
         lancerUnePartie();
     }
 
@@ -154,45 +159,80 @@ public class ActiviteGestionPartie extends AppCompatActivity
         }
     }
 
+    private List<BluetoothDevice> listeAppareils = new ArrayList<>();
+    @SuppressLint("ClickableViewAccessibility")
     private void listerPeripheriquesBluetooth()
     {
-        if(adaptateurBluetooth == null)
+        if (adaptateurBluetooth == null)
         {
             Log.e(TAG, "Bluetooth non disponible !");
             return;
         }
 
-        if(ActivityCompat.checkSelfPermission(this,
-                                              android.Manifest.permission.BLUETOOTH_CONNECT) !=
-           PackageManager.PERMISSION_GRANTED)
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
         {
             Log.e(TAG, "Permissions Bluetooth refusées !");
             return;
         }
 
         Set<BluetoothDevice> appareilsAppaires = adaptateurBluetooth.getBondedDevices();
-        List<String>         nomsAppareils     = new ArrayList<>();
+        listeAppareils.clear();
+        listeAppareils.addAll(appareilsAppaires);
 
-        for(BluetoothDevice appareil: appareilsAppaires)
+        List<String> nomsAppareils = new ArrayList<>();
+        nomsAppareils.add("Sélectionnez un appareil...");
+        for (BluetoothDevice appareil : listeAppareils)
         {
             nomsAppareils.add(appareil.getName() + " (" + appareil.getAddress() + ")");
         }
 
-        ArrayAdapter<String> adaptateur =
-          new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, nomsAppareils);
+        ArrayAdapter<String> adaptateur = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, nomsAppareils);
+        adaptateur.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         choixBluetoothEcran.setAdapter(adaptateur);
         choixBluetoothTable.setAdapter(adaptateur);
 
-        choixBluetoothEcran.setOnItemClickListener((parent, view, position, id) -> {
-            String selection  = (String)parent.getItemAtPosition(position);
-            String adresseMac = extraireAdresseMac(selection);
-            connecterBluetooth(adresseMac);
+        choixBluetoothEcran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                if (position == 0)
+                {
+                    return;
+                }
+                String selection = (String) parent.getItemAtPosition(position);
+                String adresseMac = extraireAdresseMac(selection);
+                adresseMacEcran = adresseMac;
+                connecterBluetooth(adresseMac);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
         });
 
-        choixBluetoothTable.setOnItemClickListener((parent, view, position, id) -> {
-            String selection  = (String)parent.getItemAtPosition(position);
-            String adresseMac = extraireAdresseMac(selection);
-            connecterBluetooth(adresseMac);
+        choixBluetoothTable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                if (position == 0)
+                {
+                    return;
+                }
+                String selection = (String) parent.getItemAtPosition(position);
+                String adresseMac = extraireAdresseMac(selection);
+                adresseMacTable = adresseMac;
+                connecterBluetooth(adresseMac);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
         });
     }
 
@@ -218,7 +258,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
             Log.d(TAG, "Socket créée, démarrage de la connexion...");
             socketBluetooth.connect();
             Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
-            envoyerAdresseMac(adresseMac);
         }
         catch(IOException e)
         {
@@ -238,22 +277,26 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 Log.e(TAG, "Échec de la connexion alternative : " + ex.getMessage());
             }
         }
+        if (socketBluetooth != null)
+        {
+            try
+            {
+                socketBluetooth.close();
+                socketBluetooth = null;
+            }
+            catch (IOException e)
+            {
+            }
+        }
     }
 
     private String extraireAdresseMac(String texte)
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
-
-    private void envoyerAdresseMac(String adresseMac)
-    {
-        Intent changerVue = new Intent(ActiviteGestionPartie.this, ActivitePartie.class);
-        changerVue.putExtra("adresseMac", adresseMac);
-        startActivity(changerVue);
-    }
     private void lancerUnePartie()
     {
-        boutonLancerPartie.setOnClickListener(new View.OnClickListener() {
+        boutonSuivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -262,8 +305,17 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 changerDeVue.putExtra("joueur1", joueur1);
                 changerDeVue.putExtra("joueur2", joueur2);
                 changerDeVue.putExtra("nbParties", nbParties);
+                changerDeVue.putExtra("adresseMacEcran", adresseMacEcran);
+                changerDeVue.putExtra("adresseMacTable", adresseMacTable);
                 startActivity(changerDeVue);
             }
         });
     }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+    }
+
 }
