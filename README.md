@@ -1,4 +1,4 @@
-<table>
+<table style="width:100%">
     <tr>
         <th colspan="3">Plug-In-Pool</th>
     </tr>
@@ -10,12 +10,12 @@
         <a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white" alt="Qt"/></a>
         </td>
         <td>
-        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a> <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases"><img src="https://img.shields.io/github/v/release/bts-lasalle-avignon-projets/plug-in-pool-2025" alt="release"/></a>
         </td>
     </tr>
 </table>
 
-<table>
+<table style="width:100%">
     <tr>
         <th colspan="2">GitHub Actions</th>
     </tr>
@@ -43,24 +43,15 @@
       - [Base de données](#base-de-données)
     - [Application Qt](#application-qt)
       - [Module de visualisation de matchs](#module-de-visualisation-de-matchs)
+      - [Caractéristiques du Raspberry Pi 5](#caractéristiques-du-raspberry-pi-5)
       - [Diagramme de cas d'utilisation (Qt)](#diagramme-de-cas-dutilisation-qt)
       - [IHM de l'application Qt](#ihm-de-lapplication-qt)
       - [Diagramme de classes (Qt)](#diagramme-de-classes-qt)
       - [Recette](#recette-1)
   - [Communication Bluetooth](#communication-bluetooth)
     - [Protocole](#protocole)
-      - [Activation de la détection (Mobile → Table)](#activation-de-la-détection-mobile--table)
-      - [Désactivation de la détection (Mobile → Table)](#désactivation-de-la-détection-mobile--table)
-      - [Empochage (Table → Mobile)](#empochage-table--mobile)
-      - [Démarrer un match (Mobile → Écran)](#démarrer-un-match-mobile--écran)
-      - [Démarrer une partie : la casse (Mobile → Écran)](#démarrer-une-partie--la-casse-mobile--écran)
-      - [Empochage (Mobile → Écran)](#empochage-mobile--écran)
-      - [Faute (Mobile → Écran)](#faute-mobile--écran)
-      - [Fin de partie (Mobile → Écran)](#fin-de-partie-mobile--écran)
-      - [Pause (Mobile → Écran)](#pause-mobile--écran)
-      - [Reprise (Mobile → Écran)](#reprise-mobile--écran)
-      - [Abandon (Mobile → Écran)](#abandon-mobile--écran)
-      - [Fin de match (Mobile → Écran)](#fin-de-match-mobile--écran)
+      - [Mobile → Table](#mobile--table)
+      - [Mobile → Écran](#mobile--écran)
   - [Gestion de projet](#gestion-de-projet)
     - [Itération 1](#itération-1)
     - [Itération 2 (version 0.1)](#itération-2-version-01)
@@ -340,7 +331,11 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 ## Communication Bluetooth
 
-Bluetooth v5.x
+Bluetooth : v5.x
+
+Service utilisé : RFCOMM (_Radio frequency communication_), basé sur les spécifications RS-232 et qui émule des liaisons séries
+
+Profil utilisé : SPP (_Serial Port Profile_)
 
 | Modules                      |         Rôle          |
 | ---------------------------- | :-------------------: |
@@ -357,17 +352,13 @@ Format général :
 - Séparateur : `/`
 - Délimiteur de fin : `!`
 
-#### Activation de la détection (Mobile → Table)
+#### Mobile → Table
 
-Format : `$A!`
+Activation de la détection : `$A!`
 
-#### Désactivation de la détection (Mobile → Table)
+Désactivation de la détection : `$D!`
 
-Format : `$D!`
-
-#### Empochage (Table → Mobile)
-
-Format : `$couleurBille/idPoche!`
+Empochage : `$couleurBille/idPoche!`
 
 - `couleurBille` : la couleur de bille
 
@@ -391,7 +382,9 @@ Format : `$couleurBille/idPoche!`
 
 ![](./simulateur/images/table.png)
 
-#### Démarrer un match (Mobile → Écran)
+#### Mobile → Écran
+
+Démarrer un match :
 
 | $ | type | / | nbParties | / | prenomJoueur1 | / | prenomJoueur2 | \! |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
@@ -399,10 +392,10 @@ Format : `$couleurBille/idPoche!`
 | type | Char | D : Démarrer le match ( configuration ) |
 | :---- | :---- | :---- |
 | nbParties | Int | x |
-| prenomJoueur1 | String | “*nomJoueur1*” |
-| prenomJoueur2 | String | “*nomJoueur2*” |
+| prenomJoueur1 | String | "nom du joueur1" |
+| prenomJoueur2 | String | "nom du joueur2" |
 
-#### Démarrer une partie : la casse (Mobile → Écran)
+Démarrer une partie (la casse) :
 
 | $ | type | / | idPartie | / | idJoueur | / | couleurBille | / | idPoche | \! |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -414,7 +407,7 @@ Format : `$couleurBille/idPoche!`
 | couleurBille | Int | 0 : Rouge 1 : Jaune 2 : Blanche 3 : Noire \-1 : Aucune\* |
 | idPoche | Int | 1 : Poche Nord-Ouest\*\* 2 : Poche Nord-Est\*\* 3 : Poche Équateur-Ouest\*\* 4 : Poche Équateur-Est\*\* 5 : Poche Sud-Ouest\*\* 6 : Poche Sud-Est\*\* 0 : Aucune poche |
 
-#### Empochage (Mobile → Écran)
+Empochage :
 
 | $ | type | / | idJoueur | / | couleurBille | / | idPoche | \! |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -425,9 +418,9 @@ Format : `$couleurBille/idPoche!`
 | couleurBille | Int | 0 : Rouge 1 : Jaune 2 : Blanche 3 : Noire \-1 : Aucune\* |
 | idPoche | Int | 1 : Poche Nord-Ouest\*\* 2 : Poche Nord-Est\*\* 3 : Poche Équateur-Ouest\*\* 4 : Poche Équateur-Est\*\* 5 : Poche Sud-Ouest\*\* 6 : Poche Sud-Est\*\* 0 : Aucune poche |
 
-*\* Le cas où aucune bille est empochée (en option).*
+_\* Le cas où aucune bille est empochée (en option)._
 
-#### Faute (Mobile → Écran)
+Faute :
 
 | $ | type | / | idJoueur | / | faute | \! |
 | :---: | :---: | :---: | :---- | :---: | :---: | :---: |
@@ -437,9 +430,9 @@ Format : `$couleurBille/idPoche!`
 | idJoueur | String | 1 : Joueur 1 2 : Joueur 2 |
 | faute |  | \*Le champ peut être vide |
 
-*\*Le code de la faute (facultatif) commise par le joueur idJoueur*
+_\*Le code de la faute (facultatif) commise par le joueur idJoueur_
 
-#### Fin de partie (Mobile → Écran)
+Fin de partie :
 
 | $ | type | / | idPartie | / | idJoueur | \! |
 | :---: | :---: | :---: | :---- | :---: | :---- | :---: |
@@ -449,7 +442,7 @@ Format : `$couleurBille/idPoche!`
 | idPartie | Int | Le numéro de partie |
 | idJoueur | Int | Le joueur qui a gagné la partie 1 : Joueur 1 2 : Joueur 2 |
 
-#### Pause (Mobile → Écran)
+Pause :
 
 | $ | type | \! |
 | :---: | :---: | :---: |
@@ -457,9 +450,9 @@ Format : `$couleurBille/idPoche!`
 | type | Char | P : la partie est mis en Pause |
 | :---- | :---- | :---- |
 
-*\* Désactivation des timers*
+_\* Désactivation des timers_
 
-#### Reprise (Mobile → Écran)
+Reprise :
 
 | $ | type | \! |
 | :---: | :---: | :---: |
@@ -467,9 +460,9 @@ Format : `$couleurBille/idPoche!`
 | type | Char | R : Reprise d’une partie |
 | :---- | :---- | :---- |
 
-*\* Réactivation des timers*
+_\* Réactivation des timers_
 
-#### Abandon (Mobile → Écran)
+Abandon :
 
 | $ | type | \! |
 | :---: | :---: | :---: |
@@ -477,9 +470,9 @@ Format : `$couleurBille/idPoche!`
 | type | Char | A : la partie est abandonnée |
 | :---- | :---- | :---- |
 
-*\* Si la partie n’est pas démarrée, le match est abandonné*
+_\* Si la partie n’est pas démarrée, le match est abandonné_
 
-#### Fin de match (Mobile → Écran)
+Fin de match :
 
 | $ | type | / | nbPartiesJoueur1 | / | nbPartiesJoueur2 | \! |
 | :---: | :---: | :---: | :---- | :---: | :---- | :---: |
