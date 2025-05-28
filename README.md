@@ -135,6 +135,9 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
 
 #### Diagramme de classes (Android)
 
+Pour `ActivitePartie` :
+
+![classes-activitepartie](./images/classes-activitepartie.png)
 
 #### Recette
 
@@ -279,7 +282,7 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 #### Diagramme de classes (Qt)
 
-
+![classes-qt](./images/classes-qt.png)
 
 #### Recette
 
