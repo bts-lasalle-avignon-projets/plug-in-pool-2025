@@ -695,7 +695,7 @@ public class ActivitePartie extends AppCompatActivity
             idPartieEnCours.setText("");
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
-            joueurGagnant.setText("Le Joueur 1 à gagner " + nbPartiesGagnerJoueur1 + " parties");
+            joueurGagnant.setText(joueur1.getNom() + " " + joueur1.getPrenom() + " à gagner " + nbPartiesGagnerJoueur1 + " partie");
             matchTermnier();
         }
         else if(nbPartiesGagnerJoueur1 < nbPartiesGagnerJoueur2)
@@ -703,7 +703,7 @@ public class ActivitePartie extends AppCompatActivity
             idPartieEnCours.setText("");
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
-            joueurGagnant.setText("Le Joueur 1 à gagner " + nbPartiesGagnerJoueur2 + " parties");
+            joueurGagnant.setText(joueur2.getNom() + " " + joueur2.getPrenom() + " à gagner " + nbPartiesGagnerJoueur2 + " partie");
             matchTermnier();
         }
         else

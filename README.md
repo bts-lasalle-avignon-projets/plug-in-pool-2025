@@ -1,4 +1,4 @@
-<table>
+<table style="width:100%">
     <tr>
         <th colspan="3">Plug-In-Pool</th>
     </tr>
@@ -10,39 +10,60 @@
         <a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white" alt="Qt"/></a>
         </td>
         <td>
-        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a> <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases"><img src="https://img.shields.io/github/v/release/bts-lasalle-avignon-projets/plug-in-pool-2025" alt="release"/></a>
         </td>
     </tr>
 </table>
 
-[![Qt Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml)
+<table style="width:100%">
+    <tr>
+        <th colspan="2">GitHub Actions</th>
+    </tr>
+    <tr>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg" alt="Android"/></a>
+        </td>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg" alt="Qt"/></a>
+        </td>
+    </tr>
+</table>
 
-[![Android Build](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg)](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml)
+# Projet BTS CIEL 2025 : Plug-In-Pool
 
-# Projet 2025 : Plug-In-Pool
-
-- [Projet 2025 : Plug-In-Pool](#projet-2025--plug-in-pool)
+- [Projet BTS CIEL 2025 : Plug-In-Pool](#projet-bts-ciel-2025--plug-in-pool)
   - [Présentation](#présentation)
-  - [Déroulement d'un Match](#déroulement-dun-match)
   - [Modules IR](#modules-ir)
     - [Application Android](#application-android)
       - [Module de gestion de matchs](#module-de-gestion-de-matchs)
-      - [Maquette de l'application Android](#maquette-de-lapplication-android)
+      - [Diagramme de cas d'utilisation (Android)](#diagramme-de-cas-dutilisation-android)
+      - [IHM de l'application Android](#ihm-de-lapplication-android)
+      - [Diagramme de classes (Android)](#diagramme-de-classes-android)
       - [Recette](#recette)
-      - [Diagramme de cas d'utilisation Android](#diagramme-de-cas-dutilisation-android)
       - [Base de données](#base-de-données)
     - [Application Qt](#application-qt)
       - [Module de visualisation de matchs](#module-de-visualisation-de-matchs)
-      - [Maquette de l'application Qt](#maquette-de-lapplication-qt)
+      - [Caractéristiques du Raspberry Pi 5](#caractéristiques-du-raspberry-pi-5)
+      - [Diagramme de cas d'utilisation (Qt)](#diagramme-de-cas-dutilisation-qt)
+      - [IHM de l'application Qt](#ihm-de-lapplication-qt)
+      - [Diagramme de classes (Qt)](#diagramme-de-classes-qt)
       - [Recette](#recette-1)
-  - [Itérations](#itérations)
+  - [Communication Bluetooth](#communication-bluetooth)
+    - [Protocole](#protocole)
+      - [Mobile → Table](#mobile--table)
+      - [Mobile → Écran](#mobile--écran)
+  - [Gestion de projet](#gestion-de-projet)
     - [Itération 1](#itération-1)
-    - [Itération 2](#itération-2)
-    - [Itération 3](#itération-3)
-    - [Itération 4](#itération-4)
+    - [Itération 2 (version 0.1)](#itération-2-version-01)
+    - [Itération 3 (version 1.0)](#itération-3-version-10)
+    - [Itération 4 (version 1.1)](#itération-4-version-11)
   - [Changelog](#changelog)
-  - [TODO](#todo)
+    - [Version 1.0](#version-10)
+    - [Version 0.1](#version-01)
   - [Défauts constatés non corrigés](#défauts-constatés-non-corrigés)
+    - [Android](#android)
+    - [Qt](#qt)
+  - [Documentation du code](#documentation-du-code)
   - [Équipe de développement](#équipe-de-développement)
 
 ---
@@ -67,9 +88,6 @@ Ensuite, afin que ces données recueillies par les capteurs soient transmises à
 
 ---
 
-## Déroulement d'un Match
-
-
 ## Modules IR
 
 ### Application Android
@@ -91,11 +109,27 @@ Ainsi, les joueurs peuvent :
 
 Le terminal mobile Android, stocke chaque match dans une base de données SQLite, où il est possible pour l'utilisateur en se rendant dans l'historique, de la visualiser ou la purger. Le terminal Android permet de se connecter avec à une table par liaison Bluetooth pour communiquer avec elle, mais aussi pour assurer une liaison avec l'écran d'affichage.
 
+> L'application est développée en Java.
+
+#### Diagramme de cas d'utilisation (Android)
+
+![](./images/casUtilisationAndroid.png)
+
 #### IHM de l'application Android
 
-![](./images/accueilEtConfiguration.png)
+![](./images/accueilEtCreationOuChoixDesJoueurs.png)
 
-![](./images/gestionEtPartie.png)
+![](./images/choixDesAppreilsEtActivitePartie.png)
+
+![](./images/demarerPartieEtEmpochage.png)
+
+![](./images/finDePartieEtHistorique.png)
+
+#### Diagramme de classes (Android)
+
+Pour `ActivitePartie` :
+
+![classes-activitepartie](./images/classes-activitepartie.png)
 
 #### Recette
 
@@ -127,8 +161,8 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   <tr>
     <td>Gérer le déroulement d'un match</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Enregistrer les données des parties</td>
@@ -138,15 +172,15 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
   </tr>
   <tr>
     <td>Consulter l'historique des matchs</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Purger l'historique</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
   </tr>
   <tr>
     <td>Dialoguer avec l'écran</td>
@@ -161,10 +195,6 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
     <td style="text-align: center;">x</td>
   </tr>
 </table>
-
-#### Diagramme de cas d'utilisation Android
-
-![](./images/casUtilisationAndroid.png)
 
 #### Base de données
 
@@ -220,13 +250,43 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 - Le nombre de manches gagnées par chaque joueur
 - Des statistiques
 
-#### Maquette de l'application Qt
+> L'application Qt s'exécute sur Raspberry Pi modèle 5 sur lequel est relié un écran de télévision (HDMI).
 
-![](./images/AccueilEcran.png)
+#### Caractéristiques du Raspberry Pi 5
 
-![](./images/RencontreEcran.png)
+- 64-bits quad-core Cortex-A76 processor
+- 8GB LPDDR4X SDRAM
+- 2 micro HDMI ports
+- 2 USB 3.0 ports
+- 2 USB 2.0 ports
+- Gigabit Ethernet port
+- Bluetooth 5.0
+- PoE-capable
+- 5V/5A USB-C
 
-![](./images/FinEcran.png)
+#### Diagramme de cas d'utilisation (Qt)
+
+![](./images/casUtilisationQt.png)
+
+#### IHM de l'application Qt
+
+![](./images/ecranAccueil.png)
+
+![](./images/ecranMatch.png)
+
+![](./images/ecranPartie.png)
+
+![](./images/ecranPartieCasse.png)
+
+![](./images/ecranPartieEmpochage.png)
+
+![](./images/ecranFinPartie.png)
+
+![](./images/ecranFinMatch.png)
+
+#### Diagramme de classes (Qt)
+
+![classes-qt](./images/classes-qt.png)
 
 #### Recette
 
@@ -269,7 +329,162 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   </tr>
 </table>
 
-## Itérations
+## Communication Bluetooth
+
+Bluetooth : v5.x
+
+Service utilisé : RFCOMM (_Radio frequency communication_), basé sur les spécifications RS-232 et qui émule des liaisons séries
+
+Profil utilisé : SPP (_Serial Port Profile_)
+
+| Modules                      |         Rôle          |
+| ---------------------------- | :-------------------: |
+| Gestion de matchs (Android)  | Client (_peripheral_) |
+| Visualisation de matchs (Qt) |  Serveur (_central_)  |
+| Détection de billes (ESP32)  |   Serveur (_slave_)   |
+
+### Protocole
+
+Format général :
+
+- Contenu : caractères ASCII
+- Entête : `$`
+- Séparateur : `/`
+- Délimiteur de fin : `!`
+
+#### Mobile → Table
+
+Activation de la détection : `$A!`
+
+Désactivation de la détection : `$D!`
+
+Empochage : `$couleurBille/idPoche!`
+
+- `couleurBille` : la couleur de bille
+
+|    Couleur    | Valeur |
+| :-----------: | :----: |
+|  Bille Rouge  |   0    |
+|  Bille Jaune  |   1    |
+| Bille Blanche |   2    |
+|  Bille Noire  |   3    |
+
+- `idPoche` : l'identifiant de la poche
+
+|        Poche         | Valeur |
+| :------------------: | :----: |
+|   Poche Nord-Ouest   |   1    |
+|    Poche Nord-Est    |   2    |
+| Poche Équateur-Ouest |   3    |
+|  Poche Équateur-Est  |   4    |
+|   Poche Sud-Ouest    |   5    |
+|    Poche Sud-Est     |   6    |
+
+![](./simulateur/images/table.png)
+
+#### Mobile → Écran
+
+Démarrer un match :
+
+| $ | type | / | nbParties | / | prenomJoueur1 | / | prenomJoueur2 | \! |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+
+| type | Char | D : Démarrer le match ( configuration ) |
+| :---- | :---- | :---- |
+| nbParties | Int | x |
+| prenomJoueur1 | String | "nom du joueur1" |
+| prenomJoueur2 | String | "nom du joueur2" |
+
+Démarrer une partie (la casse) :
+
+| $ | type | / | idPartie | / | idJoueur | / | couleurBille | / | idPoche | \! |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
+| type | Char | C : Casse (démarrage d’une partie) |
+| :---- | :---- | :---- |
+| idPartie | Int | Le numéro de partie |
+| idJoueur | Int | 1 : Joueur 1 2 : Joueur 2 |
+| couleurBille | Int | 0 : Rouge 1 : Jaune 2 : Blanche 3 : Noire \-1 : Aucune\* |
+| idPoche | Int | 1 : Poche Nord-Ouest\*\* 2 : Poche Nord-Est\*\* 3 : Poche Équateur-Ouest\*\* 4 : Poche Équateur-Est\*\* 5 : Poche Sud-Ouest\*\* 6 : Poche Sud-Est\*\* 0 : Aucune poche |
+
+Empochage :
+
+| $ | type | / | idJoueur | / | couleurBille | / | idPoche | \! |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
+| type | Char | E : Empochage d’une bille |
+| :---- | :---- | :---- |
+| idJoueur | Int | 1 : Joueur 1 2 : Joueur 2 |
+| couleurBille | Int | 0 : Rouge 1 : Jaune 2 : Blanche 3 : Noire \-1 : Aucune\* |
+| idPoche | Int | 1 : Poche Nord-Ouest\*\* 2 : Poche Nord-Est\*\* 3 : Poche Équateur-Ouest\*\* 4 : Poche Équateur-Est\*\* 5 : Poche Sud-Ouest\*\* 6 : Poche Sud-Est\*\* 0 : Aucune poche |
+
+_\* Le cas où aucune bille est empochée (en option)._
+
+Faute :
+
+| $ | type | / | idJoueur | / | faute | \! |
+| :---: | :---: | :---: | :---- | :---: | :---: | :---: |
+
+| type | Char | F : Faute d’une joueur |
+| :---- | :---- | :---- |
+| idJoueur | String | 1 : Joueur 1 2 : Joueur 2 |
+| faute |  | \*Le champ peut être vide |
+
+_\*Le code de la faute (facultatif) commise par le joueur idJoueur_
+
+Fin de partie :
+
+| $ | type | / | idPartie | / | idJoueur | \! |
+| :---: | :---: | :---: | :---- | :---: | :---- | :---: |
+
+| type | Char | T : partie Terminée |
+| :---- | :---- | :---- |
+| idPartie | Int | Le numéro de partie |
+| idJoueur | Int | Le joueur qui a gagné la partie 1 : Joueur 1 2 : Joueur 2 |
+
+Pause :
+
+| $ | type | \! |
+| :---: | :---: | :---: |
+
+| type | Char | P : la partie est mis en Pause |
+| :---- | :---- | :---- |
+
+_\* Désactivation des timers_
+
+Reprise :
+
+| $ | type | \! |
+| :---: | :---: | :---: |
+
+| type | Char | R : Reprise d’une partie |
+| :---- | :---- | :---- |
+
+_\* Réactivation des timers_
+
+Abandon :
+
+| $ | type | \! |
+| :---: | :---: | :---: |
+
+| type | Char | A : la partie est abandonnée |
+| :---- | :---- | :---- |
+
+_\* Si la partie n’est pas démarrée, le match est abandonné_
+
+Fin de match :
+
+| $ | type | / | nbPartiesJoueur1 | / | nbPartiesJoueur2 | \! |
+| :---: | :---: | :---: | :---- | :---: | :---- | :---: |
+
+| type | Char | M : Match terminé |
+| :---- | :---- | :---- |
+| nbPartiesJoueur1 | Int | Le nombre de parties gagnées par le joueur 1 |
+| nbPartiesJoueur2 | Int | Le nombre de parties gagnées par le joueur 2 |
+
+## Gestion de projet
+
+[GitHub Project](https://github.com/orgs/bts-lasalle-avignon-projets/projects/27)
 
 ### Itération 1
 
@@ -279,12 +494,12 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 - [x] Initialiser le dépot
 - [x] Créer les vues Android
 
-### Itération 2
+### Itération 2 ([version 0.1](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases/tag/0.1))
 
 > Du 29 Mars 2025 au 23 Mai 2025
 
 - [x] Paramétrer un match
-- [x] Lancer une ou plusieurs partie(s)
+- [x] Lancer une partie
 - [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
@@ -292,43 +507,62 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 - [x] Liaison entre la table de billard et le terminal mobile Android
 - [x] Liaison entre le terminal mobile Android et l'ecran d'affichage
 
-### Itération 3
+### Itération 3 ([version 1.0](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases/tag/1.0))
 
 > Du 24 Mai 2025 au 30 Mai 2025
 
-- [ ] Jouer une ou plusieurs parties
-- [ ] Afficher les données de la partie en cours
-- [ ] Stocker les données de la partie dans la base de données
+- [x] Jouer une parties
+- [x] Afficher les données de la partie en cours
+- [x] Afficher le joueur gagant
+- [x] Visualiser l'historique
+- [x] Purger l'historique
 
-### Itération 4
+### Itération 4 ([version 1.1](https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases/tag/1.1))
 
 > Du 31 Mai 2025 au 15 Juin 2025
 
+- [ ] Jouer plusieurs parties
+- [ ] Enregistrer les données du match dans la base de données
+
 ## Changelog
+
+### Version 1.0
+
+- [x] Jouer une partie
+- [x] Afficher les données de la partie en cours
+- [x] Afficher le joueur gagnant
+- [x] Visualiser l'historique
+- [x] Purger l'historique
 
 ### Version 0.1
 
-- [x] Créer les maquettes des interfaces
-- [x] Initialiser le dépot
-- [x] Créer les vues Android
 - [x] Paramétrer un match
 - [x] Lancer une ou plusieurs partie(s)
 - [x] Choisir un ou des joueurs existants pour lancer un match
 - [x] Créer un ou des nouveaux joueurs
 - [x] Enregister dans la base de données les nouveaux joueurs
 - [x] Gérer la casse et une manche
-- [x] Liaison entre la table de billard et le terminal mobile Android
-- [x] Liaison entre le terminal mobile Android et l'ecran d'affichage
-
-## TODO
+- [x] Communiquer en Bluetooth entre les différents modules
 
 ## Défauts constatés non corrigés
 
+### Android
+
+- Si la première tentative de connexion à un appareils Bluetooth échoue. Il apparait comme : _"Erreur de connexion"_ dans l'application Android, alors qu'il est en réalité bien connecté.
+
+### Qt
+
+- Si deux trames sont envoyées à la suite depuis la tablette Android vers l'écran de visualisation. Elles sont considérées comme une seule.
+
+## Documentation du code
+
+[https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/](https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/)
+
 ## Équipe de développement
 
-- MILLOT Pierre : [**[pierre(dot)millot(dot)pro(at)gmail(dot)com](mailto:pierre.millot.pro@gmail.com)**]
-- NAVARRO Mattéo : [**[matteo(dot)navarro(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**]
-- VIVANCOS Evan : [**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:evan.vivancos.pro@gmail.com)**]
+- Gestion des matchs (Android) : MILLOT Pierre (IR) <**[pierre(dot)millot(dot)pro(at)gmail(dot)com](mailto:pierre.millot.pro@gmail.com)**>
+- Visualisation des matchs (Qt) : NAVARRO Mattéo (IR) <**[matteo(dot)navarro(dot)pro(at)gmail(dot)com](mailto:matteo.navarro.pro@gmail.com)**>
+- Détection des billes (ESP32) : VIVANCOS Evan (ER) <**[evan(dot)vivancos(dot)pro(at)gmail(dot)com](mailto:evan.vivancos.pro@gmail.com)**>
 
 ---
 &copy; 2024-2025 BTS LaSalle Avignon

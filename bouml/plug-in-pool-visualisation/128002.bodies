@@ -1,0 +1,38 @@
+class EcranAccueil
+!!!129154.cpp!!!	EcranAccueil(inout parent : QWidget = nullptr)
+    qDebug() << Q_FUNC_INFO << this;
+
+    affichageVersion   = new QLabel("v1.0", ecran);
+    connexionBluetooth = new QLabel("Connexion en cours ...", ecran);
+
+    affichageVersion->setObjectName("affichageVersion");
+    connexionBluetooth->setObjectName("connexionBluetooth");
+
+    QVBoxLayout* ecranAccueil             = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceVersion            = new QHBoxLayout();
+    QHBoxLayout* espaceConnexionBluetooth = new QHBoxLayout();
+
+    espaceVersion->addStretch();
+    espaceVersion->addWidget(affichageVersion);
+    espaceVersion->addStretch();
+
+    espaceConnexionBluetooth->addStretch();
+    espaceConnexionBluetooth->addWidget(connexionBluetooth);
+    espaceConnexionBluetooth->addStretch();
+
+    ecranAccueil->addStretch();
+    ecranAccueil->addLayout(espaceVersion);
+    ecranAccueil->addSpacing(640);
+    ecranAccueil->addLayout(espaceConnexionBluetooth);
+    ecranAccueil->addStretch();
+!!!129282.cpp!!!	~EcranAccueil()
+    qDebug() << Q_FUNC_INFO << this;
+!!!129410.cpp!!!	getEcran() : QWidget
+    return ecran;
+!!!129538.cpp!!!	afficherEtatConnexion(in message : QString, in etat : bool) : void
+    connexionBluetooth->setText(message);
+    if(etat)
+        connexionBluetooth->setProperty("class", "connecte");
+    else
+        connexionBluetooth->setProperty("class", "deconnecte");
+    connexionBluetooth->style()->polish(connexionBluetooth);

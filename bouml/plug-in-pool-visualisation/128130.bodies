@@ -1,0 +1,36 @@
+class EcranFin
+!!!129794.cpp!!!	EcranFin(inout parent : QWidget = nullptr)
+    qDebug() << Q_FUNC_INFO << this;
+
+    affichageVersion       = new QLabel("v1.0", ecran);
+    affichageJoueurGagnant = new QLabel("Aucun joueur gagnant", ecran);
+
+    affichageVersion->setObjectName("affichageVersion");
+    affichageJoueurGagnant->setObjectName("affichageJoueurGagnant");
+
+    QVBoxLayout* ecranFin            = new QVBoxLayout(ecran);
+    QHBoxLayout* espaceVersion       = new QHBoxLayout();
+    QHBoxLayout* espaceJoueurGagnant = new QHBoxLayout();
+
+    espaceVersion->addStretch();
+    espaceVersion->addWidget(affichageVersion);
+    espaceVersion->addStretch();
+
+    espaceJoueurGagnant->addStretch();
+    espaceJoueurGagnant->addWidget(affichageJoueurGagnant);
+    espaceJoueurGagnant->addStretch();
+
+    ecranFin->addStretch();
+    ecranFin->addLayout(espaceVersion);
+    ecranFin->addSpacing(480);
+    ecranFin->addLayout(espaceJoueurGagnant);
+    ecranFin->addSpacing(160);
+    ecranFin->addStretch();
+!!!129922.cpp!!!	~EcranFin()
+    qDebug() << Q_FUNC_INFO << this;
+!!!130050.cpp!!!	getEcran() : QWidget
+    return ecran;
+!!!130178.cpp!!!	afficherJoueurGagnant(in prenomJoueurGagnant : QString) : void
+    affichageJoueurGagnant->setText(prenomJoueurGagnant);
+    affichageJoueurGagnant->setProperty("class", "configure");
+    affichageJoueurGagnant->style()->polish(affichageJoueurGagnant);

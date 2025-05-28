@@ -1,0 +1,119 @@
+format 224
+"build-ecranPlugInPool-Desktop_5_12-Debug" // build-ecranPlugInPool-Desktop_5_12-Debug
+  revision 1
+  modified_by 2 "btssn2"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "build-ecranPlugInPool-Desktop_5_12-Debug/"
+  cpp_src_dir "build-ecranPlugInPool-Desktop_5_12-Debug/"
+  classview 128130 "build-ecranPlugInPool-Desktop_5_12-Debug"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128642 "initializer"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 137218 "initializer"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract} { QT_RCC_MANGLE_NAMESPACE(qInitResources_ressource)(); };
+"
+	
+	
+	
+	
+      end
+
+      operation 137346 "~initializer"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract} { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_ressource)(); };
+"
+	
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 128130 "build-ecranPlugInPool-Desktop_5_12-Debug"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128642 "initializer"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128642 // initializer
+      end
+    end
+  end
+end

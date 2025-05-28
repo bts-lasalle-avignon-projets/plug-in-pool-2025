@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Plug-In-Pool:  Fichier source de pluginpool.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="projet-logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet Plug-In-Pool
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS CIEL IR LaSalle Avignon 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('pluginpool_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">pluginpool.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pluginpool_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pluginpool_8h.html">pluginpool.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="communicationbluetooth_8h.html">communicationbluetooth.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="match_8h.html">match.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ecranpluginpool_8h.html">ecranpluginpool.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a54d30173dd38e2b45cb0e75db2ad86f6">    8</a></span>&#160;<a class="code" href="class_plug_in_pool.html#a54d30173dd38e2b45cb0e75db2ad86f6">PlugInPool::PlugInPool</a>(<a class="code" href="class_q_object.html">QObject</a>* parent) :</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_q_object.html">QObject</a>(parent), communicationBluetooth(new <a class="code" href="class_communication_bluetooth.html">CommunicationBluetooth</a>(this)),</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    match(nullptr), ecranPlugInPool(qobject_cast&lt;<a class="code" href="class_ecran_plug_in_pool.html">EcranPlugInPool</a>*&gt;(parent))</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="stringliteral">&quot;parent&quot;</span> &lt;&lt; parent;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a> = <span class="keyword">new</span> <a class="code" href="class_match.html">Match</a>(<span class="stringliteral">&quot;Match test&quot;</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#ae3b9c6a791655aac5da5294696067b06">CommunicationBluetooth::connexionClient</a>,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#a20ad0b2682c0725429fd688bed33e519">PlugInPool::gererConnexion</a>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#a9c6443d06ebb284ef5aa1e1864ab3534">CommunicationBluetooth::trameRencontreRecue</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#a94657f35522bebf25de8c3cf461bede2">PlugInPool::configurerMatch</a>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#a5faa873652acb1153c88b2dbead4ffc7">CommunicationBluetooth::trameCasseRecue</a>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#ae12df6ac64735e660ae67b0a8fad0f63">PlugInPool::empochageCasse</a>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#a9fbdd895f2310e8282560f2e4ab7fc9f">CommunicationBluetooth::trameEmpochageRecue</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#a5a98921601a37babe9bc0f5e296c00fc">PlugInPool::empochage</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#a20ab5cf249881aed8f10d37a05bf4527">CommunicationBluetooth::tramePartieTermineeRecue</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#a9afba6f09da46b850223c7aeb6b26c02">PlugInPool::terminerPartie</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    connect(<a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            &amp;<a class="code" href="class_communication_bluetooth.html#a79acd5d215910e8aea85918d5ee0d626">CommunicationBluetooth::trameMatchTermineeRecue</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            &amp;<a class="code" href="class_plug_in_pool.html#aed96b5ea28d46383da809e7e4a1f5974">PlugInPool::terminerMatch</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a438c2d13c067c8e09487669ce650fc86">   48</a></span>&#160;<a class="code" href="class_plug_in_pool.html#a438c2d13c067c8e09487669ce650fc86">PlugInPool::~PlugInPool</a>()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">delete</span> <a class="code" href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">communicationBluetooth</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a20ad0b2682c0725429fd688bed33e519">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a20ad0b2682c0725429fd688bed33e519">PlugInPool::gererConnexion</a>(<span class="keywordtype">bool</span> etat)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;etat&quot;</span> &lt;&lt; etat;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_ecran_accueil.html">EcranAccueil</a>* ecranAccueil = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a2fe8f5596c108659f3533e04ed785665">getEcranAccueil</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span>(etat)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        ecranAccueil-&gt;<a class="code" href="class_ecran_accueil.html#aa0bf22e9441b359d145d3473618f2dbf">afficherEtatConnexion</a>(<span class="stringliteral">&quot;Tablette connectée&quot;</span>, etat);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        ecranAccueil-&gt;<a class="code" href="class_ecran_accueil.html#aa0bf22e9441b359d145d3473618f2dbf">afficherEtatConnexion</a>(<span class="stringliteral">&quot;Tablette déconnectée&quot;</span>, etat);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a94657f35522bebf25de8c3cf461bede2">   70</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a94657f35522bebf25de8c3cf461bede2">PlugInPool::configurerMatch</a>(<span class="keywordtype">int</span>     nbManches,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                 QString prenomJoueur1,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                 QString prenomJoueur2)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;prenomJoueur1&quot;</span> &lt;&lt; prenomJoueur1</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;prenomJoueur2&quot;</span> &lt;&lt; prenomJoueur2 &lt;&lt; <span class="stringliteral">&quot;nbManches&quot;</span> &lt;&lt; nbManches;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;Configurer match&quot;</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="class_ecran_match.html">EcranMatch</a>*  ecranMatch  = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">getEcranMatch</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="class_ecran_partie.html">EcranPartie</a>* ecranPartie = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">getEcranPartie</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a5835baf44777c890913429730cf6edeb">enregistrerJoueurs</a>(prenomJoueur1, prenomJoueur2);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a097b65e09e524a22989570c41e824635">setNbManchesGagnantes</a>(nbManches);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ecranMatch-&gt;<a class="code" href="class_ecran_match.html#a4d073b5de08d19685b4c2c7b7137d490">afficherInformationsMatch</a>(nbManches,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                          prenomJoueur1,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                          prenomJoueur2);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_plug_in_pool.html#a752c20dd00ee1264e2fe6f51da467b46">changerEcranMatch</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    connect(ecranMatch,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            &amp;<a class="code" href="class_ecran_match.html#aff4fb408ab8dc658b2bfc58351b27dfb">EcranMatch::compteAReboursDebutMatchTermine</a>,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            [=]()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">afficherInformationsPartie</a>(nbManches,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                                        prenomJoueur1,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                        prenomJoueur2);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <a class="code" href="class_plug_in_pool.html#aca12446004007a199ab18bd712a61ba9">changerEcranPartie</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            });</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#ae12df6ac64735e660ae67b0a8fad0f63">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#ae12df6ac64735e660ae67b0a8fad0f63">PlugInPool::empochageCasse</a>(<span class="keywordtype">int</span> idPartie,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                <span class="keywordtype">int</span> idJoueur,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                <span class="keywordtype">int</span> couleurBille,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                <span class="keywordtype">int</span> idPoche)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;idPartie&quot;</span> &lt;&lt; idPartie &lt;&lt; <span class="stringliteral">&quot;idJoueur&quot;</span> &lt;&lt; idJoueur</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;couleurBille&quot;</span> &lt;&lt; couleurBille &lt;&lt; <span class="stringliteral">&quot;idPoche&quot;</span> &lt;&lt; idPoche;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleurBoule = <span class="keyword">static_cast&lt;</span><a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a><span class="keyword">&gt;</span>(couleurBille);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="class_ecran_partie.html">EcranPartie</a>* ecranPartie  = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">getEcranPartie</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    QString      prenom       = <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(idJoueur);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">switch</span>(couleurBoule)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">retirerBoule</a>(couleurBoule);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">attribuerCouleurBille</a>(idJoueur, couleurBoule);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">incrementerCompteurPoche</a>(couleurBoule, idPoche - 1);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">retirerBoule</a>(couleurBoule);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">attribuerCouleurBille</a>(idJoueur, couleurBoule);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">incrementerCompteurPoche</a>(couleurBoule, idPoche - 1);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca4d44199dc8c31b6937fe953ebc01e6f9">BLANCHE</a>:</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Joueur suivant&quot;</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca59e3323a198f0162330111165caaf367">NOIR</a>:</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Partie Terminé&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acada12fe19f4d0f33e8b72265183214f36">AUCUNE</a>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Joueur suivant&quot;</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">demarrerCompteAReboursManche</a>(<a class="code" href="pluginpool_8h.html#af5be94aaba09e8b9e681bcfc7a1c911c">TEMPS_COMPTE_A_REBOURS</a>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a5a98921601a37babe9bc0f5e296c00fc">  147</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a5a98921601a37babe9bc0f5e296c00fc">PlugInPool::empochage</a>(<span class="keywordtype">int</span> idJoueur, <span class="keywordtype">int</span> couleurBille, <span class="keywordtype">int</span> idPoche)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;idJoueur&quot;</span> &lt;&lt; idJoueur &lt;&lt; <span class="stringliteral">&quot;couleurBille&quot;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;             &lt;&lt; couleurBille &lt;&lt; <span class="stringliteral">&quot;idPoche&quot;</span> &lt;&lt; idPoche;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleurBoule = <span class="keyword">static_cast&lt;</span><a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a><span class="keyword">&gt;</span>(couleurBille);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="class_ecran_partie.html">EcranPartie</a>* ecranPartie  = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">getEcranPartie</a>();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    QString      prenom       = <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(idJoueur);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">switch</span>(couleurBoule)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;              prenom + <span class="stringliteral">&quot; a mis la boule rouge dans la poche &quot;</span> +</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;              QString::number(idPoche));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">retirerBoule</a>(couleurBoule);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">incrementerCompteurPoche</a>(couleurBoule, idPoche - 1);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;              prenom + <span class="stringliteral">&quot; a mis la boule jaune dans la poche &quot;</span> +</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;              QString::number(idPoche));</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">retirerBoule</a>(couleurBoule);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">incrementerCompteurPoche</a>(couleurBoule, idPoche - 1);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca4d44199dc8c31b6937fe953ebc01e6f9">BLANCHE</a>:</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Joueur suivant&quot;</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca59e3323a198f0162330111165caaf367">NOIR</a>:</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Partie Terminé&quot;</span>);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acada12fe19f4d0f33e8b72265183214f36">AUCUNE</a>:</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Faute : Joueur suivant&quot;</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">demarrerCompteAReboursManche</a>(<a class="code" href="pluginpool_8h.html#af5be94aaba09e8b9e681bcfc7a1c911c">TEMPS_COMPTE_A_REBOURS</a>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a9afba6f09da46b850223c7aeb6b26c02">  194</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a9afba6f09da46b850223c7aeb6b26c02">PlugInPool::terminerPartie</a>(<span class="keywordtype">int</span> idPartie, <span class="keywordtype">int</span> idJoueurGagnant)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;idPartie&quot;</span> &lt;&lt; idPartie &lt;&lt; <span class="stringliteral">&quot;idJoueurGagnant&quot;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;             &lt;&lt; idJoueurGagnant;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="class_ecran_fin.html">EcranFin</a>* ecranFin      = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#acf5d716ae090098255d733044ed34219">getEcranFin</a>();</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    QString   prenomGagnant = <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(idJoueurGagnant);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    ecranFin-&gt;<a class="code" href="class_ecran_fin.html#a0ab71b5255fad47872c62cd46503969e">afficherJoueurGagnant</a>(prenomGagnant + <span class="stringliteral">&quot; a gagné cette partie&quot;</span>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="class_plug_in_pool.html#aaa73b119526baa5a9dc1cde2e04e5401">changerEcranFin</a>();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#aed96b5ea28d46383da809e7e4a1f5974">  204</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#aed96b5ea28d46383da809e7e4a1f5974">PlugInPool::terminerMatch</a>(<span class="keywordtype">int</span> nbPartiesJoueurUn, <span class="keywordtype">int</span> nbPartiesJoueurDeux)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;nbPartiesJoueurUn&quot;</span> &lt;&lt; nbPartiesJoueurUn</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;nbPartiesJoueurDeux&quot;</span> &lt;&lt; nbPartiesJoueurDeux;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="class_ecran_fin_match.html">EcranFinMatch</a>* ecranFinMatch = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a5833adc1ba31edccf93f237b08e2adad">getEcranFinMatch</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">if</span>(nbPartiesJoueurUn &gt; nbPartiesJoueurDeux)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        ecranFinMatch-&gt;<a class="code" href="class_ecran_fin_match.html#a3a0779409a66d4281c839a4e2d69651b">afficherJoueurGagnant</a>(<a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(0) +</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                                             <span class="stringliteral">&quot; a gagné ce Match&quot;</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(nbPartiesJoueurDeux &gt; nbPartiesJoueurUn)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        ecranFinMatch-&gt;<a class="code" href="class_ecran_fin_match.html#a3a0779409a66d4281c839a4e2d69651b">afficherJoueurGagnant</a>(<a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(1) +</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                             <span class="stringliteral">&quot; a gagné ce Match&quot;</span>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    ecranFinMatch-&gt;<a class="code" href="class_ecran_fin_match.html#aabd4530aef8f450c3c6b686d504605e6">afficherScores</a>(<a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(0) + <span class="stringliteral">&quot; :      &quot;</span> +</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                  QString::number(nbPartiesJoueurUn) + <span class="stringliteral">&quot;  -  &quot;</span> +</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                  QString::number(nbPartiesJoueurDeux) +</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                  <span class="stringliteral">&quot;      : &quot;</span> + <a class="code" href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">match</a>-&gt;<a class="code" href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">getPrenomJoueur</a>(1));</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="class_plug_in_pool.html#a96c38e4d93a37c8c60e290db3a4d0608">changerEcranFinMatch</a>();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a752c20dd00ee1264e2fe6f51da467b46">  226</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a752c20dd00ee1264e2fe6f51da467b46">PlugInPool::changerEcranMatch</a>()</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="class_ecran_match.html">EcranMatch</a>* ecranMatch = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">getEcranMatch</a>();</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a12f82bcb3fe8e2f7545e16fe4b95b6cd">afficherEcranMatch</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    QTimer::singleShot(<a class="code" href="pluginpool_8h.html#a03ee140ac777d37c4cff7707fb45f764">TEMPS_AVANT_COMPTE_A_REBOURS</a>,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                       [ecranMatch]()</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                       {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                           ecranMatch-&gt;<a class="code" href="class_ecran_match.html#a954cea04c45e1f1e8af1dab89c92a1b4">demarrerCompteAReboursDebutMatch</a>(</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                             <a class="code" href="pluginpool_8h.html#ad92255ff880c3bfb8de18345a88faf75">TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH</a>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                       });</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#aca12446004007a199ab18bd712a61ba9">  238</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#aca12446004007a199ab18bd712a61ba9">PlugInPool::changerEcranPartie</a>()</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;{</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="class_ecran_partie.html">EcranPartie</a>* ecranPartie = <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">getEcranPartie</a>();</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#ab9b72a9bf544e431977c800f620dfd29">afficherEcranPartie</a>();</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">demarrerChronometre</a>();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    ecranPartie-&gt;<a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">demarrerCompteAReboursManche</a>(<a class="code" href="pluginpool_8h.html#af5be94aaba09e8b9e681bcfc7a1c911c">TEMPS_COMPTE_A_REBOURS</a>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#aaa73b119526baa5a9dc1cde2e04e5401">  247</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#aaa73b119526baa5a9dc1cde2e04e5401">PlugInPool::changerEcranFin</a>()</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a6e4f7688758543301817341a859b2a41">afficherEcranFin</a>();</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="class_plug_in_pool.html#a96c38e4d93a37c8c60e290db3a4d0608">  252</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_plug_in_pool.html#a96c38e4d93a37c8c60e290db3a4d0608">PlugInPool::changerEcranFinMatch</a>()</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">ecranPlugInPool</a>-&gt;<a class="code" href="class_ecran_plug_in_pool.html#a26a4a36823bc0073124e5f7c55c271e2">afficherEcranFinMatch</a>();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="ttc" id="aclass_communication_bluetooth_html"><div class="ttname"><a href="class_communication_bluetooth.html">CommunicationBluetooth</a></div><div class="ttdef"><b>Definition:</b> <a href="communicationbluetooth_8h_source.html#l00040">communicationbluetooth.h:41</a></div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_a20ab5cf249881aed8f10d37a05bf4527"><div class="ttname"><a href="class_communication_bluetooth.html#a20ab5cf249881aed8f10d37a05bf4527">CommunicationBluetooth::tramePartieTermineeRecue</a></div><div class="ttdeci">void tramePartieTermineeRecue(int idPartie, int idJoueurGagnant)</div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_a5faa873652acb1153c88b2dbead4ffc7"><div class="ttname"><a href="class_communication_bluetooth.html#a5faa873652acb1153c88b2dbead4ffc7">CommunicationBluetooth::trameCasseRecue</a></div><div class="ttdeci">void trameCasseRecue(int idPartie, int idJoueur, char couleurBille, int idPoche)</div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_a79acd5d215910e8aea85918d5ee0d626"><div class="ttname"><a href="class_communication_bluetooth.html#a79acd5d215910e8aea85918d5ee0d626">CommunicationBluetooth::trameMatchTermineeRecue</a></div><div class="ttdeci">void trameMatchTermineeRecue(int nbPartiesJoueurUn, int nbPartiesJoueurDeux)</div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_a9c6443d06ebb284ef5aa1e1864ab3534"><div class="ttname"><a href="class_communication_bluetooth.html#a9c6443d06ebb284ef5aa1e1864ab3534">CommunicationBluetooth::trameRencontreRecue</a></div><div class="ttdeci">void trameRencontreRecue(int nbManches, QString prenomJoueur1, QString prenomJoueur2)</div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_a9fbdd895f2310e8282560f2e4ab7fc9f"><div class="ttname"><a href="class_communication_bluetooth.html#a9fbdd895f2310e8282560f2e4ab7fc9f">CommunicationBluetooth::trameEmpochageRecue</a></div><div class="ttdeci">void trameEmpochageRecue(int idJoueur, int couleurBille, int idPoche)</div></div>
+<div class="ttc" id="aclass_communication_bluetooth_html_ae3b9c6a791655aac5da5294696067b06"><div class="ttname"><a href="class_communication_bluetooth.html#ae3b9c6a791655aac5da5294696067b06">CommunicationBluetooth::connexionClient</a></div><div class="ttdeci">void connexionClient(bool etat)</div></div>
+<div class="ttc" id="aclass_ecran_accueil_html"><div class="ttname"><a href="class_ecran_accueil.html">EcranAccueil</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranaccueil_8h_source.html#l00008">ecranaccueil.h:9</a></div></div>
+<div class="ttc" id="aclass_ecran_accueil_html_aa0bf22e9441b359d145d3473618f2dbf"><div class="ttname"><a href="class_ecran_accueil.html#aa0bf22e9441b359d145d3473618f2dbf">EcranAccueil::afficherEtatConnexion</a></div><div class="ttdeci">void afficherEtatConnexion(QString message, bool etat)</div><div class="ttdef"><b>Definition:</b> <a href="ecranaccueil_8cpp_source.html#l00045">ecranaccueil.cpp:45</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_html"><div class="ttname"><a href="class_ecran_fin.html">EcranFin</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranfin_8h_source.html#l00006">ecranfin.h:7</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_html_a0ab71b5255fad47872c62cd46503969e"><div class="ttname"><a href="class_ecran_fin.html#a0ab71b5255fad47872c62cd46503969e">EcranFin::afficherJoueurGagnant</a></div><div class="ttdeci">void afficherJoueurGagnant(QString PrenomJoueurGagnant)</div><div class="ttdef"><b>Definition:</b> <a href="ecranfin_8cpp_source.html#l00044">ecranfin.cpp:44</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_match_html"><div class="ttname"><a href="class_ecran_fin_match.html">EcranFinMatch</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranfinmatch_8h_source.html#l00006">ecranfinmatch.h:7</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_match_html_a3a0779409a66d4281c839a4e2d69651b"><div class="ttname"><a href="class_ecran_fin_match.html#a3a0779409a66d4281c839a4e2d69651b">EcranFinMatch::afficherJoueurGagnant</a></div><div class="ttdeci">void afficherJoueurGagnant(QString PrenomJoueurGagnant)</div><div class="ttdef"><b>Definition:</b> <a href="ecranfinmatch_8cpp_source.html#l00051">ecranfinmatch.cpp:51</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_match_html_aabd4530aef8f450c3c6b686d504605e6"><div class="ttname"><a href="class_ecran_fin_match.html#aabd4530aef8f450c3c6b686d504605e6">EcranFinMatch::afficherScores</a></div><div class="ttdeci">void afficherScores(QString scores)</div><div class="ttdef"><b>Definition:</b> <a href="ecranfinmatch_8cpp_source.html#l00058">ecranfinmatch.cpp:58</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html"><div class="ttname"><a href="class_ecran_match.html">EcranMatch</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranmatch_8h_source.html#l00013">ecranmatch.h:14</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html_a4d073b5de08d19685b4c2c7b7137d490"><div class="ttname"><a href="class_ecran_match.html#a4d073b5de08d19685b4c2c7b7137d490">EcranMatch::afficherInformationsMatch</a></div><div class="ttdeci">void afficherInformationsMatch(int nbManches, QString joueur1, QString joueur2)</div><div class="ttdef"><b>Definition:</b> <a href="ecranmatch_8cpp_source.html#l00051">ecranmatch.cpp:51</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html_a954cea04c45e1f1e8af1dab89c92a1b4"><div class="ttname"><a href="class_ecran_match.html#a954cea04c45e1f1e8af1dab89c92a1b4">EcranMatch::demarrerCompteAReboursDebutMatch</a></div><div class="ttdeci">void demarrerCompteAReboursDebutMatch(int dureeEnSecondes)</div><div class="ttdef"><b>Definition:</b> <a href="ecranmatch_8cpp_source.html#l00061">ecranmatch.cpp:61</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html_aff4fb408ab8dc658b2bfc58351b27dfb"><div class="ttname"><a href="class_ecran_match.html#aff4fb408ab8dc658b2bfc58351b27dfb">EcranMatch::compteAReboursDebutMatchTermine</a></div><div class="ttdeci">void compteAReboursDebutMatchTermine()</div></div>
+<div class="ttc" id="aclass_ecran_partie_html"><div class="ttname"><a href="class_ecran_partie.html">EcranPartie</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00021">ecranpartie.h:22</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a0ae8ad98d5e3d73d9e335b87115f09eb"><div class="ttname"><a href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a></div><div class="ttdeci">void afficherMessageAction(QString message)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00280">ecranpartie.cpp:280</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a22a214a32e668e985325578f0de8529f"><div class="ttname"><a href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a></div><div class="ttdeci">void attribuerCouleurBille(int idJoueur, int couleurBille)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00285">ecranpartie.cpp:285</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a46749973110bea455332baddb49c199e"><div class="ttname"><a href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a></div><div class="ttdeci">void incrementerCompteurPoche(CouleurBille couleur, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00254">ecranpartie.cpp:254</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a4f6fe777e19e2b958ccd8de31aaa2102"><div class="ttname"><a href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a></div><div class="ttdeci">void demarrerChronometre()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00107">ecranpartie.cpp:107</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a5ebf3a531dbe1929ffd5589661dea23e"><div class="ttname"><a href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a></div><div class="ttdeci">void demarrerCompteAReboursManche(int dureeEnSecondes)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00131">ecranpartie.cpp:131</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a919f17d9e54725f8e66f5c25bbce6c5c"><div class="ttname"><a href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a></div><div class="ttdeci">void afficherInformationsPartie(int nbManches, QString joueur1, QString joueur2)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00099">ecranpartie.cpp:99</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aeef8ec9f6916ac111c39de8e2c37cbef"><div class="ttname"><a href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a></div><div class="ttdeci">void retirerBoule(CouleurBille couleur)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00229">ecranpartie.cpp:229</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html"><div class="ttname"><a href="class_ecran_plug_in_pool.html">EcranPlugInPool</a></div><div class="ttdoc">Déclaration de la classe EcranPlugInPool.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00054">ecranpluginpool.h:55</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a12f82bcb3fe8e2f7545e16fe4b95b6cd"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a12f82bcb3fe8e2f7545e16fe4b95b6cd">EcranPlugInPool::afficherEcranMatch</a></div><div class="ttdeci">void afficherEcranMatch()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00084">ecranpluginpool.cpp:84</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a26a4a36823bc0073124e5f7c55c271e2"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a26a4a36823bc0073124e5f7c55c271e2">EcranPlugInPool::afficherEcranFinMatch</a></div><div class="ttdeci">void afficherEcranFinMatch()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00102">ecranpluginpool.cpp:102</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a2fe8f5596c108659f3533e04ed785665"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a2fe8f5596c108659f3533e04ed785665">EcranPlugInPool::getEcranAccueil</a></div><div class="ttdeci">EcranAccueil * getEcranAccueil() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00108">ecranpluginpool.cpp:108</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a5833adc1ba31edccf93f237b08e2adad"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a5833adc1ba31edccf93f237b08e2adad">EcranPlugInPool::getEcranFinMatch</a></div><div class="ttdeci">EcranFinMatch * getEcranFinMatch() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00128">ecranpluginpool.cpp:128</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a6e4f7688758543301817341a859b2a41"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a6e4f7688758543301817341a859b2a41">EcranPlugInPool::afficherEcranFin</a></div><div class="ttdeci">void afficherEcranFin()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00096">ecranpluginpool.cpp:96</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a7c343454ad3078b92be0b372381b1725"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">EcranPlugInPool::getEcranPartie</a></div><div class="ttdeci">EcranPartie * getEcranPartie() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00113">ecranpluginpool.cpp:113</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ab9b72a9bf544e431977c800f620dfd29"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ab9b72a9bf544e431977c800f620dfd29">EcranPlugInPool::afficherEcranPartie</a></div><div class="ttdeci">void afficherEcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00090">ecranpluginpool.cpp:90</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ac3a0d1d6c22cff01d510f765ab376f59"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">EcranPlugInPool::getEcranMatch</a></div><div class="ttdeci">EcranMatch * getEcranMatch() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00118">ecranpluginpool.cpp:118</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_acf5d716ae090098255d733044ed34219"><div class="ttname"><a href="class_ecran_plug_in_pool.html#acf5d716ae090098255d733044ed34219">EcranPlugInPool::getEcranFin</a></div><div class="ttdeci">EcranFin * getEcranFin() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00123">ecranpluginpool.cpp:123</a></div></div>
+<div class="ttc" id="aclass_match_html"><div class="ttname"><a href="class_match.html">Match</a></div><div class="ttdef"><b>Definition:</b> <a href="match_8h_source.html#l00029">match.h:30</a></div></div>
+<div class="ttc" id="aclass_match_html_a03121326b22fb31871fa9d5c1d6d0e9e"><div class="ttname"><a href="class_match.html#a03121326b22fb31871fa9d5c1d6d0e9e">Match::getPrenomJoueur</a></div><div class="ttdeci">QString getPrenomJoueur(int idJoueur) const</div><div class="ttdef"><b>Definition:</b> <a href="match_8cpp_source.html#l00018">match.cpp:18</a></div></div>
+<div class="ttc" id="aclass_match_html_a097b65e09e524a22989570c41e824635"><div class="ttname"><a href="class_match.html#a097b65e09e524a22989570c41e824635">Match::setNbManchesGagnantes</a></div><div class="ttdeci">void setNbManchesGagnantes(int nbManchesGagnantes)</div><div class="ttdef"><b>Definition:</b> <a href="match_8cpp_source.html#l00013">match.cpp:13</a></div></div>
+<div class="ttc" id="aclass_match_html_a5835baf44777c890913429730cf6edeb"><div class="ttname"><a href="class_match.html#a5835baf44777c890913429730cf6edeb">Match::enregistrerJoueurs</a></div><div class="ttdeci">void enregistrerJoueurs(const QString &amp;prenomJoueur1, const QString &amp;prenomJoueur2)</div><div class="ttdef"><b>Definition:</b> <a href="match_8cpp_source.html#l00023">match.cpp:23</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a20ad0b2682c0725429fd688bed33e519"><div class="ttname"><a href="class_plug_in_pool.html#a20ad0b2682c0725429fd688bed33e519">PlugInPool::gererConnexion</a></div><div class="ttdeci">void gererConnexion(bool etat)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00054">pluginpool.cpp:54</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a35e87900b816c125f43220cf54307946"><div class="ttname"><a href="class_plug_in_pool.html#a35e87900b816c125f43220cf54307946">PlugInPool::communicationBluetooth</a></div><div class="ttdeci">CommunicationBluetooth * communicationBluetooth</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00021">pluginpool.h:21</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a438c2d13c067c8e09487669ce650fc86"><div class="ttname"><a href="class_plug_in_pool.html#a438c2d13c067c8e09487669ce650fc86">PlugInPool::~PlugInPool</a></div><div class="ttdeci">virtual ~PlugInPool()</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00048">pluginpool.cpp:48</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a54d30173dd38e2b45cb0e75db2ad86f6"><div class="ttname"><a href="class_plug_in_pool.html#a54d30173dd38e2b45cb0e75db2ad86f6">PlugInPool::PlugInPool</a></div><div class="ttdeci">PlugInPool(QObject *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00008">pluginpool.cpp:8</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a5a98921601a37babe9bc0f5e296c00fc"><div class="ttname"><a href="class_plug_in_pool.html#a5a98921601a37babe9bc0f5e296c00fc">PlugInPool::empochage</a></div><div class="ttdeci">void empochage(int idJoueur, int couleurBille, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00147">pluginpool.cpp:147</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a65997547fdb2dc4b83260f3f022840df"><div class="ttname"><a href="class_plug_in_pool.html#a65997547fdb2dc4b83260f3f022840df">PlugInPool::match</a></div><div class="ttdeci">Match * match</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00022">pluginpool.h:22</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a752c20dd00ee1264e2fe6f51da467b46"><div class="ttname"><a href="class_plug_in_pool.html#a752c20dd00ee1264e2fe6f51da467b46">PlugInPool::changerEcranMatch</a></div><div class="ttdeci">void changerEcranMatch()</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00226">pluginpool.cpp:226</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a94657f35522bebf25de8c3cf461bede2"><div class="ttname"><a href="class_plug_in_pool.html#a94657f35522bebf25de8c3cf461bede2">PlugInPool::configurerMatch</a></div><div class="ttdeci">void configurerMatch(int nbManches, QString prenomJoueur1, QString prenomJoueur2)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00070">pluginpool.cpp:70</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a96c38e4d93a37c8c60e290db3a4d0608"><div class="ttname"><a href="class_plug_in_pool.html#a96c38e4d93a37c8c60e290db3a4d0608">PlugInPool::changerEcranFinMatch</a></div><div class="ttdeci">void changerEcranFinMatch()</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00252">pluginpool.cpp:252</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_a9afba6f09da46b850223c7aeb6b26c02"><div class="ttname"><a href="class_plug_in_pool.html#a9afba6f09da46b850223c7aeb6b26c02">PlugInPool::terminerPartie</a></div><div class="ttdeci">void terminerPartie(int idPartie, int idJoueurGagnant)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00194">pluginpool.cpp:194</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_aaa73b119526baa5a9dc1cde2e04e5401"><div class="ttname"><a href="class_plug_in_pool.html#aaa73b119526baa5a9dc1cde2e04e5401">PlugInPool::changerEcranFin</a></div><div class="ttdeci">void changerEcranFin()</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00247">pluginpool.cpp:247</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_ac294a4c924ebe906befb777aeba42439"><div class="ttname"><a href="class_plug_in_pool.html#ac294a4c924ebe906befb777aeba42439">PlugInPool::ecranPlugInPool</a></div><div class="ttdeci">EcranPlugInPool * ecranPlugInPool</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00023">pluginpool.h:23</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_aca12446004007a199ab18bd712a61ba9"><div class="ttname"><a href="class_plug_in_pool.html#aca12446004007a199ab18bd712a61ba9">PlugInPool::changerEcranPartie</a></div><div class="ttdeci">void changerEcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00238">pluginpool.cpp:238</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_ae12df6ac64735e660ae67b0a8fad0f63"><div class="ttname"><a href="class_plug_in_pool.html#ae12df6ac64735e660ae67b0a8fad0f63">PlugInPool::empochageCasse</a></div><div class="ttdeci">void empochageCasse(int idPartie, int idJoueur, int couleurBille, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00102">pluginpool.cpp:102</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html_aed96b5ea28d46383da809e7e4a1f5974"><div class="ttname"><a href="class_plug_in_pool.html#aed96b5ea28d46383da809e7e4a1f5974">PlugInPool::terminerMatch</a></div><div class="ttdeci">void terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux)</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8cpp_source.html#l00204">pluginpool.cpp:204</a></div></div>
+<div class="ttc" id="aclass_q_object_html"><div class="ttname"><a href="class_q_object.html">QObject</a></div></div>
+<div class="ttc" id="acommunicationbluetooth_8h_html"><div class="ttname"><a href="communicationbluetooth_8h.html">communicationbluetooth.h</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74ac"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a></div><div class="ttdeci">CouleurBille</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00006">couleurbille.h:7</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74aca4d44199dc8c31b6937fe953ebc01e6f9"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca4d44199dc8c31b6937fe953ebc01e6f9">BLANCHE</a></div><div class="ttdeci">@ BLANCHE</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00011">couleurbille.h:11</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74aca59e3323a198f0162330111165caaf367"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca59e3323a198f0162330111165caaf367">NOIR</a></div><div class="ttdeci">@ NOIR</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00012">couleurbille.h:12</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a></div><div class="ttdeci">@ ROUGE</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00009">couleurbille.h:9</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74acada12fe19f4d0f33e8b72265183214f36"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acada12fe19f4d0f33e8b72265183214f36">AUCUNE</a></div><div class="ttdeci">@ AUCUNE</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00008">couleurbille.h:8</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a></div><div class="ttdeci">@ JAUNE</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00010">couleurbille.h:10</a></div></div>
+<div class="ttc" id="aecranpluginpool_8h_html"><div class="ttname"><a href="ecranpluginpool_8h.html">ecranpluginpool.h</a></div><div class="ttdoc">Déclaration de la classe EcranPlugInPool.</div></div>
+<div class="ttc" id="amatch_8h_html"><div class="ttname"><a href="match_8h.html">match.h</a></div></div>
+<div class="ttc" id="apluginpool_8h_html"><div class="ttname"><a href="pluginpool_8h.html">pluginpool.h</a></div></div>
+<div class="ttc" id="apluginpool_8h_html_a03ee140ac777d37c4cff7707fb45f764"><div class="ttname"><a href="pluginpool_8h.html#a03ee140ac777d37c4cff7707fb45f764">TEMPS_AVANT_COMPTE_A_REBOURS</a></div><div class="ttdeci">#define TEMPS_AVANT_COMPTE_A_REBOURS</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00008">pluginpool.h:8</a></div></div>
+<div class="ttc" id="apluginpool_8h_html_ad92255ff880c3bfb8de18345a88faf75"><div class="ttname"><a href="pluginpool_8h.html#ad92255ff880c3bfb8de18345a88faf75">TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH</a></div><div class="ttdeci">#define TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00010">pluginpool.h:10</a></div></div>
+<div class="ttc" id="apluginpool_8h_html_af5be94aaba09e8b9e681bcfc7a1c911c"><div class="ttname"><a href="pluginpool_8h.html#af5be94aaba09e8b9e681bcfc7a1c911c">TEMPS_COMPTE_A_REBOURS</a></div><div class="ttdeci">#define TEMPS_COMPTE_A_REBOURS</div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00009">pluginpool.h:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_0e4ccd0e1e0fa438ef24dcabfd789a2f.html">plug-in-pool-visualisation</a></li><li class="navelem"><a class="el" href="pluginpool_8cpp.html">pluginpool.cpp</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:55 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>

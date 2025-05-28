@@ -22,11 +22,11 @@ classcanvas 132482 class_ref 309634 // BaseDeDonnees
 end
 classcanvas 133122 class_ref 309506 // CommunicationBluetooth
   classdiagramsettings member_max_width 0 end
-  xyz 1222.8 783 2006
+  xyz 1223.2 783 2006
 end
 classcanvas 133506 class_ref 129706 // Table
   classdiagramsettings member_max_width 0 end
-  xyz 87.2 670 2000
+  xyz 87.2 671.4 2000
 end
 classcanvas 133634 class_ref 129322 // Manche
   classdiagramsettings member_max_width 0 end
@@ -38,7 +38,7 @@ classcanvas 133762 class_ref 129450 // Match
 end
 classcanvas 134018 class_ref 129194 // Joueur
   classdiagramsettings member_max_width 0 end
-  xyz 805 566 3005
+  xyz 850 576 3005
 end
 classcanvas 134786 class_ref 129066 // Empoche
   classdiagramsettings member_max_width 0 end
@@ -57,10 +57,10 @@ classcanvas 135810 class_ref 128554 // ActiviteHistorique
   xyz 249.2 28.8 2000
 end
 relationcanvas 132610 relation_ref 485762 // <unidirectional association>
-  from ref 132482 z 3006 to point 340.8 565.8
-  line 132738 z 3006 to point 340.8 615.8
+  from ref 132482 z 3006 to point 340.4 565.9
+  line 132738 z 3006 to point 340.4 615.9
   line 132866 z 3006 to ref 132482
-  role_a_pos 263 623 3000 no_role_b
+  role_a_pos 271 624 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132994 relation_ref 489602 // <unidirectional association>
@@ -79,28 +79,28 @@ relationcanvas 133378 relation_ref 483458 // <unidirectional association>
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 134146 relation_ref 489730 // <unidirectional association>
-  from ref 132098 z 3006 stereotype "<<Vector>>" xyz 686 426 3006 to ref 134018
-  role_a_pos 833 543 3000 no_role_b
+  from ref 132098 z 3006 stereotype "<<Vector>>" xyz 711 428 3006 to ref 134018
+  role_a_pos 874 553 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 134274 relation_ref 483842 // <unidirectional association>
   from ref 132354 z 3006 to ref 134018
-  role_a_pos 881 535 3000 no_role_b
+  role_a_pos 923 545 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 134402 relation_ref 483970 // <unidirectional association>
   from ref 132354 z 3006 to ref 134018
-  role_a_pos 883 535 3000 no_role_b
+  role_a_pos 924 545 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 134530 relation_ref 482178 // <unidirectional association>
   from ref 132226 z 3006 to ref 134018
-  role_a_pos 851 543 3000 no_role_b
+  role_a_pos 896 553 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 134658 relation_ref 482306 // <unidirectional association>
   from ref 132226 z 3006 to ref 134018
-  role_a_pos 853 543 3000 no_role_b
+  role_a_pos 898 553 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 135042 relation_ref 488322 // <unidirectional association>
