@@ -14,20 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-
-      - name: Clean Qt directory
-        run: |
-          if [ -d "/home/runner/work/plug-in-pool-2025/Qt" ]; then
-            rm -rf /home/runner/work/plug-in-pool-2025/Qt
-          fi
+          fetch-depth: 0
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           version: "5.12.8"
           host: "linux"
           target: "desktop"
+          setup-python: false
 
       - name: Run qmake
         run: |
