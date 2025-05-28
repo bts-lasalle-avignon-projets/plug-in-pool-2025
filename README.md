@@ -72,6 +72,7 @@
   - [Défauts constatés non corrigés](#défauts-constatés-non-corrigés)
     - [Android](#android)
     - [Qt](#qt)
+  - [Documentation du code](#documentation-du-code)
   - [Équipe de développement](#équipe-de-développement)
 
 ---
@@ -547,6 +548,10 @@ Format : `$couleurBille/idPoche!`
 ### Qt
 
 - Si deux trames sont envoyées à la suite depuis la tablette Android vers l'écran de visualisation. Elles sont considérées comme une seule.
+
+## Documentation du code
+
+[https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/](https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/)
 
 ## Équipe de développement
 
