@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Plug-In-Pool:  Fichier source de ecranpartie.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="projet-logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet Plug-In-Pool
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS CIEL IR LaSalle Avignon 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ecranpartie_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ecranpartie.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ecranpartie_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ECRANPARTIE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ECRANPARTIE_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QtWidgets&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="couleurbille_8h.html">couleurbille.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">    7</a></span>&#160;<span class="preprocessor">#define NB_POCHES            6</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#a50ff9c3c616840d9df848ba03abe1a9f">    8</a></span>&#160;<span class="preprocessor">#define TEMPS_INCREMENTATION 1000 </span><span class="comment">// ms</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#adcbb0dd6555965221fff1e32eed7975b">   10</a></span>&#160;<span class="preprocessor">#define NB_BOULES_ROUGES 7</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#a596a79e8a3ecad002f1f71e672a38da3">   11</a></span>&#160;<span class="preprocessor">#define NB_BOULES_JAUNES 7</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#ac1454fa04f41c693f39425697a137d82">   13</a></span>&#160;<span class="preprocessor">#define MINUTE          60 </span><span class="comment">// s</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#ae508929b2ccb221ea0742d44d80f92c6">   14</a></span>&#160;<span class="preprocessor">#define LARGEUR_MINUTE  2</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#a4cefafbfc0b658f6fe3c6025b8ad06f9">   15</a></span>&#160;<span class="preprocessor">#define LARGEUR_SECONDE 2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">   16</a></span>&#160;<span class="preprocessor">#define BASE_DECIMALE   10</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#ac78de0729daafbe8d05a3b4e6914d9d8">   18</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="ecranpartie_8h.html#ac78de0729daafbe8d05a3b4e6914d9d8">lignesPoches</a>[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>]   = { 0, 2, 0, 2, 0, 2 };</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="ecranpartie_8h.html#ae8cdbbb377b36b011bbe6561de9cd653">   19</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="ecranpartie_8h.html#ae8cdbbb377b36b011bbe6561de9cd653">colonnesPoches</a>[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>] = { 2, 2, 1, 1, 0, 0 };</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_ecran_partie.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_ecran_partie.html">EcranPartie</a> : <span class="keyword">public</span> <a class="code" href="class_q_object.html">QObject</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">   25</a></span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>*         <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">   26</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">affichageJoueurUn</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">   27</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">affichageJoueurDeux</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">   28</a></span>&#160;    QTimer*          <a class="code" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">chronometre</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">   29</a></span>&#160;    QTimer*          <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">   30</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">labelChronometre</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">   31</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">   32</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">affichageNumeroTable</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">   33</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">affichageNomJeu</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">   34</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">affichageMessage</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">   35</a></span>&#160;    <span class="keywordtype">int</span>              <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">   36</a></span>&#160;    <span class="keywordtype">int</span>              <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">   37</a></span>&#160;    QVector&lt;QLabel*&gt; <a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">   38</a></span>&#160;    QVector&lt;QLabel*&gt; <a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">   39</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">   40</a></span>&#160;    QLabel*          <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">   42</a></span>&#160;    QHBoxLayout* <a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">   43</a></span>&#160;    QHBoxLayout* <a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">   44</a></span>&#160;    QHBoxLayout* <a class="code" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">espaceBouleBlanche</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">   45</a></span>&#160;    QHBoxLayout* <a class="code" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">espaceBouleNoir</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">   47</a></span>&#160;    QLabel* <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>];</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">   48</a></span>&#160;    QLabel* <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>];</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_ecran_partie.html#ac9565b5dc50793a38e0bdfccb541ef85">EcranPartie</a>(<a class="code" href="class_q_widget.html">QWidget</a>* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">~EcranPartie</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* <a class="code" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">getEcran</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">afficherInformationsPartie</a>(<span class="keywordtype">int</span>     nbManches,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                    QString joueur1,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                    QString joueur2);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">demarrerChronometre</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">genererBoules</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">initialiserPochesTable</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">retirerBoule</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">incrementerCompteurPoche</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur, <span class="keywordtype">int</span> idPoche);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(QString message);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">demarrerCompteAReboursManche</a>(<span class="keywordtype">int</span> dureeEnSecondes);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">attribuerCouleurBille</a>(<span class="keywordtype">int</span> idJoueur, <span class="keywordtype">int</span> couleurBille);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  signals:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ECRANMATCH_H</span></div>
+<div class="ttc" id="aclass_ecran_partie_html"><div class="ttname"><a href="class_ecran_partie.html">EcranPartie</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00021">ecranpartie.h:22</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a02840077523809a885b040f671c182ff"><div class="ttname"><a href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">EcranPartie::espaceBoulesJaunes</a></div><div class="ttdeci">QHBoxLayout * espaceBoulesJaunes</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00043">ecranpartie.h:43</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a04ce8c2732e49f8caee2c65734840c4c"><div class="ttname"><a href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00094">ecranpartie.cpp:94</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a0ae8ad98d5e3d73d9e335b87115f09eb"><div class="ttname"><a href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a></div><div class="ttdeci">void afficherMessageAction(QString message)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00280">ecranpartie.cpp:280</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a0ea9afeb6210fa938440749c8f488618"><div class="ttname"><a href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">EcranPartie::boulesRouges</a></div><div class="ttdeci">QVector&lt; QLabel * &gt; boulesRouges</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00037">ecranpartie.h:37</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a1310b8265072d6a66fd5df7a118c4052"><div class="ttname"><a href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">EcranPartie::~EcranPartie</a></div><div class="ttdeci">virtual ~EcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00089">ecranpartie.cpp:89</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a20ce314fd431072acce9bb2dec773003"><div class="ttname"><a href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">EcranPartie::ecran</a></div><div class="ttdeci">QWidget * ecran</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00025">ecranpartie.h:25</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a22a214a32e668e985325578f0de8529f"><div class="ttname"><a href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a></div><div class="ttdeci">void attribuerCouleurBille(int idJoueur, int couleurBille)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00285">ecranpartie.cpp:285</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a29f2c83220ebc1b37138c217638bfecd"><div class="ttname"><a href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">EcranPartie::affichageJoueurUn</a></div><div class="ttdeci">QLabel * affichageJoueurUn</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00026">ecranpartie.h:26</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a380e44d79e8363ea984aa576ae77dc5c"><div class="ttname"><a href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">EcranPartie::secondesRestantes</a></div><div class="ttdeci">int secondesRestantes</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00036">ecranpartie.h:36</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a46749973110bea455332baddb49c199e"><div class="ttname"><a href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a></div><div class="ttdeci">void incrementerCompteurPoche(CouleurBille couleur, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00254">ecranpartie.cpp:254</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a4a191a55eaf8989f3fe820b9c1842027"><div class="ttname"><a href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">EcranPartie::compteAReboursManche</a></div><div class="ttdeci">QTimer * compteAReboursManche</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00029">ecranpartie.h:29</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a4a9bbd4c2d3456e4247aab6697be98c0"><div class="ttname"><a href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">EcranPartie::labelChronometre</a></div><div class="ttdeci">QLabel * labelChronometre</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00030">ecranpartie.h:30</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a4f6fe777e19e2b958ccd8de31aaa2102"><div class="ttname"><a href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a></div><div class="ttdeci">void demarrerChronometre()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00107">ecranpartie.cpp:107</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a58b954877dc6248432b79e528d5334c6"><div class="ttname"><a href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">EcranPartie::espaceBoulesRouges</a></div><div class="ttdeci">QHBoxLayout * espaceBoulesRouges</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00042">ecranpartie.h:42</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a5b740ebf8f7a1d79a2e4aec977511cd5"><div class="ttname"><a href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">EcranPartie::genererBoules</a></div><div class="ttdeci">void genererBoules()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00169">ecranpartie.cpp:169</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a5ebf3a531dbe1929ffd5589661dea23e"><div class="ttname"><a href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a></div><div class="ttdeci">void demarrerCompteAReboursManche(int dureeEnSecondes)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00131">ecranpartie.cpp:131</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a6112fd9bb99552c42c844b4b69715a46"><div class="ttname"><a href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">EcranPartie::labelCompteAReboursManche</a></div><div class="ttdeci">QLabel * labelCompteAReboursManche</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00031">ecranpartie.h:31</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a64c2263afd205b8777245e0063cc5be0"><div class="ttname"><a href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">EcranPartie::initialiserPochesTable</a></div><div class="ttdeci">void initialiserPochesTable()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00200">ecranpartie.cpp:200</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a7571a7ee19d3e1bcf37ffbf15079db2c"><div class="ttname"><a href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">EcranPartie::compteurBoulesJaunesPoche</a></div><div class="ttdeci">QLabel * compteurBoulesJaunesPoche[NB_POCHES]</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00048">ecranpartie.h:48</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a790bc812b32e6fc63c8c576504e7bc71"><div class="ttname"><a href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">EcranPartie::chronometre</a></div><div class="ttdeci">QTimer * chronometre</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00028">ecranpartie.h:28</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a919f17d9e54725f8e66f5c25bbce6c5c"><div class="ttname"><a href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a></div><div class="ttdeci">void afficherInformationsPartie(int nbManches, QString joueur1, QString joueur2)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00099">ecranpartie.cpp:99</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a9ce10caa302eb6b5e66690fc740a5f14"><div class="ttname"><a href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">EcranPartie::affichageCouleurAttribueJoueurUn</a></div><div class="ttdeci">QLabel * affichageCouleurAttribueJoueurUn</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00039">ecranpartie.h:39</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aa1d6e1607819d0063d1c95e3496275ae"><div class="ttname"><a href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">EcranPartie::affichageNumeroTable</a></div><div class="ttdeci">QLabel * affichageNumeroTable</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00032">ecranpartie.h:32</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aa51e0097f60a2158643fdfed8549f7db"><div class="ttname"><a href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">EcranPartie::affichageMessage</a></div><div class="ttdeci">QLabel * affichageMessage</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00034">ecranpartie.h:34</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ab0982480d183e8f2ad62e2b2404bbb2f"><div class="ttname"><a href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">EcranPartie::affichageJoueurDeux</a></div><div class="ttdeci">QLabel * affichageJoueurDeux</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00027">ecranpartie.h:27</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ab97edac71949dae8704b07e95a849758"><div class="ttname"><a href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">EcranPartie::espaceBouleBlanche</a></div><div class="ttdeci">QHBoxLayout * espaceBouleBlanche</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00044">ecranpartie.h:44</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_abdfd6512d1d6ce86930f1d1322719634"><div class="ttname"><a href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">EcranPartie::boulesJaunes</a></div><div class="ttdeci">QVector&lt; QLabel * &gt; boulesJaunes</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00038">ecranpartie.h:38</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ac9565b5dc50793a38e0bdfccb541ef85"><div class="ttname"><a href="class_ecran_partie.html#ac9565b5dc50793a38e0bdfccb541ef85">EcranPartie::EcranPartie</a></div><div class="ttdeci">EcranPartie(QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00004">ecranpartie.cpp:4</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ad17e2fef299684d8b7bea185e0fef3b6"><div class="ttname"><a href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">EcranPartie::compteurBoulesRougesPoche</a></div><div class="ttdeci">QLabel * compteurBoulesRougesPoche[NB_POCHES]</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00047">ecranpartie.h:47</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ae34b412df3960df1cd18e1b34794b4dd"><div class="ttname"><a href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">EcranPartie::secondesEcoulees</a></div><div class="ttdeci">int secondesEcoulees</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00035">ecranpartie.h:35</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_ae75fc80ed81da37a1c18e73c29e78175"><div class="ttname"><a href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">EcranPartie::affichageCouleurAttribueJoueurDeux</a></div><div class="ttdeci">QLabel * affichageCouleurAttribueJoueurDeux</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00040">ecranpartie.h:40</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aeba48d14e922a559d1eb7bb990a460d6"><div class="ttname"><a href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">EcranPartie::espaceBouleNoir</a></div><div class="ttdeci">QHBoxLayout * espaceBouleNoir</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00045">ecranpartie.h:45</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aeef8ec9f6916ac111c39de8e2c37cbef"><div class="ttname"><a href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a></div><div class="ttdeci">void retirerBoule(CouleurBille couleur)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00229">ecranpartie.cpp:229</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_afcf15bfd19fb1d1afca4142b21056f15"><div class="ttname"><a href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">EcranPartie::affichageNomJeu</a></div><div class="ttdeci">QLabel * affichageNomJeu</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00033">ecranpartie.h:33</a></div></div>
+<div class="ttc" id="aclass_q_object_html"><div class="ttname"><a href="class_q_object.html">QObject</a></div></div>
+<div class="ttc" id="aclass_q_widget_html"><div class="ttname"><a href="class_q_widget.html">QWidget</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html"><div class="ttname"><a href="couleurbille_8h.html">couleurbille.h</a></div></div>
+<div class="ttc" id="acouleurbille_8h_html_a4c1a484ea33202863edf0c3ba77d74ac"><div class="ttname"><a href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a></div><div class="ttdeci">CouleurBille</div><div class="ttdef"><b>Definition:</b> <a href="couleurbille_8h_source.html#l00006">couleurbille.h:7</a></div></div>
+<div class="ttc" id="aecranpartie_8h_html_a3414177033d5d86317935b00143034de"><div class="ttname"><a href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a></div><div class="ttdeci">#define NB_POCHES</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00007">ecranpartie.h:7</a></div></div>
+<div class="ttc" id="aecranpartie_8h_html_ac78de0729daafbe8d05a3b4e6914d9d8"><div class="ttname"><a href="ecranpartie_8h.html#ac78de0729daafbe8d05a3b4e6914d9d8">lignesPoches</a></div><div class="ttdeci">const int lignesPoches[NB_POCHES]</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00018">ecranpartie.h:18</a></div></div>
+<div class="ttc" id="aecranpartie_8h_html_ae8cdbbb377b36b011bbe6561de9cd653"><div class="ttname"><a href="ecranpartie_8h.html#ae8cdbbb377b36b011bbe6561de9cd653">colonnesPoches</a></div><div class="ttdeci">const int colonnesPoches[NB_POCHES]</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00019">ecranpartie.h:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_0e4ccd0e1e0fa438ef24dcabfd789a2f.html">plug-in-pool-visualisation</a></li><li class="navelem"><a class="el" href="ecranpartie_8h.html">ecranpartie.h</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:54 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>

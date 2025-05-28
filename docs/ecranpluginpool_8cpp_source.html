@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Plug-In-Pool:  Fichier source de ecranpluginpool.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="projet-logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet Plug-In-Pool
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS CIEL IR LaSalle Avignon 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ecranpluginpool_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ecranpluginpool.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ecranpluginpool_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ecranpluginpool_8h.html">ecranpluginpool.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pluginpool_8h.html">pluginpool.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a0c7c9161bea902e80ef2b641a1f22e05">   20</a></span>&#160;<a class="code" href="class_ecran_plug_in_pool.html#a0c7c9161bea902e80ef2b641a1f22e05">EcranPlugInPool::EcranPlugInPool</a>(<a class="code" href="class_q_widget.html">QWidget</a>* parent) :</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>(parent), plugInPool(new <a class="code" href="class_plug_in_pool.html">PlugInPool</a>(this))</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    setWindowTitle(QString(<a class="code" href="ecranpluginpool_8h.html#a75a6df0e4e67539a5599efbd68bae5eb">NOM_APPLICATION</a>) + QString(<span class="stringliteral">&quot; v&quot;</span>) +</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                   QString(<a class="code" href="ecranpluginpool_8h.html#a121d9d72e2cc9cdcf09da6b88fa7859d">VERSION_APPLICATION</a>));</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>              = <span class="keyword">new</span> QStackedWidget(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* widgetEcranAccueil  = <span class="keyword">new</span> <a class="code" href="class_q_widget.html">QWidget</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a068cf30ee8f5a592af0ab7863c8973e5">ecranAccueil</a>                 = <span class="keyword">new</span> <a class="code" href="class_ecran_accueil.html">EcranAccueil</a>(widgetEcranAccueil);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* widgetEcranMatch    = <span class="keyword">new</span> <a class="code" href="class_q_widget.html">QWidget</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#ab7357b31ebb9cc0bc96a49154f7cecf2">ecranMatch</a>                   = <span class="keyword">new</span> <a class="code" href="class_ecran_match.html">EcranMatch</a>(widgetEcranMatch);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* widgetEcranPartie   = <span class="keyword">new</span> <a class="code" href="class_q_widget.html">QWidget</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a1730fabe67171dc023be4ad7e4dd5f0e">ecranPartie</a>                  = <span class="keyword">new</span> <a class="code" href="class_ecran_partie.html">EcranPartie</a>(widgetEcranPartie);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* widgetEcranFin      = <span class="keyword">new</span> <a class="code" href="class_q_widget.html">QWidget</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a5d08158bf79f0b6c55ee0f64b0ca1bf6">ecranFin</a>                     = <span class="keyword">new</span> <a class="code" href="class_ecran_fin.html">EcranFin</a>(widgetEcranFin);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_q_widget.html">QWidget</a>* widgetEcranFinMatch = <span class="keyword">new</span> <a class="code" href="class_q_widget.html">QWidget</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#ad1bbd713b01029a0a11501f476740d53">ecranFinMatch</a>                = <span class="keyword">new</span> <a class="code" href="class_ecran_fin_match.html">EcranFinMatch</a>(widgetEcranFinMatch);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setObjectName(<span class="stringliteral">&quot;ecransInterface&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    widgetEcranAccueil-&gt;setObjectName(<span class="stringliteral">&quot;ecranAccueil&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    widgetEcranMatch-&gt;setObjectName(<span class="stringliteral">&quot;ecranMatch&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    widgetEcranPartie-&gt;setObjectName(<span class="stringliteral">&quot;ecranPartie&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    widgetEcranFin-&gt;setObjectName(<span class="stringliteral">&quot;ecranFin&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    widgetEcranFinMatch-&gt;setObjectName(<span class="stringliteral">&quot;ecranFinMatch&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;addWidget(widgetEcranAccueil);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;addWidget(widgetEcranMatch);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;addWidget(widgetEcranPartie);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;addWidget(widgetEcranFin);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;addWidget(widgetEcranFinMatch);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#ac9147381e279fe5756d722c30344ef3d">interfacePlugInPool</a> = <span class="keyword">new</span> QVBoxLayout(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#ac9147381e279fe5756d722c30344ef3d">interfacePlugInPool</a>-&gt;addWidget(<a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#ifdef RASPBERRY_PI</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;RASPBERRY_PI&quot;</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    showFullScreen();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    setFixedSize(<a class="code" href="ecranpluginpool_8h.html#a586a4c30ccbcbe94b7776a73d0c6fe18">LARGEUR_ECRAN</a>, <a class="code" href="ecranpluginpool_8h.html#ad86253328fbbbd6eb266efdd6bd2ef09">HAUTEUR_ECRAN</a>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    setFixedSize(<a class="code" href="ecranpluginpool_8h.html#a586a4c30ccbcbe94b7776a73d0c6fe18">LARGEUR_ECRAN</a>, <a class="code" href="ecranpluginpool_8h.html#ad86253328fbbbd6eb266efdd6bd2ef09">HAUTEUR_ECRAN</a>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    showFullScreen();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// afficherEcranAccueil();</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">//  afficherEcranMatch();</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">//  afficherEcranPartie();</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">//  afficherEcranFin();</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// afficherEcranFinMatch();</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a4fd4e7ac379838f1b05bf5d363d62c3a">   72</a></span>&#160;<a class="code" href="class_ecran_plug_in_pool.html#a4fd4e7ac379838f1b05bf5d363d62c3a">EcranPlugInPool::~EcranPlugInPool</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">delete</span> <a class="code" href="class_ecran_plug_in_pool.html#af99168bf5250c89188aadbc6a3644df8">plugInPool</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a54c1bf5ff73f260ceb9cd1f36afa16ed">   78</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_plug_in_pool.html#a54c1bf5ff73f260ceb9cd1f36afa16ed">EcranPlugInPool::afficherEcranAccueil</a>()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setCurrentWidget(<a class="code" href="class_ecran_plug_in_pool.html#a068cf30ee8f5a592af0ab7863c8973e5">ecranAccueil</a>-&gt;<a class="code" href="class_ecran_accueil.html#a2d1cfea81e32450eee987b0032795b39">getEcran</a>());</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a12f82bcb3fe8e2f7545e16fe4b95b6cd">   84</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_plug_in_pool.html#a12f82bcb3fe8e2f7545e16fe4b95b6cd">EcranPlugInPool::afficherEcranMatch</a>()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setCurrentWidget(<a class="code" href="class_ecran_plug_in_pool.html#ab7357b31ebb9cc0bc96a49154f7cecf2">ecranMatch</a>-&gt;<a class="code" href="class_ecran_match.html#a334a1c57f10322827b7b6c817c748f54">getEcran</a>());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#ab9b72a9bf544e431977c800f620dfd29">   90</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_plug_in_pool.html#ab9b72a9bf544e431977c800f620dfd29">EcranPlugInPool::afficherEcranPartie</a>()</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setCurrentWidget(<a class="code" href="class_ecran_plug_in_pool.html#a1730fabe67171dc023be4ad7e4dd5f0e">ecranPartie</a>-&gt;<a class="code" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">getEcran</a>());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a6e4f7688758543301817341a859b2a41">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_plug_in_pool.html#a6e4f7688758543301817341a859b2a41">EcranPlugInPool::afficherEcranFin</a>()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setCurrentWidget(<a class="code" href="class_ecran_plug_in_pool.html#a5d08158bf79f0b6c55ee0f64b0ca1bf6">ecranFin</a>-&gt;<a class="code" href="class_ecran_fin.html#a4b4cbc3dc3b2559c488a6b7165379458">getEcran</a>());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a26a4a36823bc0073124e5f7c55c271e2">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_plug_in_pool.html#a26a4a36823bc0073124e5f7c55c271e2">EcranPlugInPool::afficherEcranFinMatch</a>()</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">ecransInterface</a>-&gt;setCurrentWidget(<a class="code" href="class_ecran_plug_in_pool.html#ad1bbd713b01029a0a11501f476740d53">ecranFinMatch</a>-&gt;<a class="code" href="class_ecran_fin_match.html#a1cf8f3834aff98e877bb44de0e3d49c4">getEcran</a>());</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a2fe8f5596c108659f3533e04ed785665">  108</a></span>&#160;<a class="code" href="class_ecran_accueil.html">EcranAccueil</a>* <a class="code" href="class_ecran_plug_in_pool.html#a2fe8f5596c108659f3533e04ed785665">EcranPlugInPool::getEcranAccueil</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_plug_in_pool.html#a068cf30ee8f5a592af0ab7863c8973e5">ecranAccueil</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">  113</a></span>&#160;<a class="code" href="class_ecran_partie.html">EcranPartie</a>* <a class="code" href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">EcranPlugInPool::getEcranPartie</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_plug_in_pool.html#a1730fabe67171dc023be4ad7e4dd5f0e">ecranPartie</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">  118</a></span>&#160;<a class="code" href="class_ecran_match.html">EcranMatch</a>* <a class="code" href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">EcranPlugInPool::getEcranMatch</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_plug_in_pool.html#ab7357b31ebb9cc0bc96a49154f7cecf2">ecranMatch</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#acf5d716ae090098255d733044ed34219">  123</a></span>&#160;<a class="code" href="class_ecran_fin.html">EcranFin</a>* <a class="code" href="class_ecran_plug_in_pool.html#acf5d716ae090098255d733044ed34219">EcranPlugInPool::getEcranFin</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_plug_in_pool.html#a5d08158bf79f0b6c55ee0f64b0ca1bf6">ecranFin</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_ecran_plug_in_pool.html#a5833adc1ba31edccf93f237b08e2adad">  128</a></span>&#160;<a class="code" href="class_ecran_fin_match.html">EcranFinMatch</a>* <a class="code" href="class_ecran_plug_in_pool.html#a5833adc1ba31edccf93f237b08e2adad">EcranPlugInPool::getEcranFinMatch</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_plug_in_pool.html#ad1bbd713b01029a0a11501f476740d53">ecranFinMatch</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="ttc" id="aclass_ecran_accueil_html"><div class="ttname"><a href="class_ecran_accueil.html">EcranAccueil</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranaccueil_8h_source.html#l00008">ecranaccueil.h:9</a></div></div>
+<div class="ttc" id="aclass_ecran_accueil_html_a2d1cfea81e32450eee987b0032795b39"><div class="ttname"><a href="class_ecran_accueil.html#a2d1cfea81e32450eee987b0032795b39">EcranAccueil::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranaccueil_8cpp_source.html#l00040">ecranaccueil.cpp:40</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_html"><div class="ttname"><a href="class_ecran_fin.html">EcranFin</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranfin_8h_source.html#l00006">ecranfin.h:7</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_html_a4b4cbc3dc3b2559c488a6b7165379458"><div class="ttname"><a href="class_ecran_fin.html#a4b4cbc3dc3b2559c488a6b7165379458">EcranFin::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranfin_8cpp_source.html#l00039">ecranfin.cpp:39</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_match_html"><div class="ttname"><a href="class_ecran_fin_match.html">EcranFinMatch</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranfinmatch_8h_source.html#l00006">ecranfinmatch.h:7</a></div></div>
+<div class="ttc" id="aclass_ecran_fin_match_html_a1cf8f3834aff98e877bb44de0e3d49c4"><div class="ttname"><a href="class_ecran_fin_match.html#a1cf8f3834aff98e877bb44de0e3d49c4">EcranFinMatch::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranfinmatch_8cpp_source.html#l00046">ecranfinmatch.cpp:46</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html"><div class="ttname"><a href="class_ecran_match.html">EcranMatch</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranmatch_8h_source.html#l00013">ecranmatch.h:14</a></div></div>
+<div class="ttc" id="aclass_ecran_match_html_a334a1c57f10322827b7b6c817c748f54"><div class="ttname"><a href="class_ecran_match.html#a334a1c57f10322827b7b6c817c748f54">EcranMatch::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranmatch_8cpp_source.html#l00046">ecranmatch.cpp:46</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html"><div class="ttname"><a href="class_ecran_partie.html">EcranPartie</a></div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00021">ecranpartie.h:22</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a04ce8c2732e49f8caee2c65734840c4c"><div class="ttname"><a href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00094">ecranpartie.cpp:94</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a068cf30ee8f5a592af0ab7863c8973e5"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a068cf30ee8f5a592af0ab7863c8973e5">EcranPlugInPool::ecranAccueil</a></div><div class="ttdeci">EcranAccueil * ecranAccueil</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00060">ecranpluginpool.h:60</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a0c7c9161bea902e80ef2b641a1f22e05"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a0c7c9161bea902e80ef2b641a1f22e05">EcranPlugInPool::EcranPlugInPool</a></div><div class="ttdeci">EcranPlugInPool(QWidget *parent=nullptr)</div><div class="ttdoc">Constructeur de la classe EcranPlugInPool.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00020">ecranpluginpool.cpp:20</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a12f82bcb3fe8e2f7545e16fe4b95b6cd"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a12f82bcb3fe8e2f7545e16fe4b95b6cd">EcranPlugInPool::afficherEcranMatch</a></div><div class="ttdeci">void afficherEcranMatch()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00084">ecranpluginpool.cpp:84</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a1730fabe67171dc023be4ad7e4dd5f0e"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a1730fabe67171dc023be4ad7e4dd5f0e">EcranPlugInPool::ecranPartie</a></div><div class="ttdeci">EcranPartie * ecranPartie</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00062">ecranpluginpool.h:62</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a26a4a36823bc0073124e5f7c55c271e2"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a26a4a36823bc0073124e5f7c55c271e2">EcranPlugInPool::afficherEcranFinMatch</a></div><div class="ttdeci">void afficherEcranFinMatch()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00102">ecranpluginpool.cpp:102</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a2fe8f5596c108659f3533e04ed785665"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a2fe8f5596c108659f3533e04ed785665">EcranPlugInPool::getEcranAccueil</a></div><div class="ttdeci">EcranAccueil * getEcranAccueil() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00108">ecranpluginpool.cpp:108</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a321d61039ec6a903b80eea8b3edef3c9"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a321d61039ec6a903b80eea8b3edef3c9">EcranPlugInPool::ecransInterface</a></div><div class="ttdeci">QStackedWidget * ecransInterface</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00059">ecranpluginpool.h:59</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a4fd4e7ac379838f1b05bf5d363d62c3a"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a4fd4e7ac379838f1b05bf5d363d62c3a">EcranPlugInPool::~EcranPlugInPool</a></div><div class="ttdeci">~EcranPlugInPool()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00072">ecranpluginpool.cpp:72</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a54c1bf5ff73f260ceb9cd1f36afa16ed"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a54c1bf5ff73f260ceb9cd1f36afa16ed">EcranPlugInPool::afficherEcranAccueil</a></div><div class="ttdeci">void afficherEcranAccueil()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00078">ecranpluginpool.cpp:78</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a5833adc1ba31edccf93f237b08e2adad"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a5833adc1ba31edccf93f237b08e2adad">EcranPlugInPool::getEcranFinMatch</a></div><div class="ttdeci">EcranFinMatch * getEcranFinMatch() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00128">ecranpluginpool.cpp:128</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a5d08158bf79f0b6c55ee0f64b0ca1bf6"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a5d08158bf79f0b6c55ee0f64b0ca1bf6">EcranPlugInPool::ecranFin</a></div><div class="ttdeci">EcranFin * ecranFin</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00063">ecranpluginpool.h:63</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a6e4f7688758543301817341a859b2a41"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a6e4f7688758543301817341a859b2a41">EcranPlugInPool::afficherEcranFin</a></div><div class="ttdeci">void afficherEcranFin()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00096">ecranpluginpool.cpp:96</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_a7c343454ad3078b92be0b372381b1725"><div class="ttname"><a href="class_ecran_plug_in_pool.html#a7c343454ad3078b92be0b372381b1725">EcranPlugInPool::getEcranPartie</a></div><div class="ttdeci">EcranPartie * getEcranPartie() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00113">ecranpluginpool.cpp:113</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ab7357b31ebb9cc0bc96a49154f7cecf2"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ab7357b31ebb9cc0bc96a49154f7cecf2">EcranPlugInPool::ecranMatch</a></div><div class="ttdeci">EcranMatch * ecranMatch</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00061">ecranpluginpool.h:61</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ab9b72a9bf544e431977c800f620dfd29"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ab9b72a9bf544e431977c800f620dfd29">EcranPlugInPool::afficherEcranPartie</a></div><div class="ttdeci">void afficherEcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00090">ecranpluginpool.cpp:90</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ac3a0d1d6c22cff01d510f765ab376f59"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ac3a0d1d6c22cff01d510f765ab376f59">EcranPlugInPool::getEcranMatch</a></div><div class="ttdeci">EcranMatch * getEcranMatch() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00118">ecranpluginpool.cpp:118</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ac9147381e279fe5756d722c30344ef3d"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ac9147381e279fe5756d722c30344ef3d">EcranPlugInPool::interfacePlugInPool</a></div><div class="ttdeci">QVBoxLayout * interfacePlugInPool</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00066">ecranpluginpool.h:66</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_acf5d716ae090098255d733044ed34219"><div class="ttname"><a href="class_ecran_plug_in_pool.html#acf5d716ae090098255d733044ed34219">EcranPlugInPool::getEcranFin</a></div><div class="ttdeci">EcranFin * getEcranFin() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8cpp_source.html#l00123">ecranpluginpool.cpp:123</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_ad1bbd713b01029a0a11501f476740d53"><div class="ttname"><a href="class_ecran_plug_in_pool.html#ad1bbd713b01029a0a11501f476740d53">EcranPlugInPool::ecranFinMatch</a></div><div class="ttdeci">EcranFinMatch * ecranFinMatch</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00064">ecranpluginpool.h:64</a></div></div>
+<div class="ttc" id="aclass_ecran_plug_in_pool_html_af99168bf5250c89188aadbc6a3644df8"><div class="ttname"><a href="class_ecran_plug_in_pool.html#af99168bf5250c89188aadbc6a3644df8">EcranPlugInPool::plugInPool</a></div><div class="ttdeci">PlugInPool * plugInPool</div><div class="ttdoc">association vers PlugInPool</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00058">ecranpluginpool.h:58</a></div></div>
+<div class="ttc" id="aclass_plug_in_pool_html"><div class="ttname"><a href="class_plug_in_pool.html">PlugInPool</a></div><div class="ttdef"><b>Definition:</b> <a href="pluginpool_8h_source.html#l00017">pluginpool.h:18</a></div></div>
+<div class="ttc" id="aclass_q_widget_html"><div class="ttname"><a href="class_q_widget.html">QWidget</a></div></div>
+<div class="ttc" id="aecranpluginpool_8h_html"><div class="ttname"><a href="ecranpluginpool_8h.html">ecranpluginpool.h</a></div><div class="ttdoc">Déclaration de la classe EcranPlugInPool.</div></div>
+<div class="ttc" id="aecranpluginpool_8h_html_a121d9d72e2cc9cdcf09da6b88fa7859d"><div class="ttname"><a href="ecranpluginpool_8h.html#a121d9d72e2cc9cdcf09da6b88fa7859d">VERSION_APPLICATION</a></div><div class="ttdeci">#define VERSION_APPLICATION</div><div class="ttdoc">La version de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00031">ecranpluginpool.h:31</a></div></div>
+<div class="ttc" id="aecranpluginpool_8h_html_a586a4c30ccbcbe94b7776a73d0c6fe18"><div class="ttname"><a href="ecranpluginpool_8h.html#a586a4c30ccbcbe94b7776a73d0c6fe18">LARGEUR_ECRAN</a></div><div class="ttdeci">#define LARGEUR_ECRAN</div><div class="ttdoc">La largeur de l'écran par défaut.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00038">ecranpluginpool.h:38</a></div></div>
+<div class="ttc" id="aecranpluginpool_8h_html_a75a6df0e4e67539a5599efbd68bae5eb"><div class="ttname"><a href="ecranpluginpool_8h.html#a75a6df0e4e67539a5599efbd68bae5eb">NOM_APPLICATION</a></div><div class="ttdeci">#define NOM_APPLICATION</div><div class="ttdoc">Le nom de l'application.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00025">ecranpluginpool.h:25</a></div></div>
+<div class="ttc" id="aecranpluginpool_8h_html_ad86253328fbbbd6eb266efdd6bd2ef09"><div class="ttname"><a href="ecranpluginpool_8h.html#ad86253328fbbbd6eb266efdd6bd2ef09">HAUTEUR_ECRAN</a></div><div class="ttdeci">#define HAUTEUR_ECRAN</div><div class="ttdoc">La hauteur de l'écran par défaut.</div><div class="ttdef"><b>Definition:</b> <a href="ecranpluginpool_8h_source.html#l00044">ecranpluginpool.h:44</a></div></div>
+<div class="ttc" id="apluginpool_8h_html"><div class="ttname"><a href="pluginpool_8h.html">pluginpool.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_0e4ccd0e1e0fa438ef24dcabfd789a2f.html">plug-in-pool-visualisation</a></li><li class="navelem"><a class="el" href="ecranpluginpool_8cpp.html">ecranpluginpool.cpp</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:54 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>
