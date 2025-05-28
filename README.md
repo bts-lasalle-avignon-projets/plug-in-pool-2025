@@ -261,9 +261,21 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 > L'application Qt s'exécute sur Raspberry Pi modèle 5 sur lequel est relié un écran de télévision (HDMI).
 
+#### Caractéristiques du Raspberry Pi 5
+
+- 64-bits quad-core Cortex-A76 processor
+- 8GB LPDDR4X SDRAM
+- 2 micro HDMI ports
+- 2 USB 3.0 ports
+- 2 USB 2.0 ports
+- Gigabit Ethernet port
+- Bluetooth 5.0
+- PoE-capable
+- 5V/5A USB-C
+
 #### Diagramme de cas d'utilisation (Qt)
 
-
+![](./images/casUtilisationQt.png)
 
 #### IHM de l'application Qt
 
