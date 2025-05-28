@@ -6,6 +6,7 @@
     <color name="rouge">#FF6F61</color>
     <color name="jaune">#FFEB3B</color>
     <color name="vert">#A8D08D</color>
+    <color name="vertFonce">#2ba438</color>
     <color name="noir">#1E1E1E</color>
     <color name="blanc">#F1F1F1</color>
 </resources>

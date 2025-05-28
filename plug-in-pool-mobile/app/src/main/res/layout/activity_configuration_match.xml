@@ -154,7 +154,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"
+            android:text="1"
             app:layout_constraintTop_toBottomOf="@id/texteNbParties"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,14 +176,14 @@
         android:layout_marginTop="60dp">
 
         <Button
-            android:id="@+id/boutonLancerMatch"
+            android:id="@+id/boutonSuivant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="300dp"
             android:maxWidth="320dp"
             android:backgroundTint="@color/rouge"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/boutonLancerMatch"
+            android:text="@string/boutonSuivant"
             android:textColor="@color/noir"
             android:textSize="16sp"
             android:textStyle="bold"

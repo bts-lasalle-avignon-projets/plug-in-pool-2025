@@ -222,7 +222,7 @@ void afficherTir(int numeroPoche, CouleurBille couleurBille)
     char strMessageDisplay[24];
 
     // empochage ?
-    if(numeroPoche >= 1 && numeroPoche <= Poche::NbPoches)
+    if(numeroPoche >= 1 && numeroPoche < Poche::NbPoches)
     {
         sprintf(strMessageDisplay,
                 "Tir poche %d : %s",
@@ -293,7 +293,7 @@ void envoyerTrameEmpoche(Poche numeroPoche, CouleurBille couleurBille)
 
     // Format : $couleurBille/idPoche!
     sprintf((char*)trameEnvoi,
-            "%sE/%d/%d!",
+            "%s%d/%d!",
             entete.c_str(),
             int(couleurBille),
             int(numeroPoche));

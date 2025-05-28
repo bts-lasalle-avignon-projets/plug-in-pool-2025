@@ -1,4 +1,18 @@
 class Joueur
-!!!128810.cpp!!!	Joueur(in nom : QString, in prenom : QString, in id : int, in couleur : CouleurBille)
+!!!128810.cpp!!!	Joueur(in nom : QString, in prenom : QString, in id : int)
     qDebug() << Q_FUNC_INFO << this << "nom" << nom << "prenom" << prenom
              << "id" << id << "couleur" << couleur;
+!!!134658.cpp!!!	getNom() : QString
+    return nom;
+!!!134786.cpp!!!	getPrenom() : QString
+    return prenom;
+!!!134914.cpp!!!	getId() : int
+    return id;
+!!!135042.cpp!!!	getPoints() : int
+    return points;
+!!!135170.cpp!!!	getCouleur() : CouleurBille
+    return couleur;
+!!!135298.cpp!!!	getNbBillesRestantes() : int
+    return nbBillesRestantes;
+!!!135426.cpp!!!	setCouleur(in couleur : CouleurBille) : void
+    this->couleur = couleur;

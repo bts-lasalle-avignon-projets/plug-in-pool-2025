@@ -1,0 +1,38 @@
+name: Android Build
+# .github/workflows/android-build.yml
+
+on:
+  push:
+    branches: [ "develop", "main" ]
+  pull_request:
+    branches: [ "develop", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: 17
+          cache: gradle
+
+      - name: Setup Android SDK
+        id: "setup-android"
+        uses: android-actions/setup-android@v2
+
+      - name: Build Application
+        id: "android-build"
+        continue-on-error: true
+        shell: bash
+        run: |
+          echo sdk.dir=/usr/local/lib/android/sdk >> plug-in-pool-mobile/local.properties
+          cd plug-in-pool-mobile
+          chmod +x gradlew
+          ./gradlew --no-daemon build

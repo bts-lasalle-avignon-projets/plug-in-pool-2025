@@ -13,8 +13,10 @@
 #include <QVBoxLayout>
 #include <QtWidgets>
 #include <ecranaccueil.h>
+#include <ecranpartie.h>
 #include <ecranmatch.h>
 #include <ecranfin.h>
+#include <ecranfinmatch.h>
 
 /**
  * @def NOM_APPLICATION
@@ -57,7 +59,9 @@ class EcranPlugInPool : public QWidget
     QStackedWidget* ecransInterface;
     EcranAccueil*   ecranAccueil;
     EcranMatch*     ecranMatch;
+    EcranPartie*    ecranPartie;
     EcranFin*       ecranFin;
+    EcranFinMatch*  ecranFinMatch;
 
     QVBoxLayout* interfacePlugInPool;
 
@@ -67,11 +71,15 @@ class EcranPlugInPool : public QWidget
 
     void afficherEcranAccueil();
     void afficherEcranMatch();
+    void afficherEcranPartie();
     void afficherEcranFin();
+    void afficherEcranFinMatch();
 
-    EcranAccueil* getEcranAccueil() const;
-    EcranMatch*   getEcranMatch() const;
-    EcranFin*     getEcranFin() const;
+    EcranAccueil*  getEcranAccueil() const;
+    EcranMatch*    getEcranMatch() const;
+    EcranPartie*   getEcranPartie() const;
+    EcranFin*      getEcranFin() const;
+    EcranFinMatch* getEcranFinMatch() const;
 };
 
 #endif // ECRANPLUGINPOOL_H

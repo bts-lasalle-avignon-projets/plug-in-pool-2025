@@ -1,7 +1,7 @@
 format 224
 "plug-in-pool-visualisation" // plug-in-pool-visualisation
-  revision 1
-  modified_by 42 "tv"
+  revision 2
+  modified_by 2 "btssn2"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -83,6 +83,42 @@ ${inlines}
 	mysql ""
       end
 
+      attribute 128002 "peripheriqueLocal"
+	private explicit_type "QBluetoothLocalDevice"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128130 "serveur"
+	private explicit_type "QBluetoothServer"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128258 "socket"
+	private explicit_type "QBluetoothSocket"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
       operation 128170 "CommunicationBluetooth"
 	preserve_cpp_body_indent public explicit_return_type ""
 	nparams 1
@@ -91,7 +127,7 @@ ${inlines}
 	cpp_decl "    ${comment}${inline}explicit ${name}${(}${t0} * ${p0}${v0}${)}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} * ${p0}${)} :
-    QObject(parent)
+    QObject(parent), serveur(nullptr), socket(nullptr)
 ${throw}{
 ${body}}
 "
@@ -124,6 +160,197 @@ ${body}}
 	idl ""
 	mysql ""
       end
+
+      operation 128002 "connexionClient"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "_t1" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// SIGNAL 0
+
+// SIGNAL 0
+
+// SIGNAL 0
+
+// SIGNAL 0
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128130 "trameRencontreRecue"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 3
+	  param in name "_t1" explicit_type "int"
+	  param in name "_t2" explicit_type "QString"
+	  param in name "_t3" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// SIGNAL 1
+
+// SIGNAL 1
+
+// SIGNAL 1
+
+// SIGNAL 1
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128258 "trameCasseRecue"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 4
+	  param in name "_t1" explicit_type "int"
+	  param in name "_t2" explicit_type "int"
+	  param in name "_t3" explicit_type "char"
+	  param in name "_t4" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// SIGNAL 2
+
+// SIGNAL 2
+
+// SIGNAL 2
+
+// SIGNAL 2
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128386 "trameEmpochageRecue"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 3
+	  param in name "_t1" explicit_type "int"
+	  param in name "_t2" explicit_type "int"
+	  param in name "_t3" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// SIGNAL 3
+
+// SIGNAL 3
+
+// SIGNAL 3
+
+// SIGNAL 3
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128514 "tramePartieTermineeRecue"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "_t1" explicit_type "int"
+	  param in name "_t2" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// SIGNAL 4
+
+// SIGNAL 4
+
+// SIGNAL 4
+
+// SIGNAL 4
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128642 "trameMatchTermineeRecue"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "nbPartiesJoueurUn" explicit_type "int"
+	  param in name "nbPartiesJoueurDeux" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      extra_member 128002 "slots"
+	
+	cpp "  private slots:" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 128770 "connecterClient"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128898 "deconnecterClient"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129026 "lireTrame"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
     end
 
     class 128298 "typedef1"
@@ -151,6 +378,66 @@ ${items}};
       explicit_switch_type ""
       mysql_decl ""
       
+      attribute 128386 "AUCUNE"
+	public type class_ref 128426 // CouleurBille
+	init_value " -1"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128514 "ROUGE"
+	public type class_ref 128426 // CouleurBille
+	init_value " 0"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128642 "JAUNE"
+	public type class_ref 128426 // CouleurBille
+	init_value " 1"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128770 "BLANCHE"
+	public type class_ref 128426 // CouleurBille
+	init_value " 2"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128898 "NOIR"
+	public type class_ref 128426 // CouleurBille
+	init_value " 3"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
       attribute 128170 "Aucune"
 	public type class_ref 128426 // CouleurBille
 	init_value " -1"
@@ -268,6 +555,75 @@ ${inlines}
 	  b parent class_ref 128810 // PlugInPool
       end
 
+      attribute 134530 "ecransInterface"
+	private explicit_type "QStackedWidget"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 128642 // ecranAccueil (<unidirectional association>)
+	relation 128642 --->
+	  a role_name "ecranAccueil" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128642 // ecranAccueil (<unidirectional association>)
+	  b parent class_ref 128002 // EcranAccueil
+      end
+
+      classrelation 128770 // ecranMatch (<unidirectional association>)
+	relation 128770 --->
+	  a role_name "ecranMatch" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128770 // ecranMatch (<unidirectional association>)
+	  b parent class_ref 128386 // EcranMatch
+      end
+
+      classrelation 128898 // ecranPartie (<unidirectional association>)
+	relation 128898 --->
+	  a role_name "ecranPartie" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128898 // ecranPartie (<unidirectional association>)
+	  b parent class_ref 128514 // EcranPartie
+      end
+
+      classrelation 129026 // ecranFin (<unidirectional association>)
+	relation 129026 --->
+	  a role_name "ecranFin" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129026 // ecranFin (<unidirectional association>)
+	  b parent class_ref 128130 // EcranFin
+      end
+
+      classrelation 129154 // ecranFinMatch (<unidirectional association>)
+	relation 129154 --->
+	  a role_name "ecranFinMatch" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129154 // ecranFinMatch (<unidirectional association>)
+	  b parent class_ref 128258 // EcranFinMatch
+      end
+
+      attribute 134658 "interfacePlugInPool"
+	private explicit_type "QVBoxLayout"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
       operation 128426 "EcranPlugInPool"
 	preserve_cpp_body_indent public explicit_return_type ""
 	nparams 1
@@ -300,6 +656,146 @@ ${body}}
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${throw}{
 ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 133378 "afficherEcranAccueil"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 133506 "afficherEcranMatch"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 133634 "afficherEcranPartie"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 133762 "afficherEcranFin"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 133890 "afficherEcranFinMatch"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134018 "getEcranAccueil"
+	preserve_cpp_body_indent const public return_type class_ref 128002 // EcranAccueil
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134146 "getEcranMatch"
+	preserve_cpp_body_indent const public return_type class_ref 128386 // EcranMatch
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134274 "getEcranPartie"
+	preserve_cpp_body_indent const public return_type class_ref 128514 // EcranPartie
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134402 "getEcranFin"
+	preserve_cpp_body_indent const public return_type class_ref 128130 // EcranFin
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134530 "getEcranFinMatch"
+	preserve_cpp_body_indent const public return_type class_ref 128258 // EcranFinMatch
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
 	
 	
@@ -361,6 +857,24 @@ ${inlines}
 	  b parent class_ref 128170 // CommunicationBluetooth
       end
 
+      classrelation 129282 // match (<unidirectional association>)
+	relation 129282 --->
+	  a role_name "match" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129282 // match (<unidirectional association>)
+	  b parent class_ref 129322 // Match
+      end
+
+      classrelation 129410 // ecranPlugInPool (<unidirectional association>)
+	relation 129410 --->
+	  a role_name "ecranPlugInPool" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129410 // ecranPlugInPool (<unidirectional association>)
+	  b parent class_ref 128554 // EcranPlugInPool
+      end
+
       operation 129194 "PlugInPool"
 	preserve_cpp_body_indent public explicit_return_type ""
 	nparams 1
@@ -369,7 +883,9 @@ ${inlines}
 	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${v0}${)}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} * ${p0}${)} :
-    QObject(parent), communicationBluetooth(new CommunicationBluetooth(this))
+    QObject(parent), communicationBluetooth(new CommunicationBluetooth(this)),
+    match(nullptr), ecranPlugInPool(qobject_cast<EcranPlugInPool*>(parent))
+
 ${throw}{
 ${body}}
 "
@@ -386,6 +902,171 @@ ${body}}
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${throw}{
 ${body}}
+"
+	
+	
+	
+	
+      end
+
+      extra_member 129538 "slots"
+	
+	cpp "  private slots:" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 135938 "gererConnexion"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 1
+	  param in name "etat" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136066 "configurerMatch"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 3
+	  param in name "nbManches" explicit_type "int"
+	  param in name "prenomJoueur1" explicit_type "QString"
+	  param in name "prenomJoueur2" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136194 "empochageCasse"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 4
+	  param in name "idPartie" explicit_type "int"
+	  param in name "idJoueur" explicit_type "int"
+	  param in name "couleurBille" explicit_type "int"
+	  param in name "idPoche" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136322 "empochage"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 3
+	  param in name "idJoueur" explicit_type "int"
+	  param in name "couleurBille" explicit_type "int"
+	  param in name "idPoche" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136450 "terminerPartie"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 2
+	  param in name "idPartie" explicit_type "int"
+	  param in name "idJoueurGagnant" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136578 "terminerMatch"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 2
+	  param in name "nbPartiesJoueurUn" explicit_type "int"
+	  param in name "nbPartiesJoueurDeux" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136706 "changerEcranMatch"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136834 "changerEcranPartie"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136962 "changerEcranFin"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 137090 "changerEcranFinMatch"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
 	
 	
@@ -436,7 +1117,7 @@ ${inlines}
 	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)} :
-    couleur(CouleurBille::Aucune), poche(AUCUNE_POCHE)
+    couleur(CouleurBille::AUCUNE), poche(AUCUNE_POCHE)
 ${throw}{
 ${body}}
 "
@@ -541,19 +1222,116 @@ ${inlines}
 
       operation 128810 "Joueur"
 	preserve_cpp_body_indent public explicit_return_type ""
-	nparams 4
+	nparams 3
 	  param in name "nom" explicit_type "QString"
 	  param in name "prenom" explicit_type "QString"
 	  param in name "id" explicit_type "int"
-	  param in name "couleur" type class_ref 128426 // CouleurBille
-	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}, ${t2} ${p2}${v2}, ${t3} ${p3}${v3}${)}${volatile}${throw}${abstract};
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}, ${t2} ${p2}${v2}${)}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, ${t2} ${p2}, ${t3} ${p3}${)} :
-    nom(nom),
-    prenom(prenom), id(id), couleur(couleur),
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, ${t2} ${p2}${)} :
+    nom(nom), prenom(prenom), id(id), couleur(CouleurBille::AUCUNE), points(0),
     nbBillesRestantes(NB_BILLES_JOUEUR)
 ${throw}{
 ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134658 "getNom"
+	preserve_cpp_body_indent const public explicit_return_type "QString"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134786 "getPrenom"
+	preserve_cpp_body_indent const public explicit_return_type "QString"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 134914 "getId"
+	preserve_cpp_body_indent const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135042 "getPoints"
+	preserve_cpp_body_indent const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135170 "getCouleur"
+	preserve_cpp_body_indent const public return_type class_ref 128426 // CouleurBille
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135298 "getNbBillesRestantes"
+	preserve_cpp_body_indent const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135426 "setCouleur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "couleur" type class_ref 128426 // CouleurBille
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
 	
 	
@@ -814,15 +1592,26 @@ ${items}};
 	  b parent class_ref 129194 // Manche
       end
 
+      attribute 134786 "joueurActif"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
       operation 129066 "Match"
 	preserve_cpp_body_indent public explicit_return_type ""
-	nparams 2
+	nparams 1
 	  param in name "nom" explicit_type "QString"
-	  param in name "nbManchesGagnantes" explicit_type "int"
-	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract};
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)} :
-    nom(nom), nbManchesGagnantes(nbManchesGagnantes),
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)} :
+    nom(nom), nbManchesGagnantes(NB_MANCHES),
     horodatage(QDateTime::currentDateTime()), etat(EtatMatch::Cree),
     gagnant(AUCUN_GAGNANT)
 ${throw}{
@@ -833,10 +1622,61 @@ ${body}}
 	
 	
       end
+
+      operation 135554 "setNbManchesGagnantes"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "nbManchesGagnantes" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135682 "enregistrerJoueurs"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "prenomJoueur1" explicit_type "QString"
+	  param in name "prenomJoueur2" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135810 "getPrenomJoueur"
+	preserve_cpp_body_indent const public explicit_return_type "QString"
+	nparams 1
+	  param in name "idJoueur" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
     end
 
     classdiagram 128170 "classes-iteration1"
       classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 show_relation_visibility yes end
+      size A0
+    end
+
+    classdiagram 128002 "classes-iteration2"
+      classdiagramsettings member_max_width 0 end
       size A0
     end
   end
@@ -1049,6 +1889,14 @@ int main(int argc, char* argv[])
 {
     QApplication    a(argc, argv);
     EcranPlugInPool ecranPlugInPool;
+
+    QFile file(\":/pluginpool.css\");
+    if(file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file);
+        QString     style = in.readAll();
+        a.setStyleSheet(style);
+    }
 
     ecranPlugInPool.show();
 

@@ -12,7 +12,11 @@ CommunicationBluetooth::CommunicationBluetooth(QObject* parent) :
         return;
     }
 
+    qDebug() << Q_FUNC_INFO << peripheriqueLocal.name()
+             << peripheriqueLocal.address().toString();
+
     peripheriqueLocal.powerOn();
+    peripheriqueLocal.setHostMode(QBluetoothLocalDevice::HostDiscoverable);
 
     serveur = new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this);
 
@@ -143,6 +147,15 @@ void CommunicationBluetooth::lireTrame()
                       contenuTrame[POSITION_ID_JOUEUR_GAGNANT].toInt();
                     emit tramePartieTermineeRecue(idPartie, idJoueurGagnant);
                     break;
+                }
+                case TRAME_MATCH_TERMINEE:
+                {
+                    int nbPartiesJoueurUn =
+                      contenuTrame[POSITION_NB_PARTIES_JOUEURS_1].toInt();
+                    int nbPartiesJoueurDeux =
+                      contenuTrame[POSITION_NB_PARTIES_JOUEURS_2].toInt();
+                    emit trameMatchTermineeRecue(nbPartiesJoueurUn,
+                                                 nbPartiesJoueurDeux);
                 }
                 default:
                 {

@@ -1,5 +1,164 @@
 class CommunicationBluetooth
 !!!128170.cpp!!!	CommunicationBluetooth(inout parent : QObject = nullptr)
-    qDebug() << Q_FUNC_INFO << this << "parent" << parent;
+    qDebug() << Q_FUNC_INFO;
+    if(!peripheriqueLocal.isValid())
+    {
+        qWarning() << "Bluetooth désactivé !";
+        return;
+    }
+
+    qDebug() << Q_FUNC_INFO << peripheriqueLocal.name()
+             << peripheriqueLocal.address().toString();
+
+    peripheriqueLocal.powerOn();
+    peripheriqueLocal.setHostMode(QBluetoothLocalDevice::HostDiscoverable);
+
+    serveur = new QBluetoothServer(QBluetoothServiceInfo::RfcommProtocol, this);
+
+    connect(serveur, SIGNAL(newConnection()), this, SLOT(connecterClient()));
+
+    QBluetoothUuid uuid(QBluetoothUuid::Rfcomm);
+
+    serveur->listen(uuid, "BluetoothPlugInPool^");
 !!!128298.cpp!!!	~CommunicationBluetooth()
     qDebug() << Q_FUNC_INFO << this;
+    if(socket != nullptr)
+    {
+        if(socket->isOpen())
+        {
+            socket->close();
+        }
+        delete socket;
+    }
+
+    delete serveur;
+!!!128002.cpp!!!	connexionClient(in _t1 : bool) : void
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+!!!128130.cpp!!!	trameRencontreRecue(in _t1 : int, in _t2 : QString, in _t3 : QString) : void
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+!!!128258.cpp!!!	trameCasseRecue(in _t1 : int, in _t2 : int, in _t3 : char, in _t4 : int) : void
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+!!!128386.cpp!!!	trameEmpochageRecue(in _t1 : int, in _t2 : int, in _t3 : int) : void
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+!!!128514.cpp!!!	tramePartieTermineeRecue(in _t1 : int, in _t2 : int) : void
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
+!!!128770.cpp!!!	connecterClient() : void
+    socket = serveur->nextPendingConnection();
+
+    if(socket)
+    {
+        qDebug() << Q_FUNC_INFO << socket->peerName()
+                 << socket->peerAddress().toString();
+        connect(socket,
+                SIGNAL(disconnected()),
+                this,
+                SLOT(deconnecterClient()));
+        connect(socket, SIGNAL(readyRead()), this, SLOT(lireTrame()));
+        emit connexionClient(true);
+    }
+!!!128898.cpp!!!	deconnecterClient() : void
+    if(socket)
+    {
+        qDebug() << Q_FUNC_INFO;
+        disconnect(socket,
+                   SIGNAL(disconnected()),
+                   this,
+                   SLOT(deconnecterClient()));
+        disconnect(socket, SIGNAL(readyRead()), this, SLOT(lireTrame()));
+        emit connexionClient(false);
+    }
+!!!129026.cpp!!!	lireTrame() : void
+    if(!socket)
+        return;
+
+    QByteArray donneesRecues = socket->readAll();
+    QString    trame         = QString::fromUtf8(donneesRecues).trimmed();
+
+    qDebug() << Q_FUNC_INFO << "trame" << trame;
+
+    if(trame.startsWith(ENTETE_TRAME) && trame.endsWith(DELIMITEUR_FIN_TRAME))
+    {
+        QStringList contenuTrame =
+          trame.mid(1, trame.length() - 2).split(SEPARATEUR_TRAME);
+        qDebug() << Q_FUNC_INFO << "contenuTrame" << contenuTrame;
+
+        if(contenuTrame.size() > 0)
+        {
+            QString type = contenuTrame[POSITION_TYPE_TRAME];
+            qDebug() << Q_FUNC_INFO << "type" << type;
+
+            switch(type.at(0).toLatin1())
+            {
+                case TRAME_RENCONTRE:
+                {
+                    int nbManches = contenuTrame[POSITION_NB_MANCHES].toInt();
+                    QString prenomJoueur1 =
+                      contenuTrame[POSITION_PRENOM_JOUEUR_1];
+                    QString prenomJoueur2 =
+                      contenuTrame[POSITION_PRENOM_JOUEUR_2];
+                    qDebug() << Q_FUNC_INFO << "prenomJoueur1" << prenomJoueur1
+                             << "prenomJoueur2" << prenomJoueur2 << "nbManches"
+                             << nbManches;
+                    emit trameRencontreRecue(nbManches,
+                                             prenomJoueur1,
+                                             prenomJoueur2);
+                    break;
+                }
+                case TRAME_CASSE:
+                {
+                    int idPartie = contenuTrame[POSITION_ID_PARTIE].toInt();
+                    int idJoueur = contenuTrame[POSITION_ID_JOUEUR].toInt();
+                    int couleurBille =
+                      contenuTrame[POSITION_COULEUR_BILLE_CASSE].toInt();
+                    int idPoche = contenuTrame[POSITION_ID_POCHE_CASSE].toInt();
+                    qDebug() << Q_FUNC_INFO << "idPartie" << idPartie
+                             << "idJoueur" << idJoueur << "couleurBille"
+                             << couleurBille << "idPoche" << idPoche;
+                    emit trameCasseRecue(idPartie,
+                                         idJoueur,
+                                         couleurBille,
+                                         idPoche);
+                    break;
+                }
+                case TRAME_EMPOCHAGE:
+                {
+                    int idJoueur =
+                      contenuTrame[POSITION_ID_JOUEUR_MANCHE].toInt();
+                    int couleurBille =
+                      contenuTrame[POSITION_COULEUR_BILLE_MANCHE].toInt();
+                    int idPoche =
+                      contenuTrame[POSITION_ID_POCHE_MANCHE].toInt();
+                    qDebug() << Q_FUNC_INFO << "couleurBille" << couleurBille
+                             << "idJoueur" << idJoueur << "idPoche" << idPoche;
+                    emit trameEmpochageRecue(idJoueur, couleurBille, idPoche);
+                    break;
+                }
+                case TRAME_PARTIE_TERMINEE:
+                {
+                    int idPartie = contenuTrame[POSITION_ID_PARTIE].toInt();
+                    int idJoueurGagnant =
+                      contenuTrame[POSITION_ID_JOUEUR_GAGNANT].toInt();
+                    emit tramePartieTermineeRecue(idPartie, idJoueurGagnant);
+                    break;
+                }
+                case TRAME_MATCH_TERMINEE:
+                {
+                    int nbPartiesJoueurUn =
+                      contenuTrame[POSITION_NB_PARTIES_JOUEURS_1].toInt();
+                    int nbPartiesJoueurDeux =
+                      contenuTrame[POSITION_NB_PARTIES_JOUEURS_2].toInt();
+                    emit trameMatchTermineeRecue(nbPartiesJoueurUn,
+                                                 nbPartiesJoueurDeux);
+                }
+                default:
+                {
+                    break;
+                }
+            }
+        }
+    }

@@ -2,11 +2,15 @@
     <qresource prefix="/">
         <file alias="ecranAccueilQT.png">images/ecranAccueilQT.png</file>
         <file alias="ecranMatchQT.png">images/ecranMatchQT.png</file>
+        <file alias="ecranPartieQT.png">images/ecranPartieQT.png</file>
         <file alias="ecranFinQT.png">images/ecranFinQT.png</file>
         <file alias="bouleRougeQT.png">images/bouleRougeQT.png</file>
         <file alias="bouleJauneQT.png">images/bouleJauneQT.png</file>
         <file alias="bouleNoirQT.png">images/bouleNoirQT.png</file>
         <file alias="bouleBlancheQT.png">images/bouleBlancheQT.png</file>
+        <file alias="bouleAttribueQT.png">images/bouleAttribueQT.png</file>
+        <file alias="fondCompteAReboursDebutMatch.png">images/fondCompteAReboursDebutMatch.png</file>
+        <file alias="ecranFinMatchQT.png">images/ecranFinMatchQT.png</file>
         <file alias="pluginpool.css">pluginpool.css</file>
     </qresource>
 </RCC>

@@ -7,8 +7,8 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageVersion   = new QLabel("v0.1", ecran);
-    connexionBluetooth = new QLabel("Attente connexion Bluetooth", ecran);
+    affichageVersion   = new QLabel("v1.0", ecran);
+    connexionBluetooth = new QLabel("Connexion en cours ...", ecran);
 
     affichageVersion->setObjectName("affichageVersion");
     connexionBluetooth->setObjectName("connexionBluetooth");
@@ -25,9 +25,6 @@ EcranAccueil::EcranAccueil(QWidget* parent) : QObject(parent), ecran(parent)
     espaceConnexionBluetooth->addWidget(connexionBluetooth);
     espaceConnexionBluetooth->addStretch();
 
-    /**
-     * @todo Est-ce vraiment la bonne technique ?
-     */
     ecranAccueil->addStretch();
     ecranAccueil->addLayout(espaceVersion);
     ecranAccueil->addSpacing(640);

@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Plug-In-Pool:  Fichier source de Match.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="projet-logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet Plug-In-Pool
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS CIEL IR LaSalle Avignon 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_match_8java_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Match.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_match_8java.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>com.example.plug_in_pool;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> java.time.LocalDateTime;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html">    5</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html">Match</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">    7</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">EtatMatch</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a120511eea83fadf71d0389e0c5ced147">    9</a></span>&#160;        <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a120511eea83fadf71d0389e0c5ced147">CREE</a>(0),</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#af751b01f749ccc6efaaa389cdd05727c">   10</a></span>&#160;        <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#af751b01f749ccc6efaaa389cdd05727c">EN_COURS</a>(1),</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#ab3b97e9839be32f73cc5225bf7c7d9c1">   11</a></span>&#160;        <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#ab3b97e9839be32f73cc5225bf7c7d9c1">FINI</a>(2);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#acd9ac4a03952b776af50f4afb9e16855">   13</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keywordtype">int</span> <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#acd9ac4a03952b776af50f4afb9e16855">valeur</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a7e5153ef87c35219676cd8b78f50f612">   15</a></span>&#160;        <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a7e5153ef87c35219676cd8b78f50f612">EtatMatch</a>(<span class="keywordtype">int</span> valeur)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            this.valeur = valeur;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a937402f0496819122ac24c4e4a8e2e79">   20</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a937402f0496819122ac24c4e4a8e2e79">getValeur</a>()</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">return</span> valeur;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">   26</a></span>&#160;    <span class="keyword">private</span> String <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">nom</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">   27</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">nbManchesGagnantes</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa4b34b23a137b6e37ccfdc3597ceaa4f">   28</a></span>&#160;    <span class="keyword">private</span> LocalDateTime <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa4b34b23a137b6e37ccfdc3597ceaa4f">horodatage</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">   29</a></span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">gagnant</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">   30</a></span>&#160;    <span class="keyword">private</span> <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">EtatMatch</a> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">etat</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ad99d958010f4d2d0939bfc050dd5b547">   32</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ad99d958010f4d2d0939bfc050dd5b547">Match</a>(String <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">nom</a>, <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">nbManchesGagnantes</a>)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        this.nom = <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">nom</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        this.nbManchesGagnantes = <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">nbManchesGagnantes</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        this.horodatage = LocalDateTime.now();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        this.etat = <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">EtatMatch</a>.<a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a120511eea83fadf71d0389e0c5ced147">CREE</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        this.gagnant = -1;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a02d3995f6308b762d166c25fded5aecc">   41</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a02d3995f6308b762d166c25fded5aecc">getNom</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">nom</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abb680c347d6225bfb1e9baf1167d4fc0">   45</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abb680c347d6225bfb1e9baf1167d4fc0">getNbManchesGagnantes</a>() {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">nbManchesGagnantes</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a03d7331baeb7dbd789a4d5e72f73516c">   48</a></span>&#160;    <span class="keyword">public</span> LocalDateTime <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a03d7331baeb7dbd789a4d5e72f73516c">getHorodatage</a>() {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa4b34b23a137b6e37ccfdc3597ceaa4f">horodatage</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ab591358c566798b7c175ab154d1cd96f">   51</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ab591358c566798b7c175ab154d1cd96f">getGagnant</a>() {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">gagnant</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a43203d81ea085fff942e3958b61cdb8e">   54</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">EtatMatch</a> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a43203d81ea085fff942e3958b61cdb8e">getEtat</a>() {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">etat</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa5842faa81a13cb9ad39c7cd8bda12f7">   57</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa5842faa81a13cb9ad39c7cd8bda12f7">setGagnant</a>(<span class="keywordtype">int</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">gagnant</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        this.gagnant = <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">gagnant</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aabd9b82c2f3a39789b264db566fecbd4">   60</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aabd9b82c2f3a39789b264db566fecbd4">setEtat</a>(<a class="code" href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">EtatMatch</a> <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">etat</a>) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        this.etat = <a class="code" href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">etat</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html">com.example.plug_in_pool.Match</a></div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00005">Match.java:6</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_a02d3995f6308b762d166c25fded5aecc"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a02d3995f6308b762d166c25fded5aecc">com.example.plug_in_pool.Match.getNom</a></div><div class="ttdeci">String getNom()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00041">Match.java:41</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_a03d7331baeb7dbd789a4d5e72f73516c"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a03d7331baeb7dbd789a4d5e72f73516c">com.example.plug_in_pool.Match.getHorodatage</a></div><div class="ttdeci">LocalDateTime getHorodatage()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00048">Match.java:48</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_a43203d81ea085fff942e3958b61cdb8e"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a43203d81ea085fff942e3958b61cdb8e">com.example.plug_in_pool.Match.getEtat</a></div><div class="ttdeci">EtatMatch getEtat()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00054">Match.java:54</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_a96ead1dc3968e7ab9a9c2a928733865b"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a96ead1dc3968e7ab9a9c2a928733865b">com.example.plug_in_pool.Match.nbManchesGagnantes</a></div><div class="ttdeci">int nbManchesGagnantes</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00027">Match.java:27</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_a9c63e42eeed359b783ab168ad2fa3296"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#a9c63e42eeed359b783ab168ad2fa3296">com.example.plug_in_pool.Match.nom</a></div><div class="ttdeci">String nom</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00026">Match.java:26</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_aa4b34b23a137b6e37ccfdc3597ceaa4f"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa4b34b23a137b6e37ccfdc3597ceaa4f">com.example.plug_in_pool.Match.horodatage</a></div><div class="ttdeci">LocalDateTime horodatage</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00028">Match.java:28</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_aa5842faa81a13cb9ad39c7cd8bda12f7"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aa5842faa81a13cb9ad39c7cd8bda12f7">com.example.plug_in_pool.Match.setGagnant</a></div><div class="ttdeci">void setGagnant(int gagnant)</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00057">Match.java:57</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_aabd9b82c2f3a39789b264db566fecbd4"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#aabd9b82c2f3a39789b264db566fecbd4">com.example.plug_in_pool.Match.setEtat</a></div><div class="ttdeci">void setEtat(EtatMatch etat)</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00060">Match.java:60</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_ab591358c566798b7c175ab154d1cd96f"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ab591358c566798b7c175ab154d1cd96f">com.example.plug_in_pool.Match.getGagnant</a></div><div class="ttdeci">int getGagnant()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00051">Match.java:51</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_abb680c347d6225bfb1e9baf1167d4fc0"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abb680c347d6225bfb1e9baf1167d4fc0">com.example.plug_in_pool.Match.getNbManchesGagnantes</a></div><div class="ttdeci">int getNbManchesGagnantes()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00045">Match.java:45</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_abdd9cab1e2e20be80cb853033fe0a2ef"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#abdd9cab1e2e20be80cb853033fe0a2ef">com.example.plug_in_pool.Match.gagnant</a></div><div class="ttdeci">int gagnant</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00029">Match.java:29</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_ac1b129b4c3b0e4484e2ab8576b6590f3"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ac1b129b4c3b0e4484e2ab8576b6590f3">com.example.plug_in_pool.Match.etat</a></div><div class="ttdeci">EtatMatch etat</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00030">Match.java:30</a></div></div>
+<div class="ttc" id="aclasscom_1_1example_1_1plug__in__pool_1_1_match_html_ad99d958010f4d2d0939bfc050dd5b547"><div class="ttname"><a href="classcom_1_1example_1_1plug__in__pool_1_1_match.html#ad99d958010f4d2d0939bfc050dd5b547">com.example.plug_in_pool.Match.Match</a></div><div class="ttdeci">Match(String nom, int nbManchesGagnantes)</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00032">Match.java:32</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html">com.example.plug_in_pool.Match.EtatMatch</a></div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00007">Match.java:8</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_a120511eea83fadf71d0389e0c5ced147"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a120511eea83fadf71d0389e0c5ced147">com.example.plug_in_pool.Match.EtatMatch.CREE</a></div><div class="ttdeci">CREE</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00009">Match.java:9</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_a7e5153ef87c35219676cd8b78f50f612"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a7e5153ef87c35219676cd8b78f50f612">com.example.plug_in_pool.Match.EtatMatch.EtatMatch</a></div><div class="ttdeci">EtatMatch(int valeur)</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00015">Match.java:15</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_a937402f0496819122ac24c4e4a8e2e79"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#a937402f0496819122ac24c4e4a8e2e79">com.example.plug_in_pool.Match.EtatMatch.getValeur</a></div><div class="ttdeci">int getValeur()</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00020">Match.java:20</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_ab3b97e9839be32f73cc5225bf7c7d9c1"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#ab3b97e9839be32f73cc5225bf7c7d9c1">com.example.plug_in_pool.Match.EtatMatch.FINI</a></div><div class="ttdeci">FINI</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00011">Match.java:11</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_acd9ac4a03952b776af50f4afb9e16855"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#acd9ac4a03952b776af50f4afb9e16855">com.example.plug_in_pool.Match.EtatMatch.valeur</a></div><div class="ttdeci">final int valeur</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00013">Match.java:13</a></div></div>
+<div class="ttc" id="aenumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match_html_af751b01f749ccc6efaaa389cdd05727c"><div class="ttname"><a href="enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html#af751b01f749ccc6efaaa389cdd05727c">com.example.plug_in_pool.Match.EtatMatch.EN_COURS</a></div><div class="ttdeci">EN_COURS</div><div class="ttdef"><b>Definition:</b> <a href="_match_8java_source.html#l00010">Match.java:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_6657d08197f4cd5e540af575a5bfd82d.html">plug-in-pool-mobile</a></li><li class="navelem"><a class="el" href="dir_728db1c1df6704f9b83d10b614f3eab2.html">app</a></li><li class="navelem"><a class="el" href="dir_f0bcdb2d14eb61422defcd628ba951e8.html">src</a></li><li class="navelem"><a class="el" href="dir_08a9a686f7f9fa6db6b969e5dce764a9.html">main</a></li><li class="navelem"><a class="el" href="dir_622a24939d7e9948a334cec8aaa09123.html">java</a></li><li class="navelem"><a class="el" href="dir_da4dcc0f813591fd3156affc7c9b3e1e.html">com</a></li><li class="navelem"><a class="el" href="dir_02a3328f9fb1a5f15ecee4ca739543c8.html">example</a></li><li class="navelem"><a class="el" href="dir_b9a5b3f431863947af5d6661e52427c6.html">plug_in_pool</a></li><li class="navelem"><a class="el" href="_match_8java.html">Match.java</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:55 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>

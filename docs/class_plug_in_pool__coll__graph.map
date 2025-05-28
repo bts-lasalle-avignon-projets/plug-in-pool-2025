@@ -1,0 +1,13 @@
+<map id="PlugInPool" name="PlugInPool">
+<area shape="rect" id="node1" title=" " alt="" coords="588,855,776,1094"/>
+<area shape="rect" id="node4" href="$class_ecran_plug_in_pool.html" title="Déclaration de la classe EcranPlugInPool." alt="" coords="541,1193,732,1447"/>
+<area shape="rect" id="node2" href="$class_q_object.html" title=" " alt="" coords="883,5,958,83"/>
+<area shape="rect" id="node3" href="$class_communication_bluetooth.html" title=" " alt="" coords="350,161,574,327"/>
+<area shape="rect" id="node6" href="$class_ecran_accueil.html" title=" " alt="" coords="735,490,944,685"/>
+<area shape="rect" id="node7" href="$class_ecran_partie.html" title=" " alt="" coords="951,380,1221,795"/>
+<area shape="rect" id="node9" href="$class_ecran_fin.html" title=" " alt="" coords="1229,512,1421,663"/>
+<area shape="rect" id="node5" href="$class_q_widget.html" title=" " alt="" coords="155,205,233,283"/>
+<area shape="rect" id="node8" href="$class_ecran_fin_match.html" title=" " alt="" coords="98,885,290,1065"/>
+<area shape="rect" id="node10" href="$class_ecran_match.html" title=" " alt="" coords="315,819,564,1131"/>
+<area shape="rect" id="node11" href="$class_match.html" title=" " alt="" coords="670,132,883,356"/>
+</map>

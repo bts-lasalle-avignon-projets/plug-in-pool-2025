@@ -33,6 +33,10 @@
 #define POSITION_ID_PARTIE         1
 #define POSITION_ID_JOUEUR_GAGNANT 2
 
+#define TRAME_MATCH_TERMINEE          'M'
+#define POSITION_NB_PARTIES_JOUEURS_1 1
+#define POSITION_NB_PARTIES_JOUEURS_2 2
+
 class CommunicationBluetooth : public QObject
 {
     Q_OBJECT
@@ -57,6 +61,8 @@ class CommunicationBluetooth : public QObject
                          int  idPoche);
     void trameEmpochageRecue(int idJoueur, int couleurBille, int idPoche);
     void tramePartieTermineeRecue(int idPartie, int idJoueurGagnant);
+    void trameMatchTermineeRecue(int nbPartiesJoueurUn,
+                                 int nbPartiesJoueurDeux);
 
   private slots:
     void connecterClient();

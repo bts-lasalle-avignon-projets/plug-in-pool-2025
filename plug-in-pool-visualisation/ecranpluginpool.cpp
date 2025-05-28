@@ -25,22 +25,30 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
     setWindowTitle(QString(NOM_APPLICATION) + QString(" v") +
                    QString(VERSION_APPLICATION));
 
-    ecransInterface             = new QStackedWidget(this);
-    QWidget* widgetEcranAccueil = new QWidget();
-    ecranAccueil                = new EcranAccueil(widgetEcranAccueil);
-    QWidget* widgetEcranMatch   = new QWidget();
-    ecranMatch                  = new EcranMatch(widgetEcranMatch);
-    QWidget* widgetEcranFin     = new QWidget();
-    ecranFin                    = new EcranFin(widgetEcranFin);
+    ecransInterface              = new QStackedWidget(this);
+    QWidget* widgetEcranAccueil  = new QWidget();
+    ecranAccueil                 = new EcranAccueil(widgetEcranAccueil);
+    QWidget* widgetEcranMatch    = new QWidget();
+    ecranMatch                   = new EcranMatch(widgetEcranMatch);
+    QWidget* widgetEcranPartie   = new QWidget();
+    ecranPartie                  = new EcranPartie(widgetEcranPartie);
+    QWidget* widgetEcranFin      = new QWidget();
+    ecranFin                     = new EcranFin(widgetEcranFin);
+    QWidget* widgetEcranFinMatch = new QWidget();
+    ecranFinMatch                = new EcranFinMatch(widgetEcranFinMatch);
 
     ecransInterface->setObjectName("ecransInterface");
     widgetEcranAccueil->setObjectName("ecranAccueil");
     widgetEcranMatch->setObjectName("ecranMatch");
+    widgetEcranPartie->setObjectName("ecranPartie");
     widgetEcranFin->setObjectName("ecranFin");
+    widgetEcranFinMatch->setObjectName("ecranFinMatch");
 
     ecransInterface->addWidget(widgetEcranAccueil);
     ecransInterface->addWidget(widgetEcranMatch);
+    ecransInterface->addWidget(widgetEcranPartie);
     ecransInterface->addWidget(widgetEcranFin);
+    ecransInterface->addWidget(widgetEcranFinMatch);
 
     interfacePlugInPool = new QVBoxLayout(this);
     interfacePlugInPool->addWidget(ecransInterface);
@@ -48,15 +56,17 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 #ifdef RASPBERRY_PI
     qDebug() << Q_FUNC_INFO << "RASPBERRY_PI";
     showFullScreen();
-    // setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
+    setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
 #else
-    // setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
+    setFixedSize(LARGEUR_ECRAN, HAUTEUR_ECRAN);
     showFullScreen();
 #endif
 
-    afficherEcranAccueil();
-    // afficherEcranMatch();
-    // afficherEcranFin();
+    // afficherEcranAccueil();
+    //  afficherEcranMatch();
+    //  afficherEcranPartie();
+    //  afficherEcranFin();
+    // afficherEcranFinMatch();
 }
 
 EcranPlugInPool::~EcranPlugInPool()
@@ -77,15 +87,32 @@ void EcranPlugInPool::afficherEcranMatch()
     ecransInterface->setCurrentWidget(ecranMatch->getEcran());
 }
 
+void EcranPlugInPool::afficherEcranPartie()
+{
+    qDebug() << Q_FUNC_INFO;
+    ecransInterface->setCurrentWidget(ecranPartie->getEcran());
+}
+
 void EcranPlugInPool::afficherEcranFin()
 {
     qDebug() << Q_FUNC_INFO;
     ecransInterface->setCurrentWidget(ecranFin->getEcran());
 }
 
+void EcranPlugInPool::afficherEcranFinMatch()
+{
+    qDebug() << Q_FUNC_INFO;
+    ecransInterface->setCurrentWidget(ecranFinMatch->getEcran());
+}
+
 EcranAccueil* EcranPlugInPool::getEcranAccueil() const
 {
     return ecranAccueil;
+}
+
+EcranPartie* EcranPlugInPool::getEcranPartie() const
+{
+    return ecranPartie;
 }
 
 EcranMatch* EcranPlugInPool::getEcranMatch() const
@@ -96,4 +123,9 @@ EcranMatch* EcranPlugInPool::getEcranMatch() const
 EcranFin* EcranPlugInPool::getEcranFin() const
 {
     return ecranFin;
+}
+
+EcranFinMatch* EcranPlugInPool::getEcranFinMatch() const
+{
+    return ecranFinMatch;
 }

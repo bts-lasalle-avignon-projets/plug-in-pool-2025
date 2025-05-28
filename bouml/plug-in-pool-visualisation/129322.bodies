@@ -1,0 +1,18 @@
+class Match
+!!!129066.cpp!!!	Match(in nom : QString)
+    qDebug() << Q_FUNC_INFO << this << "nom" << nom;
+    joueurActif = 0;
+!!!135554.cpp!!!	setNbManchesGagnantes(in nbManchesGagnantes : int) : void
+    this->nbManchesGagnantes = nbManchesGagnantes;
+!!!135682.cpp!!!	enregistrerJoueurs(in prenomJoueur1 : QString, in prenomJoueur2 : QString) : void
+    joueurs.clear();
+
+    for(int i = 0; i < NB_JOUEURS; ++i)
+    {
+        QString prenom = (i == 0) ? prenomJoueur1 : prenomJoueur2;
+        QString nom    = "";
+        Joueur  joueur(nom, prenom, i);
+        joueurs.append(joueur);
+    }
+!!!135810.cpp!!!	getPrenomJoueur(in idJoueur : int) : QString
+    return joueurs[idJoueur].getPrenom();

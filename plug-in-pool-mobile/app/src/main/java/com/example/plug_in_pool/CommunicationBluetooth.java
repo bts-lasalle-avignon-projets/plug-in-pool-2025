@@ -2,11 +2,14 @@ package com.example.plug_in_pool;
 
 import android.Manifest;
 import android.adservices.measurement.WebSourceRegistrationRequest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import androidx.annotation.RequiresPermission;
+import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,20 +17,30 @@ import java.io.OutputStream;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import androidx.core.app.ActivityCompat;
 
 public class CommunicationBluetooth extends Thread
 {
     /*
      * Format Trame
      */
-    protected static final String ENTETE           = "$";
-    protected static final String SEPARATEUR       = "/";
-    protected static final String DELIMITATEUR_FIN = "!";
-    protected static final String DEMARER_MATCH    = "D";
-    protected static final String CASSE            = "C";
+    protected static final String ENTETE               = "$";
+    protected static final String SEPARATEUR           = "/";
+    protected static final String DELIMITATEUR_FIN     = "!";
+    protected static final String DEMARRER_DETECTION   = "A";
+    protected static final String DESACTIVER_DETECTION = "D";
+    protected static final String PAUSE                = "P";
+    protected static final String REPRISE              = "R";
+    protected static final String DEMARER_MATCH        = "D";
+    protected static final String CASSE                = "C";
+    protected static final String EMPOCHAGE            = "E";
+    protected static final String FAUTE                = "F";
+    protected static final String PARTIE_TERMINER      = "T";
+    protected static final String MATCH_TERMINER       = "M";
 
     private static final String TAG       = "_CommunicationBluetooth";
     private static final UUID SERIAL_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final int    DEMANDE_PERMISSIONS_BLUETOOTH = 1;
 
     private final BluetoothDevice peripherique;
     private BluetoothSocket       socket;
@@ -42,7 +55,7 @@ public class CommunicationBluetooth extends Thread
         this.peripherique = peripherique;
     }
 
-    @Override
+    @SuppressLint("MissingPermission")
     public void run()
     {
         try
