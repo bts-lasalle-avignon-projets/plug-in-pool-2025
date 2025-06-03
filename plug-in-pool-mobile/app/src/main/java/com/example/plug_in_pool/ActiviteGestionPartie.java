@@ -3,7 +3,6 @@ package com.example.plug_in_pool;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -59,8 +56,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
     /**
      * Bluetooth
      */
-    private BluetoothSocket  socketBluetooth = null;
-    private BluetoothDevice  peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
     public int idMatch;
 
@@ -207,7 +202,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 String selection = (String) parent.getItemAtPosition(position);
                 String adresseMac = extraireAdresseMac(selection);
                 adresseMacEcran = adresseMac;
-                connecterBluetooth(adresseMac);
             }
 
             @Override
@@ -228,7 +222,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 String selection = (String) parent.getItemAtPosition(position);
                 String adresseMac = extraireAdresseMac(selection);
                 adresseMacTable = adresseMac;
-                connecterBluetooth(adresseMac);
             }
 
             @Override
@@ -236,60 +229,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
             {
             }
         });
-    }
-
-    private void connecterBluetooth(String adresseMac)
-    {
-        if(ActivityCompat.checkSelfPermission(this,
-                                              android.Manifest.permission.BLUETOOTH_CONNECT) !=
-           PackageManager.PERMISSION_GRANTED)
-        {
-            Log.e(TAG, "Permissions Bluetooth refusées !");
-            return;
-        }
-
-        peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
-        Log.d(TAG, "Tentative de connexion à l'adresse MAC : " + adresseMac);
-
-        try
-        {
-            Log.d(TAG, "Création du socket Bluetooth...");
-            socketBluetooth =
-              peripheriqueBluetooth.createInsecureRfcommSocketToServiceRecord(UUID_BLUETOOTH);
-
-            Log.d(TAG, "Socket créée, démarrage de la connexion...");
-            socketBluetooth.connect();
-            Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
-        }
-        catch(IOException e)
-        {
-            Log.e(TAG, "Échec de connexion (méthode normale) : " + e.getMessage());
-
-            try
-            {
-                Log.d("Bluetooth", "Tentative de connexion alternative...");
-                socketBluetooth = (BluetoothSocket)peripheriqueBluetooth.getClass()
-                                    .getMethod("createRfcommSocket", new Class[] { int.class })
-                                    .invoke(peripheriqueBluetooth, 1);
-                socketBluetooth.connect();
-                Log.d(TAG, "Connexion alternative réussie !");
-            }
-            catch(Exception ex)
-            {
-                Log.e(TAG, "Échec de la connexion alternative : " + ex.getMessage());
-            }
-        }
-        if (socketBluetooth != null)
-        {
-            try
-            {
-                socketBluetooth.close();
-                socketBluetooth = null;
-            }
-            catch (IOException e)
-            {
-            }
-        }
     }
 
     private String extraireAdresseMac(String texte)

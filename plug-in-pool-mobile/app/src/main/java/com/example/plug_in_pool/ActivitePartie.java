@@ -1,17 +1,15 @@
 package com.example.plug_in_pool;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.CursorIndexOutOfBoundsException;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -88,6 +86,8 @@ public class ActivitePartie extends AppCompatActivity
         initialiserVues();
         recupererDonneesDeConfigurations();
         verifierEtDemarrerBluetooth();
+        initialiserBluetooth();
+        preparerLeMatch();
     }
     private void initialiserVues()
     {
@@ -105,7 +105,6 @@ public class ActivitePartie extends AppCompatActivity
             billesRouges[j] = findViewById(resID);
         }
         baseDonnees = BaseDeDonnees.getInstance(this);
-        preparerLeMatch();
     }
     private void elementsGUI()
     {
@@ -168,12 +167,17 @@ public class ActivitePartie extends AppCompatActivity
     }
     private void preparerLeMatch()
     {
-        boutonDemarrer.setOnClickListener(v -> {
-            initialiserJoueurs();
-            demarrerDetectionTable();
-            boutonDemarrer.setVisibility(Button.GONE);
-            boutonTirLoupe.setVisibility(Button.VISIBLE);
-            tirLoupe();
+        boutonDemarrer.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                initialiserJoueurs();
+                demarrerDetectionTable();
+                boutonDemarrer.setVisibility(Button.GONE);
+                boutonTirLoupe.setVisibility(Button.VISIBLE);
+                tirLoupe();
+            }
         });
     }
     private void tirLoupe()
@@ -451,13 +455,13 @@ public class ActivitePartie extends AppCompatActivity
                 return;
             }
         }
-        initialiserBluetooth();
     }
 
     private void initialiserBluetooth()
     {
         BluetoothAdapter adaptateurBluetooth = BluetoothAdapter.getDefaultAdapter();
-        if (adaptateurBluetooth == null || !adaptateurBluetooth.isEnabled()) {
+        if (adaptateurBluetooth == null || !adaptateurBluetooth.isEnabled())
+        {
             Log.e(TAG, "Bluetooth non disponible ou désactivé");
             return;
         }
@@ -476,7 +480,8 @@ public class ActivitePartie extends AppCompatActivity
         communicationBluetoothTable.start();
 
         new Handler().postDelayed(() -> {
-            if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte()) {
+            if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte())
+            {
                 tableConnecter();
                 Log.d(TAG, "Connexion Bluetooth à la table réussie");
 
@@ -488,10 +493,13 @@ public class ActivitePartie extends AppCompatActivity
                 communicationBluetoothEcran.start();
 
                 new Handler().postDelayed(() -> {
-                    if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte()) {
+                    if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
+                    {
                         ecranConnecter();
                         Log.d(TAG, "Connexion Bluetooth à l'écran réussie");
-                    } else {
+                    }
+                    else
+                    {
                         ecranNonConnecter();
                         Log.e(TAG, "Connexion à l’écran ÉCHOUÉE !");
                     }
@@ -525,21 +533,30 @@ public class ActivitePartie extends AppCompatActivity
     }
     public void envoyerTrame(String trame)
     {
-        if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte()) {
+        if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
+        {
             Log.d(TAG, "Envoi vers écran : " + trame);
             communicationBluetoothEcran.envoyerTrameAsync(trame);
-        } else {
-            ecranNonConnecter();
+            ecranConnecter();
+        }
+        else
+        {
             Log.e(TAG, "Échec envoi écran : Bluetooth (écran) non connecté");
+            ecranNonConnecter();
         }
     }
     public void envoyerTrameVersTable(String trame)
     {
-        if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte()) {
+        if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte())
+        {
             Log.d(TAG, "Envoi vers table : " + trame);
             communicationBluetoothTable.envoyerTrameAsync(trame);
-        } else {
+            tableConnecter();
+        }
+        else
+        {
             Log.e(TAG, "Échec envoi table : Connexion Bluetooth table non disponible");
+            tableNonConnecter();
         }
     }
     public boolean estTrameValide(String trame)
