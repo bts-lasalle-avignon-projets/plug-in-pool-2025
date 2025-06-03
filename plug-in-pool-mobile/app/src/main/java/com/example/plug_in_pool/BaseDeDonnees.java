@@ -8,8 +8,6 @@ import android.database.Cursor;
 import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 
-import androidx.annotation.LongDef;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -90,12 +88,6 @@ public class BaseDeDonnees extends SQLiteOpenHelper
             baseDeDonnees = new BaseDeDonnees(context);
         }
         return baseDeDonnees;
-    }
-
-    public void effacer()
-    {
-        Log.d(TAG, "effacer()");
-        onUpgrade(sqlite, sqlite.getVersion(), sqlite.getVersion() + 1);
     }
 
     @Override
@@ -258,57 +250,66 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     }
     public ArrayList<String> getInfosMatchs()
     {
-        ArrayList<String> infosMatchs = new ArrayList<>();
+        ArrayList<String> listeInfos = new ArrayList<>();
+        SQLiteDatabase bd = getReadableDatabase();
 
-        String requete = "SELECT " +
-                "m.idMatch, " +
-                "j1.prenom || ' ' || j1.nom AS joueur1, " +
-                "j2.prenom || ' ' || j2.nom AS joueur2, " +
-                "m.nbPartiesGagnantes, " +
-                "m.fini, " +
-                "m.horodatage " +
-                "FROM matchs m " +
-                "JOIN joueurs j1 ON m.idJoueur1 = j1.idJoueur " +
-                "JOIN joueurs j2 ON m.idJoueur2 = j2.idJoueur " +
-                "ORDER BY m.horodatage DESC";
+        String requeteMatchs =
+                "SELECT m.idMatch, m.horodatage, " +
+                        "j1.nom AS nomJoueur1, j1.prenom AS prenomJoueur1, " +
+                        "j2.nom AS nomJoueur2, j2.prenom AS prenomJoueur2 " +
+                        "FROM matchs m " +
+                        "LEFT JOIN joueurs j1 ON m.idJoueur1 = j1.idJoueur " +
+                        "LEFT JOIN joueurs j2 ON m.idJoueur2 = j2.idJoueur " +
+                        "ORDER BY m.horodatage DESC";
 
-        Cursor curseur = null;
+        Cursor curseurMatchs = bd.rawQuery(requeteMatchs, null);
 
-        try
+        if (curseurMatchs.moveToFirst())
         {
-            curseur = sqlite.rawQuery(requete, null);
-            if(curseur.moveToFirst())
+            do
             {
-                do
+                int idMatch = curseurMatchs.getInt(curseurMatchs.getColumnIndexOrThrow("idMatch"));
+                String horodatageMatch = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("horodatage"));
+
+                String nomJoueur1 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("nomJoueur1"));
+                String prenomJoueur1 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("prenomJoueur1"));
+                String nomJoueur2 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("nomJoueur2"));
+                String prenomJoueur2 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("prenomJoueur2"));
+
+                StringBuilder texte = new StringBuilder();
+                texte.append("Match ").append(idMatch)
+                        .append(" : ").append(horodatageMatch);
+
+                String requeteManches =
+                        "SELECT idManche, numeroTable, horodatage, idGagnant, idPerdant " +
+                                "FROM manches WHERE idMatch = ? ORDER BY horodatage ASC";
+
+                Cursor curseurManches = bd.rawQuery(requeteManches, new String[]{String.valueOf(idMatch)});
+
+                while (curseurManches.moveToNext())
                 {
-                    int idMatch             = curseur.getInt(0);
-                    String joueur1          = curseur.getString(1);
-                    String joueur2          = curseur.getString(2);
-                    int nbPartiesGagnantes  = curseur.getInt(3);
-                    int fini                = curseur.getInt(4);
-                    String horodatage       = curseur.getString(5);
+                    int idManche = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idManche"));
+                    int table = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("numeroTable"));
+                    String horodatageManche = curseurManches.getString(curseurManches.getColumnIndexOrThrow("horodatage"));
+                    int idGagnant = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idGagnant"));
+                    int idPerdant = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idPerdant"));
 
-                    String ligne = "Match #" + idMatch +
-                            " : " + joueur1 + " vs " + joueur2 +
-                            " | nombre de parties : " + nbPartiesGagnantes +
-                            " | Terminé : " + (fini == 1 ? "Oui" : "Non") +
-                            " | Date : " + horodatage;
+                    String gagnant = (idGagnant == 0) ? (prenomJoueur1 + " " + nomJoueur1) : (prenomJoueur2 + " " + nomJoueur2);
+                    String perdant = (idPerdant == 0) ? (prenomJoueur1 + " " + nomJoueur1) : (prenomJoueur2 + " " + nomJoueur2);
 
-                    infosMatchs.add(ligne);
-                } while(curseur.moveToNext());
-            }
-        }
-        catch(Exception e)
-        {
-            Log.e(TAG, "getInfosMatchs() : erreur - " + e.getMessage());
-        }
-        finally
-        {
-            if(curseur != null) curseur.close();
-        }
+                    texte.append("\n - Manche ").append(idManche)
+                            .append(" : gagnant = ").append(gagnant)
+                            .append(", perdant = ").append(perdant)
+                            .append(", table ").append(table)
+                            .append(", ").append(horodatageManche);
+                }
+                curseurManches.close();
+                listeInfos.add(texte.toString());
 
-        Log.d(TAG, "getInfosMatchs() : " + infosMatchs.size() + " lignes récupérées");
-        return infosMatchs;
+            } while (curseurMatchs.moveToNext());
+        }
+        curseurMatchs.close();
+        return listeInfos;
     }
     public void purgerHistorique()
     {

@@ -2,6 +2,7 @@ package com.example.plug_in_pool;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.app.AlertDialog;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class ActiviteHistorique extends AppCompatActivity
 {
+    private static final String  TAG         = "_ActiviteHistorique";
     private BaseDeDonnees baseDeDonnees;
     private ListView listeMatchs;
     private Button boutonPurger;
@@ -64,6 +66,7 @@ public class ActiviteHistorique extends AppCompatActivity
                         .setPositiveButton("Oui", (dialog, which) -> {
                             baseDeDonnees.purgerHistorique();
                             afficherHistorique();
+                            Log.d(TAG, "Historique purger");
                         })
                         .setNegativeButton("Annuler", null)
                         .show();
