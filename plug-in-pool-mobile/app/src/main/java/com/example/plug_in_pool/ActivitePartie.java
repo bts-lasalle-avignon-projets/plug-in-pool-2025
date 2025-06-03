@@ -30,12 +30,14 @@ public class ActivitePartie extends AppCompatActivity
 {
     private static final String TAG = "_ActivitePartie";
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
+    private static final int NUMERO_TABLE = 2;
 
     private CommunicationBluetooth communicationBluetoothEcran;
     private CommunicationBluetooth communicationBluetoothTable;
 
     private BluetoothDevice deviceEmission;
     private BluetoothDevice deviceReception;
+    private BaseDeDonnees   baseDonnees;
 
     /**
      * Éléments de l'interface
@@ -48,8 +50,6 @@ public class ActivitePartie extends AppCompatActivity
     private Match        match;
 
     List<Joueur> joueurs           = new ArrayList<>();
-    private final int    numeroTable = 2;
-    private final int    idMatch     = 1;
     private int          tramePocheRecue;
     private int          nbPartiesGestion;
     private int          trameCouleurRecue      = -2;
@@ -59,6 +59,7 @@ public class ActivitePartie extends AppCompatActivity
     private int          indexJoueurActuel      = 0;
     private int          nbPartiesGagnerJoueur1 = 0;
     private int          nbPartiesGagnerJoueur2 = 0;
+    public int           idMatch;
 
     private TextView tableStatut;
     private TextView ecranStatut;
@@ -103,6 +104,7 @@ public class ActivitePartie extends AppCompatActivity
               getResources().getIdentifier("billeRouge" + (j + 1), "id", getPackageName());
             billesRouges[j] = findViewById(resID);
         }
+        baseDonnees = BaseDeDonnees.getInstance(this);
         preparerLeMatch();
     }
     private void elementsGUI()
@@ -154,6 +156,8 @@ public class ActivitePartie extends AppCompatActivity
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacEcran + " (adresse mac ecran)");
         adresseMacTable = intent.getStringExtra("adresseMacTable");
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacTable + " (adresse mac table)");
+        idMatch   = intent.getIntExtra("idMatch", -1);
+        Log.d(TAG, "idMatch : " + idMatch);
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -696,6 +700,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur1.getNom() + " " + joueur1.getPrenom() + " à gagner " + nbPartiesGagnerJoueur1 + " partie");
+            baseDonnees.ajouterManche(idMatch,joueur1.getId(),joueur2.getId(),NUMERO_TABLE);
             matchTermnier();
         }
         else if(nbPartiesGagnerJoueur1 < nbPartiesGagnerJoueur2)
@@ -704,6 +709,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur2.getNom() + " " + joueur2.getPrenom() + " à gagner " + nbPartiesGagnerJoueur2 + " partie");
+            baseDonnees.ajouterManche(idMatch,joueur2.getId(),joueur1.getId(),NUMERO_TABLE);
             matchTermnier();
         }
         else
@@ -717,6 +723,7 @@ public class ActivitePartie extends AppCompatActivity
     }
     public void matchTermnier()
     {
+        baseDonnees.terminerMatch(idMatch, 1);
         boutonTerminer.setOnClickListener(view -> {
             envoyerFinDeMatch(nbPartiesGagnerJoueur1, nbPartiesGagnerJoueur2);
             Intent changerDeVue = new Intent(ActivitePartie.this, ActiviteHistorique.class);

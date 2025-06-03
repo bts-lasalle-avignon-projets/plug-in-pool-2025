@@ -79,7 +79,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     {
         super(context, NOM_BDD, null, VERSION_BDD);
         Log.d(TAG, "BaseDeDonnees()");
-        sqlite = this.getWritableDatabase();
+         sqlite = this.getWritableDatabase();
     }
 
     public synchronized static BaseDeDonnees getInstance(Context context)
@@ -159,19 +159,30 @@ public class BaseDeDonnees extends SQLiteOpenHelper
         }
     }
 
-    public void creerMatch(int idJoueur1, int idJoueur2, int nbPartiesGagnantes)
+    public int creerMatch(int idJoueur1, int idJoueur2, int nbPartiesGagnantes)
     {
         String horodatage = obtenirHorodatageActuel();
+        int idCree = -1;
+
         try
         {
             Log.d(TAG, "ajouterMatch(" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", " + horodatage + ")");
             sqlite.execSQL("INSERT INTO matchs (idJoueur1, idJoueur2, nbPartiesGagnantes, fini, horodatage) " +
                     "VALUES (" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", 0, '" + horodatage + "')");
+
+            Cursor c = sqlite.rawQuery("SELECT last_insert_rowid()", null);
+            if (c.moveToFirst()) {
+                idCree = c.getInt(0);
+                Log.d(TAG, "Match inséré avec idMatch = " + idCree);
+            }
+            c.close();
         }
         catch (SQLiteConstraintException e)
         {
-            Log.d(TAG, "ajouterMatch() : erreur de contrainte, peut-être une clé étrangère invalide !");
+            Log.d(TAG, "ajouterMatch() : erreur de contrainte !");
         }
+
+        return idCree;
     }
     public String obtenirHorodatageActuel()
     {
@@ -218,16 +229,31 @@ public class BaseDeDonnees extends SQLiteOpenHelper
             Log.e(TAG, "ajouterManche() erreur : " + e.getMessage());
         }
     }
-    public void terminerMatch(int idMatch)
+    public void terminerMatch(int idMatch, int valeurFini)
     {
         try
         {
-            sqlite.execSQL("UPDATE matchs SET fini = 1 WHERE idMatch = ?", new Object[]{idMatch});
-            Log.d(TAG, "terminerMatch() match " + idMatch + " marqué comme terminé");
+            Log.d(TAG, "mettreAJourFini(" + idMatch + ", " + valeurFini + ")");
+
+            String requete = "UPDATE matchs SET fini = " + valeurFini + " WHERE idMatch = " + idMatch;
+
+            sqlite.beginTransaction();
+            sqlite.execSQL(requete);
+            sqlite.setTransactionSuccessful();
+            sqlite.endTransaction();
+
+            Cursor verif = sqlite.rawQuery("SELECT fini FROM matchs WHERE idMatch = " + idMatch, null);
+            if (verif.moveToFirst()) {
+                int fini = verif.getInt(0);
+                Log.d(TAG, "Vérification après UPDATE : fini = " + fini);
+            } else {
+                Log.e(TAG, "Match id " + idMatch + " introuvable !");
+            }
+            verif.close();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "terminerMatch() erreur : " + e.getMessage());
+            Log.e(TAG, "mettreAJourFini() : erreur - " + e.getMessage());
         }
     }
     public ArrayList<String> getInfosMatchs()

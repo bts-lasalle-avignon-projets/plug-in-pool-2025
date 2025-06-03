@@ -62,6 +62,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private BluetoothSocket  socketBluetooth = null;
     private BluetoothDevice  peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
+    public int idMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -106,6 +107,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
         joueur1   = (Joueur)intent.getSerializableExtra("joueur1");
         joueur2   = (Joueur)intent.getSerializableExtra("joueur2");
         nbParties = intent.getSerializableExtra("nbParties").toString();
+        idMatch   = intent.getIntExtra("idMatch", -1);
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -307,6 +309,8 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 changerDeVue.putExtra("nbParties", nbParties);
                 changerDeVue.putExtra("adresseMacEcran", adresseMacEcran);
                 changerDeVue.putExtra("adresseMacTable", adresseMacTable);
+                changerDeVue.putExtra("idMatch", idMatch);
+                Log.d(TAG, "idMatch : " + idMatch);
                 startActivity(changerDeVue);
             }
         });
