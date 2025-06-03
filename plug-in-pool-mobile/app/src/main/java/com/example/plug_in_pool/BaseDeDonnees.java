@@ -254,7 +254,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
         SQLiteDatabase bd = getReadableDatabase();
 
         String requeteMatchs =
-                "SELECT m.idMatch, m.horodatage, " +
+                "SELECT m.idMatch, m.fini, m.horodatage, " +
                         "j1.nom AS nomJoueur1, j1.prenom AS prenomJoueur1, " +
                         "j2.nom AS nomJoueur2, j2.prenom AS prenomJoueur2 " +
                         "FROM matchs m " +
@@ -269,6 +269,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
             do
             {
                 int idMatch = curseurMatchs.getInt(curseurMatchs.getColumnIndexOrThrow("idMatch"));
+                String fini = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("fini"));
                 String horodatageMatch = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("horodatage"));
 
                 String nomJoueur1 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("nomJoueur1"));
@@ -278,7 +279,13 @@ public class BaseDeDonnees extends SQLiteOpenHelper
 
                 StringBuilder texte = new StringBuilder();
                 texte.append("Match ").append(idMatch)
-                        .append(" : ").append(horodatageMatch);
+                        .append(" (Terminé : ").append("1".equals(fini) ? "Oui" : "Non")
+                        .append(")")
+                        .append(" : ").append(horodatageMatch)
+                        .append("\nJoueur 1 : ")
+                        .append(prenomJoueur1).append(" ").append(nomJoueur1)
+                        .append("\nJoueur 2 : ")
+                        .append(prenomJoueur2).append(" ").append(nomJoueur2);
 
                 String requeteManches =
                         "SELECT idManche, numeroTable, horodatage, idGagnant, idPerdant " +
