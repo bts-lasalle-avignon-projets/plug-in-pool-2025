@@ -37,6 +37,10 @@
 #define POSITION_NB_PARTIES_JOUEURS_1 1
 #define POSITION_NB_PARTIES_JOUEURS_2 2
 
+#define TRAME_FAUTE 'F'
+#define POSITION_ID_JOUEUR_FAUTE 1
+#define POSITION_FAUTE 2
+
 class CommunicationBluetooth : public QObject
 {
     Q_OBJECT
@@ -63,6 +67,7 @@ class CommunicationBluetooth : public QObject
     void tramePartieTermineeRecue(int idPartie, int idJoueurGagnant);
     void trameMatchTermineeRecue(int nbPartiesJoueurUn,
                                  int nbPartiesJoueurDeux);
+    void trameFauteRecue(int idJoueurFaute, QString faute);
 
   private slots:
     void connecterClient();
