@@ -521,8 +521,9 @@ Fin de match :
 
 > Du 31 Mai 2025 au 15 Juin 2025
 
+- [x] Enregistrer les données du match dans la base de données
+- [x] Corriger bugs de connexion Bluetooth sur l'application Android
 - [ ] Jouer plusieurs parties
-- [ ] Enregistrer les données du match dans la base de données
 
 ## Changelog
 
@@ -548,7 +549,7 @@ Fin de match :
 
 ### Android
 
-- Si la première tentative de connexion à un appareils Bluetooth échoue. Il apparait comme : _"Erreur de connexion"_ dans l'application Android, alors qu'il est en réalité bien connecté.
+
 
 ### Qt
 
