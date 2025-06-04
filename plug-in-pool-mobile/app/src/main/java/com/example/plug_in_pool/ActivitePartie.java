@@ -1,6 +1,7 @@
 package com.example.plug_in_pool;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -28,7 +29,6 @@ public class ActivitePartie extends AppCompatActivity
 {
     private static final String TAG = "_ActivitePartie";
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
-    private static final int NUMERO_TABLE = 2;
 
     private CommunicationBluetooth communicationBluetoothEcran;
     private CommunicationBluetooth communicationBluetoothTable;
@@ -57,7 +57,8 @@ public class ActivitePartie extends AppCompatActivity
     private int          indexJoueurActuel      = 0;
     private int          nbPartiesGagnerJoueur1 = 0;
     private int          nbPartiesGagnerJoueur2 = 0;
-    public int           idMatch;
+    private int           idMatch;
+    private int          numeroTable;
 
     private TextView tableStatut;
     private TextView ecranStatut;
@@ -74,6 +75,7 @@ public class ActivitePartie extends AppCompatActivity
     private Button boutonDemarrer;
     private Button boutonTirLoupe;
     private Button boutonTerminer;
+    private TextView idTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -121,6 +123,7 @@ public class ActivitePartie extends AppCompatActivity
         boutonDemarrer        = findViewById(R.id.boutonDemarerMatch);
         boutonTirLoupe        = findViewById(R.id.boutonTirLoupe);
         boutonTerminer        = findViewById(R.id.boutonFinMatch);
+        idTable               = findViewById(R.id.numeroDeLaTable);
     }
     private void getNbParties()
     {
@@ -142,6 +145,7 @@ public class ActivitePartie extends AppCompatActivity
             System.err.println("nbParties est null ou vide.");
         }
     }
+    @SuppressLint("SetTextI18n")
     private void recupererDonneesDeConfigurations()
     {
         Intent intent   = getIntent();
@@ -155,8 +159,11 @@ public class ActivitePartie extends AppCompatActivity
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacEcran + " (adresse mac ecran)");
         adresseMacTable = intent.getStringExtra("adresseMacTable");
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacTable + " (adresse mac table)");
-        idMatch   = intent.getIntExtra("idMatch", -1);
+        idMatch         = intent.getIntExtra("idMatch", -1);
         Log.d(TAG, "idMatch : " + idMatch);
+        numeroTable     = intent.getIntExtra("numeroTable", -1);
+        idTable.setText("Table n°" + numeroTable);
+        Log.d(TAG, "numeroTable : " + numeroTable);
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -751,7 +758,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur1.getNom() + " " + joueur1.getPrenom() + " à gagner " + nbPartiesGagnerJoueur1 + " partie");
-            baseDonnees.ajouterManche(idMatch,joueur1.getId(),joueur2.getId(),NUMERO_TABLE);
+            baseDonnees.ajouterManche(idMatch,joueur1.getId(),joueur2.getId(),numeroTable);
             matchTermnier();
         }
         else if(nbPartiesGagnerJoueur1 < nbPartiesGagnerJoueur2)
@@ -760,7 +767,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur2.getNom() + " " + joueur2.getPrenom() + " à gagner " + nbPartiesGagnerJoueur2 + " partie");
-            baseDonnees.ajouterManche(idMatch,joueur2.getId(),joueur1.getId(),NUMERO_TABLE);
+            baseDonnees.ajouterManche(idMatch,joueur2.getId(),joueur1.getId(),numeroTable);
             matchTermnier();
         }
         else

@@ -120,6 +120,18 @@
             app:layout_constraintStart_toEndOf="@id/tableStatut"
             app:layout_constraintTop_toBottomOf="@id/nomDuJoueur"
             tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/numeroDeLaTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Attente de connexion à l'écran"
+            android:textColor="@color/noir"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tableStatut"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

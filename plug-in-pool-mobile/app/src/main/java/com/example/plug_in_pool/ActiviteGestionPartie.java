@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -47,6 +48,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private String nbParties;
     private String adresseMacEcran;
     private String adresseMacTable;
+    private int numeroTableSSID; /* SSID dois être sous la forme : pool-id , avec id en int*/
 
     /**
      * Ressources GUI
@@ -222,6 +224,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 String selection = (String) parent.getItemAtPosition(position);
                 String adresseMac = extraireAdresseMac(selection);
                 adresseMacTable = adresseMac;
+                Log.d(TAG, "adreseeMac : " + adresseMac);
+                numeroTableSSID = extraireNumeroTable(selection);
+                Log.d(TAG, "numéroTable : " + numeroTableSSID);
             }
 
             @Override
@@ -235,6 +240,43 @@ public class ActiviteGestionPartie extends AppCompatActivity
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
+    private int extraireNumeroTable(String texte)
+    {
+        if (texte == null || !texte.contains("(") || !texte.contains(")"))
+        {
+            Log.e("extraireNumeroTable", "Format invalide ou null : " + texte);
+            return -1;
+        }
+
+        int indexParenthese = texte.lastIndexOf('(');
+        if (indexParenthese <= 0)
+        {
+            Log.e("extraireNumeroTable", "Parenthèse mal placée : " + texte);
+            return -1;
+        }
+
+        String ssid = texte.substring(0, indexParenthese).trim();
+
+        int indexTiret = ssid.lastIndexOf('-');
+        if (indexTiret == -1 || indexTiret == ssid.length() - 1)
+        {
+            Log.e("extraireNumeroTable", "Tiret manquant ou ID vide : " + ssid);
+            return -1;
+        }
+
+        String idStr = ssid.substring(indexTiret + 1).trim();
+
+        try
+        {
+            return Integer.parseInt(idStr);
+        }
+        catch (NumberFormatException e)
+        {
+            Log.e("extraireNumeroTable", "ID non numérique : " + idStr);
+            return -1;
+        }
+    }
+
     private void lancerUnePartie()
     {
         boutonSuivant.setOnClickListener(new View.OnClickListener() {
@@ -249,6 +291,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 changerDeVue.putExtra("adresseMacEcran", adresseMacEcran);
                 changerDeVue.putExtra("adresseMacTable", adresseMacTable);
                 changerDeVue.putExtra("idMatch", idMatch);
+                changerDeVue.putExtra("numeroTable", numeroTableSSID);
                 Log.d(TAG, "idMatch : " + idMatch);
                 startActivity(changerDeVue);
             }
