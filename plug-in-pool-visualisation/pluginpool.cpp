@@ -122,7 +122,7 @@ void PlugInPool::empochageCasse(int idPartie,
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la bille rouge dans la poche " +
+              prenom + " a mis une bille rouge dans la poche " +
               QString::number(idPoche));
             break;
         }
@@ -132,7 +132,7 @@ void PlugInPool::empochageCasse(int idPartie,
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la bille jaune dans la poche " +
+              prenom + " a mis une bille jaune dans la poche " +
               QString::number(idPoche));
             break;
         }
@@ -153,7 +153,7 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
         case ROUGE:
         {
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la bille rouge dans la poche " +
+              prenom + " a mis une bille rouge dans la poche " +
               QString::number(idPoche));
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
@@ -162,7 +162,7 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
         case JAUNE:
         {
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la bille jaune dans la poche " +
+              prenom + " a mis une bille jaune dans la poche " +
               QString::number(idPoche));
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
@@ -176,8 +176,8 @@ void PlugInPool::afficherFaute(int idJoueurFaute, QString faute)
 {
     qDebug() << Q_FUNC_INFO << "idJoueurFaute" << idJoueurFaute << "faute"
              << faute;
-    QString      prenom       = match->getPrenomJoueur(idJoueurFaute);
-    EcranPartie* ecranPartie  = ecranPlugInPool->getEcranPartie();
+    QString      prenom      = match->getPrenomJoueur(idJoueurFaute);
+    EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
     ecranPartie->afficherMessageAction(prenom + " a mis la bille " + faute);
 }
 
