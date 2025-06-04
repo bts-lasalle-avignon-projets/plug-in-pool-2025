@@ -53,7 +53,7 @@ public class Joueur implements Serializable
     }
     public int retirerPointsEmpochageBilleNoire()
     {
-        return 0;
+        return (points = 0);
     }
     public int afficherPoint()
     {

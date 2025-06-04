@@ -395,7 +395,7 @@ public class ActivitePartie extends AppCompatActivity
                 String trameFauteNoire = trameFaute(CommunicationBluetooth.FAUTE, id, "Noire");
                 connexionEcran(trameFauteNoire);
                 joueurs.get(indexJoueurActuel).retirerPointsEmpochageBilleNoire();
-                joueurs.get((indexJoueurActuel + 1) % 2);
+                joueurs.get((indexJoueurActuel + 1) % 2).ajouterPoint();
                 match.setEtat(Match.EtatMatch.FINI);
                 new Handler().postDelayed(()->{
                     runOnUiThread(this::gestionDuMatch);
@@ -499,11 +499,11 @@ public class ActivitePartie extends AppCompatActivity
 
         deviceReception = adaptateurBluetooth.getRemoteDevice(adresseMacTable);
         communicationBluetoothTable = new CommunicationBluetooth(deviceReception);
-        communicationBluetoothTable.setReceptionListener(message -> {
+        communicationBluetoothTable.setReceptionListener(trame -> {
             runOnUiThread(() -> {
-                if (estTrameValide(message))
+                if (estTrameValide(trame))
                 {
-                    decomposerTrameEmpochage(message);
+                    decomposerTrameEmpochage(trame);
                 }
                 else
                 {
@@ -521,8 +521,8 @@ public class ActivitePartie extends AppCompatActivity
 
                 deviceEmission = adaptateurBluetooth.getRemoteDevice(adresseMacEcran);
                 communicationBluetoothEcran = new CommunicationBluetooth(deviceEmission);
-                communicationBluetoothEcran.setReceptionListener(message -> {
-                    Log.d(TAG, "Message reçu de l’écran : " + message);
+                communicationBluetoothEcran.setReceptionListener(trame -> {
+                    Log.d(TAG, "Trame reçu de l’écran : " + trame);
                 });
                 communicationBluetoothEcran.start();
 
@@ -543,33 +543,34 @@ public class ActivitePartie extends AppCompatActivity
             else
             {
                 tableNonConnecter();
+                ecranNonConnecter();
                 Log.e(TAG, "Connexion à la table ÉCHOUÉE !");
             }
         }, 3000);
     }
-    private void connexionTable(String message)
+    private void connexionTable(String trame)
     {
         if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte())
         {
-            envoyerTrameVersTable(message);
-            Log.d(TAG, "Message envoyé à la table : " + message);
+            envoyerTrameVersTable(trame);
+            Log.d(TAG, "Trame envoyé à la table : " + trame);
         }
         else
         {
-            Log.e(TAG, "Impossible d'envoyer le message : table non connectée");
+            Log.e(TAG, "Impossible d'envoyer le trame : table non connectée");
         }
     }
 
-    private void connexionEcran(String message)
+    private void connexionEcran(String trame)
     {
         if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
         {
-            envoyerTrame(message);
-            Log.d(TAG, "Message envoyé à l'écran : " + message);
+            envoyerTrame(trame);
+            Log.d(TAG, "Trame envoyé à l'écran : " + trame);
         }
         else
         {
-            Log.e(TAG, "Impossible d'envoyer le message : écran non connecté");
+            Log.e(TAG, "Impossible d'envoyer la trame : écran non connecté");
         }
     }
 
@@ -597,7 +598,6 @@ public class ActivitePartie extends AppCompatActivity
     {
         if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
         {
-            Log.d(TAG, "Envoi vers écran : " + trame);
             communicationBluetoothEcran.envoyerTrameAsync(trame);
             ecranConnecter();
         }
@@ -743,6 +743,9 @@ public class ActivitePartie extends AppCompatActivity
 
         Joueur joueur1 = joueurs.get(0);
         Joueur joueur2 = joueurs.get(1);
+
+        afficherPointsJoueur1.setText(String.valueOf(joueur1.afficherPoint()));
+        afficherPointsJoueur2.setText(String.valueOf(joueur2.afficherPoint()));
 
         int pointsJoueur1 = joueur1.afficherPoint();
         int pointsJoueur2 = joueur2.afficherPoint();
