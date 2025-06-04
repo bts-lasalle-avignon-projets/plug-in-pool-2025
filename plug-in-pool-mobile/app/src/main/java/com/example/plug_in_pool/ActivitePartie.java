@@ -177,6 +177,7 @@ public class ActivitePartie extends AppCompatActivity
                 boutonDemarrer.setVisibility(Button.GONE);
                 boutonTirLoupe.setVisibility(Button.VISIBLE);
                 tirLoupe();
+                messageEmpochage.setVisibility(TextView.VISIBLE);
             }
         });
     }
@@ -225,6 +226,7 @@ public class ActivitePartie extends AppCompatActivity
     {
         boolean casseEstFini = false;
         nbPartiesCompteur++;
+        idPartieEnCours.setVisibility(TextView.VISIBLE);
         idPartieEnCours.setText("Partie n° " + nbPartiesCompteur + " en cours");
 
         if (!casseEstFini)
@@ -708,6 +710,7 @@ public class ActivitePartie extends AppCompatActivity
     public void finDePartie()
     {
         boutonTirLoupe.setVisibility(Button.GONE);
+        joueurGagnant.setVisibility(TextView.VISIBLE);
 
         Joueur joueur1 = joueurs.get(0);
         Joueur joueur2 = joueurs.get(1);
