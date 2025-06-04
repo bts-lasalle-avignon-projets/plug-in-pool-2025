@@ -229,6 +229,11 @@ public class ActivitePartie extends AppCompatActivity
         String trameDetection = trameEtatPourTable(CommunicationBluetooth.DEMARRER_DETECTION);
         connexionTable(trameDetection);
     }
+    private void arreterDetectionTable()
+    {
+        String trameDesactivation = trameEtatPourTable(CommunicationBluetooth.DESACTIVER_DETECTION);
+        connexionTable(trameDesactivation);
+    }
     private void casse()
     {
         boolean casseEstFini = false;
@@ -801,6 +806,7 @@ public class ActivitePartie extends AppCompatActivity
         baseDonnees.terminerMatch(idMatch, 1);
         boutonTerminer.setOnClickListener(view -> {
             envoyerFinDeMatch(nbPartiesGagnerJoueur1, nbPartiesGagnerJoueur2);
+            arreterDetectionTable();
             Intent changerDeVue = new Intent(ActivitePartie.this, ActiviteHistorique.class);
             startActivity(changerDeVue);
         });
@@ -840,9 +846,6 @@ public class ActivitePartie extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        String trameDesactivation;
-        trameDesactivation = trameEtatPourTable(CommunicationBluetooth.DESACTIVER_DETECTION);
-        connexionTable(trameDesactivation);
         if(communicationBluetoothEcran != null)
             communicationBluetoothEcran.close();
         if(communicationBluetoothTable != null)
