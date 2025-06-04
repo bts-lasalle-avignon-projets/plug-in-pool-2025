@@ -270,10 +270,20 @@ public class ActivitePartie extends AppCompatActivity
                     }
                     break;
 
+                case 2:
+                    String trameFauteBlanche = trameFaute(CommunicationBluetooth.FAUTE, id, "Blanche");
+                    connexionEcran(trameFauteBlanche);
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
+                    Joueur joueurSuivantBlanche = joueurs.get(indexJoueurActuel);
+                    runOnUiThread(() -> joueurActuel.setText(joueurSuivantBlanche.getNom() + " " + joueurSuivantBlanche.getPrenom()));
+                    break;
+
                 case 3:
                     String trameFauteNoire = trameFaute(CommunicationBluetooth.FAUTE, id, "Noire");
                     connexionEcran(trameFauteNoire);
+                    joueurs.get(indexJoueurActuel).retirerPointsEmpochageBilleNoire();
                     joueurs.get((indexJoueurActuel + 1) % 2).ajouterPoint();
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
                     match.setEtat(Match.EtatMatch.FINI);
                     new Handler().postDelayed(()->{
                         runOnUiThread(this::gestionDuMatch);
@@ -283,8 +293,9 @@ public class ActivitePartie extends AppCompatActivity
                 default:
                     String trameFaute = trameFaute(CommunicationBluetooth.FAUTE, id, "");
                     connexionEcran(trameFaute);
-                    Joueur joueurSuivant = joueurs.get((indexJoueurActuel + 1) % 2);
-                    runOnUiThread(() -> joueurActuel.setText(joueurSuivant.getNom() + " " + joueurSuivant.getPrenom()));
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
+                    Joueur joueurSuivantNoire = joueurs.get(indexJoueurActuel);
+                    runOnUiThread(() -> joueurActuel.setText(joueurSuivantNoire.getNom() + " " + joueurSuivantNoire.getPrenom()));
                     break;
             }
 
@@ -370,9 +381,15 @@ public class ActivitePartie extends AppCompatActivity
                 }
                 break;
 
+            case 2:
+                String trameFauteBlanche = trameFaute(CommunicationBluetooth.FAUTE, id, "Blanche");
+                connexionEcran(trameFauteBlanche);
+                break;
+
             case 3:
                 String trameFauteNoire = trameFaute(CommunicationBluetooth.FAUTE, id, "Noire");
                 connexionEcran(trameFauteNoire);
+                joueurs.get(indexJoueurActuel).retirerPointsEmpochageBilleNoire();
                 joueurs.get((indexJoueurActuel + 1) % 2);
                 match.setEtat(Match.EtatMatch.FINI);
                 new Handler().postDelayed(()->{

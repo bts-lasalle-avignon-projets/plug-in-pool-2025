@@ -3,8 +3,6 @@ package com.example.plug_in_pool;
 import java.io.Serializable;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Joueur implements Serializable
@@ -52,6 +50,10 @@ public class Joueur implements Serializable
     public int ajouterPoint()
     {
         return points++;
+    }
+    public int retirerPointsEmpochageBilleNoire()
+    {
+        return 0;
     }
     public int afficherPoint()
     {
