@@ -164,11 +164,17 @@ Pour `ActivitePartie` :
     <td style="text-align: center;"></td>
     <td style="text-align: center;">x</td>
   </tr>
-  <tr>
-    <td>Enregistrer les données des parties</td>
+    <tr>
+    <td>Gérer plusieurs parties</td>
     <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
     <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td>Enregistrer les données des parties</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Consulter l'historique des matchs</td>
@@ -523,7 +529,6 @@ Fin de match :
 
 - [x] Enregistrer les données du match dans la base de données
 - [x] Corriger bugs de connexion Bluetooth sur l'application Android
-- [ ] Jouer plusieurs parties
 
 ## Changelog
 
@@ -554,6 +559,10 @@ Fin de match :
 ### Qt
 
 - Si deux trames sont envoyées à la suite depuis la tablette Android vers l'écran de visualisation. Elles sont considérées comme une seule.
+
+## TODO
+
+- [ ] Jouer plusieurs parties
 
 ## Documentation du code
 

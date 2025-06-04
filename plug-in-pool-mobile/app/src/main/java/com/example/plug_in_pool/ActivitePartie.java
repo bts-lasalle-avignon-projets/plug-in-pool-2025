@@ -1,6 +1,7 @@
 package com.example.plug_in_pool;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -28,7 +29,6 @@ public class ActivitePartie extends AppCompatActivity
 {
     private static final String TAG = "_ActivitePartie";
     private static final int REQUEST_BLUETOOTH_PERMISSION = 1;
-    private static final int NUMERO_TABLE = 2;
 
     private CommunicationBluetooth communicationBluetoothEcran;
     private CommunicationBluetooth communicationBluetoothTable;
@@ -57,7 +57,8 @@ public class ActivitePartie extends AppCompatActivity
     private int          indexJoueurActuel      = 0;
     private int          nbPartiesGagnerJoueur1 = 0;
     private int          nbPartiesGagnerJoueur2 = 0;
-    public int           idMatch;
+    private int           idMatch;
+    private int          numeroTable;
 
     private TextView tableStatut;
     private TextView ecranStatut;
@@ -74,6 +75,7 @@ public class ActivitePartie extends AppCompatActivity
     private Button boutonDemarrer;
     private Button boutonTirLoupe;
     private Button boutonTerminer;
+    private TextView idTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -121,6 +123,7 @@ public class ActivitePartie extends AppCompatActivity
         boutonDemarrer        = findViewById(R.id.boutonDemarerMatch);
         boutonTirLoupe        = findViewById(R.id.boutonTirLoupe);
         boutonTerminer        = findViewById(R.id.boutonFinMatch);
+        idTable               = findViewById(R.id.numeroDeLaTable);
     }
     private void getNbParties()
     {
@@ -142,6 +145,7 @@ public class ActivitePartie extends AppCompatActivity
             System.err.println("nbParties est null ou vide.");
         }
     }
+    @SuppressLint("SetTextI18n")
     private void recupererDonneesDeConfigurations()
     {
         Intent intent   = getIntent();
@@ -155,8 +159,11 @@ public class ActivitePartie extends AppCompatActivity
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacEcran + " (adresse mac ecran)");
         adresseMacTable = intent.getStringExtra("adresseMacTable");
         Log.d(TAG, "recupererDonneesDeConfigurations: " + adresseMacTable + " (adresse mac table)");
-        idMatch   = intent.getIntExtra("idMatch", -1);
+        idMatch         = intent.getIntExtra("idMatch", -1);
         Log.d(TAG, "idMatch : " + idMatch);
+        numeroTable     = intent.getIntExtra("numeroTable", -1);
+        idTable.setText("Table n°" + numeroTable);
+        Log.d(TAG, "numeroTable : " + numeroTable);
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -177,6 +184,7 @@ public class ActivitePartie extends AppCompatActivity
                 boutonDemarrer.setVisibility(Button.GONE);
                 boutonTirLoupe.setVisibility(Button.VISIBLE);
                 tirLoupe();
+                messageEmpochage.setVisibility(TextView.VISIBLE);
             }
         });
     }
@@ -221,10 +229,16 @@ public class ActivitePartie extends AppCompatActivity
         String trameDetection = trameEtatPourTable(CommunicationBluetooth.DEMARRER_DETECTION);
         connexionTable(trameDetection);
     }
+    private void arreterDetectionTable()
+    {
+        String trameDesactivation = trameEtatPourTable(CommunicationBluetooth.DESACTIVER_DETECTION);
+        connexionTable(trameDesactivation);
+    }
     private void casse()
     {
         boolean casseEstFini = false;
         nbPartiesCompteur++;
+        idPartieEnCours.setVisibility(TextView.VISIBLE);
         idPartieEnCours.setText("Partie n° " + nbPartiesCompteur + " en cours");
 
         if (!casseEstFini)
@@ -261,10 +275,20 @@ public class ActivitePartie extends AppCompatActivity
                     }
                     break;
 
+                case 2:
+                    String trameFauteBlanche = trameFaute(CommunicationBluetooth.FAUTE, id, "Blanche");
+                    connexionEcran(trameFauteBlanche);
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
+                    Joueur joueurSuivantBlanche = joueurs.get(indexJoueurActuel);
+                    runOnUiThread(() -> joueurActuel.setText(joueurSuivantBlanche.getNom() + " " + joueurSuivantBlanche.getPrenom()));
+                    break;
+
                 case 3:
                     String trameFauteNoire = trameFaute(CommunicationBluetooth.FAUTE, id, "Noire");
                     connexionEcran(trameFauteNoire);
+                    joueurs.get(indexJoueurActuel).retirerPointsEmpochageBilleNoire();
                     joueurs.get((indexJoueurActuel + 1) % 2).ajouterPoint();
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
                     match.setEtat(Match.EtatMatch.FINI);
                     new Handler().postDelayed(()->{
                         runOnUiThread(this::gestionDuMatch);
@@ -274,8 +298,9 @@ public class ActivitePartie extends AppCompatActivity
                 default:
                     String trameFaute = trameFaute(CommunicationBluetooth.FAUTE, id, "");
                     connexionEcran(trameFaute);
-                    Joueur joueurSuivant = joueurs.get((indexJoueurActuel + 1) % 2);
-                    runOnUiThread(() -> joueurActuel.setText(joueurSuivant.getNom() + " " + joueurSuivant.getPrenom()));
+                    indexJoueurActuel = (indexJoueurActuel + 1) % 2;
+                    Joueur joueurSuivantNoire = joueurs.get(indexJoueurActuel);
+                    runOnUiThread(() -> joueurActuel.setText(joueurSuivantNoire.getNom() + " " + joueurSuivantNoire.getPrenom()));
                     break;
             }
 
@@ -361,10 +386,16 @@ public class ActivitePartie extends AppCompatActivity
                 }
                 break;
 
+            case 2:
+                String trameFauteBlanche = trameFaute(CommunicationBluetooth.FAUTE, id, "Blanche");
+                connexionEcran(trameFauteBlanche);
+                break;
+
             case 3:
                 String trameFauteNoire = trameFaute(CommunicationBluetooth.FAUTE, id, "Noire");
                 connexionEcran(trameFauteNoire);
-                joueurs.get((indexJoueurActuel + 1) % 2);
+                joueurs.get(indexJoueurActuel).retirerPointsEmpochageBilleNoire();
+                joueurs.get((indexJoueurActuel + 1) % 2).ajouterPoint();
                 match.setEtat(Match.EtatMatch.FINI);
                 new Handler().postDelayed(()->{
                     runOnUiThread(this::gestionDuMatch);
@@ -468,11 +499,11 @@ public class ActivitePartie extends AppCompatActivity
 
         deviceReception = adaptateurBluetooth.getRemoteDevice(adresseMacTable);
         communicationBluetoothTable = new CommunicationBluetooth(deviceReception);
-        communicationBluetoothTable.setReceptionListener(message -> {
+        communicationBluetoothTable.setReceptionListener(trame -> {
             runOnUiThread(() -> {
-                if (estTrameValide(message))
+                if (estTrameValide(trame))
                 {
-                    decomposerTrameEmpochage(message);
+                    decomposerTrameEmpochage(trame);
                 }
                 else
                 {
@@ -490,8 +521,8 @@ public class ActivitePartie extends AppCompatActivity
 
                 deviceEmission = adaptateurBluetooth.getRemoteDevice(adresseMacEcran);
                 communicationBluetoothEcran = new CommunicationBluetooth(deviceEmission);
-                communicationBluetoothEcran.setReceptionListener(message -> {
-                    Log.d(TAG, "Message reçu de l’écran : " + message);
+                communicationBluetoothEcran.setReceptionListener(trame -> {
+                    Log.d(TAG, "Trame reçu de l’écran : " + trame);
                 });
                 communicationBluetoothEcran.start();
 
@@ -512,33 +543,34 @@ public class ActivitePartie extends AppCompatActivity
             else
             {
                 tableNonConnecter();
+                ecranNonConnecter();
                 Log.e(TAG, "Connexion à la table ÉCHOUÉE !");
             }
         }, 3000);
     }
-    private void connexionTable(String message)
+    private void connexionTable(String trame)
     {
         if (communicationBluetoothTable != null && communicationBluetoothTable.estConnecte())
         {
-            envoyerTrameVersTable(message);
-            Log.d(TAG, "Message envoyé à la table : " + message);
+            envoyerTrameVersTable(trame);
+            Log.d(TAG, "Trame envoyé à la table : " + trame);
         }
         else
         {
-            Log.e(TAG, "Impossible d'envoyer le message : table non connectée");
+            Log.e(TAG, "Impossible d'envoyer le trame : table non connectée");
         }
     }
 
-    private void connexionEcran(String message)
+    private void connexionEcran(String trame)
     {
         if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
         {
-            envoyerTrame(message);
-            Log.d(TAG, "Message envoyé à l'écran : " + message);
+            envoyerTrame(trame);
+            Log.d(TAG, "Trame envoyé à l'écran : " + trame);
         }
         else
         {
-            Log.e(TAG, "Impossible d'envoyer le message : écran non connecté");
+            Log.e(TAG, "Impossible d'envoyer la trame : écran non connecté");
         }
     }
 
@@ -566,7 +598,6 @@ public class ActivitePartie extends AppCompatActivity
     {
         if (communicationBluetoothEcran != null && communicationBluetoothEcran.estConnecte())
         {
-            Log.d(TAG, "Envoi vers écran : " + trame);
             communicationBluetoothEcran.envoyerTrameAsync(trame);
             ecranConnecter();
         }
@@ -708,9 +739,13 @@ public class ActivitePartie extends AppCompatActivity
     public void finDePartie()
     {
         boutonTirLoupe.setVisibility(Button.GONE);
+        joueurGagnant.setVisibility(TextView.VISIBLE);
 
         Joueur joueur1 = joueurs.get(0);
         Joueur joueur2 = joueurs.get(1);
+
+        afficherPointsJoueur1.setText(String.valueOf(joueur1.afficherPoint()));
+        afficherPointsJoueur2.setText(String.valueOf(joueur2.afficherPoint()));
 
         int pointsJoueur1 = joueur1.afficherPoint();
         int pointsJoueur2 = joueur2.afficherPoint();
@@ -748,7 +783,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur1.getNom() + " " + joueur1.getPrenom() + " à gagner " + nbPartiesGagnerJoueur1 + " partie");
-            baseDonnees.ajouterManche(idMatch,joueur1.getId(),joueur2.getId(),NUMERO_TABLE);
+            baseDonnees.ajouterManche(idMatch,joueur1.getId(),joueur2.getId(),numeroTable);
             matchTermnier();
         }
         else if(nbPartiesGagnerJoueur1 < nbPartiesGagnerJoueur2)
@@ -757,7 +792,7 @@ public class ActivitePartie extends AppCompatActivity
             messageEmpochage.setText("");
             boutonTerminer.setVisibility(Button.VISIBLE);
             joueurGagnant.setText(joueur2.getNom() + " " + joueur2.getPrenom() + " à gagner " + nbPartiesGagnerJoueur2 + " partie");
-            baseDonnees.ajouterManche(idMatch,joueur2.getId(),joueur1.getId(),NUMERO_TABLE);
+            baseDonnees.ajouterManche(idMatch,joueur2.getId(),joueur1.getId(),numeroTable);
             matchTermnier();
         }
         else
@@ -774,6 +809,7 @@ public class ActivitePartie extends AppCompatActivity
         baseDonnees.terminerMatch(idMatch, 1);
         boutonTerminer.setOnClickListener(view -> {
             envoyerFinDeMatch(nbPartiesGagnerJoueur1, nbPartiesGagnerJoueur2);
+            arreterDetectionTable();
             Intent changerDeVue = new Intent(ActivitePartie.this, ActiviteHistorique.class);
             startActivity(changerDeVue);
         });
@@ -813,9 +849,6 @@ public class ActivitePartie extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        String trameDesactivation;
-        trameDesactivation = trameEtatPourTable(CommunicationBluetooth.DESACTIVER_DETECTION);
-        connexionTable(trameDesactivation);
         if(communicationBluetoothEcran != null)
             communicationBluetoothEcran.close();
         if(communicationBluetoothTable != null)
