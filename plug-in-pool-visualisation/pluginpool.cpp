@@ -43,6 +43,11 @@ PlugInPool::PlugInPool(QObject* parent) :
             &CommunicationBluetooth::trameMatchTermineeRecue,
             this,
             &PlugInPool::terminerMatch);
+
+    connect(communicationBluetooth,
+            &CommunicationBluetooth::trameFauteRecue,
+            this,
+            &PlugInPool::afficherFaute);
 }
 
 PlugInPool::~PlugInPool()
@@ -116,6 +121,9 @@ void PlugInPool::empochageCasse(int idPartie,
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
+            ecranPartie->afficherMessageAction(
+              prenom + " a mis la bille rouge dans la poche " +
+              QString::number(idPoche));
             break;
         }
         case JAUNE:
@@ -123,21 +131,9 @@ void PlugInPool::empochageCasse(int idPartie,
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->attribuerCouleurBille(idJoueur, couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
-            break;
-        }
-        case BLANCHE:
-        {
-            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
-            break;
-        }
-        case NOIR:
-        {
-            ecranPartie->afficherMessageAction("Faute : Partie Terminé");
-            break;
-        }
-        case AUCUNE:
-        {
-            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
+            ecranPartie->afficherMessageAction(
+              prenom + " a mis la bille jaune dans la poche " +
+              QString::number(idPoche));
             break;
         }
     }
@@ -157,7 +153,7 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
         case ROUGE:
         {
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la boule rouge dans la poche " +
+              prenom + " a mis la bille rouge dans la poche " +
               QString::number(idPoche));
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
@@ -166,29 +162,23 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
         case JAUNE:
         {
             ecranPartie->afficherMessageAction(
-              prenom + " a mis la boule jaune dans la poche " +
+              prenom + " a mis la bille jaune dans la poche " +
               QString::number(idPoche));
             ecranPartie->retirerBoule(couleurBoule);
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
-        case BLANCHE:
-        {
-            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
-            break;
-        }
-        case NOIR:
-        {
-            ecranPartie->afficherMessageAction("Faute : Partie Terminé");
-            break;
-        }
-        case AUCUNE:
-        {
-            ecranPartie->afficherMessageAction("Faute : Joueur suivant");
-            break;
-        }
     }
     ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
+}
+
+void PlugInPool::afficherFaute(int idJoueurFaute, QString faute)
+{
+    qDebug() << Q_FUNC_INFO << "idJoueurFaute" << idJoueurFaute << "faute"
+             << faute;
+    QString      prenom       = match->getPrenomJoueur(idJoueurFaute);
+    EcranPartie* ecranPartie  = ecranPlugInPool->getEcranPartie();
+    ecranPartie->afficherMessageAction(prenom + " a mis la bille " + faute);
 }
 
 void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
