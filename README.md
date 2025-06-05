@@ -42,6 +42,7 @@
       - [Module de gestion de matchs](#module-de-gestion-de-matchs)
       - [Diagramme de cas d'utilisation (Android)](#diagramme-de-cas-dutilisation-android)
       - [IHM de l'application Android](#ihm-de-lapplication-android)
+      - [Visite de l'IHM](#visite-de-lihm)
       - [Diagramme de classes (Android)](#diagramme-de-classes-android)
       - [Recette](#recette)
       - [Base de données](#base-de-données)
@@ -125,11 +126,19 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
 
 ![](./images/choixDesAppreilsEtActivitePartie.png)
 
-![](./images/demarerPartieEtEmpochage.png)
+![](./images/demarerPartie.png)
 
-![](./images/finDePartieEtHistorique.png)
+![](./images/partieEtFinDePartie.png)
+
+![](./images/historique.png)
+
+#### Visite de l'IHM
+
+![](./images/applicationAndroid.gif)
 
 #### Diagramme de classes (Android)
+
+![](./images/classes-android.png)
 
 Pour `ActivitePartie` :
 
@@ -533,8 +542,15 @@ Fin de match :
 
 - [x] Enregistrer les données du match dans la base de données
 - [x] Corriger bugs de connexion Bluetooth sur l'application Android
+- [x] Améliorer l'interface de l'Activité Partie Android
 
 ## Changelog
+
+### Version 1.1
+
+- [x] Enregistrer les données du match dans la base de données
+- [x] Corriger bugs de connexion Bluetooth sur l'application Android
+- [x] Améliorer l'interface de l'Activité Partie Android
 
 ### Version 1.0
 
@@ -558,7 +574,8 @@ Fin de match :
 
 ### Android
 
-
+- Si, après un match, les joueurs en reconfigurent un nouveau, il peut arriver que la liaison avec la table soit impossible.
+- Si le temps de connexion à l'écran est long, la tablette peut afficher que la connexion est impossible, alors qu’elle existe bel et bien (le témoin sur l’écran d’affichage le confirme). Mais cet état est mis à jour lors du démarrage de la partie.
 
 ### Qt
 
@@ -567,6 +584,7 @@ Fin de match :
 ## TODO
 
 - [ ] Jouer plusieurs parties
+- [ ] Corriger les défauts constatés non corrigés
 
 ## Documentation du code
 
