@@ -543,6 +543,9 @@ Fin de match :
 - [x] Enregistrer les données du match dans la base de données
 - [x] Corriger bugs de connexion Bluetooth sur l'application Android
 - [x] Améliorer l'interface de l'Activité Partie Android
+- [x] Afficher les statistiques de la partie sur l’écran à la fin
+- [x] Afficher la faute d'un joueur sur l'écran
+- [x] Corriger bug d'affichage sur l'écran
 
 ## Changelog
 
@@ -551,6 +554,9 @@ Fin de match :
 - [x] Enregistrer les données du match dans la base de données
 - [x] Corriger bugs de connexion Bluetooth sur l'application Android
 - [x] Améliorer l'interface de l'Activité Partie Android
+- [x] Afficher les statistiques de la partie sur l’écran à la fin
+- [x] Afficher la faute d'un joueur sur l'écran
+- [x] Corriger bug d'affichage sur l'écran
 
 ### Version 1.0
 
