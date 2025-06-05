@@ -5,7 +5,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
 {
     qDebug() << Q_FUNC_INFO << this;
 
-    affichageVersion       = new QLabel("v1.0", ecran);
+    affichageVersion       = new QLabel("v1.1", ecran);
     affichageJoueurGagnant = new QLabel("Aucun joueur gagnant", ecran);
 
     affichageJoueurUn                        = new QLabel("Joueur 1", ecran);
@@ -18,7 +18,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     affichageBillesBlanchesEmpocheesJoueurDeux = new QLabel(ecran);
     affichageEmpochagesReussisJoueurDeux       = new QLabel(ecran);
 
-    affichageDureePartie = new QLabel("00:00",ecran);
+    affichageDureePartie = new QLabel("00:00", ecran);
 
     affichageJoueurUn->setAlignment(Qt::AlignCenter);
     affichageJoueurDeux->setAlignment(Qt::AlignCenter);
@@ -29,7 +29,6 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     affichageEmpochagesReussisJoueurUn->setAlignment(Qt::AlignCenter);
     affichageEmpochagesReussisJoueurDeux->setAlignment(Qt::AlignCenter);
     affichageDureePartie->setAlignment(Qt::AlignCenter);
-
 
     affichageVersion->setObjectName("affichageVersion");
     affichageJoueurGagnant->setObjectName("affichageJoueurGagnant");
@@ -56,8 +55,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     QHBoxLayout* espaceStatistiques           = new QHBoxLayout();
     QVBoxLayout* espaceStatistiquesJoueurUn   = new QVBoxLayout();
     QVBoxLayout* espaceStatistiquesJoueurDeux = new QVBoxLayout();
-    QHBoxLayout* espaceDureePartie = new QHBoxLayout();
-
+    QHBoxLayout* espaceDureePartie            = new QHBoxLayout();
 
     espaceVersion->addStretch();
     espaceVersion->addWidget(affichageVersion);

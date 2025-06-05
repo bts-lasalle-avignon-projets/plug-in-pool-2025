@@ -337,8 +337,8 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   <tr>
     <td>Visualiser les données du match</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Dialoguer avec le terminal mobile</td>
