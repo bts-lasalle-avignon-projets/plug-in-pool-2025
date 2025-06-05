@@ -230,6 +230,8 @@ void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
                                    billesEmpocheesJoueurUn,
                                    billesEmpocheesJoueurDeux);
 
+    afficherDureePartie();
+
     changerEcranFin();
 }
 
@@ -253,6 +255,22 @@ void PlugInPool::terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux)
                                   QString::number(nbPartiesJoueurDeux) +
                                   "      : " + match->getPrenomJoueur(1));
     changerEcranFinMatch();
+}
+
+void PlugInPool::afficherDureePartie()
+{
+    qDebug() << Q_FUNC_INFO;
+    EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
+    EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
+    int minutes  = ecranPartie->getSecondesEcoulees() / MINUTE;
+    int secondes = ecranPartie->getSecondesEcoulees() % MINUTE;
+
+    QString temps =
+      QString("%1:%2")
+        .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+        .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+    ecranFin->afficherDureePartie(temps);
+
 }
 
 void PlugInPool::changerEcranMatch()

@@ -21,6 +21,8 @@ class EcranFin : public QObject
     QLabel* affichageBillesBlanchesEmpocheesJoueurDeux;
     QLabel* affichageEmpochagesReussisJoueurDeux;
 
+    QLabel* affichageDureePartie;
+
   public:
     explicit EcranFin(QWidget* parent = nullptr);
     virtual ~EcranFin();
@@ -34,6 +36,7 @@ class EcranFin : public QObject
                                   QString billesBlanchesEmpocheesJoueurDeux,
                                   QString billesEmpocheesJoueurUn,
                                   QString billesEmpocheesJoueurDeux);
+    void    afficherDureePartie(QString duree);
 
   signals:
 };

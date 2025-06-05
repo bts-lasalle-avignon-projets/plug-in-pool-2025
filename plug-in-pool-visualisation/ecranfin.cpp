@@ -8,32 +8,47 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     affichageVersion       = new QLabel("v1.0", ecran);
     affichageJoueurGagnant = new QLabel("Aucun joueur gagnant", ecran);
 
-    affichageJoueurUn                        = new QLabel(ecran);
+    affichageJoueurUn                        = new QLabel("Joueur 1", ecran);
     affichageTirsJoueurUn                    = new QLabel(ecran);
     affichageBillesBlanchesEmpocheesJoueurUn = new QLabel(ecran);
     affichageEmpochagesReussisJoueurUn       = new QLabel(ecran);
 
-    affichageJoueurDeux                        = new QLabel(ecran);
+    affichageJoueurDeux                        = new QLabel("Joueur 2", ecran);
     affichageTirsJoueurDeux                    = new QLabel(ecran);
     affichageBillesBlanchesEmpocheesJoueurDeux = new QLabel(ecran);
     affichageEmpochagesReussisJoueurDeux       = new QLabel(ecran);
 
+    affichageDureePartie = new QLabel("00:00",ecran);
+
+    affichageJoueurUn->setAlignment(Qt::AlignCenter);
+    affichageJoueurDeux->setAlignment(Qt::AlignCenter);
+    affichageTirsJoueurUn->setAlignment(Qt::AlignCenter);
+    affichageTirsJoueurDeux->setAlignment(Qt::AlignCenter);
+    affichageBillesBlanchesEmpocheesJoueurUn->setAlignment(Qt::AlignCenter);
+    affichageBillesBlanchesEmpocheesJoueurDeux->setAlignment(Qt::AlignCenter);
+    affichageEmpochagesReussisJoueurUn->setAlignment(Qt::AlignCenter);
+    affichageEmpochagesReussisJoueurDeux->setAlignment(Qt::AlignCenter);
+    affichageDureePartie->setAlignment(Qt::AlignCenter);
+
+
     affichageVersion->setObjectName("affichageVersion");
     affichageJoueurGagnant->setObjectName("affichageJoueurGagnant");
 
-    affichageJoueurUn->setObjectName("affichageJoueurUn");
+    affichageJoueurUn->setObjectName("affichageJoueurUnFinPartie");
     affichageTirsJoueurUn->setObjectName("affichageTirsJoueurUn");
     affichageBillesBlanchesEmpocheesJoueurUn->setObjectName(
       "affichageBillesBlanchesEmpocheesJoueurUn");
     affichageEmpochagesReussisJoueurUn->setObjectName(
-      "affichageEmpochagesReussisJoueurUn ");
+      "affichageEmpochagesReussisJoueurUn");
 
-    affichageJoueurDeux->setObjectName("affichageJoueurDeux");
+    affichageJoueurDeux->setObjectName("affichageJoueurDeuxFinPartie");
     affichageTirsJoueurDeux->setObjectName("affichageTirsJoueurUn");
     affichageBillesBlanchesEmpocheesJoueurDeux->setObjectName(
       "affichageBillesBlanchesEmpocheesJoueurUn");
     affichageEmpochagesReussisJoueurDeux->setObjectName(
-      "affichageEmpochagesReussisJoueurUn ");
+      "affichageEmpochagesReussisJoueurUn");
+
+    affichageDureePartie->setObjectName("affichageDureePartie");
 
     QVBoxLayout* ecranFin                     = new QVBoxLayout(ecran);
     QHBoxLayout* espaceVersion                = new QHBoxLayout();
@@ -41,6 +56,8 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     QHBoxLayout* espaceStatistiques           = new QHBoxLayout();
     QVBoxLayout* espaceStatistiquesJoueurUn   = new QVBoxLayout();
     QVBoxLayout* espaceStatistiquesJoueurDeux = new QVBoxLayout();
+    QHBoxLayout* espaceDureePartie = new QHBoxLayout();
+
 
     espaceVersion->addStretch();
     espaceVersion->addWidget(affichageVersion);
@@ -63,16 +80,25 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     espaceStatistiquesJoueurDeux->addWidget(
       affichageEmpochagesReussisJoueurDeux);
 
+    espaceStatistiques->addStretch();
     espaceStatistiques->addLayout(espaceStatistiquesJoueurUn);
+    espaceStatistiques->addSpacing(80);
     espaceStatistiques->addLayout(espaceStatistiquesJoueurDeux);
+    espaceStatistiques->addStretch();
+
+    espaceDureePartie->addStretch();
+    espaceDureePartie->addWidget(affichageDureePartie);
+    espaceDureePartie->addStretch();
 
     ecranFin->addStretch();
+    ecranFin->addSpacing(90);
     ecranFin->addLayout(espaceVersion);
     ecranFin->addSpacing(480);
     ecranFin->addLayout(espaceJoueurGagnant);
-    ecranFin->addSpacing(160);
-    ecranFin->addLayout(espaceStatistiques);
     ecranFin->addStretch();
+    ecranFin->addLayout(espaceStatistiques);
+    ecranFin->addLayout(espaceDureePartie);
+    ecranFin->addSpacing(50);
 }
 
 EcranFin::~EcranFin()
@@ -113,4 +139,9 @@ void EcranFin::afficherStatistiques(QString prenomJoueurUn,
                                                 billesEmpocheesJoueurUn);
     affichageEmpochagesReussisJoueurDeux->setText("Empochages Réussis : " +
                                                   billesEmpocheesJoueurDeux);
+}
+
+void EcranFin::afficherDureePartie(QString duree)
+{
+    affichageDureePartie->setText("Durée de la partie : " + duree);
 }
