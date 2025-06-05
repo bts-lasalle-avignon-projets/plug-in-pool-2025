@@ -85,6 +85,9 @@ void PlugInPool::configurerMatch(int     nbManches,
     EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
     match->enregistrerJoueurs(prenomJoueur1, prenomJoueur2);
     match->setNbManchesGagnantes(nbManches);
+    match->reinitialiserTirsJoueurs();
+    match->reinitialiserNbBillesBlanchesEmpocheesJoueurs();
+    match->reinitialiserNbBillesEmpocheesJoueurs();
 
     ecranMatch->afficherInformationsMatch(nbManches,
                                           prenomJoueur1,
@@ -136,7 +139,14 @@ void PlugInPool::empochageCasse(int idPartie,
               QString::number(idPoche));
             break;
         }
+        case BLANCHE:
+        {
+            match->augmenterCompteurBillesBlanchesEmpochees(idJoueur);
+        }
     }
+    match->attribuerCouleur(idJoueur, couleurBoule);
+    match->augmenterCompteurEmpochagesReussis(idJoueur, couleurBoule);
+    match->augmenterCompteurTirs(idJoueur);
     ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
@@ -168,7 +178,13 @@ void PlugInPool::empochage(int idJoueur, int couleurBille, int idPoche)
             ecranPartie->incrementerCompteurPoche(couleurBoule, idPoche - 1);
             break;
         }
+        case BLANCHE:
+        {
+            match->augmenterCompteurBillesBlanchesEmpochees(idJoueur);
+        }
     }
+    match->augmenterCompteurEmpochagesReussis(idJoueur, couleurBoule);
+    match->augmenterCompteurTirs(idJoueur);
     ecranPartie->demarrerCompteAReboursManche(TEMPS_COMPTE_A_REBOURS);
 }
 
@@ -187,7 +203,35 @@ void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
              << idJoueurGagnant;
     EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
     QString   prenomGagnant = match->getPrenomJoueur(idJoueurGagnant);
+
+    QString prenomJoueurUn   = match->getPrenomJoueur(0);
+    QString prenomJoueurDeux = match->getPrenomJoueur(1);
+
+    QString tirsJoueurUn   = QString::number(match->getTirsJoueur(0));
+    QString tirsJoueurDeux = QString::number(match->getTirsJoueur(1));
+
+    QString billesBlanchesEmpocheesJoueurUn =
+      QString::number(match->getBillesBlanchesEmpocheesJoueur(0));
+    QString billesBlanchesEmpocheesJoueurDeux =
+      QString::number(match->getBillesBlanchesEmpocheesJoueur(1));
+
+    QString billesEmpocheesJoueurUn =
+      QString::number(match->getBillesEmpocheesJoueur(0));
+    QString billesEmpocheesJoueurDeux =
+      QString::number(match->getBillesEmpocheesJoueur(1));
+
     ecranFin->afficherJoueurGagnant(prenomGagnant + " a gagné cette partie");
+    ecranFin->afficherStatistiques(prenomJoueurUn,
+                                   prenomJoueurDeux,
+                                   tirsJoueurUn,
+                                   tirsJoueurDeux,
+                                   billesBlanchesEmpocheesJoueurUn,
+                                   billesBlanchesEmpocheesJoueurDeux,
+                                   billesEmpocheesJoueurUn,
+                                   billesEmpocheesJoueurDeux);
+
+    afficherDureePartie();
+
     changerEcranFin();
 }
 
@@ -211,6 +255,22 @@ void PlugInPool::terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux)
                                   QString::number(nbPartiesJoueurDeux) +
                                   "      : " + match->getPrenomJoueur(1));
     changerEcranFinMatch();
+}
+
+void PlugInPool::afficherDureePartie()
+{
+    qDebug() << Q_FUNC_INFO;
+    EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
+    EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
+    int minutes  = ecranPartie->getSecondesEcoulees() / MINUTE;
+    int secondes = ecranPartie->getSecondesEcoulees() % MINUTE;
+
+    QString temps =
+      QString("%1:%2")
+        .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
+        .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
+    ecranFin->afficherDureePartie(temps);
+
 }
 
 void PlugInPool::changerEcranMatch()

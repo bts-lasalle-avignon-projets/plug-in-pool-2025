@@ -51,7 +51,19 @@ class Match
     void    setNbManchesGagnantes(int nbManchesGagnantes);
     void    enregistrerJoueurs(const QString& prenomJoueur1,
                                const QString& prenomJoueur2);
+    void    augmenterCompteurTirs(int idJoueur);
+    void    augmenterCompteurBillesBlanchesEmpochees(int idJoueur);
+    void    augmenterCompteurBillesEmpochees(int idJoueur);
+    void    reinitialiserTirsJoueurs();
+    void    reinitialiserNbBillesBlanchesEmpocheesJoueurs();
+    void    reinitialiserNbBillesEmpocheesJoueurs();
+    void    attribuerCouleur(int idJoueur, CouleurBille couleurEmpochee);
+    void    augmenterCompteurEmpochagesReussis(int          idJoueur,
+                                               CouleurBille couleurEmpochee);
     QString getPrenomJoueur(int idJoueur) const;
+    int     getTirsJoueur(int idJoueur) const;
+    int     getBillesBlanchesEmpocheesJoueur(int idJoueur) const;
+    int     getBillesEmpocheesJoueur(int idJoueur) const;
 };
 
 #endif // MATCH_H

@@ -39,6 +39,7 @@ class PlugInPool : public QObject
     void terminerPartie(int idPartie, int idJoueurGagnant);
     void terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux);
     void afficherFaute(int idJoueurFaute, QString faute);
+    void afficherDureePartie();
     void changerEcranMatch();
     void changerEcranPartie();
     void changerEcranFin();

@@ -4,7 +4,7 @@
 
 Joueur::Joueur(const QString& nom, const QString& prenom, int id) :
     nom(nom), prenom(prenom), id(id), couleur(CouleurBille::AUCUNE), points(0),
-    nbBillesRestantes(NB_BILLES_JOUEUR)
+    nbBillesEmpochees(NB_BILLES_JOUEUR)
 {
     qDebug() << Q_FUNC_INFO << this << "nom" << nom << "prenom" << prenom
              << "id" << id << "couleur" << couleur;
@@ -35,12 +35,52 @@ CouleurBille Joueur::getCouleur() const
     return couleur;
 }
 
-int Joueur::getNbBillesRestantes() const
+int Joueur::getTirs() const
 {
-    return nbBillesRestantes;
+    return tirs;
+}
+
+int Joueur::getNbBillesEmpochees() const
+{
+    return nbBillesEmpochees;
+}
+
+int Joueur::getNbBillesBlanchesEmpochees() const
+{
+    return nbBillesBlanchesEmpochees;
 }
 
 void Joueur::setCouleur(CouleurBille couleur)
 {
     this->couleur = couleur;
+}
+
+void Joueur::ajouterTirs()
+{
+    tirs++;
+}
+
+void Joueur::ajouterBilleBlancheEmpochee()
+{
+    nbBillesBlanchesEmpochees++;
+}
+
+void Joueur::ajouterBillesEmpochees()
+{
+    nbBillesEmpochees++;
+}
+
+void Joueur::reinitialiserTirs()
+{
+    tirs = 0;
+}
+
+void Joueur::reinitialiserBillesBlanchesEmpochees()
+{
+    nbBillesBlanchesEmpochees = 0;
+}
+
+void Joueur::reinitialiserBillesEmpochees()
+{
+    nbBillesEmpochees = 0;
 }
