@@ -63,9 +63,9 @@ EcranPlugInPool::EcranPlugInPool(QWidget* parent) :
 #endif
 
     // afficherEcranAccueil();
-    //  afficherEcranMatch();
-    //  afficherEcranPartie();
-    //  afficherEcranFin();
+    // afficherEcranMatch();
+    // afficherEcranPartie();
+    // afficherEcranFin();
     // afficherEcranFinMatch();
 }
 

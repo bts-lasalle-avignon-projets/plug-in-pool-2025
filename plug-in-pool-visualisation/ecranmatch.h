@@ -35,6 +35,8 @@ class EcranMatch : public QWidget
     void demarrerCompteAReboursDebutMatch(int dureeEnSecondes);
     void positionnerAffichageJoueurs();
 
+
+
   signals:
     void compteAReboursDebutMatchTermine();
 };

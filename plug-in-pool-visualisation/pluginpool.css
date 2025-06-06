@@ -505,6 +505,96 @@ QLabel#affichageJoueurGagnant {
     padding: 0px;
 }
 
+QLabel#affichageJoueurUnFinPartie {
+    font-size: 35px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageJoueurDeuxFinPartie {
+    font-size: 35px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageTirsJoueurUn {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageTirsJoueurDeux {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageBillesBlanchesEmpocheesJoueurUn {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageBillesBlanchesEmpocheesJoueurDeux {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageEmpochagesReussisJoueurUn {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageEmpochagesReussisJoueurDeux {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
+QLabel#affichageDureePartie {
+    font-size: 25px;
+    background-color: none;
+    border: none;
+    text-align: center;
+    font-family: 'REM';
+    margin: 0px;
+    padding: 0px;
+}
+
 /* Écran Fin Match */
 QWidget#ecranFinMatch {
     background-image: url(":/ecranFinMatchQT.png");

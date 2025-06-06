@@ -3,7 +3,6 @@ package com.example.plug_in_pool;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,16 +10,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -50,6 +48,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
     private String nbParties;
     private String adresseMacEcran;
     private String adresseMacTable;
+    private int numeroTableSSID; /* SSID dois être sous la forme : pool-id , avec id en int*/
 
     /**
      * Ressources GUI
@@ -59,9 +58,8 @@ public class ActiviteGestionPartie extends AppCompatActivity
     /**
      * Bluetooth
      */
-    private BluetoothSocket  socketBluetooth = null;
-    private BluetoothDevice  peripheriqueBluetooth;
     private BluetoothAdapter adaptateurBluetooth;
+    public int idMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -106,6 +104,7 @@ public class ActiviteGestionPartie extends AppCompatActivity
         joueur1   = (Joueur)intent.getSerializableExtra("joueur1");
         joueur2   = (Joueur)intent.getSerializableExtra("joueur2");
         nbParties = intent.getSerializableExtra("nbParties").toString();
+        idMatch   = intent.getIntExtra("idMatch", -1);
 
         if(joueur1 != null && joueur2 != null)
         {
@@ -205,7 +204,6 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 String selection = (String) parent.getItemAtPosition(position);
                 String adresseMac = extraireAdresseMac(selection);
                 adresseMacEcran = adresseMac;
-                connecterBluetooth(adresseMac);
             }
 
             @Override
@@ -226,7 +224,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 String selection = (String) parent.getItemAtPosition(position);
                 String adresseMac = extraireAdresseMac(selection);
                 adresseMacTable = adresseMac;
-                connecterBluetooth(adresseMac);
+                Log.d(TAG, "adreseeMac : " + adresseMac);
+                numeroTableSSID = extraireNumeroTable(selection);
+                Log.d(TAG, "numéroTable : " + numeroTableSSID);
             }
 
             @Override
@@ -236,64 +236,47 @@ public class ActiviteGestionPartie extends AppCompatActivity
         });
     }
 
-    private void connecterBluetooth(String adresseMac)
-    {
-        if(ActivityCompat.checkSelfPermission(this,
-                                              android.Manifest.permission.BLUETOOTH_CONNECT) !=
-           PackageManager.PERMISSION_GRANTED)
-        {
-            Log.e(TAG, "Permissions Bluetooth refusées !");
-            return;
-        }
-
-        peripheriqueBluetooth = adaptateurBluetooth.getRemoteDevice(adresseMac);
-        Log.d(TAG, "Tentative de connexion à l'adresse MAC : " + adresseMac);
-
-        try
-        {
-            Log.d(TAG, "Création du socket Bluetooth...");
-            socketBluetooth =
-              peripheriqueBluetooth.createInsecureRfcommSocketToServiceRecord(UUID_BLUETOOTH);
-
-            Log.d(TAG, "Socket créée, démarrage de la connexion...");
-            socketBluetooth.connect();
-            Log.d(TAG, "Connexion Bluetooth réussie à " + adresseMac);
-        }
-        catch(IOException e)
-        {
-            Log.e(TAG, "Échec de connexion (méthode normale) : " + e.getMessage());
-
-            try
-            {
-                Log.d("Bluetooth", "Tentative de connexion alternative...");
-                socketBluetooth = (BluetoothSocket)peripheriqueBluetooth.getClass()
-                                    .getMethod("createRfcommSocket", new Class[] { int.class })
-                                    .invoke(peripheriqueBluetooth, 1);
-                socketBluetooth.connect();
-                Log.d(TAG, "Connexion alternative réussie !");
-            }
-            catch(Exception ex)
-            {
-                Log.e(TAG, "Échec de la connexion alternative : " + ex.getMessage());
-            }
-        }
-        if (socketBluetooth != null)
-        {
-            try
-            {
-                socketBluetooth.close();
-                socketBluetooth = null;
-            }
-            catch (IOException e)
-            {
-            }
-        }
-    }
-
     private String extraireAdresseMac(String texte)
     {
         return texte.substring(texte.lastIndexOf('(') + 1, texte.length() - 1);
     }
+    private int extraireNumeroTable(String texte)
+    {
+        if (texte == null || !texte.contains("(") || !texte.contains(")"))
+        {
+            Log.e("extraireNumeroTable", "Format invalide ou null : " + texte);
+            return -1;
+        }
+
+        int indexParenthese = texte.lastIndexOf('(');
+        if (indexParenthese <= 0)
+        {
+            Log.e("extraireNumeroTable", "Parenthèse mal placée : " + texte);
+            return -1;
+        }
+
+        String ssid = texte.substring(0, indexParenthese).trim();
+
+        int indexTiret = ssid.lastIndexOf('-');
+        if (indexTiret == -1 || indexTiret == ssid.length() - 1)
+        {
+            Log.e("extraireNumeroTable", "Tiret manquant ou ID vide : " + ssid);
+            return -1;
+        }
+
+        String idStr = ssid.substring(indexTiret + 1).trim();
+
+        try
+        {
+            return Integer.parseInt(idStr);
+        }
+        catch (NumberFormatException e)
+        {
+            Log.e("extraireNumeroTable", "ID non numérique : " + idStr);
+            return -1;
+        }
+    }
+
     private void lancerUnePartie()
     {
         boutonSuivant.setOnClickListener(new View.OnClickListener() {
@@ -307,6 +290,9 @@ public class ActiviteGestionPartie extends AppCompatActivity
                 changerDeVue.putExtra("nbParties", nbParties);
                 changerDeVue.putExtra("adresseMacEcran", adresseMacEcran);
                 changerDeVue.putExtra("adresseMacTable", adresseMacTable);
+                changerDeVue.putExtra("idMatch", idMatch);
+                changerDeVue.putExtra("numeroTable", numeroTableSSID);
+                Log.d(TAG, "idMatch : " + idMatch);
                 startActivity(changerDeVue);
             }
         });

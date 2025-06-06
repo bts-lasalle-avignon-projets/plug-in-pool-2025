@@ -16,9 +16,11 @@ class Joueur
     QString        nom;
     QString        prenom;
     int            points;
+    int            tirs;
     int            id;
     CouleurBille   couleur;
-    int            nbBillesRestantes;
+    int            nbBillesEmpochees;
+    int            nbBillesBlanchesEmpochees;
     QList<Empoche> empochees;
 
   public:
@@ -28,9 +30,17 @@ class Joueur
     QString      getPrenom() const;
     int          getId() const;
     int          getPoints() const;
+    int          getTirs() const;
     CouleurBille getCouleur() const;
-    int          getNbBillesRestantes() const;
+    int          getNbBillesEmpochees() const;
+    int          getNbBillesBlanchesEmpochees() const;
     void         setCouleur(CouleurBille couleur);
+    void         ajouterTirs();
+    void         ajouterBilleBlancheEmpochee();
+    void         ajouterBillesEmpochees();
+    void         reinitialiserTirs();
+    void         reinitialiserBillesBlanchesEmpochees();
+    void         reinitialiserBillesEmpochees();
 };
 
 #endif // JOUEUR_H

@@ -63,6 +63,8 @@ class EcranPartie : public QObject
     void afficherMessageAction(QString message);
     void demarrerCompteAReboursManche(int dureeEnSecondes);
     void attribuerCouleurBille(int idJoueur, int couleurBille);
+    int getSecondesEcoulees() const;
+
 
   signals:
 };

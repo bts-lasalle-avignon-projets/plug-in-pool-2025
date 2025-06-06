@@ -56,9 +56,6 @@ EcranPartie::EcranPartie(QWidget* parent) : QObject(parent), ecran(parent)
     espaceJoueursEtCompteARebours->addSpacing(100);
     espaceJoueursEtCompteARebours->addWidget(affichageJoueurDeux);
 
-    // espaceBoulesRouges->addStretch();
-    // espaceBoulesJaunes->addStretch();
-
     espaceBoules->addStretch();
     espaceBoules->addLayout(espaceBoulesRouges);
     espaceBoules->addSpacing(20);
@@ -96,6 +93,11 @@ QWidget* EcranPartie::getEcran() const
     return ecran;
 }
 
+int EcranPartie::getSecondesEcoulees() const
+{
+    return secondesEcoulees;
+}
+
 void EcranPartie::afficherInformationsPartie(int     nbManches,
                                              QString joueur1,
                                              QString joueur2)
@@ -126,6 +128,7 @@ void EcranPartie::demarrerChronometre()
             });
 
     chronometre->start(TEMPS_INCREMENTATION);
+
 }
 
 void EcranPartie::demarrerCompteAReboursManche(int dureeEnSecondes)
