@@ -96,7 +96,7 @@ EcranFin::EcranFin(QWidget* parent) : QObject(parent), ecran(parent)
     ecranFin->addStretch();
     ecranFin->addLayout(espaceStatistiques);
     ecranFin->addLayout(espaceDureePartie);
-    ecranFin->addSpacing(50);
+    ecranFin->addSpacing(30);
 }
 
 EcranFin::~EcranFin()
