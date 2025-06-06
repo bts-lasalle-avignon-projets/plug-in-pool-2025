@@ -42,7 +42,7 @@
       - [Module de gestion de matchs](#module-de-gestion-de-matchs)
       - [Diagramme de cas d'utilisation (Android)](#diagramme-de-cas-dutilisation-android)
       - [IHM de l'application Android](#ihm-de-lapplication-android)
-      - [Visite de l'IHM](#visite-de-lihm)
+      - [Visite de l'IHM Android](#visite-de-lihm-android)
       - [Diagramme de classes (Android)](#diagramme-de-classes-android)
       - [Recette](#recette)
       - [Base de données](#base-de-données)
@@ -51,6 +51,7 @@
       - [Caractéristiques du Raspberry Pi 5](#caractéristiques-du-raspberry-pi-5)
       - [Diagramme de cas d'utilisation (Qt)](#diagramme-de-cas-dutilisation-qt)
       - [IHM de l'application Qt](#ihm-de-lapplication-qt)
+      - [Visite de l'IHM Qt](#visite-de-lihm-qt)
       - [Diagramme de classes (Qt)](#diagramme-de-classes-qt)
       - [Recette](#recette-1)
   - [Communication Bluetooth](#communication-bluetooth)
@@ -132,7 +133,7 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
 
 ![](./images/historique.png)
 
-#### Visite de l'IHM
+#### Visite de l'IHM Android
 
 ![](./images/applicationAndroid.gif)
 
@@ -303,7 +304,7 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 ![](./images/ecranFinMatch.png)
 
-#### Visite de l'IHM
+#### Visite de l'IHM Qt
 
 ![](./images/demoPipQt.gif)
 
