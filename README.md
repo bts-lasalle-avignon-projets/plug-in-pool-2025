@@ -303,6 +303,10 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 ![](./images/ecranFinMatch.png)
 
+#### Visite de l'IHM
+
+![](./images/demoPipQt.gif)
+
 #### Diagramme de classes (Qt)
 
 ![classes-qt](./images/classes-qt.png)
