@@ -9,6 +9,7 @@ var classcom_1_1example_1_1plug__in__pool_1_1_joueur =
     [ "getId", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#ae655f2e51b6c3c14bdc4f7bc93adcb62", null ],
     [ "getNom", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#a488083fee4fc4b8c8e4da6dfb27acba3", null ],
     [ "getPrenom", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#a7472f567db4ecf60d01b18812946b2a6", null ],
+    [ "retirerPointsEmpochageBilleNoire", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#a1f7703caafd3cf3e85c57e4857631e69", null ],
     [ "setCouleur", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#a8a2e9ca2b224939041ab8f14db86471a", null ],
     [ "toString", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#a8e0179a992f026c12c3a839709c9031a", null ],
     [ "couleur", "classcom_1_1example_1_1plug__in__pool_1_1_joueur.html#aac8eeee3416373d26f1ccbdd50301da5", null ],

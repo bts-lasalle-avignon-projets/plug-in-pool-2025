@@ -9,6 +9,7 @@ var class_ecran_partie =
     [ "demarrerCompteAReboursManche", "class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e", null ],
     [ "genererBoules", "class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5", null ],
     [ "getEcran", "class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c", null ],
+    [ "getSecondesEcoulees", "class_ecran_partie.html#a0c6b4f1ef322c65637eb2c1ba1980fb3", null ],
     [ "incrementerCompteurPoche", "class_ecran_partie.html#a46749973110bea455332baddb49c199e", null ],
     [ "initialiserPochesTable", "class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0", null ],
     [ "retirerBoule", "class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef", null ],
