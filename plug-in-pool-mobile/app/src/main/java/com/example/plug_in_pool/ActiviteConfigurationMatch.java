@@ -34,7 +34,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
     private Button               boutonSuivant;
     private AutoCompleteTextView choixNomJoueur1;
     private AutoCompleteTextView choixNomJoueur2;
-
+    public int idMatch;
     private BaseDeDonnees baseDonnees; //!< Classe d'accès avec la base de données
     Vector<Joueur>        joueurs = new Vector<Joueur>();
     // Joueur                joueur1;
@@ -144,7 +144,7 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
 
         if(id1 != -1 && id2 != -1)
         {
-            baseDonnees.creerMatch(id1, id2, nbParties);
+            idMatch = baseDonnees.creerMatch(id1, id2, nbParties);
             return true;
         }
         else
@@ -173,6 +173,8 @@ public class ActiviteConfigurationMatch extends AppCompatActivity
                         changerVue.putExtra("joueur1", joueurs.elementAt(0));
                         changerVue.putExtra("joueur2", joueurs.elementAt(1));
                         changerVue.putExtra("nbParties", getValeurSaisie());
+                        changerVue.putExtra("idMatch", idMatch);
+                        Log.d(TAG, "idMatch : " + idMatch);
                         startActivity(changerVue);
                     }
                     else

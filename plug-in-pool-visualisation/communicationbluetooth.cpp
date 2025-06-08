@@ -157,6 +157,12 @@ void CommunicationBluetooth::lireTrame()
                     emit trameMatchTermineeRecue(nbPartiesJoueurUn,
                                                  nbPartiesJoueurDeux);
                 }
+                case TRAME_FAUTE:
+                {
+                    int idJoueurFaute = contenuTrame[POSITION_ID_JOUEUR_FAUTE].toInt();
+                    QString faute = contenuTrame[POSITION_FAUTE];
+                    emit trameFauteRecue(idJoueurFaute, faute);
+                }
                 default:
                 {
                     break;

@@ -10,6 +10,9 @@
 #define TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH 5
 #define RASPBERRY_PI
 
+#define ID_JOUEUR_1 0
+#define ID_JOUEUR_2 1
+
 class CommunicationBluetooth;
 class Match;
 class EcranPlugInPool;
@@ -38,6 +41,8 @@ class PlugInPool : public QObject
     void empochage(int idJoueur, int couleurBille, int idPoche);
     void terminerPartie(int idPartie, int idJoueurGagnant);
     void terminerMatch(int nbPartiesJoueurUn, int nbPartiesJoueurDeux);
+    void afficherFaute(int idJoueurFaute, QString faute);
+    void afficherDureePartie();
     void changerEcranMatch();
     void changerEcranPartie();
     void changerEcranFin();

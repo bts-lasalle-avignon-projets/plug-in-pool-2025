@@ -15,6 +15,7 @@ var classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match =
     [ "boutonSuivant", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#ae382d698f39aabf4bdb4a1bea9533f02", null ],
     [ "choixNomJoueur1", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#ae563bf6f5199d19974471982a0a4641c", null ],
     [ "choixNomJoueur2", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#ad8936aeb91cf40831ac5d3327bf66ae5", null ],
+    [ "idMatch", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#a1d32c8040ae8a75642a3841f49198c58", null ],
     [ "joueurs", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#a855d6a8d38656105362920d087b0c17c", null ],
     [ "nomJoueurs", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#ab21411995783619e6186658ae2c62ecf", null ],
     [ "TAG", "classcom_1_1example_1_1plug__in__pool_1_1_activite_configuration_match.html#a024c461a11ab2bc363ffa40945d44052", null ]

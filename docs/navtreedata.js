@@ -58,9 +58,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_activite_configuration_match_8java.html",
-"classcom_1_1example_1_1plug__in__pool_1_1_activite_gestion_partie.html#a00974a74b6c818ea4a2935b2beb8ca7f",
-"classcom_1_1example_1_1plug__in__pool_1_1_table.html"
+"",
+"class_plug_in_pool.html#a438c2d13c067c8e09487669ce650fc86",
+"classcom_1_1example_1_1plug__in__pool_1_1_example_instrumented_test.html#ad0d7ecb08c2c4a25caef8f02336800b8",
+"joueur_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

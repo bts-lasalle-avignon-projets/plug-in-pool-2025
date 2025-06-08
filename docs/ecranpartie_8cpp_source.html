@@ -146,303 +146,307 @@ $(document).ready(function(){initNavTree('ecranpartie_8cpp_source.html',''); ini
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    espaceJoueursEtCompteARebours-&gt;addSpacing(100);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    espaceJoueursEtCompteARebours-&gt;addWidget(<a class="code" href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">affichageJoueurDeux</a>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// espaceBoulesRouges-&gt;addStretch();</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// espaceBoulesJaunes-&gt;addStretch();</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    espaceBoules-&gt;addStretch();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">espaceBouleBlanche</a>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">espaceBouleNoir</a>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    espaceBoules-&gt;addStretch();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">affichageNumeroTable</a>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    espaceNumeroTableEtChronometre-&gt;addStretch();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">labelChronometre</a>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    espaceNumeroTableEtChronometre-&gt;addStretch();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">affichageNomJeu</a>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    ecranPartie-&gt;addLayout(espaceJoueursEtCompteARebours);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    ecranPartie-&gt;addSpacing(80);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    ecranPartie-&gt;addLayout(espaceBoules);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ecranPartie-&gt;addStretch();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    ecranPartie-&gt;addStretch();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    ecranPartie-&gt;addLayout(espaceNumeroTableEtChronometre);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">genererBoules</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">initialiserPochesTable</a>();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">   89</a></span>&#160;<a class="code" href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">EcranPartie::~EcranPartie</a>()</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">   94</a></span>&#160;<a class="code" href="class_q_widget.html">QWidget</a>* <a class="code" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">   99</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a>(<span class="keywordtype">int</span>     nbManches,</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                             QString joueur1,</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                             QString joueur2)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">affichageJoueurUn</a>-&gt;setText(joueur1);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">affichageJoueurDeux</a>-&gt;setText(joueur2);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a>()</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> = 0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    connect(<a class="code" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">chronometre</a>,</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            &amp;QTimer::timeout,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keyword">this</span>,</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            [=]()</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a>++;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordtype">int</span> minutes  = <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> / <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordtype">int</span> secondes = <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> % <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                QString temps =</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                  QString(<span class="stringliteral">&quot;%1:%2&quot;</span>)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    .arg(minutes, <a class="code" href="ecranmatch_8h.html#ae508929b2ccb221ea0742d44d80f92c6">LARGEUR_MINUTE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>))</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    .arg(secondes, <a class="code" href="ecranmatch_8h.html#a4cefafbfc0b658f6fe3c6025b8ad06f9">LARGEUR_SECONDE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>));</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <a class="code" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">labelChronometre</a>-&gt;setText(temps);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            });</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">chronometre</a>-&gt;start(<a class="code" href="ecranmatch_8h.html#a50ff9c3c616840d9df848ba03abe1a9f">TEMPS_INCREMENTATION</a>);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">  131</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a>(<span class="keywordtype">int</span> dureeEnSecondes)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;stop();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;disconnect();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> = dureeEnSecondes;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(<span class="stringliteral">&quot;00:00&quot;</span>);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    connect(</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      &amp;QTimer::timeout,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keyword">this</span>,</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      [=]()</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;          <span class="keywordflow">if</span>(<a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> &lt;= 0)</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;          {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;              <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;stop();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;              <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(<span class="stringliteral">&quot;00:00&quot;</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;              <a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Temps écoulé ! Au tour du joueur suivant&quot;</span>);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;          }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;          <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;              <span class="keywordtype">int</span> minutes  = <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> / <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;              <span class="keywordtype">int</span> secondes = <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> % <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;              QString temps =</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                QString(<span class="stringliteral">&quot;%1:%2&quot;</span>)</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                  .arg(minutes, <a class="code" href="ecranmatch_8h.html#ae508929b2ccb221ea0742d44d80f92c6">LARGEUR_MINUTE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>))</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                  .arg(secondes, <a class="code" href="ecranmatch_8h.html#a4cefafbfc0b658f6fe3c6025b8ad06f9">LARGEUR_SECONDE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>));</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;              <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(temps);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;              <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a>--;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;          }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      });</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;start(<a class="code" href="ecranmatch_8h.html#a50ff9c3c616840d9df848ba03abe1a9f">TEMPS_INCREMENTATION</a>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    espaceBoules-&gt;addStretch();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">espaceBouleBlanche</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">espaceBouleNoir</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    espaceBoules-&gt;addSpacing(20);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    espaceBoules-&gt;addLayout(<a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    espaceBoules-&gt;addStretch();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">affichageNumeroTable</a>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    espaceNumeroTableEtChronometre-&gt;addStretch();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">labelChronometre</a>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    espaceNumeroTableEtChronometre-&gt;addStretch();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    espaceNumeroTableEtChronometre-&gt;addWidget(<a class="code" href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">affichageNomJeu</a>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    ecranPartie-&gt;addLayout(espaceJoueursEtCompteARebours);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    ecranPartie-&gt;addSpacing(80);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    ecranPartie-&gt;addLayout(espaceBoules);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    ecranPartie-&gt;addStretch();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    ecranPartie-&gt;addStretch();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    ecranPartie-&gt;addLayout(espaceNumeroTableEtChronometre);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">genererBoules</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">initialiserPochesTable</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">   86</a></span>&#160;<a class="code" href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">EcranPartie::~EcranPartie</a>()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">   91</a></span>&#160;<a class="code" href="class_q_widget.html">QWidget</a>* <a class="code" href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a0c6b4f1ef322c65637eb2c1ba1980fb3">   96</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_ecran_partie.html#a0c6b4f1ef322c65637eb2c1ba1980fb3">EcranPartie::getSecondesEcoulees</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">  101</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a>(<span class="keywordtype">int</span>     nbManches,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                             QString joueur1,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                             QString joueur2)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">affichageJoueurUn</a>-&gt;setText(joueur1);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="class_ecran_partie.html#ab0982480d183e8f2ad62e2b2404bbb2f">affichageJoueurDeux</a>-&gt;setText(joueur2);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a>()</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> = 0;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    connect(<a class="code" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">chronometre</a>,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            &amp;QTimer::timeout,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            [=]()</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a>++;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordtype">int</span> minutes  = <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> / <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordtype">int</span> secondes = <a class="code" href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">secondesEcoulees</a> % <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                QString temps =</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                  QString(<span class="stringliteral">&quot;%1:%2&quot;</span>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    .arg(minutes, <a class="code" href="ecranmatch_8h.html#ae508929b2ccb221ea0742d44d80f92c6">LARGEUR_MINUTE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>))</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    .arg(secondes, <a class="code" href="ecranmatch_8h.html#a4cefafbfc0b658f6fe3c6025b8ad06f9">LARGEUR_SECONDE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>));</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <a class="code" href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">labelChronometre</a>-&gt;setText(temps);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            });</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">chronometre</a>-&gt;start(<a class="code" href="ecranmatch_8h.html#a50ff9c3c616840d9df848ba03abe1a9f">TEMPS_INCREMENTATION</a>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a>(<span class="keywordtype">int</span> dureeEnSecondes)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;stop();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;disconnect();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> = dureeEnSecondes;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(<span class="stringliteral">&quot;00:00&quot;</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    connect(</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>,</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      &amp;QTimer::timeout,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      [=]()</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;          <span class="keywordflow">if</span>(<a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> &lt;= 0)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;              <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;stop();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;              <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(<span class="stringliteral">&quot;00:00&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;              <a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">afficherMessageAction</a>(<span class="stringliteral">&quot;Temps écoulé ! Au tour du joueur suivant&quot;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;              <span class="keywordtype">int</span> minutes  = <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> / <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;              <span class="keywordtype">int</span> secondes = <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a> % <a class="code" href="ecranmatch_8h.html#ac1454fa04f41c693f39425697a137d82">MINUTE</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;              QString temps =</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                QString(<span class="stringliteral">&quot;%1:%2&quot;</span>)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                  .arg(minutes, <a class="code" href="ecranmatch_8h.html#ae508929b2ccb221ea0742d44d80f92c6">LARGEUR_MINUTE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>))</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                  .arg(secondes, <a class="code" href="ecranmatch_8h.html#a4cefafbfc0b658f6fe3c6025b8ad06f9">LARGEUR_SECONDE</a>, <a class="code" href="ecranmatch_8h.html#a1975bdb61ae422cba302f8a17d6c8cc8">BASE_DECIMALE</a>, QChar(<span class="charliteral">&#39;0&#39;</span>));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;              <a class="code" href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">labelCompteAReboursManche</a>-&gt;setText(temps);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;              <a class="code" href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">secondesRestantes</a>--;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;          }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      });</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">EcranPartie::genererBoules</a>()</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#adcbb0dd6555965221fff1e32eed7975b">NB_BOULES_ROUGES</a>; ++i)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        QLabel* bouleRouge = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        bouleRouge-&gt;setObjectName(<span class="stringliteral">&quot;bouleRouge&quot;</span>);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>-&gt;addWidget(bouleRouge);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.append(bouleRouge);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>-&gt;insertStretch(0, 1);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#a596a79e8a3ecad002f1f71e672a38da3">NB_BOULES_JAUNES</a>; ++i)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        QLabel* bouleJaune = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        bouleJaune-&gt;setObjectName(<span class="stringliteral">&quot;bouleJaune&quot;</span>);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>-&gt;addWidget(bouleJaune);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.append(bouleJaune);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>-&gt;addStretch();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    QLabel* bouleBlanche = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    bouleBlanche-&gt;setObjectName(<span class="stringliteral">&quot;bouleBlanche&quot;</span>);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">espaceBouleBlanche</a>-&gt;addWidget(bouleBlanche);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    QLabel* bouleNoir = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    bouleNoir-&gt;setObjectName(<span class="stringliteral">&quot;bouleNoir&quot;</span>);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">espaceBouleNoir</a>-&gt;addWidget(bouleNoir);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">  200</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">EcranPartie::initialiserPochesTable</a>()</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">const</span> QPoint positionCompteurRouge[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>] = {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        { 1525, 305 }, { 1448, 890 }, { 959, 230 },</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        { 832, 890 },  { 340, 230 },  { 266, 815 }</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    };</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keyword">const</span> QPoint positionCompteurJaune[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>] = {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        { 1450, 230 }, { 1525, 815 }, { 830, 230 },</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        { 960, 890 },  { 262, 305 },  { 340, 890 }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    };</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>; ++i)</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i] = <span class="keyword">new</span> QLabel(<span class="stringliteral">&quot;0&quot;</span>, <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;setObjectName(</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;          QString(<span class="stringliteral">&quot;compteurBoulesRougesPoche%1&quot;</span>).arg(i));</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;setAlignment(Qt::AlignCenter);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;move(positionCompteurRouge[i]);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">// Création des compteurs jaunes</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i] = <span class="keyword">new</span> QLabel(<span class="stringliteral">&quot;0&quot;</span>, <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;setObjectName(</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          QString(<span class="stringliteral">&quot;compteurBoulesJaunesPoche%1&quot;</span>).arg(i));</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;setAlignment(Qt::AlignCenter);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;move(positionCompteurJaune[i]);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">  229</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;{</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">switch</span>(couleur)</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span>(!<a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.isEmpty())</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                QLabel* boule = <a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.takeFirst();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keyword">delete</span> boule;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">if</span>(!<a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.isEmpty())</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                QLabel* boule = <a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.takeLast();</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="keyword">delete</span> boule;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            qWarning() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;Couleur inconnue :&quot;</span> &lt;&lt; couleur;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">compteAReboursManche</a>-&gt;start(<a class="code" href="ecranmatch_8h.html#a50ff9c3c616840d9df848ba03abe1a9f">TEMPS_INCREMENTATION</a>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">  172</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">EcranPartie::genererBoules</a>()</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;{</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#adcbb0dd6555965221fff1e32eed7975b">NB_BOULES_ROUGES</a>; ++i)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        QLabel* bouleRouge = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        bouleRouge-&gt;setObjectName(<span class="stringliteral">&quot;bouleRouge&quot;</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>-&gt;addWidget(bouleRouge);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.append(bouleRouge);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">espaceBoulesRouges</a>-&gt;insertStretch(0, 1);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#a596a79e8a3ecad002f1f71e672a38da3">NB_BOULES_JAUNES</a>; ++i)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        QLabel* bouleJaune = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        bouleJaune-&gt;setObjectName(<span class="stringliteral">&quot;bouleJaune&quot;</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>-&gt;addWidget(bouleJaune);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.append(bouleJaune);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">espaceBoulesJaunes</a>-&gt;addStretch();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    QLabel* bouleBlanche = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    bouleBlanche-&gt;setObjectName(<span class="stringliteral">&quot;bouleBlanche&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="class_ecran_partie.html#ab97edac71949dae8704b07e95a849758">espaceBouleBlanche</a>-&gt;addWidget(bouleBlanche);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    QLabel* bouleNoir = <span class="keyword">new</span> QLabel(<a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    bouleNoir-&gt;setObjectName(<span class="stringliteral">&quot;bouleNoir&quot;</span>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">espaceBouleNoir</a>-&gt;addWidget(bouleNoir);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">  203</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">EcranPartie::initialiserPochesTable</a>()</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keyword">const</span> QPoint positionCompteurRouge[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>] = {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        { 1525, 305 }, { 1448, 890 }, { 959, 230 },</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        { 832, 890 },  { 340, 230 },  { 266, 815 }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    };</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keyword">const</span> QPoint positionCompteurJaune[<a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>] = {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        { 1450, 230 }, { 1525, 815 }, { 830, 230 },</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        { 960, 890 },  { 262, 305 },  { 340, 890 }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    };</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>; ++i)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i] = <span class="keyword">new</span> QLabel(<span class="stringliteral">&quot;0&quot;</span>, <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;setObjectName(</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;          QString(<span class="stringliteral">&quot;compteurBoulesRougesPoche%1&quot;</span>).arg(i));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;setAlignment(Qt::AlignCenter);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[i]-&gt;move(positionCompteurRouge[i]);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="comment">// Création des compteurs jaunes</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i] = <span class="keyword">new</span> QLabel(<span class="stringliteral">&quot;0&quot;</span>, <a class="code" href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">ecran</a>);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;setObjectName(</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;          QString(<span class="stringliteral">&quot;compteurBoulesJaunesPoche%1&quot;</span>).arg(i));</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;setAlignment(Qt::AlignCenter);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[i]-&gt;move(positionCompteurJaune[i]);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">  232</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">switch</span>(couleur)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">if</span>(!<a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.isEmpty())</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                QLabel* boule = <a class="code" href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">boulesRouges</a>.takeFirst();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="keyword">delete</span> boule;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span>(!<a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.isEmpty())</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                QLabel* boule = <a class="code" href="class_ecran_partie.html#abdfd6512d1d6ce86930f1d1322719634">boulesJaunes</a>.takeLast();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keyword">delete</span> boule;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">  254</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur, <span class="keywordtype">int</span> idPoche)</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;{</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span>(idPoche &lt; 0 || idPoche &gt;= <a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    QLabel* compteur = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">switch</span>(couleur)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            compteur = <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[idPoche];</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            compteur = <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[idPoche];</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            qWarning() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;Couleur inconnue :&quot;</span> &lt;&lt; couleur;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">  257</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a>(<a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74ac">CouleurBille</a> couleur, <span class="keywordtype">int</span> idPoche)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;{</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">if</span>(idPoche &lt; 0 || idPoche &gt;= <a class="code" href="ecranpartie_8h.html#a3414177033d5d86317935b00143034de">NB_POCHES</a>)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    QLabel* compteur = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">switch</span>(couleur)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>:</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            compteur = <a class="code" href="class_ecran_partie.html#ad17e2fef299684d8b7bea185e0fef3b6">compteurBoulesRougesPoche</a>[idPoche];</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">if</span>(compteur)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordtype">int</span> valeur = compteur-&gt;text().toInt();</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        compteur-&gt;setText(QString::number(valeur + 1));</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">  280</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a>(QString message)</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;{</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <a class="code" href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">affichageMessage</a>-&gt;setText(message);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">  285</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a>(<span class="keywordtype">int</span> idJoueur, <span class="keywordtype">int</span> couleurBille)</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;{</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">if</span>(idJoueur == 0)</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>)</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                                          <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                                            <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>)</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                                          <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                                                            <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>:</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            compteur = <a class="code" href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">compteurBoulesJaunesPoche</a>[idPoche];</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">if</span>(compteur)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordtype">int</span> valeur = compteur-&gt;text().toInt();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        compteur-&gt;setText(QString::number(valeur + 1));</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">  283</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a>(QString message)</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;{</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <a class="code" href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">affichageMessage</a>-&gt;setText(message);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">  288</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a>(<span class="keywordtype">int</span> idJoueur, <span class="keywordtype">int</span> couleurBille)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">if</span>(idJoueur == 0)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>)</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                                          <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                                            <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                                          <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                                            <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(idJoueur == 1)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>)</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                                            <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                                          <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>)</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                                            <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                                          <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(idJoueur == 1)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74aca92b33cebaccf73541ab06eca48a31e42">ROUGE</a>)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                                            <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                                          <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(couleurBille == <a class="code" href="couleurbille_8h.html#a4c1a484ea33202863edf0c3ba77d74acaeb840a0760d5c5122e980d507891c1a1">JAUNE</a>)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                                            <span class="stringliteral">&quot;attribuerJaune&quot;</span>);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;setProperty(<span class="stringliteral">&quot;class&quot;</span>,</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                                                          <span class="stringliteral">&quot;attribuerRouge&quot;</span>);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;style()-&gt;polish(</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;style()-&gt;polish(</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;}</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>-&gt;style()-&gt;polish(</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      <a class="code" href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">affichageCouleurAttribueJoueurUn</a>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>-&gt;style()-&gt;polish(</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <a class="code" href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">affichageCouleurAttribueJoueurDeux</a>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
 <div class="ttc" id="aclass_ecran_partie_html_a02840077523809a885b040f671c182ff"><div class="ttname"><a href="class_ecran_partie.html#a02840077523809a885b040f671c182ff">EcranPartie::espaceBoulesJaunes</a></div><div class="ttdeci">QHBoxLayout * espaceBoulesJaunes</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00043">ecranpartie.h:43</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a04ce8c2732e49f8caee2c65734840c4c"><div class="ttname"><a href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00094">ecranpartie.cpp:94</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a0ae8ad98d5e3d73d9e335b87115f09eb"><div class="ttname"><a href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a></div><div class="ttdeci">void afficherMessageAction(QString message)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00280">ecranpartie.cpp:280</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a04ce8c2732e49f8caee2c65734840c4c"><div class="ttname"><a href="class_ecran_partie.html#a04ce8c2732e49f8caee2c65734840c4c">EcranPartie::getEcran</a></div><div class="ttdeci">QWidget * getEcran() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00091">ecranpartie.cpp:91</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a0ae8ad98d5e3d73d9e335b87115f09eb"><div class="ttname"><a href="class_ecran_partie.html#a0ae8ad98d5e3d73d9e335b87115f09eb">EcranPartie::afficherMessageAction</a></div><div class="ttdeci">void afficherMessageAction(QString message)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00283">ecranpartie.cpp:283</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a0c6b4f1ef322c65637eb2c1ba1980fb3"><div class="ttname"><a href="class_ecran_partie.html#a0c6b4f1ef322c65637eb2c1ba1980fb3">EcranPartie::getSecondesEcoulees</a></div><div class="ttdeci">int getSecondesEcoulees() const</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00096">ecranpartie.cpp:96</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a0ea9afeb6210fa938440749c8f488618"><div class="ttname"><a href="class_ecran_partie.html#a0ea9afeb6210fa938440749c8f488618">EcranPartie::boulesRouges</a></div><div class="ttdeci">QVector&lt; QLabel * &gt; boulesRouges</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00037">ecranpartie.h:37</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a1310b8265072d6a66fd5df7a118c4052"><div class="ttname"><a href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">EcranPartie::~EcranPartie</a></div><div class="ttdeci">virtual ~EcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00089">ecranpartie.cpp:89</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a1310b8265072d6a66fd5df7a118c4052"><div class="ttname"><a href="class_ecran_partie.html#a1310b8265072d6a66fd5df7a118c4052">EcranPartie::~EcranPartie</a></div><div class="ttdeci">virtual ~EcranPartie()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00086">ecranpartie.cpp:86</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a20ce314fd431072acce9bb2dec773003"><div class="ttname"><a href="class_ecran_partie.html#a20ce314fd431072acce9bb2dec773003">EcranPartie::ecran</a></div><div class="ttdeci">QWidget * ecran</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00025">ecranpartie.h:25</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a22a214a32e668e985325578f0de8529f"><div class="ttname"><a href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a></div><div class="ttdeci">void attribuerCouleurBille(int idJoueur, int couleurBille)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00285">ecranpartie.cpp:285</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a22a214a32e668e985325578f0de8529f"><div class="ttname"><a href="class_ecran_partie.html#a22a214a32e668e985325578f0de8529f">EcranPartie::attribuerCouleurBille</a></div><div class="ttdeci">void attribuerCouleurBille(int idJoueur, int couleurBille)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00288">ecranpartie.cpp:288</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a29f2c83220ebc1b37138c217638bfecd"><div class="ttname"><a href="class_ecran_partie.html#a29f2c83220ebc1b37138c217638bfecd">EcranPartie::affichageJoueurUn</a></div><div class="ttdeci">QLabel * affichageJoueurUn</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00026">ecranpartie.h:26</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a380e44d79e8363ea984aa576ae77dc5c"><div class="ttname"><a href="class_ecran_partie.html#a380e44d79e8363ea984aa576ae77dc5c">EcranPartie::secondesRestantes</a></div><div class="ttdeci">int secondesRestantes</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00036">ecranpartie.h:36</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a46749973110bea455332baddb49c199e"><div class="ttname"><a href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a></div><div class="ttdeci">void incrementerCompteurPoche(CouleurBille couleur, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00254">ecranpartie.cpp:254</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a46749973110bea455332baddb49c199e"><div class="ttname"><a href="class_ecran_partie.html#a46749973110bea455332baddb49c199e">EcranPartie::incrementerCompteurPoche</a></div><div class="ttdeci">void incrementerCompteurPoche(CouleurBille couleur, int idPoche)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00257">ecranpartie.cpp:257</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a4a191a55eaf8989f3fe820b9c1842027"><div class="ttname"><a href="class_ecran_partie.html#a4a191a55eaf8989f3fe820b9c1842027">EcranPartie::compteAReboursManche</a></div><div class="ttdeci">QTimer * compteAReboursManche</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00029">ecranpartie.h:29</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a4a9bbd4c2d3456e4247aab6697be98c0"><div class="ttname"><a href="class_ecran_partie.html#a4a9bbd4c2d3456e4247aab6697be98c0">EcranPartie::labelChronometre</a></div><div class="ttdeci">QLabel * labelChronometre</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00030">ecranpartie.h:30</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a4f6fe777e19e2b958ccd8de31aaa2102"><div class="ttname"><a href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a></div><div class="ttdeci">void demarrerChronometre()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00107">ecranpartie.cpp:107</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a4f6fe777e19e2b958ccd8de31aaa2102"><div class="ttname"><a href="class_ecran_partie.html#a4f6fe777e19e2b958ccd8de31aaa2102">EcranPartie::demarrerChronometre</a></div><div class="ttdeci">void demarrerChronometre()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00109">ecranpartie.cpp:109</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a58b954877dc6248432b79e528d5334c6"><div class="ttname"><a href="class_ecran_partie.html#a58b954877dc6248432b79e528d5334c6">EcranPartie::espaceBoulesRouges</a></div><div class="ttdeci">QHBoxLayout * espaceBoulesRouges</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00042">ecranpartie.h:42</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a5b740ebf8f7a1d79a2e4aec977511cd5"><div class="ttname"><a href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">EcranPartie::genererBoules</a></div><div class="ttdeci">void genererBoules()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00169">ecranpartie.cpp:169</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a5ebf3a531dbe1929ffd5589661dea23e"><div class="ttname"><a href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a></div><div class="ttdeci">void demarrerCompteAReboursManche(int dureeEnSecondes)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00131">ecranpartie.cpp:131</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a5b740ebf8f7a1d79a2e4aec977511cd5"><div class="ttname"><a href="class_ecran_partie.html#a5b740ebf8f7a1d79a2e4aec977511cd5">EcranPartie::genererBoules</a></div><div class="ttdeci">void genererBoules()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00172">ecranpartie.cpp:172</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a5ebf3a531dbe1929ffd5589661dea23e"><div class="ttname"><a href="class_ecran_partie.html#a5ebf3a531dbe1929ffd5589661dea23e">EcranPartie::demarrerCompteAReboursManche</a></div><div class="ttdeci">void demarrerCompteAReboursManche(int dureeEnSecondes)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00134">ecranpartie.cpp:134</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a6112fd9bb99552c42c844b4b69715a46"><div class="ttname"><a href="class_ecran_partie.html#a6112fd9bb99552c42c844b4b69715a46">EcranPartie::labelCompteAReboursManche</a></div><div class="ttdeci">QLabel * labelCompteAReboursManche</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00031">ecranpartie.h:31</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a64c2263afd205b8777245e0063cc5be0"><div class="ttname"><a href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">EcranPartie::initialiserPochesTable</a></div><div class="ttdeci">void initialiserPochesTable()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00200">ecranpartie.cpp:200</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a64c2263afd205b8777245e0063cc5be0"><div class="ttname"><a href="class_ecran_partie.html#a64c2263afd205b8777245e0063cc5be0">EcranPartie::initialiserPochesTable</a></div><div class="ttdeci">void initialiserPochesTable()</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00203">ecranpartie.cpp:203</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a7571a7ee19d3e1bcf37ffbf15079db2c"><div class="ttname"><a href="class_ecran_partie.html#a7571a7ee19d3e1bcf37ffbf15079db2c">EcranPartie::compteurBoulesJaunesPoche</a></div><div class="ttdeci">QLabel * compteurBoulesJaunesPoche[NB_POCHES]</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00048">ecranpartie.h:48</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a790bc812b32e6fc63c8c576504e7bc71"><div class="ttname"><a href="class_ecran_partie.html#a790bc812b32e6fc63c8c576504e7bc71">EcranPartie::chronometre</a></div><div class="ttdeci">QTimer * chronometre</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00028">ecranpartie.h:28</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_a919f17d9e54725f8e66f5c25bbce6c5c"><div class="ttname"><a href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a></div><div class="ttdeci">void afficherInformationsPartie(int nbManches, QString joueur1, QString joueur2)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00099">ecranpartie.cpp:99</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_a919f17d9e54725f8e66f5c25bbce6c5c"><div class="ttname"><a href="class_ecran_partie.html#a919f17d9e54725f8e66f5c25bbce6c5c">EcranPartie::afficherInformationsPartie</a></div><div class="ttdeci">void afficherInformationsPartie(int nbManches, QString joueur1, QString joueur2)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00101">ecranpartie.cpp:101</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_a9ce10caa302eb6b5e66690fc740a5f14"><div class="ttname"><a href="class_ecran_partie.html#a9ce10caa302eb6b5e66690fc740a5f14">EcranPartie::affichageCouleurAttribueJoueurUn</a></div><div class="ttdeci">QLabel * affichageCouleurAttribueJoueurUn</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00039">ecranpartie.h:39</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_aa1d6e1607819d0063d1c95e3496275ae"><div class="ttname"><a href="class_ecran_partie.html#aa1d6e1607819d0063d1c95e3496275ae">EcranPartie::affichageNumeroTable</a></div><div class="ttdeci">QLabel * affichageNumeroTable</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00032">ecranpartie.h:32</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_aa51e0097f60a2158643fdfed8549f7db"><div class="ttname"><a href="class_ecran_partie.html#aa51e0097f60a2158643fdfed8549f7db">EcranPartie::affichageMessage</a></div><div class="ttdeci">QLabel * affichageMessage</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00034">ecranpartie.h:34</a></div></div>
@@ -454,7 +458,7 @@ $(document).ready(function(){initNavTree('ecranpartie_8cpp_source.html',''); ini
 <div class="ttc" id="aclass_ecran_partie_html_ae34b412df3960df1cd18e1b34794b4dd"><div class="ttname"><a href="class_ecran_partie.html#ae34b412df3960df1cd18e1b34794b4dd">EcranPartie::secondesEcoulees</a></div><div class="ttdeci">int secondesEcoulees</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00035">ecranpartie.h:35</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_ae75fc80ed81da37a1c18e73c29e78175"><div class="ttname"><a href="class_ecran_partie.html#ae75fc80ed81da37a1c18e73c29e78175">EcranPartie::affichageCouleurAttribueJoueurDeux</a></div><div class="ttdeci">QLabel * affichageCouleurAttribueJoueurDeux</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00040">ecranpartie.h:40</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_aeba48d14e922a559d1eb7bb990a460d6"><div class="ttname"><a href="class_ecran_partie.html#aeba48d14e922a559d1eb7bb990a460d6">EcranPartie::espaceBouleNoir</a></div><div class="ttdeci">QHBoxLayout * espaceBouleNoir</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00045">ecranpartie.h:45</a></div></div>
-<div class="ttc" id="aclass_ecran_partie_html_aeef8ec9f6916ac111c39de8e2c37cbef"><div class="ttname"><a href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a></div><div class="ttdeci">void retirerBoule(CouleurBille couleur)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00229">ecranpartie.cpp:229</a></div></div>
+<div class="ttc" id="aclass_ecran_partie_html_aeef8ec9f6916ac111c39de8e2c37cbef"><div class="ttname"><a href="class_ecran_partie.html#aeef8ec9f6916ac111c39de8e2c37cbef">EcranPartie::retirerBoule</a></div><div class="ttdeci">void retirerBoule(CouleurBille couleur)</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8cpp_source.html#l00232">ecranpartie.cpp:232</a></div></div>
 <div class="ttc" id="aclass_ecran_partie_html_afcf15bfd19fb1d1afca4142b21056f15"><div class="ttname"><a href="class_ecran_partie.html#afcf15bfd19fb1d1afca4142b21056f15">EcranPartie::affichageNomJeu</a></div><div class="ttdeci">QLabel * affichageNomJeu</div><div class="ttdef"><b>Definition:</b> <a href="ecranpartie_8h_source.html#l00033">ecranpartie.h:33</a></div></div>
 <div class="ttc" id="aclass_q_object_html"><div class="ttname"><a href="class_q_object.html">QObject</a></div></div>
 <div class="ttc" id="aclass_q_widget_html"><div class="ttname"><a href="class_q_widget.html">QWidget</a></div></div>
@@ -477,7 +481,7 @@ $(document).ready(function(){initNavTree('ecranpartie_8cpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_0e4ccd0e1e0fa438ef24dcabfd789a2f.html">plug-in-pool-visualisation</a></li><li class="navelem"><a class="el" href="ecranpartie_8cpp.html">ecranpartie.cpp</a></li>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:54 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Dimanche 8 Juin 2025 21:31:30 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
   </ul>
 </div>
 </body>

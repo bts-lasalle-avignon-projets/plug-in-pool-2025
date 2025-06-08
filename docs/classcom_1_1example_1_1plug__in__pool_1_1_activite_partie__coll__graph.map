@@ -1,10 +1,11 @@
 <map id="com.example.plug_in_pool.ActivitePartie" name="com.example.plug_in_pool.ActivitePartie">
-<area shape="rect" id="node1" title=" " alt="" coords="193,843,459,1507"/>
+<area shape="rect" id="node1" title=" " alt="" coords="341,843,607,1507"/>
 <area shape="rect" id="node2" href="$classcom_1_1example_1_1plug__in__pool_1_1_match.html" title=" " alt="" coords="5,395,220,633"/>
 <area shape="rect" id="node3" href="$enumcom_1_1example_1_1plug__in__pool_1_1_match_1_1_etat_match.html" title=" " alt="" coords="27,27,198,178"/>
-<area shape="rect" id="node4" href="$classcom_1_1example_1_1plug__in__pool_1_1_joueur.html" title=" " alt="" coords="245,351,407,677"/>
-<area shape="rect" id="node5" href="$enumcom_1_1example_1_1plug__in__pool_1_1_couleur_bille.html" title=" " alt="" coords="245,5,407,200"/>
-<area shape="rect" id="node6" href="$classcom_1_1example_1_1plug__in__pool_1_1_communication_bluetooth.html" title=" " alt="" coords="431,263,658,765"/>
-<area shape="rect" id="node7" href="$class_thread.html" title=" " alt="" coords="471,64,538,141"/>
-<area shape="rect" id="node8" href="$interfacecom_1_1example_1_1plug__in__pool_1_1_communication_bluetooth_1_1_reception_listener.html" title=" " alt="" coords="563,49,793,156"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1plug__in__pool_1_1_joueur.html" title=" " alt="" coords="244,336,467,692"/>
+<area shape="rect" id="node5" href="$enumcom_1_1example_1_1plug__in__pool_1_1_couleur_bille.html" title=" " alt="" coords="274,5,437,200"/>
+<area shape="rect" id="node6" href="$classcom_1_1example_1_1plug__in__pool_1_1_base_de_donnees.html" title=" " alt="" coords="490,299,701,729"/>
+<area shape="rect" id="node7" href="$classcom_1_1example_1_1plug__in__pool_1_1_communication_bluetooth.html" title=" " alt="" coords="865,263,1091,765"/>
+<area shape="rect" id="node8" href="$class_thread.html" title=" " alt="" coords="858,64,925,141"/>
+<area shape="rect" id="node9" href="$interfacecom_1_1example_1_1plug__in__pool_1_1_communication_bluetooth_1_1_reception_listener.html" title=" " alt="" coords="949,49,1180,156"/>
 </map>

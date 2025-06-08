@@ -1,18 +1,28 @@
 var class_joueur =
 [
     [ "Joueur", "class_joueur.html#ae9c4284da3b86935e16d54930a94d1c7", null ],
+    [ "ajouterBilleBlancheEmpochee", "class_joueur.html#a25c4e387a17b8f0e6ead7cfb061746a3", null ],
+    [ "ajouterBillesEmpochees", "class_joueur.html#af50c1a8b14d62b6edf1303e2434f6351", null ],
+    [ "ajouterTirs", "class_joueur.html#a661d3f738c6a80497b272991bedcc2e2", null ],
     [ "getCouleur", "class_joueur.html#aeb51f96ca27955abceea8a7cb089fcab", null ],
     [ "getId", "class_joueur.html#ad6c3ad585ae3b176236f9c683583f7b8", null ],
-    [ "getNbBillesRestantes", "class_joueur.html#a837ff64464330c9ee2967a2b42e3803e", null ],
+    [ "getNbBillesBlanchesEmpochees", "class_joueur.html#a151dffa1c9e4173312bdf3192ed2cf0a", null ],
+    [ "getNbBillesEmpochees", "class_joueur.html#aa16ebbfbee4662ad167803df847a992a", null ],
     [ "getNom", "class_joueur.html#a1d7082ab1f926eae1bd6834e901751a7", null ],
     [ "getPoints", "class_joueur.html#a94de3eaea1a3711814c6221e18f9fb4d", null ],
     [ "getPrenom", "class_joueur.html#ade527085b285ce86ea9e369bc9959032", null ],
+    [ "getTirs", "class_joueur.html#a52b76c3921ea85df1eb2492a42f412c2", null ],
+    [ "reinitialiserBillesBlanchesEmpochees", "class_joueur.html#a34bf9f2f6757817c9ce5ea09320006a1", null ],
+    [ "reinitialiserBillesEmpochees", "class_joueur.html#a4fe88a180075e39eb60af289d849fc00", null ],
+    [ "reinitialiserTirs", "class_joueur.html#a554f3b2e3e95e971d2c4a271bafb4b19", null ],
     [ "setCouleur", "class_joueur.html#aed7f92f489610eb9664083207b0c5499", null ],
     [ "couleur", "class_joueur.html#a0a4ec580d064316f7d81d9289126e654", null ],
     [ "empochees", "class_joueur.html#a32599f10c2b140ba146cd8baea6b66d4", null ],
     [ "id", "class_joueur.html#a3c83c4ba0e9b07c444b5d65fb627e1e4", null ],
-    [ "nbBillesRestantes", "class_joueur.html#a588a3d5bb542df584a194ea2fb7a4c6b", null ],
+    [ "nbBillesBlanchesEmpochees", "class_joueur.html#ad789d297a1adbd19fa4e8e2ac370112b", null ],
+    [ "nbBillesEmpochees", "class_joueur.html#adf39fb658416ff2571c91add197e7403", null ],
     [ "nom", "class_joueur.html#ab06d7f1e6b482299bb03919e0cd2166d", null ],
     [ "points", "class_joueur.html#a721749659496aa713b00e30389961931", null ],
-    [ "prenom", "class_joueur.html#a96d4237143c2e57b8025c4e116e95909", null ]
+    [ "prenom", "class_joueur.html#a96d4237143c2e57b8025c4e116e95909", null ],
+    [ "tirs", "class_joueur.html#a411ecf74b0d18597b2e1fa4ee4fed20d", null ]
 ];

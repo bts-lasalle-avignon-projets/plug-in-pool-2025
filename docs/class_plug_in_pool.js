@@ -2,6 +2,8 @@ var class_plug_in_pool =
 [
     [ "PlugInPool", "class_plug_in_pool.html#a54d30173dd38e2b45cb0e75db2ad86f6", null ],
     [ "~PlugInPool", "class_plug_in_pool.html#a438c2d13c067c8e09487669ce650fc86", null ],
+    [ "afficherDureePartie", "class_plug_in_pool.html#a67b65706cd49ccf3a54514a8a788edb3", null ],
+    [ "afficherFaute", "class_plug_in_pool.html#a455038b8e26025ccfe2182533c44afbe", null ],
     [ "changerEcranFin", "class_plug_in_pool.html#aaa73b119526baa5a9dc1cde2e04e5401", null ],
     [ "changerEcranFinMatch", "class_plug_in_pool.html#a96c38e4d93a37c8c60e290db3a4d0608", null ],
     [ "changerEcranMatch", "class_plug_in_pool.html#a752c20dd00ee1264e2fe6f51da467b46", null ],

@@ -8,8 +8,6 @@ import android.database.Cursor;
 import android.icu.text.SimpleDateFormat;
 import android.util.Log;
 
-import androidx.annotation.LongDef;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -79,7 +77,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper
     {
         super(context, NOM_BDD, null, VERSION_BDD);
         Log.d(TAG, "BaseDeDonnees()");
-        sqlite = this.getWritableDatabase();
+         sqlite = this.getWritableDatabase();
     }
 
     public synchronized static BaseDeDonnees getInstance(Context context)
@@ -90,12 +88,6 @@ public class BaseDeDonnees extends SQLiteOpenHelper
             baseDeDonnees = new BaseDeDonnees(context);
         }
         return baseDeDonnees;
-    }
-
-    public void effacer()
-    {
-        Log.d(TAG, "effacer()");
-        onUpgrade(sqlite, sqlite.getVersion(), sqlite.getVersion() + 1);
     }
 
     @Override
@@ -159,19 +151,30 @@ public class BaseDeDonnees extends SQLiteOpenHelper
         }
     }
 
-    public void creerMatch(int idJoueur1, int idJoueur2, int nbPartiesGagnantes)
+    public int creerMatch(int idJoueur1, int idJoueur2, int nbPartiesGagnantes)
     {
         String horodatage = obtenirHorodatageActuel();
+        int idCree = -1;
+
         try
         {
             Log.d(TAG, "ajouterMatch(" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", " + horodatage + ")");
             sqlite.execSQL("INSERT INTO matchs (idJoueur1, idJoueur2, nbPartiesGagnantes, fini, horodatage) " +
                     "VALUES (" + idJoueur1 + ", " + idJoueur2 + ", " + nbPartiesGagnantes + ", 0, '" + horodatage + "')");
+
+            Cursor c = sqlite.rawQuery("SELECT last_insert_rowid()", null);
+            if (c.moveToFirst()) {
+                idCree = c.getInt(0);
+                Log.d(TAG, "Match inséré avec idMatch = " + idCree);
+            }
+            c.close();
         }
         catch (SQLiteConstraintException e)
         {
-            Log.d(TAG, "ajouterMatch() : erreur de contrainte, peut-être une clé étrangère invalide !");
+            Log.d(TAG, "ajouterMatch() : erreur de contrainte !");
         }
+
+        return idCree;
     }
     public String obtenirHorodatageActuel()
     {
@@ -218,71 +221,102 @@ public class BaseDeDonnees extends SQLiteOpenHelper
             Log.e(TAG, "ajouterManche() erreur : " + e.getMessage());
         }
     }
-    public void terminerMatch(int idMatch)
+    public void terminerMatch(int idMatch, int valeurFini)
     {
         try
         {
-            sqlite.execSQL("UPDATE matchs SET fini = 1 WHERE idMatch = ?", new Object[]{idMatch});
-            Log.d(TAG, "terminerMatch() match " + idMatch + " marqué comme terminé");
+            Log.d(TAG, "mettreAJourFini(" + idMatch + ", " + valeurFini + ")");
+
+            String requete = "UPDATE matchs SET fini = " + valeurFini + " WHERE idMatch = " + idMatch;
+
+            sqlite.beginTransaction();
+            sqlite.execSQL(requete);
+            sqlite.setTransactionSuccessful();
+            sqlite.endTransaction();
+
+            Cursor verif = sqlite.rawQuery("SELECT fini FROM matchs WHERE idMatch = " + idMatch, null);
+            if (verif.moveToFirst()) {
+                int fini = verif.getInt(0);
+                Log.d(TAG, "Vérification après UPDATE : fini = " + fini);
+            } else {
+                Log.e(TAG, "Match id " + idMatch + " introuvable !");
+            }
+            verif.close();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "terminerMatch() erreur : " + e.getMessage());
+            Log.e(TAG, "mettreAJourFini() : erreur - " + e.getMessage());
         }
     }
     public ArrayList<String> getInfosMatchs()
     {
-        ArrayList<String> infosMatchs = new ArrayList<>();
+        ArrayList<String> listeInfos = new ArrayList<>();
+        SQLiteDatabase bd = getReadableDatabase();
 
-        String requete = "SELECT " +
-                "m.idMatch, " +
-                "j1.prenom || ' ' || j1.nom AS joueur1, " +
-                "j2.prenom || ' ' || j2.nom AS joueur2, " +
-                "m.nbPartiesGagnantes, " +
-                "m.fini, " +
-                "m.horodatage " +
-                "FROM matchs m " +
-                "JOIN joueurs j1 ON m.idJoueur1 = j1.idJoueur " +
-                "JOIN joueurs j2 ON m.idJoueur2 = j2.idJoueur " +
-                "ORDER BY m.horodatage DESC";
+        String requeteMatchs =
+                "SELECT m.idMatch, m.fini, m.horodatage, " +
+                        "j1.nom AS nomJoueur1, j1.prenom AS prenomJoueur1, " +
+                        "j2.nom AS nomJoueur2, j2.prenom AS prenomJoueur2 " +
+                        "FROM matchs m " +
+                        "LEFT JOIN joueurs j1 ON m.idJoueur1 = j1.idJoueur " +
+                        "LEFT JOIN joueurs j2 ON m.idJoueur2 = j2.idJoueur " +
+                        "ORDER BY m.horodatage DESC";
 
-        Cursor curseur = null;
+        Cursor curseurMatchs = bd.rawQuery(requeteMatchs, null);
 
-        try
+        if (curseurMatchs.moveToFirst())
         {
-            curseur = sqlite.rawQuery(requete, null);
-            if(curseur.moveToFirst())
+            do
             {
-                do
+                int idMatch = curseurMatchs.getInt(curseurMatchs.getColumnIndexOrThrow("idMatch"));
+                String fini = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("fini"));
+                String horodatageMatch = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("horodatage"));
+
+                String nomJoueur1 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("nomJoueur1"));
+                String prenomJoueur1 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("prenomJoueur1"));
+                String nomJoueur2 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("nomJoueur2"));
+                String prenomJoueur2 = curseurMatchs.getString(curseurMatchs.getColumnIndexOrThrow("prenomJoueur2"));
+
+                StringBuilder texte = new StringBuilder();
+                texte.append("Match ").append(idMatch)
+                        .append(" (Terminé : ").append("1".equals(fini) ? "Oui" : "Non")
+                        .append(")")
+                        .append(" : ").append(horodatageMatch)
+                        .append("\nJoueur 1 : ")
+                        .append(prenomJoueur1).append(" ").append(nomJoueur1)
+                        .append("\nJoueur 2 : ")
+                        .append(prenomJoueur2).append(" ").append(nomJoueur2);
+
+                String requeteManches =
+                        "SELECT idManche, numeroTable, horodatage, idGagnant, idPerdant " +
+                                "FROM manches WHERE idMatch = ? ORDER BY horodatage ASC";
+
+                Cursor curseurManches = bd.rawQuery(requeteManches, new String[]{String.valueOf(idMatch)});
+
+                while (curseurManches.moveToNext())
                 {
-                    int idMatch             = curseur.getInt(0);
-                    String joueur1          = curseur.getString(1);
-                    String joueur2          = curseur.getString(2);
-                    int nbPartiesGagnantes  = curseur.getInt(3);
-                    int fini                = curseur.getInt(4);
-                    String horodatage       = curseur.getString(5);
+                    int idManche = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idManche"));
+                    int table = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("numeroTable"));
+                    String horodatageManche = curseurManches.getString(curseurManches.getColumnIndexOrThrow("horodatage"));
+                    int idGagnant = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idGagnant"));
+                    int idPerdant = curseurManches.getInt(curseurManches.getColumnIndexOrThrow("idPerdant"));
 
-                    String ligne = "Match #" + idMatch +
-                            " : " + joueur1 + " vs " + joueur2 +
-                            " | nombre de parties : " + nbPartiesGagnantes +
-                            " | Terminé : " + (fini == 1 ? "Oui" : "Non") +
-                            " | Date : " + horodatage;
+                    String gagnant = (idGagnant == 0) ? (prenomJoueur1 + " " + nomJoueur1) : (prenomJoueur2 + " " + nomJoueur2);
+                    String perdant = (idPerdant == 0) ? (prenomJoueur1 + " " + nomJoueur1) : (prenomJoueur2 + " " + nomJoueur2);
 
-                    infosMatchs.add(ligne);
-                } while(curseur.moveToNext());
-            }
-        }
-        catch(Exception e)
-        {
-            Log.e(TAG, "getInfosMatchs() : erreur - " + e.getMessage());
-        }
-        finally
-        {
-            if(curseur != null) curseur.close();
-        }
+                    texte.append("\n - Manche ").append(idManche)
+                            .append(" : gagnant = ").append(gagnant)
+                            .append(", perdant = ").append(perdant)
+                            .append(", table ").append(table)
+                            .append(", ").append(horodatageManche);
+                }
+                curseurManches.close();
+                listeInfos.add(texte.toString());
 
-        Log.d(TAG, "getInfosMatchs() : " + infosMatchs.size() + " lignes récupérées");
-        return infosMatchs;
+            } while (curseurMatchs.moveToNext());
+        }
+        curseurMatchs.close();
+        return listeInfos;
     }
     public void purgerHistorique()
     {

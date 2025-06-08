@@ -88,17 +88,17 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <div class="title">README </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><table class="doxtable">
+<div class="textblock"><table style="width:100%">
 <tr>
 <th colspan="3">Plug-In-Pool  </th></tr>
 <tr>
-<td><a href="https://fr.wikipedia.org/wiki/Android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android" class="inline"/></a>  </td><td><a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&amp;logo=Qt&amp;logoColor=white" alt="Qt" style="pointer-events: none;" class="inline"/></a>  </td><td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL" style="pointer-events: none;" class="inline"/></a>   </td></tr>
+<td><a href="https://fr.wikipedia.org/wiki/Android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android" class="inline"/></a>  </td><td><a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&amp;logo=Qt&amp;logoColor=white" alt="Qt" style="pointer-events: none;" class="inline"/></a>  </td><td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases"><img src="https://img.shields.io/github/v/release/bts-lasalle-avignon-projets/plug-in-pool-2025" alt="release" class="inline"/></a>   </td></tr>
 </table>
-<table class="doxtable">
+<table style="width:100%">
 <tr>
-<th colspan="2">GitHub Actions  </th></tr>
+<th colspan="3">GitHub Actions  </th></tr>
 <tr>
-<td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg" alt="Android" style="pointer-events: none;" class="inline"/></a>  </td><td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg" alt="Qt" style="pointer-events: none;" class="inline"/></a>   </td></tr>
+<td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/qt-build.yml/badge.svg" alt="Android" style="pointer-events: none;" class="inline"/></a>  </td><td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg" alt="Qt" style="pointer-events: none;" class="inline"/></a>  </td><td><a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment" style="pointer-events: none;" class="inline"/></a>   </td></tr>
 </table>
 <h1>Projet BTS CIEL 2025 : Plug-In-Pool</h1>
 <ul>
@@ -109,6 +109,7 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <li><a href="#module-de-gestion-de-matchs">Module de gestion de matchs</a></li>
 <li><a href="#diagramme-de-cas-dutilisation-android">Diagramme de cas d'utilisation (Android)</a></li>
 <li><a href="#ihm-de-lapplication-android">IHM de l'application Android</a></li>
+<li><a href="#visite-de-lihm-android">Visite de l'IHM Android</a></li>
 <li><a href="#diagramme-de-classes-android">Diagramme de classes (Android)</a></li>
 <li><a href="#recette">Recette</a></li>
 <li><a href="#base-de-données">Base de données</a></li>
@@ -116,8 +117,10 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 </li>
 <li><a href="#application-qt">Application Qt</a><ul>
 <li><a href="#module-de-visualisation-de-matchs">Module de visualisation de matchs</a></li>
+<li><a href="#caractéristiques-du-raspberry-pi-5">Caractéristiques du Raspberry Pi 5</a></li>
 <li><a href="#diagramme-de-cas-dutilisation-qt">Diagramme de cas d'utilisation (Qt)</a></li>
 <li><a href="#ihm-de-lapplication-qt">IHM de l'application Qt</a></li>
+<li><a href="#visite-de-lihm-qt">Visite de l'IHM Qt</a></li>
 <li><a href="#diagramme-de-classes-qt">Diagramme de classes (Qt)</a></li>
 <li><a href="#recette-1">Recette</a></li>
 </ul>
@@ -126,18 +129,8 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 </li>
 <li><a href="#communication-bluetooth">Communication Bluetooth</a><ul>
 <li><a href="#protocole">Protocole</a><ul>
-<li><a href="#activation-de-la-détection-mobile--table">Activation de la détection (Mobile → Table)</a></li>
-<li><a href="#désactivation-de-la-détection-mobile--table">Désactivation de la détection (Mobile → Table)</a></li>
-<li><a href="#empochage-table--mobile">Empochage (Table → Mobile)</a></li>
-<li><a href="#démarrer-un-match-mobile--écran">Démarrer un match (Mobile → Écran)</a></li>
-<li><a href="#démarrer-une-partie--la-casse-mobile--écran">Démarrer une partie : la casse (Mobile → Écran)</a></li>
-<li><a href="#empochage-mobile--écran">Empochage (Mobile → Écran)</a></li>
-<li><a href="#faute-mobile--écran">Faute (Mobile → Écran)</a></li>
-<li><a href="#fin-de-partie-mobile--écran">Fin de partie (Mobile → Écran)</a></li>
-<li><a href="#pause-mobile--écran">Pause (Mobile → Écran)</a></li>
-<li><a href="#reprise-mobile--écran">Reprise (Mobile → Écran)</a></li>
-<li><a href="#abandon-mobile--écran">Abandon (Mobile → Écran)</a></li>
-<li><a href="#fin-de-match-mobile--écran">Fin de match (Mobile → Écran)</a></li>
+<li><a href="#mobile--table">Mobile → Table</a></li>
+<li><a href="#mobile--écran">Mobile → Écran</a></li>
 </ul>
 </li>
 </ul>
@@ -159,6 +152,7 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <li><a href="#qt">Qt</a></li>
 </ul>
 </li>
+<li><a href="#documentation-du-code">Documentation du code</a></li>
 <li><a href="#équipe-de-développement">Équipe de développement</a></li>
 </ul>
 </li>
@@ -204,9 +198,15 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <h4>IHM de l'application Android</h4>
 <p><img src="accueilEtCreationOuChoixDesJoueurs.png" alt="" class="inline"/></p>
 <p><img src="choixDesAppreilsEtActivitePartie.png" alt="" class="inline"/></p>
-<p><img src="demarerPartieEtEmpochage.png" alt="" class="inline"/></p>
-<p><img src="finDePartieEtHistorique.png" alt="" class="inline"/></p>
+<p><img src="demarerPartie.png" alt="" class="inline"/></p>
+<p><img src="partieEtFinDePartie.png" alt="" class="inline"/></p>
+<p><img src="historique.png" alt="" class="inline"/></p>
+<h4>Visite de l'IHM Android</h4>
+<p><img src="applicationAndroid.gif" alt="" class="inline"/></p>
 <h4>Diagramme de classes (Android)</h4>
+<p><img src="classes-android.png" alt="" class="inline"/></p>
+<p>Pour <code>ActivitePartie</code> :</p>
+<p><img src="classes-activitepartie.png" alt="" class="inline" title="classes-activitepartie"/></p>
 <h4>Recette</h4>
 <table class="doxtable">
 <tr>
@@ -220,7 +220,9 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr>
 <td>Gérer le déroulement d'un match </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 <tr>
-<td>Enregistrer les données des parties </td><td style="text-align: center;">x </td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+<td>Gérer plusieurs parties </td><td style="text-align: center;">x </td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+<tr>
+<td>Enregistrer les données des parties </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 <tr>
 <td>Consulter l'historique des matchs </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 <tr>
@@ -279,7 +281,20 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <blockquote class="doxtable">
 <p>L'application Qt s'exécute sur Raspberry Pi modèle 5 sur lequel est relié un écran de télévision (HDMI). </p>
 </blockquote>
+<h4>Caractéristiques du Raspberry Pi 5</h4>
+<ul>
+<li>64-bits quad-core Cortex-A76 processor</li>
+<li>8GB LPDDR4X SDRAM</li>
+<li>2 micro HDMI ports</li>
+<li>2 USB 3.0 ports</li>
+<li>2 USB 2.0 ports</li>
+<li>Gigabit Ethernet port</li>
+<li>Bluetooth 5.0</li>
+<li>PoE-capable</li>
+<li>5V/5A USB-C</li>
+</ul>
 <h4>Diagramme de cas d'utilisation (Qt)</h4>
+<p><img src="casUtilisationQt.png" alt="" class="inline"/></p>
 <h4>IHM de l'application Qt</h4>
 <p><img src="ecranAccueil.png" alt="" class="inline"/></p>
 <p><img src="ecranMatch.png" alt="" class="inline"/></p>
@@ -288,7 +303,10 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <p><img src="ecranPartieEmpochage.png" alt="" class="inline"/></p>
 <p><img src="ecranFinPartie.png" alt="" class="inline"/></p>
 <p><img src="ecranFinMatch.png" alt="" class="inline"/></p>
+<h4>Visite de l'IHM Qt</h4>
+<p><img src="demoPipQt.gif" alt="" class="inline"/></p>
 <h4>Diagramme de classes (Qt)</h4>
+<p><img src="classes-qt.png" alt="" class="inline" title="classes-qt"/></p>
 <h4>Recette</h4>
 <table class="doxtable">
 <tr>
@@ -300,12 +318,14 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr>
 <td>Visualiser les données de la partie en temps réel </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 <tr>
-<td>Visualiser les données du match </td><td style="text-align: center;"></td><td style="text-align: center;">x </td><td style="text-align: center;"></td></tr>
+<td>Visualiser les données du match </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 <tr>
 <td>Dialoguer avec le terminal mobile </td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">x  </td></tr>
 </table>
 <h2>Communication Bluetooth</h2>
-<p>Bluetooth v5.x</p>
+<p>Bluetooth : v5.x</p>
+<p>Service utilisé : RFCOMM (<em>Radio frequency communication</em>), basé sur les spécifications RS-232 et qui émule des liaisons séries</p>
+<p>Profil utilisé : SPP (<em>Serial Port Profile</em>)</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Modules   </th><th class="markdownTableHeadCenter">Rôle    </th></tr>
@@ -324,12 +344,10 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <li>Séparateur : <code>/</code></li>
 <li>Délimiteur de fin : <code>!</code></li>
 </ul>
-<h4>Activation de la détection (Mobile → Table)</h4>
-<p>Format : <code>$A!</code></p>
-<h4>Désactivation de la détection (Mobile → Table)</h4>
-<p>Format : <code>$D!</code></p>
-<h4>Empochage (Table → Mobile)</h4>
-<p>Format : <code>$couleurBille/idPoche!</code></p>
+<h4>Mobile → Table</h4>
+<p>Activation de la détection : <code>$A!</code></p>
+<p>Désactivation de la détection : <code>$D!</code></p>
+<p>Empochage : <code>$couleurBille/idPoche!</code></p>
 <ul>
 <li><code>couleurBille</code> : la couleur de bille</li>
 </ul>
@@ -365,7 +383,8 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <td class="markdownTableBodyCenter">Poche Sud-Est   </td><td class="markdownTableBodyCenter">6   </td></tr>
 </table>
 <p><img src="./simulateur/images/table.png" alt="" class="inline"/></p>
-<h4>Démarrer un match (Mobile → Écran)</h4>
+<h4>Mobile → Écran</h4>
+<p>Démarrer un match :</p>
 <p>| $ | type | / | nbParties | / | prenomJoueur1 | / | prenomJoueur2 | ! | | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; | :-&mdash; |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -373,11 +392,11 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft">nbParties   </td><td class="markdownTableBodyLeft">Int   </td><td class="markdownTableBodyLeft">x    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft">prenomJoueur1   </td><td class="markdownTableBodyLeft">String   </td><td class="markdownTableBodyLeft">“*nomJoueur1*”    </td></tr>
+<td class="markdownTableBodyLeft">prenomJoueur1   </td><td class="markdownTableBodyLeft">String   </td><td class="markdownTableBodyLeft">"nom du joueur1"    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">prenomJoueur2   </td><td class="markdownTableBodyLeft">String   </td><td class="markdownTableBodyLeft">“*nomJoueur2*”   </td></tr>
+<td class="markdownTableBodyLeft">prenomJoueur2   </td><td class="markdownTableBodyLeft">String   </td><td class="markdownTableBodyLeft">"nom du joueur2"   </td></tr>
 </table>
-<h4>Démarrer une partie : la casse (Mobile → Écran)</h4>
+<p>Démarrer une partie (la casse) :</p>
 <p>| $ | type | / | idPartie | / | idJoueur | / | couleurBille | / | idPoche | ! | | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -391,7 +410,7 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">idPoche   </td><td class="markdownTableBodyLeft">Int   </td><td class="markdownTableBodyLeft">1 : Poche Nord-Ouest** 2 : Poche Nord-Est** 3 : Poche Équateur-Ouest** 4 : Poche Équateur-Est** 5 : Poche Sud-Ouest** 6 : Poche Sud-Est** 0 : Aucune poche   </td></tr>
 </table>
-<h4>Empochage (Mobile → Écran)</h4>
+<p>Empochage :</p>
 <p>| $ | type | / | idJoueur | / | couleurBille | / | idPoche | ! | | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -403,8 +422,8 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft">idPoche   </td><td class="markdownTableBodyLeft">Int   </td><td class="markdownTableBodyLeft">1 : Poche Nord-Ouest** 2 : Poche Nord-Est** 3 : Poche Équateur-Ouest** 4 : Poche Équateur-Est** 5 : Poche Sud-Ouest** 6 : Poche Sud-Est** 0 : Aucune poche   </td></tr>
 </table>
-<p>** Le cas où aucune bille est empochée (en option).*</p>
-<h4>Faute (Mobile → Écran)</h4>
+<p>_* Le cas où aucune bille est empochée (en option)._</p>
+<p>Faute :</p>
 <p>| $ | type | / | idJoueur | / | faute | ! | | :&mdash;: | :&mdash;: | :&mdash;: | :-&mdash; | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -414,8 +433,8 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">faute   </td><td class="markdownTableBodyLeft"></td><td class="markdownTableBodyLeft">*Le champ peut être vide   </td></tr>
 </table>
-<p>**Le code de la faute (facultatif) commise par le joueur idJoueur*</p>
-<h4>Fin de partie (Mobile → Écran)</h4>
+<p>_*Le code de la faute (facultatif) commise par le joueur idJoueur_</p>
+<p>Fin de partie :</p>
 <p>| $ | type | / | idPartie | / | idJoueur | ! | | :&mdash;: | :&mdash;: | :&mdash;: | :-&mdash; | :&mdash;: | :-&mdash; | :&mdash;: |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -425,19 +444,19 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">idJoueur   </td><td class="markdownTableBodyLeft">Int   </td><td class="markdownTableBodyLeft">Le joueur qui a gagné la partie 1 : <a class="el" href="class_joueur.html">Joueur</a> 1 2 : <a class="el" href="class_joueur.html">Joueur</a> 2   </td></tr>
 </table>
-<h4>Pause (Mobile → Écran)</h4>
+<p>Pause :</p>
 <p>| $ | type | ! | | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <p>| type | Char | P : la partie est mis en Pause | | :-&mdash; | :-&mdash; | :-&mdash; |</p>
-<p>** Désactivation des timers*</p>
-<h4>Reprise (Mobile → Écran)</h4>
+<p>_* Désactivation des timers_</p>
+<p>Reprise :</p>
 <p>| $ | type | ! | | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <p>| type | Char | R : Reprise d’une partie | | :-&mdash; | :-&mdash; | :-&mdash; |</p>
-<p>** Réactivation des timers*</p>
-<h4>Abandon (Mobile → Écran)</h4>
+<p>_* Réactivation des timers_</p>
+<p>Abandon :</p>
 <p>| $ | type | ! | | :&mdash;: | :&mdash;: | :&mdash;: |</p>
 <p>| type | Char | A : la partie est abandonnée | | :-&mdash; | :-&mdash; | :-&mdash; |</p>
-<p>** Si la partie n’est pas démarrée, le match est abandonné*</p>
-<h4>Fin de match (Mobile → Écran)</h4>
+<p>_* Si la partie n’est pas démarrée, le match est abandonné_</p>
+<p>Fin de match :</p>
 <p>| $ | type | / | nbPartiesJoueur1 | / | nbPartiesJoueur2 | ! | | :&mdash;: | :&mdash;: | :&mdash;: | :-&mdash; | :&mdash;: | :-&mdash; | :&mdash;: |</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -488,10 +507,23 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <p>Du 31 Mai 2025 au 15 Juin 2025 </p>
 </blockquote>
 <ul>
-<li>[ ] Jouer plusieurs parties</li>
-<li>[ ] Enregistrer les données du match dans la base de données</li>
+<li>[x] Enregistrer les données du match dans la base de données</li>
+<li>[x] Corriger bugs de connexion Bluetooth sur l'application Android</li>
+<li>[x] Améliorer l'interface de l'Activité Partie Android</li>
+<li>[x] Afficher les statistiques de la partie sur l’écran à la fin</li>
+<li>[x] Afficher la faute d'un joueur sur l'écran</li>
+<li>[x] Corriger bug d'affichage sur l'écran</li>
 </ul>
 <h2>Changelog</h2>
+<h3>Version 1.1</h3>
+<ul>
+<li>[x] Enregistrer les données du match dans la base de données</li>
+<li>[x] Corriger bugs de connexion Bluetooth sur l'application Android</li>
+<li>[x] Améliorer l'interface de l'Activité Partie Android</li>
+<li>[x] Afficher les statistiques de la partie sur l’écran à la fin</li>
+<li>[x] Afficher la faute d'un joueur sur l'écran</li>
+<li>[x] Corriger bug d'affichage sur l'écran</li>
+</ul>
 <h3>Version 1.0</h3>
 <ul>
 <li>[x] Jouer une partie</li>
@@ -513,12 +545,20 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <h2>Défauts constatés non corrigés</h2>
 <h3>Android</h3>
 <ul>
-<li>Si la première tentative de connexion à un appareils Bluetooth échoue. Il apparait comme : _"Erreur de connexion"_ dans l'application Android, alors qu'il est en réalité bien connecté.</li>
+<li>Si, après un match, les joueurs en reconfigurent un nouveau, il peut arriver que la liaison avec la table soit impossible.</li>
+<li>Si le temps de connexion à l'écran est long, la tablette peut afficher que la connexion est impossible, alors qu’elle existe bel et bien (le témoin sur l’écran d’affichage le confirme). Mais cet état est mis à jour lors du démarrage de la partie.</li>
 </ul>
 <h3>Qt</h3>
 <ul>
 <li>Si deux trames sont envoyées à la suite depuis la tablette Android vers l'écran de visualisation. Elles sont considérées comme une seule.</li>
 </ul>
+<h2>TODO</h2>
+<ul>
+<li>[ ] Jouer plusieurs parties</li>
+<li>[ ] Corriger les défauts constatés non corrigés</li>
+</ul>
+<h2>Documentation du code</h2>
+<p><a href="https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/">https://bts-lasalle-avignon-projets.github.io/plug-in-pool-2025/</a></p>
 <h2>Équipe de développement</h2>
 <ul>
 <li>Gestion des matchs (Android) : MILLOT Pierre (IR) &lt;**<a href="#" onclick="location.href='mai'+'lto:'+'pie'+'rr'+'e.m'+'il'+'lot'+'.p'+'ro@'+'gm'+'ail'+'.c'+'om'; return false;">pierre(dot)millot(dot)pro(at)gmail(dot)com</a>**&gt;</li>
@@ -534,7 +574,7 @@ $(document).ready(function(){initNavTree('md__mnt_sda_home_tv__documents_git_pro
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 28 Mai 2025 06:21:55 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Dimanche 8 Juin 2025 21:31:30 pour Projet Plug-In-Pool par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.9.1&nbsp;</li>
   </ul>
 </div>
 </body>
