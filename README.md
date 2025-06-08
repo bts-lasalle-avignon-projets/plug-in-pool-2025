@@ -10,14 +10,15 @@
         <a href="https://fr.wikipedia.org/wiki/Qt"><img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white" alt="Qt"/></a>
         </td>
         <td>
-        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a> <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases"><img src="https://img.shields.io/github/v/release/bts-lasalle-avignon-projets/plug-in-pool-2025" alt="release"/></a>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025"><img src="https://img.shields.io/badge/Projet-BTS%20CIEL-darkviolet.svg" alt="Projet BTS CIEL"/></a>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/releases"><img src="https://img.shields.io/github/v/release/bts-lasalle-avignon-projets/plug-in-pool-2025" alt="release"/></a>
         </td>
     </tr>
 </table>
 
 <table style="width:100%">
     <tr>
-        <th colspan="2">GitHub Actions</th>
+        <th colspan="3">GitHub Actions</th>
     </tr>
     <tr>
         <td>
@@ -25,6 +26,9 @@
         </td>
         <td>
         <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/android-build.yml/badge.svg" alt="Qt"/></a>
+        </td>
+        <td>
+        <a href="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/bts-lasalle-avignon-projets/plug-in-pool-2025/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a>
         </td>
     </tr>
 </table>
@@ -38,6 +42,7 @@
       - [Module de gestion de matchs](#module-de-gestion-de-matchs)
       - [Diagramme de cas d'utilisation (Android)](#diagramme-de-cas-dutilisation-android)
       - [IHM de l'application Android](#ihm-de-lapplication-android)
+      - [Visite de l'IHM Android](#visite-de-lihm-android)
       - [Diagramme de classes (Android)](#diagramme-de-classes-android)
       - [Recette](#recette)
       - [Base de données](#base-de-données)
@@ -46,6 +51,7 @@
       - [Caractéristiques du Raspberry Pi 5](#caractéristiques-du-raspberry-pi-5)
       - [Diagramme de cas d'utilisation (Qt)](#diagramme-de-cas-dutilisation-qt)
       - [IHM de l'application Qt](#ihm-de-lapplication-qt)
+      - [Visite de l'IHM Qt](#visite-de-lihm-qt)
       - [Diagramme de classes (Qt)](#diagramme-de-classes-qt)
       - [Recette](#recette-1)
   - [Communication Bluetooth](#communication-bluetooth)
@@ -121,11 +127,19 @@ Le terminal mobile Android, stocke chaque match dans une base de données SQLite
 
 ![](./images/choixDesAppreilsEtActivitePartie.png)
 
-![](./images/demarerPartieEtEmpochage.png)
+![](./images/demarerPartie.png)
 
-![](./images/finDePartieEtHistorique.png)
+![](./images/partieEtFinDePartie.png)
+
+![](./images/historique.png)
+
+#### Visite de l'IHM Android
+
+![](./images/applicationAndroid.gif)
 
 #### Diagramme de classes (Android)
+
+![](./images/classes-android.png)
 
 Pour `ActivitePartie` :
 
@@ -290,6 +304,10 @@ Sur l'écran, les joueurs pourront visualiser en continu :
 
 ![](./images/ecranFinMatch.png)
 
+#### Visite de l'IHM Qt
+
+![](./images/demoPipQt.gif)
+
 #### Diagramme de classes (Qt)
 
 ![classes-qt](./images/classes-qt.png)
@@ -324,8 +342,8 @@ Sur l'écran, les joueurs pourront visualiser en continu :
   <tr>
     <td>Visualiser les données du match</td>
     <td style="text-align: center;"></td>
-    <td style="text-align: center;">x</td>
     <td style="text-align: center;"></td>
+    <td style="text-align: center;">x</td>
   </tr>
   <tr>
     <td>Dialoguer avec le terminal mobile</td>
@@ -529,8 +547,21 @@ Fin de match :
 
 - [x] Enregistrer les données du match dans la base de données
 - [x] Corriger bugs de connexion Bluetooth sur l'application Android
+- [x] Améliorer l'interface de l'Activité Partie Android
+- [x] Afficher les statistiques de la partie sur l’écran à la fin
+- [x] Afficher la faute d'un joueur sur l'écran
+- [x] Corriger bug d'affichage sur l'écran
 
 ## Changelog
+
+### Version 1.1
+
+- [x] Enregistrer les données du match dans la base de données
+- [x] Corriger bugs de connexion Bluetooth sur l'application Android
+- [x] Améliorer l'interface de l'Activité Partie Android
+- [x] Afficher les statistiques de la partie sur l’écran à la fin
+- [x] Afficher la faute d'un joueur sur l'écran
+- [x] Corriger bug d'affichage sur l'écran
 
 ### Version 1.0
 
@@ -554,7 +585,8 @@ Fin de match :
 
 ### Android
 
-
+- Si, après un match, les joueurs en reconfigurent un nouveau, il peut arriver que la liaison avec la table soit impossible.
+- Si le temps de connexion à l'écran est long, la tablette peut afficher que la connexion est impossible, alors qu’elle existe bel et bien (le témoin sur l’écran d’affichage le confirme). Mais cet état est mis à jour lors du démarrage de la partie.
 
 ### Qt
 
@@ -563,6 +595,7 @@ Fin de match :
 ## TODO
 
 - [ ] Jouer plusieurs parties
+- [ ] Corriger les défauts constatés non corrigés
 
 ## Documentation du code
 

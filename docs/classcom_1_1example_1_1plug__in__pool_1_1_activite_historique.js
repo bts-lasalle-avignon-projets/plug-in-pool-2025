@@ -9,5 +9,6 @@ var classcom_1_1example_1_1plug__in__pool_1_1_activite_historique =
     [ "baseDeDonnees", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#afcfcf400c6756135ffa632025f7a9d97", null ],
     [ "boutonPurger", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#a2c269cf5fcf1db765ea2d6a09826c1a2", null ],
     [ "listeMatchs", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#a435f66d604535611b7c37eafafd6fd6b", null ],
-    [ "retourAccueil", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#a3108dcc6704124817ba72d0311452c91", null ]
+    [ "retourAccueil", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#a3108dcc6704124817ba72d0311452c91", null ],
+    [ "TAG", "classcom_1_1example_1_1plug__in__pool_1_1_activite_historique.html#a58abc4cf37f1682d40f47cf436dd6c55", null ]
 ];

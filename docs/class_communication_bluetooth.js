@@ -8,6 +8,7 @@ var class_communication_bluetooth =
     [ "lireTrame", "class_communication_bluetooth.html#a745f8082fda3f772a9cb086b21c9cff8", null ],
     [ "trameCasseRecue", "class_communication_bluetooth.html#a5faa873652acb1153c88b2dbead4ffc7", null ],
     [ "trameEmpochageRecue", "class_communication_bluetooth.html#a9fbdd895f2310e8282560f2e4ab7fc9f", null ],
+    [ "trameFauteRecue", "class_communication_bluetooth.html#a8b645dd16c040f21a1ee091a481c7e2c", null ],
     [ "trameMatchTermineeRecue", "class_communication_bluetooth.html#a79acd5d215910e8aea85918d5ee0d626", null ],
     [ "tramePartieTermineeRecue", "class_communication_bluetooth.html#a20ab5cf249881aed8f10d37a05bf4527", null ],
     [ "trameRencontreRecue", "class_communication_bluetooth.html#a9c6443d06ebb284ef5aa1e1864ab3534", null ],

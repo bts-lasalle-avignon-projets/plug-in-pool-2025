@@ -10,6 +10,9 @@
 #define TEMPS_COMPTE_A_REBOURS_DEBUT_MATCH 5
 #define RASPBERRY_PI
 
+#define ID_JOUEUR_1 0
+#define ID_JOUEUR_2 1
+
 class CommunicationBluetooth;
 class Match;
 class EcranPlugInPool;

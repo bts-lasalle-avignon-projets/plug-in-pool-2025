@@ -204,21 +204,21 @@ void PlugInPool::terminerPartie(int idPartie, int idJoueurGagnant)
     EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
     QString   prenomGagnant = match->getPrenomJoueur(idJoueurGagnant);
 
-    QString prenomJoueurUn   = match->getPrenomJoueur(0);
-    QString prenomJoueurDeux = match->getPrenomJoueur(1);
+    QString prenomJoueurUn   = match->getPrenomJoueur(ID_JOUEUR_1);
+    QString prenomJoueurDeux = match->getPrenomJoueur(ID_JOUEUR_2);
 
-    QString tirsJoueurUn   = QString::number(match->getTirsJoueur(0));
-    QString tirsJoueurDeux = QString::number(match->getTirsJoueur(1));
+    QString tirsJoueurUn   = QString::number(match->getTirsJoueur(ID_JOUEUR_1));
+    QString tirsJoueurDeux = QString::number(match->getTirsJoueur(ID_JOUEUR_2));
 
     QString billesBlanchesEmpocheesJoueurUn =
-      QString::number(match->getBillesBlanchesEmpocheesJoueur(0));
+      QString::number(match->getBillesBlanchesEmpocheesJoueur(ID_JOUEUR_1));
     QString billesBlanchesEmpocheesJoueurDeux =
-      QString::number(match->getBillesBlanchesEmpocheesJoueur(1));
+      QString::number(match->getBillesBlanchesEmpocheesJoueur(ID_JOUEUR_2));
 
     QString billesEmpocheesJoueurUn =
-      QString::number(match->getBillesEmpocheesJoueur(0));
+      QString::number(match->getBillesEmpocheesJoueur(ID_JOUEUR_1));
     QString billesEmpocheesJoueurDeux =
-      QString::number(match->getBillesEmpocheesJoueur(1));
+      QString::number(match->getBillesEmpocheesJoueur(ID_JOUEUR_2));
 
     ecranFin->afficherJoueurGagnant(prenomGagnant + " a gagné cette partie");
     ecranFin->afficherStatistiques(prenomJoueurUn,
@@ -261,16 +261,15 @@ void PlugInPool::afficherDureePartie()
 {
     qDebug() << Q_FUNC_INFO;
     EcranPartie* ecranPartie = ecranPlugInPool->getEcranPartie();
-    EcranFin* ecranFin      = ecranPlugInPool->getEcranFin();
-    int minutes  = ecranPartie->getSecondesEcoulees() / MINUTE;
-    int secondes = ecranPartie->getSecondesEcoulees() % MINUTE;
+    EcranFin*    ecranFin    = ecranPlugInPool->getEcranFin();
+    int          minutes     = ecranPartie->getSecondesEcoulees() / MINUTE;
+    int          secondes    = ecranPartie->getSecondesEcoulees() % MINUTE;
 
     QString temps =
       QString("%1:%2")
         .arg(minutes, LARGEUR_MINUTE, BASE_DECIMALE, QChar('0'))
         .arg(secondes, LARGEUR_SECONDE, BASE_DECIMALE, QChar('0'));
     ecranFin->afficherDureePartie(temps);
-
 }
 
 void PlugInPool::changerEcranMatch()
